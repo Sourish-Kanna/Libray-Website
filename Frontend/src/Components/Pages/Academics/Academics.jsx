@@ -2,9 +2,67 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 export default function EResources() {
   return (
-    <div className='font-serif'>
-        <Link to='/eresources'></Link>
-            <header className="text-center mb-4 h-14">
+    <div className='font-serif mt-28'>
+        <Link to='/academics'></Link>
+
+          <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
+              <div >
+                <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
+                  <p>Academics</p>
+                </div>
+                <div class=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+              </div>
+          </div>
+
+                            {/* Scholarship */}
+
+          <div>
+            <div className='w-full h-60  flex items-center justify-center'>
+              <div >
+                  <div className='flex justify-center text-4xl font-bold '>
+                      <p>Scholarship</p>
+                  </div>
+                  <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+              </div>
+            </div>
+          </div>
+                                        {/* Rules&Guildelines */}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Rules&Guildelines</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+                                        {/* Academic Calender*/}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Academic Calender</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+                                        {/*Achievements */}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Achievements</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+            {/* <header className="text-center mb-4 h-14">
                 <h1 className="text-4xl mt-10  font-bold mb-8 border-b-4 border-orange-400   h-14">E-Resources</h1>
             </header>
             <div className='flex align-center justify-center h-24 '>
@@ -36,7 +94,7 @@ export default function EResources() {
               <div>
 
               </div>
-            </div>
+            </div> */}
       
     </div>
   )

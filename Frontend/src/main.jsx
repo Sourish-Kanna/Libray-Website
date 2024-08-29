@@ -10,9 +10,9 @@ import Layout from './Components/Layout'
 import HomePage from './Components/Pages/HomePage/HomePage'
 import AboutUs from './Components/Pages/AboutUs/AboutUs'
 import ContactUs from './Components/Pages/ContactUs/ContactUs'
-import EResources from './Components/Pages/EResources/EResources'
-import Journals from './Components/Pages/Journals/Journals'
-import Services from './Components/Pages/Servicess/Services'
+import Academics from './Components/Pages/Academics/Academics'
+import Others from './Components/Pages/Others/Others'
+import Services from './Components/Pages/QuickLinks/QuickLinks'
 import FAQs from './Components/Pages/FAQs/FAQs'
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -21,9 +21,9 @@ import FAQs from './Components/Pages/FAQs/FAQs'
         <Route path='' element={<HomePage/>}/>
         <Route path='about' element={<AboutUs/>}/>
         <Route path='contactus' element={<ContactUs/>}/>
-        <Route path='eresources' element={<EResources/>}/>
-        <Route path='journals' element={<Journals/>}/>
-        <Route path='services' element={<Services/>}/>
+        <Route path='academics' element={<Academics/>}/>
+        <Route path='others' element={<Others/>}/>
+        <Route path='quicklinks' element={<Services/>}/>
         <Route path='faqs' element={<FAQs/>}/>
       </Route>
     )

@@ -2,23 +2,111 @@ import { Link } from 'react-router-dom'
 
 export default function AboutUs() {
     return (
-        <div className='font-serif'>
+        <div className='font-serif mt-28'>
             <Link to='/about'></Link>
-            <section className="min-h-screen flex justify-center font-serif">
+
+                            {/* About us */}
+            <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
+                    <p>About Us</p>
+                    </div>
+                    <div class=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+                </div>
+            </div>
+
+                            {/* Facilites */}
+
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>Facilites</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+                                        {/* Library Staffs */}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Library Staffs</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+                                        {/* Library hours */}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Library Hours</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+                                        {/* Infratructure */}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Infratructure</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+
+            
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            
+            {/*<section className="flex justify-center min-h-screen font-serif">
                 <div className="">
                     <div>
                     <header className="text-center">
-                        <h1 className="text-4xl mt-10 font-bold mb-8 border-b-4 border-orange-400 pb-2  h-14">About Us</h1>
+                        <h1 className="pb-2 mt-10 mb-8 text-4xl font-bold border-b-4 border-orange-400 h-14">About Us</h1>
                     </header>
                     </div>
 
                     <div className="flex flex-grow w-full text-2xl">
 
-                        {/* Left Side */}
-                        <div className="flex-1 px-6 border-r-2 border-orange-400 bg-white justify-between"> 
-                            <div className="mb-6 flex-col gap-3">
+                        {/* Left Side 
+                        <div className="justify-between flex-1 px-6 bg-white border-r-2 border-orange-400"> 
+                            <div className="flex-col gap-3 mb-6">
                                 <div className='pb-4'>
-                                    <h2 className="text-3xl font-semibold mb-2">About Us</h2>
+                                    <h2 className="mb-2 text-3xl font-semibold">About Us</h2>
                                     <p>
                                         Library being the heart of an academic and learning center is located in the II floor and is easily accessible
                                         from any part of the SIES GST Campus.<br/>
@@ -27,7 +115,7 @@ export default function AboutUs() {
                                     </p>
                                 </div>
                                 <div className='pb-4'>
-                                    <h2 className="text-3xl font-semibold mb-2">General Rules</h2>
+                                    <h2 className="mb-2 text-3xl font-semibold">General Rules</h2>
                                     <ul className='list-disc space-y-0.5 space-x-4'>
                                         <li className='list-none'></li>
                                         <li>Students should maintain silence in the library at all the time.</li>
@@ -50,11 +138,11 @@ export default function AboutUs() {
                             </div>
                         </div>
                         
-                        {/* <!-- Right Side --> */}
-                        <div className="flex-1 px-6 bg-white justify-between">
-                            <div className="mb-6 flex-col items-start gap-2">
+                        {/* <!-- Right Side --> 
+                        <div className="justify-between flex-1 px-6 bg-white">
+                            <div className="flex-col items-start gap-2 mb-6">
                                 <div className='pb-6'>
-                                    <h2 className="text-3xl font-semibold mb-2">Library Timings</h2>
+                                    <h2 className="mb-2 text-3xl font-semibold">Library Timings</h2>
                                     <p>
                                         Monday to Saturday: 08 am to 07 pm (11 hrs)<br/>
                                         During Vacation:  09 am to 5 pm (8 hrs)<br/>
@@ -63,14 +151,14 @@ export default function AboutUs() {
                                         <a href="mailto:librariangst@sies.edu.in?subject=Regarding extension of timings"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="text-blue-500 underline hover:text-blue-800 transition-colors duration-200">
+                                            className="text-blue-500 underline transition-colors duration-200 hover:text-blue-800">
                                             librariangst@sies.edu.in
                                         </a>.
                                     </p>
 
                                 </div>
                                 <div className='pb-4'>
-                                    <h2 className="text-3xl font-semibold mb-2">Library Commmitee</h2>
+                                    <h2 className="mb-2 text-3xl font-semibold">Library Commmitee</h2>
                                     <p>
                                         Hello
                                     </p>
@@ -80,7 +168,7 @@ export default function AboutUs() {
 
                     </div>
                 </div>
-            </section>
+            </section>*/}
         </div>
     )
 }

@@ -6,6 +6,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import booksof_library from './assets/library-view.png'
 import { Link } from 'react-router-dom';
+import './HomePage.css'
 library.add(fas);
 
 export default function HomePage() {

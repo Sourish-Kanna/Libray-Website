@@ -2,9 +2,66 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 export default function Journals() {
   return (
-    <div>
+    <div className='font-serif mt-28'>
         <Link to='/journals'></Link>
-        <section className="min-h-screen flex flex-col justify-center font-serif w-full">
+            <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
+                        <p>Academics</p>
+                    </div>
+                    <div class=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+                </div>
+            </div>
+
+                                                    {/* FAQs */}
+
+          <div>
+            <div className='w-full h-60  flex items-center justify-center'>
+              <div >
+                  <div className='flex justify-center text-4xl font-bold '>
+                      <p>FAQs</p>
+                  </div>
+                  <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+              </div>
+            </div>
+          </div>
+                                        {/*Contact Us*/}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Contact Us</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+                                        {/*Feedback*/}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>Feedback</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+                                        {/*More*/}
+            <div>
+                <div className='w-full h-60  flex items-center justify-center'>
+                    <div >
+                        <div className='flex justify-center text-4xl font-bold '>
+                            <p>More</p>
+                        </div>
+                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        {/* <section className="min-h-screen flex flex-col justify-center font-serif w-full">
     <div className="flex flex-col h-full w-full">
         <header className="text-center mb-4 h-24">
             <h1 className="text-4xl mt-10 font-bold mb-8 border-b-4 border-orange-400 pb-2 h-14">Journals</h1>
@@ -91,7 +148,7 @@ export default function Journals() {
             </div>
         </div>
     </div>
-</section>
+</section> */}
 
 </div>
   )
