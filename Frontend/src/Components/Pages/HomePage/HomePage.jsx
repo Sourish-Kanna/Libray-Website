@@ -21,7 +21,7 @@ export default function HomePage() {
                 <div className='flex w-full mx-40 pt-9'>
                     <p className='w-20 h-10 pl-2 text-2xl font-bold text-red-600 bg-yellow-300 rounded-l-xl'>News</p>
                     <div className='flex justify-around w-9/12 text-xl bg-yellow-100 rounded-r-xl'>
-                        <p>news 1</p>
+                        <p>news 10</p>
                         <p>news 2</p>
                         <p>news 1</p>
                         <p>news 2</p>
