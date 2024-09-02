@@ -1,5 +1,4 @@
-import React from 'react'
-import principal_mam_photo from './assets/principal_mam.png'
+// import React from 'react'
 import Library_office_photo from './assets/library_office_photo.png'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -8,6 +7,17 @@ import booksof_library from './assets/library-view.png'
 import { Link } from 'react-router-dom';
 import './HomePage.css'
 library.add(fas);
+
+const newsItems = [
+    'news 1',
+    'news 2',
+    'news 3',
+    'news 4',
+    'news 5',
+    'news 6',
+    'news 7',
+    'news 8',
+  ];
 
 export default function HomePage() {
   return (
@@ -18,26 +28,20 @@ export default function HomePage() {
 
                 {/* accouncement */}
 
-                <div className='flex w-full mx-40 pt-9'>
-                    <p className='w-20 h-10 pl-2 text-2xl font-bold text-red-600 bg-yellow-300 rounded-l-xl'>News</p>
-                    <div className='flex justify-around w-9/12 text-xl bg-yellow-100 rounded-r-xl'>
-                        <p>news 10</p>
-                        <p>news 2</p>
-                        <p>news 1</p>
-                        <p>news 2</p>
-                        <p>news 1</p>
-                        <p>news 2</p>
-                        <p>news 1</p>
-                        <p>news 2</p>
+                <div className='flex pt-9 bg-yellow-100 rounded-xl text-xl m'>
+                    <p className="w-fit h-10 pl-2 text-2xl font-bold text-red-600">News</p>
+                    <div className="flex justify-around w-11/12">
+                        {newsItems.map((newsItem, index) => (
+                        <p key={index} className="bg-news hover:text-white transition-all duration-500">
+                            {newsItem}</p>
+                        ))}
                     </div>
                 </div>
 
                     {/* college name */}
                   
-                <div className='mx-40 mt-44'>
-                     <p className='font-bold text-white typing-demo text-9xl'>
-                            SIES GST LIBRARY
-                    </p>
+                <div className='mx-40 mt-44 bg-typing font-bold text-white typing-demo text-9xl'>
+                     SIES GST LIBRARY
                 </div>
                 {/* Typing Animation Styles */}
                 
@@ -57,7 +61,7 @@ export default function HomePage() {
                     <div className='flex justify-center text-4xl font-bold'>
                     <p>Overview</p>
                     </div>
-                    <div class=" border-b-4 mx-auto w-36 mt-2 border-blue-700 mb-10"></div>
+                    <div className=" border-b-4 mx-auto w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
                 <div className='flex justify-between text-xl'>
                     <img className='h-64 mr-10' src={Library_office_photo} alt="" />
