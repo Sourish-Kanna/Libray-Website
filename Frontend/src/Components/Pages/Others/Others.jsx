@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 export default function Journals() {
   return (
     <div className='font-serif mt-28'>
-        <Link to='/journals'></Link>
+        <Link to='/others'></Link>
             <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
                 <div >
                     <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
