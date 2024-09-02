@@ -1,5 +1,5 @@
 // import React from 'react'
-import Library_office_photo from './assets/library_office_photo.png'
+// import Library_office_photo from './assets/library_office_photo.png'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -23,41 +23,36 @@ const newsItems = [
 
 export default function HomePage() {
   return (
-    //image section
         <div className='w-full h-full mt-20 overflow-x-hidden font-serif '>
             <Link to='/'></Link>
+
+            {/* Inital View */}
             <div className='w-full h-screen bg-center bg-no-repeat bg-cover bg-homepage-bg'>
 
-                {/* accouncement */}
-
-                <div className='flex pt-9 bg-yellow-100 rounded-xl text-xl m'>
-                    <p className="w-fit h-10 pl-2 text-2xl font-bold text-red-600">News</p>
-                    <div className="flex justify-around w-11/12">
+                {/* News Row */}
+                <div className='flex pt-9 bg-yellow-100 text-xl'>
+                    <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2">News</p>
+                    <div className="flex justify-around w-11/12 p-2 bg-news-back">
                         {newsItems.map((newsItem, index) => (
-                        <p key={index} className="bg-news hover:text-white transition-all duration-500">
+                        <p key={index} className="bg-news">
                             {newsItem}</p>
                         ))}
                     </div>
                 </div>
-
-                    {/* college name */}
-                  
+                
+                {/* Typing Logo */}
                 <div className='mx-40 mt-44 bg-typing font-bold text-white typing-demo text-9xl'>
                      SIES GST LIBRARY
                 </div>
-                {/* Typing Animation Styles */}
                 
-
-                
-                     {/*links */}
-
+                {/*Quick Links */}
                 <div className='flex justify-around w-3/6 pl-20 pr-32 mt-20 mr-40 text-3xl ml-96'>
                     <div className='bg-red-500 rounded-xl '>PYQs <FontAwesomeIcon className='py-1 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
                     <div className='bg-red-500 rounded-xl'>Learn more <FontAwesomeIcon className='py-1 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
                 </div>
             </div>
 
-                                            {/*Overview */}
+            {/* Overview */}
             <div className='p-10 mx-40 mb-10 flex-col content-center'>
                 <div > 
                     <div className='flex justify-center text-4xl font-bold'>
@@ -75,8 +70,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-                                        {/*Photos section */}
-
+            {/*Photos section */}
             <div className='mx-40 mb-10'>
                 <div >
                     <div className='flex justify-center text-4xl font-bold'>
@@ -92,8 +86,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-                                                {/* Librarian */}
-
+            {/* Librarian */}
             <div className='text-xl'>
                 <div>
                     <div >
@@ -120,9 +113,7 @@ export default function HomePage() {
                 </div>
             </div>
 
-                                {/* Explore Policies */}
-
-            
+            {/* Explore Policies */}
             <div className='mx-40'>
                 <div >
                     <div className='flex justify-center text-4xl font-bold'>
@@ -133,6 +124,7 @@ export default function HomePage() {
 
                 
             </div>
+
         </div>
   )
 }

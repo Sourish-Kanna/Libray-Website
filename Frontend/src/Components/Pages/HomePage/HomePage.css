@@ -22,6 +22,34 @@
 
 .bg-news:hover {
     background-color: rgb(242, 109, 33);
+    border-radius: 5px;
+    transform: scalex(1.1);
+    color: white;
+    transition: all 0.5s;
+    height: fit-content;
+    /* animation-play-state: paused; */
 }
-                
-        
+
+.bg-news-back:hover{
+    animation-name: slidein;
+    animation-play-state: paused;
+}
+
+.bg-news-back {
+    animation-duration: 10s;
+    animation-name: slidein;
+    animation-iteration-count: infinite;
+    animation-direction: normal;
+    animation-timing-function: linear;
+    overflow: hidden;
+}
+
+@keyframes slidein {
+from {
+    translate: 100rem;
+}
+
+to {
+    translate: -100rem;
+}
+}
