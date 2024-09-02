@@ -31,7 +31,7 @@ export default function HomePage() {
 
                 {/* News Row */}
                 <div className='flex pt-9 bg-yellow-100 text-xl'>
-                    <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2">News</p>
+                    <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">News</p>
                     <div className="flex justify-around w-11/12 p-2 bg-news-back">
                         {newsItems.map((newsItem, index) => (
                         <p key={index} className="bg-news">
