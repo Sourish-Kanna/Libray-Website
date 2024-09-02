@@ -99,11 +99,11 @@ export default function HomePage() {
                 <div className='flex justify-between bg-blue-500 opacity-0.1 mx-40 rounded-xl p-16 hover:scale-105 duration-700'>
                     <div className='flex-col '>
                         <img className='rounded-full h-72 mb-5' src={Librian} alt="" />
-                        <p>Librarian-Mrs.Arunadevi Lingam</p>
-                        <p className="text-center text-white">B.Sc(Phy),MLISc,NET</p>
+                        <p className="text-center text-white">Librarian - Mrs.Arunadevi Lingam</p>
+                        <p className="text-center text-white">B.Sc(Phy), MLISc, NET</p>
                         {/* <p>email</p> */}
                     </div>
-                    <div className='flex items-center w-6/12 '>
+                    <div className='flex items-center w-6/12 text-white'>
                         <p className='text-xl'>Welcome to the SIES GST Library, your gateway to knowledge and learning. Our library is more than just a collection of books; it’s a vibrant space where ideas come to life and innovation begins. We are here to support your academic journey with a vast array of resources, from physical books to digital content. Make the most of this treasure trove of information, and remember, the library is a place where your curiosity is encouraged and your questions are valued.
 
                             <p className='mt-5'>Best wishes for your academic success!</p>
