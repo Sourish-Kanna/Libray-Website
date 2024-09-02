@@ -2,8 +2,9 @@ import React from 'react'
 // import Sies_logo from './assets/sies_logo.png'
 function Footer() {
   return (
-    <footer className="py-12 text-white bg-gray-900">
-    <div className="container px-4 mx-auto">
+    <div className="py-12 text-white bg-gray-900">
+    <div className="container px-4 mx-40">
+      
       <div className="flex justify-between">
         <div className="w-full p-6 md:w-1/3 xl:w-1/3">
           <h4 className="mb-4 font-serif font-bold">About</h4>
@@ -47,7 +48,7 @@ function Footer() {
         <p className="text-sm text-gray-400">© SIES Graduate School Of Technology.All Rights Reserved</p>
       </div>
     </div>
-  </footer>
+  </div>
   )
 }
 
