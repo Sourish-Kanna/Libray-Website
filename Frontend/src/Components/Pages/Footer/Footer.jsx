@@ -1,10 +1,20 @@
 import React from 'react'
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import Sies_logo from './assets/sies_logo.png'
 function Footer() {
   return (
-    <div className="py-12 text-white bg-gray-900 overflow-x-hidden">
+    <div className="py-12 text-white bg-[#014da1] overflow-x-hidden">
     <div className="container px-4 mx-40">
       <div className="flex justify-between">
+        <div>
+          <div>
+
+            {/* social media */}
+
+          </div>
+        </div>
         <div className="w-full p-6 md:w-1/3 xl:w-1/3">
           <h4 className="mb-4 font-serif font-bold">About</h4>
           <ul className='font-serif'>
