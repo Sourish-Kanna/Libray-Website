@@ -8,6 +8,22 @@ import { Link } from 'react-router-dom';
 import './HomePage.css'
 import Overview from './assets/overview.webp'
 import Librian from './assets/librian.webp'
+import image1 from './assets/image1.webp'
+import image2 from './assets/img2.webp'
+import image3 from './assets/img3.webp'
+import image4 from './assets/img4.webp'
+import image5 from './assets/img5.webp'
+import image6 from './assets/img6.webp'
+import image7 from './assets/img7.webp'
+import image8 from './assets/img8.webp'
+import image9 from './assets/img9.webp'
+import image10 from './assets/img10.webp'
+import image11 from './assets/img11.webp'
+
+
+
+
+
 library.add(fas);
 
 const newsItems = [
@@ -20,6 +36,19 @@ const newsItems = [
     'news 7',
     'news 8',
   ];
+const imagesItems=[
+    image1,
+    image2,
+    image3,
+    image4,
+    image5,
+    image6,
+    image7,
+    image8,
+    image9,
+    image10,
+    image11
+]
 
 export default function HomePage() {
   return (
@@ -47,8 +76,8 @@ export default function HomePage() {
                 
                 {/*Quick Links */}
                 <div className='flex justify-around w-3/6 pl-20 pr-32 mt-20 mr-40 text-3xl ml-96'>
-                    <div className='bg-red-500 rounded-xl '>PYQs <FontAwesomeIcon className='py-1 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
-                    <div className='bg-red-500 rounded-xl'>Learn more <FontAwesomeIcon className='py-1 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
+                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer  rounded-xl  active:scale-95 active:text-white'>PYQs <FontAwesomeIcon className='py-1 px-3 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
+                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer   rounded-xl active:scale-95 active:text-white'>Learn more <FontAwesomeIcon className='py-1 text-3xl px-3 ' icon="fa-solid fa-arrow-up-right-from-square" /></div>
                 </div>
             </div>
 
@@ -71,18 +100,19 @@ export default function HomePage() {
             </div>
 
             {/*Photos section */}
-            <div className='mx-40 mb-10'>
-                <div >
+            <div className='mx-40 mb-10 overflow-hidden h-screen '>
+                <div>
                     <div className='flex justify-center text-4xl font-bold'>
-                    <p>Images</p>
+                        <p>Images</p>
                     </div>
-                    <div className=" border-b-4 mx-auto w-28 mt-2 border-blue-700 mb-10"></div>
+                    <div className="border-b-4 mx-auto w-28 mt-2 border-blue-700 mb-10"></div>
                 </div>
-                <div className='flex justify-between '>
-                <img className="h-32 ml-4" src={booksof_library} alt="" />
-                <img className="h-32 ml-4" src={booksof_library} alt="" />
-                <img className="h-32 ml-4" src={booksof_library} alt="" />
-                <img className="h-32 ml-4" src={booksof_library} alt="" />
+                <div className='flex justify-center items-center'>
+                    <div className='flex animate-scroll mt-28'>
+                        {imagesItems.map((image, index) => (
+                        <img key={index} className="h-96 ml-36" src={image} alt={`Image ${index + 1}`} />
+                        ))}
+                    </div>
                 </div>
             </div>
 
@@ -103,7 +133,7 @@ export default function HomePage() {
                         <p className="text-center text-white">B.Sc(Phy), MLISc, NET</p>
                         {/* <p>email</p> */}
                     </div>
-                    <div className='flex items-center w-6/12 text-white'>
+                    <div className='flex items-center w-6/12 '>
                         <p className='text-xl'>Welcome to the SIES GST Library, your gateway to knowledge and learning. Our library is more than just a collection of books; it’s a vibrant space where ideas come to life and innovation begins. We are here to support your academic journey with a vast array of resources, from physical books to digital content. Make the most of this treasure trove of information, and remember, the library is a place where your curiosity is encouraged and your questions are valued.
 
                             <p className='mt-5'>Best wishes for your academic success!</p>
@@ -124,15 +154,91 @@ export default function HomePage() {
                     </div>
                     <div className=" border-b-4 mx-auto w-28 mt-2 border-blue-700 mb-10"></div>
                 </div>
-                <div className='w-full'>
-                    <div className='bg-[#f3f2ed] '>
-                        <p>hi</p>
+                <div className='w-full '>
+                    <div className="relative group">
+                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                            <p>Borrowing Privileges</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                <p className="py-2">1) Members can borrow a specified number of books for a predetermined duration.</p>
+                                <p className="py-2">2) Renewals and reservations can be made online, subject to availability.</p>
+                            </div>
+                        </div>
                     </div>
-                    <div className='bg-[#f3f2ed] '>
-                        <p>hi</p>
+                    <div className="relative group">
+                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                            <p>Reference Services</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                <p className="py-2">1) Personalized assistance in locating information and resources.</p>
+                                <p className="py-2">2) Guidance on research methodologies and using library tools.</p>
+                            </div>
+                        </div>
+                        
                     </div>
-                    <div className='bg-[#f3f2ed] '>
-                        <p>hi</p>
+                    <div className="relative group">
+                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                            <p>E-Resources Access</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                <p className="py-2">1) Remote access to e-journals, databases, and plagiarism detection tools.</p>
+                                <p className="py-2">2) Resources include IEEE, DELNET, and various e-books.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                            <p>Code of Conduct</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                <p className="py-2">1)Users are expected to maintain a quiet environment conducive to study.</p>
+                                <p className="py-2">2) Misuse of library resources or breach of rules may result in suspension of privileges.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                            <p>Reprography Services</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                <p className="py-2">1) Available for photocopying and printing documents.</p>
+                                <p className="py-2">2) Charges apply per page as per the library’s pricing policy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                            <p>Book Bank Facility</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                <p className="py-2">1) Provides textbooks on loan to economically disadvantaged students.</p>
+                                <p className="py-2">2) Books must be returned at the end of the semester or academic year.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                            <p> Interlibrary Loan (ILL)</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                <p className="py-2">1) Borrowing books and journals from other libraries through DELNET.</p>
+                                <p className="py-2">2) ILL requests can be made online, with delivery times varying based on availability.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

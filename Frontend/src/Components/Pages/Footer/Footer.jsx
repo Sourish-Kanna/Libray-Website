@@ -1,55 +1,72 @@
 import React from 'react'
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import Sies_logo from './assets/sies_logo.png'
+import { faInstagram } from '@fortawesome/free-brands-svg-icons'; // for brand icons
+import Sies_logo from '../NavBar/assets/sies_logo.png'
+import { faFacebook } from '@fortawesome/free-brands-svg-icons';
+import { faLinkedin } from '@fortawesome/free-brands-svg-icons';
+import { faYoutube } from '@fortawesome/free-brands-svg-icons';
+import { NavLink } from 'react-router-dom';
+
 function Footer() {
   return (
-    <div className="py-12 text-white bg-[#014da1] overflow-x-hidden">
-    <div className="container px-4 mx-40">
-      <div className="flex justify-between">
+    <div className="py-12 text-white bg-[#014da1] overflow-x-hidden ">
+    <div className=" px-4 mx-40">
+      <div className="flex justify-between w-11/12">
         <div>
           <div>
-
-            {/* social media */}
-
+            <img className='w-56' src={Sies_logo} alt="" />
+          </div>
+          <div className=''>
+            <FontAwesomeIcon className="text-4xl mr-7 my-10 text-white hover:text-[#f26d21] duration-700" icon={faInstagram} />
+            <FontAwesomeIcon className='text-4xl mr-7 my-10 text-white hover:text-[#f26d21] duration-700' icon={faFacebook} />
+            <FontAwesomeIcon className='text-4xl mr-7 my-10 text-white hover:text-[#f26d21] duration-700' icon={faLinkedin} />
+            <FontAwesomeIcon className='text-4xl mr-7 my-10 text-white hover:text-[#f26d21] duration-700' icon={faYoutube} />
           </div>
         </div>
-        <div className="w-full p-6 md:w-1/3 xl:w-1/3">
-          <h4 className="mb-4 font-serif font-bold">About</h4>
+        <div className=" py-6 ">
+          <NavLink to="/about" className={({ isActive }) =>`${isActive ? 'text-[#f26d21]' : 'text-white hover:text-gray-300'}` }>
+            <h4 className="mb-4 font-serif font-bold cursor-pointer">About</h4>
+          </NavLink>
           <ul className='font-serif'>
-            <li><a href="#" className="text-white hover:text-gray-300">Facilities</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Library Staffs</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Library Hours</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Infrastructure</a></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Library Staffs</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Facilities</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Library Hours</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Infrastructure</p></li>
           </ul>
         </div>
-        <div className="w-full p-6 md:w-1/3 xl:w-1/3">
-          <h4 className="mb-4 font-serif font-bold">Academics</h4>
+        <div className=" py-6 ">
+          <NavLink to="/academics" className={({ isActive }) =>`${isActive ? 'text-[#f26d21]' : 'text-white hover:text-gray-300'}` }>
+            <h4 className="mb-4 font-serif font-bold cursor-pointer">Academics</h4>
+          </NavLink>
           <ul className='font-serif'>
-            <li><a href="#" className="text-white hover:text-gray-300">Scholarship</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Rule&Guidelines</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Academic Calender</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Achievements</a></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Scholarship</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Rule&Guidelines</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Academic Calender</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Achievements</p></li>
           </ul>
         </div>
-        <div className="w-full p-6 md:w-1/3 xl:w-1/3">
-          <h4 className="mb-4 font-serif font-bold">Quick Links</h4>
+        <div className=" p-y6 ">
+          <NavLink to="/quicklinks" className={({ isActive }) =>`${isActive ? 'text-[#f26d21]' : 'text-white hover:text-gray-300'}` }>
+            <h4 className="mb-4 font-serif font-bold cursor-pointer mt-6">Quick Links</h4>
+          </NavLink>
           <ul className='font-serif'>
-            <li><a href="#" className="text-white hover:text-gray-300">Question Banks</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Library Brochure</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">University Syllabus</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Scholarships</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Research Funds</a></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Question Banks</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Library Brochure</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">University Syllabus</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Scholarships</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Research Funds</p></li>
           </ul>
         </div>
-        <div className="w-full p-6 md:w-1/3 xl:w-1/3">
-          <h4 className="mb-4 font-serif font-bold">Others</h4>
+        <div className=" p-y6 ">
+          <NavLink to="/others" className={({ isActive }) =>`${isActive ? 'text-[#f26d21]' : 'text-white hover:text-gray-300'}` }>
+            <h4 className="mb-4 font-serif font-bold cursor-pointer mt-6">Others</h4>
+          </NavLink>
+          <h4 className="mb-4 font-serif font-bold cursor-pointer mt-6">Others</h4>
           <ul className='font-serif'>
-            <li><a href="#" className="text-white hover:text-gray-300">FAQs</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Contact Us</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">Feedback</a></li>
-            <li><a href="#" className="text-white hover:text-gray-300">More</a></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">FAQs</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Contact Us</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">Feedback</p></li>
+            <li><p className="text-white hover:text-gray-300 cursor-pointer">More</p></li>
           </ul>
         </div>
       </div>

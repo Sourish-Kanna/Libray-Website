@@ -54,3 +54,23 @@ to {
     translate: -100rem;
 }
 }
+
+/* image animation */
+@keyframes scroll {
+    0% {
+      transform: translateX(100%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .overflow-hidden {
+    overflow: hidden;
+  }
+  
+  .animate-scroll {
+    display: flex;
+    animation: scroll 60s linear infinite;
+  }
+  

@@ -5,7 +5,7 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function NavBar() {
   return (
-    <div className='fixed top-0 z-10 flex w-full px-40 h-28 bg-Navbg'>
+    <div className='fixed top-0 z-20 flex w-full px-40 h-28 bg-Navbg'>
         <div className=''>
             <img className='fixed w-52 ' src={Sies_logo}alt="" />
         </div>
@@ -120,3 +120,5 @@ function NavBar() {
 }
 
 export default NavBar
+
+

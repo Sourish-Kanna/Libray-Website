@@ -5,7 +5,7 @@ import Footer from './Pages/Footer/Footer'
 import { Outlet } from 'react-router-dom'
 function Layout() {
   return (
-    <div>
+    <div className='scroll-smooth'>
       <NavBar/>
       <Outlet/>
       <Footer/>
