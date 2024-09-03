@@ -53,10 +53,11 @@ function Footer() {
           </ul>
         </div>
       </div>
-      <div className="flex justify-center mt-6">
+      
+    </div>
+    <div className="flex justify-center mt-6">
         <p className="text-sm text-gray-400">© SIES Graduate School Of Technology.All Rights Reserved</p>
       </div>
-    </div>
   </div>
   )
 }
