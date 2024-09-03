@@ -71,7 +71,7 @@ to {
   
   .animate-scroll {
     display: flex;
-    animation: scroll 10s linear infinite;
+    animation: slidein 10s linear infinite alternate;
   }
   /* .animate-scroll :nth-child(1):hover{
     animation-play-state: paused;
