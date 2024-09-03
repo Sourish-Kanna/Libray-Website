@@ -100,17 +100,17 @@ export default function HomePage() {
             </div>
 
             {/*Photos section */}
-            <div className='mx-40 mb-10 overflow-hidden h-screen '>
+            <div className='mx-40 mb-10 overflow-hidden '>
                 <div>
                     <div className='flex justify-center text-4xl font-bold'>
                         <p>Images</p>
                     </div>
                     <div className="border-b-4 mx-auto w-28 mt-2 border-blue-700 mb-10"></div>
                 </div>
-                <div className='flex justify-center items-center'>
-                    <div className='flex animate-scroll mt-28'>
+                <div className='flex justify-center items-center '>
+                    <div className='flex animate-scroll my-10'>
                         {imagesItems.map((image, index) => (
-                        <img key={index} className="h-96 ml-36" src={image} alt={`Image ${index + 1}`} />
+                        <img key={index} className="h-80 ml-36 hover:scale-105 duration-700" src={image} alt={`Image ${index + 1}`} />
                         ))}
                     </div>
                 </div>
@@ -133,7 +133,7 @@ export default function HomePage() {
                         <p className="text-center text-white">B.Sc(Phy), MLISc, NET</p>
                         {/* <p>email</p> */}
                     </div>
-                    <div className='flex items-center w-6/12 '>
+                    <div className='flex items-center w-6/12 text-white'>
                         <p className='text-xl'>Welcome to the SIES GST Library, your gateway to knowledge and learning. Our library is more than just a collection of books; it’s a vibrant space where ideas come to life and innovation begins. We are here to support your academic journey with a vast array of resources, from physical books to digital content. Make the most of this treasure trove of information, and remember, the library is a place where your curiosity is encouraged and your questions are valued.
 
                             <p className='mt-5'>Best wishes for your academic success!</p>

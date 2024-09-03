@@ -71,6 +71,29 @@ to {
   
   .animate-scroll {
     display: flex;
-    animation: scroll 60s linear infinite;
+    animation: scroll 10s linear infinite;
   }
-  
+  /* .animate-scroll :nth-child(1):hover{
+    animation-play-state: paused;
+  } */
+  /* .slides{
+
+  }
+  */
+  /* .siledes::before{
+    left:0;
+    top:0;
+  }
+  .slides::after{
+    background: linear-gradient(to right , rgba(255,255,255,0) 0% ,rgba(255,255,255,0),100%);
+    content:'';
+    height: 100%;
+    position: absolute;
+    width: 15%;
+    z-index: 2;
+  }
+  .slides::after{
+    top:0;
+    right:0;
+    transform: rotateZ(180deg);
+  } */
