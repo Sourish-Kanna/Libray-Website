@@ -10,7 +10,7 @@ export default function EResources() {
                 <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
                   <p>Academics</p>
                 </div>
-                <div class=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+                <div className=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
               </div>
           </div>
 
@@ -22,7 +22,7 @@ export default function EResources() {
                   <div className='flex justify-center text-4xl font-bold '>
                       <p>Scholarship</p>
                   </div>
-                  <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                  <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
               </div>
             </div>
           </div>
@@ -33,7 +33,7 @@ export default function EResources() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Rules&Guildelines</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -44,7 +44,7 @@ export default function EResources() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Academic Calender</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@ export default function EResources() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Achievements</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>

@@ -11,7 +11,7 @@ export default function AboutUs() {
                     <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
                     <p>About Us</p>
                     </div>
-                    <div class=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
                 </div>
             </div>
 
@@ -23,7 +23,7 @@ export default function AboutUs() {
                     <div className='flex justify-center text-4xl font-bold '>
                         <p>Facilites</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -34,7 +34,7 @@ export default function AboutUs() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Library Staffs</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ export default function AboutUs() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Library Hours</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ export default function AboutUs() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Infratructure</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>

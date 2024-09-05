@@ -1,6 +1,6 @@
-import React from 'react'
+// import React from 'react'
 import { Link } from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export default function Services() {
   return (
     <div className='font-serif mt-28'>
@@ -11,7 +11,7 @@ export default function Services() {
               <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
                 <p>Quick Links</p>
               </div>
-              <div class=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+              <div className=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
               </div>
           </div>
 
@@ -23,7 +23,7 @@ export default function Services() {
                   <div className='flex justify-center text-4xl font-bold '>
                       <p>Question Banks</p>
                   </div>
-                  <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                  <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
               </div>
             </div>
           </div>
@@ -34,7 +34,7 @@ export default function Services() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Library Brochure</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@ export default function Services() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>University Syllabus</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -56,7 +56,7 @@ export default function Services() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Scholarships</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -67,7 +67,7 @@ export default function Services() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Research Funds</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
