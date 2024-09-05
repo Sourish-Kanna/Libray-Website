@@ -1,6 +1,6 @@
 // import React from 'react'
 import Sies_logo from './assets/sies_logo.png'
-// import { Link ,NavLink} from 'react-router-dom'
+import {NavLink} from 'react-router-dom'
 // import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 function NavBar() {
