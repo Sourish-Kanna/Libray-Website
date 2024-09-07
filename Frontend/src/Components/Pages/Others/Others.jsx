@@ -4,7 +4,77 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
-export default function Journals() {
+
+const faqs={
+    1:["Who can access the library?","All SIES GST students, faculty, and staff can access the library with a valid ID."],
+
+    2:["What are the library timings?","Monday to Friday: 9 AM to 5 PM, Saturday: 9 AM to 1 PM."],
+
+    3:["How many books can I borrow?","Students can borrow up to 3 books for 15 days. Faculty can borrow up to 5 books."],
+
+    4:["How can I renew a book?","Books can be renewed online or in-person before the due date, subject to availability"],
+
+    5:["Does the library offer digital resources?","Yes, access to e-journals, databases (IEEE, DELNET), and e-books is available."],
+
+    6:["What is the fine for late returns?","A nominal fine is charged per day for overdue books."],
+
+    7:[`How can I suggest a book for the library?`,"Use the Suggest Books form available on the website."],
+
+    8:["Can I donate books?","Yes, donations are accepted through the Donate Books section."],
+
+    9:["Does the library provide internet access?","Yes, free Wi-Fi is available within the library premises."],
+
+    10:["How do I access the plagiarism detection tool?","The tool can be accessed through the Plagiarism Tool section of the website."],
+}
+
+const moreLinks = [
+    { name: "National Digital Library", url: "https://ndl.iitkgp.ac.in" },
+    { name: "SWAYAM Online Courses", url: "https://storage.googleapis.com/uniquecourses/online.html" },
+    { name: "National Knowledge Network", url: "http://nkn.gov.in/en" },
+    { name: "NPTEL", url: "https://nptel.ac.in" },
+    { name: "AICTE: NEAT", url: "https://neat.aicte-india.org/" },
+    { name: "AICTE: ELIS portal", url: "http://free.aicte-india.org/" },
+    { name: "InfoPort", url: "https://infoport.inflibnet.ac.in" },
+    { name: "Talks to Teacher", url: "https://www.ted.com/playlists/182/talks_from_inspiring_teachers" },
+    { name: "A-VIEW", url: "http://aview.in" },
+    { name: "Virtual Labs", url: "http://www.vlab.co.in/" },
+    { name: "FOSSEE", url: "https://fossee.in" },
+    { name: "Spoken Tutorial", url: "https://spoken-tutorial.org/" },
+    { name: "e-Yantra", url: "https://www.e-yantra.org/" },
+    { name: "Oscar++", url: "https://www.it.iitb.ac.in/oscar/" },
+    { name: "E-Kalpa", url: "https://icar.org.in/content/e-kalpa" },
+    { name: "NCERT Text Books", url: "http://ncert.nic.in/textbook/textbook.htm" },
+    { name: "UG/PG MOOCs", url: "http://ugcmoocs.inflibnet.ac.in/ugcmoocs/" },
+    { name: "e-PG Pathshala", url: "https://epgp.inflibnet.ac.in" },
+    { name: "e-Content courseware in UG subjects", url: "http://eec.nic.in/eec/" },
+    { name: "SWAYAMPRABHA", url: "https://www.swayamprabha.gov.in" },
+    { name: "e-Shodh Sindhu", url: "https://ess.inflibnet.ac.in" },
+    { name: "Vidwan", url: "https://saksht.ac.in/?project=vidwan" },
+    { name: "SNLTR", url: "https://nltr.org/" },
+    { name: "National Educational Alliance for Technology", url: "https://neat.aicte-india.org/" },
+    { name: "Coursera for Campus", url: "https://www.coursera.org/coronavirus" },
+    { name: "TCS iON Digital Glass Room", url: "https://learning.tcsionhub.in/hub/glass-room/" },
+    { name: "ELIS portal", url: "http://free.aicte-india.org/" },
+    { name: "MTUTOR Digital eLearning", url: "https://www.m-tutor.com/" },
+    { name: "Design your Solar Systems for Homes", url: "https://www.aicte-india.org/sites/default/files/Design%20your%20Solar%20Systems%20for%20Homes.pdf" },
+    { name: "SOS", url: "http://sos-tools.org/" },
+    { name: "National Mission on Education", url: "https://www.it.iitb.ac.in/nmeict/home.html" },
+    { name: "QUANTUM & NANO COMPUTING", url: "https://www.dei.ac.in/dei/quantumNano/" },
+    { name: "DIGITAL LIBRARY INFLIBNET", url: "https://ess.inflibnet.ac.in" },
+    { name: "Smart India Hackathon", url: "https://www.sih.gov.in/" },
+    { name: "YOUTH4WORK", url: "https://www.youth4work.com/onlinetalenttest" },
+    { name: "IEEE RESOURCES - DIGITAL LIBRARY", url: "https://ieeexplore.ieee.org/courses/details/EDP333" },
+    { name: "National Apprenticeship Training Scheme", url: "http://mhrdnats.gov.in" },
+    { name: "AAKASH EDUCATIONAL PORTAL", url: "https://www.it.iitb.ac.in/nmeict/home.html" },
+    { name: "SAKSHAT", url: "https://saksht.ac.in/" },
+    { name: "AICTE Training And Learning (ATAL) Academy", url: "https://www.aicte-india.org/atal" },
+    { name: "AICTE Collaborations (MoU)", url: "https://www.aicte-india.org/education/collaborations" },
+];
+
+
+export default function Journals()
+
+{
   return (
     <div className='font-serif mt-28'>
         <Link to='/others'></Link>
@@ -29,191 +99,61 @@ export default function Journals() {
                 </div>
             </div>
         </div>
-        <div className='grid grid-cols-2'>
+        <div className=''>
             <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>Who can access the library?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">All SIES GST students, faculty, and staff can access the library with a valid ID.</p>
-                        </div>
-                    </div>
+                <div className="relative ">
+                    {
+                        Object.keys(faqs).map((key)=>(
+                            <div key={key} className='group'>
+                                <div className='bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700 '>
+                                    <p>{faqs[key][0]}</p>
+                                    <FontAwesomeIcon className="text-2xl text-[#f26d21]" icon="fa-solid fa-chevron-down" />
+                                </div>
+                                <div className="h-0 group-hover:h-28 shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+                                    <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
+                                        <p className="py-2">{faqs[key][1]}</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                        ))
+                    }
                 </div>
             </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{/*             
-            
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>What are the library timings?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">Monday to Friday: 9 AM to 5 PM, Saturday: 9 AM to 1 PM.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>How many books can I borrow?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">Students can borrow up to 3 books for 15 days. Faculty can borrow up to 5 books.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>How can I renew a book?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">Books can be renewed online or in-person before the due date, subject to availability.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>Who can access the library?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">All SIES GST students, faculty, and staff can access the library with a valid ID.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>Does the library offer digital resources?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">Yes, access to e-journals, databases (IEEE, DELNET), and e-books is available.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>What is the fine for late returns?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">A nominal fine is charged per day for overdue books.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>How can I suggest a book for the library?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">Use the "Suggest Books" form available on the website.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>Can I donate books?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">Yes, donations are accepted through the "Donate Books" section.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>Does the library provide internet access?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">Yes, free Wi-Fi is available within the library premises.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div className='mx-40'>
-                <div className="relative group">
-                    <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                        <p>How do I access the plagiarism detection tool?</p>
-                        <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
-                    </div>
-                    <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                            <p className="py-2">The tool can be accessed through the "Plagiarism Tool" section of the website.</p>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
         </div>
                                         {/*More*/}
         <div>
             <div className='w-full h-60  flex items-center justify-center'>
                 <div >
                     <div className='flex justify-center text-4xl font-bold '>
-                        <p>Feedback</p>
+                        <p>More</p>
                     </div>
                     <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                 </div>
             </div>
         </div>
-
-                                        {/* Contact Us
         <div>
-            <div className='w-full h-60  flex items-center justify-center'>
-                <div >
-                    <div className='flex justify-center text-4xl font-bold '>
-                        <p>Contact Us</p>
-                    </div>
-                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
-                </div>
+            <div>
+
             </div>
-        </div>                           */}
+        </div>
+        <div className="max-w-7xl mx-40 px-4 py-8">
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
+            {moreLinks.map((link, index) => (
+                <div key={index} className="border rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-200 bg-yellow-200">
+                    <a 
+                    href={link.url} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="text-blue-600 hover:text-blue-800 font-semibold text-lg block text-center"
+                    >
+                    {link.name}
+                    </a>
+                </div>
+            ))}
+            </div>
+        </div>
+        
             
 </div>
 )
