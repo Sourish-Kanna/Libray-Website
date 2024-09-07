@@ -31,7 +31,7 @@ return (
             </div>
             <form id="question-paper-form" className="p-4 flex-col border bg-[#f3f2ed] rounded-2xl shadow-2xl w-3/4 h-auto mx-40 ">
             <div className="px-10 mb-4">
-                <label for="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Branch:</label>
+                <label htmlFor="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Branch:</label>
                 <select id="exam" name="exam" className="w-full  p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600 ">
                     <option value="">Select Branch</option>
                     <option value="c1">1</option>
@@ -39,7 +39,7 @@ return (
                 </select>
             </div>
             <div className="px-10 mb-4">
-                <label for="subject" className="block mb-2 text-lg font-bold text-gray-700">Select Semester:</label>
+                <label htmlFor="subject" className="block mb-2 text-lg font-bold text-gray-700">Select Semester:</label>
                 <select id="subject" name="subject" className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]">
                     <option value="">Select Semester</option>
                     <option value="b1">1</option>
@@ -63,7 +63,7 @@ return (
                 </div>
                 <form id="question-paper-form" className="p-4 flex-col border bg-[#f3f2ed] rounded-2xl shadow-2xl w-3/4 h-auto mx-40 ">
             <div className="px-10 mb-4">
-                <label for="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Year:</label>
+                <label htmlFor="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Year:</label>
                 <select id="exam" name="exam" className="w-full  p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600 ">
                     <option value="">Select Year</option>
                     <option value="c1">1</option>
@@ -71,7 +71,7 @@ return (
                 </select>
             </div>
             <div className="px-10 mb-4">
-                <label for="subject" className="block mb-2 text-lg font-bold text-gray-700">Select Half:</label>
+                <label htmlFor="subject" className="block mb-2 text-lg font-bold text-gray-700">Select Half:</label>
                 <select id="subject" name="subject" className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]">
                     <option value="">Select Half</option>
                     <option value="b1">1</option>
