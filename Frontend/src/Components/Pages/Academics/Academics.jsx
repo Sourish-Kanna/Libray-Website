@@ -1,6 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 import useScrollToHash from '../../../CustomHooks/Navigation'
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fas } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 export default function EResources() {
 
 const refs=useScrollToHash(['university-syllabus','academic-calender','competitive-exam']);
@@ -83,9 +86,9 @@ return (
             </div>
             </form>
             </div>
-                                        {/*Achievements */}
+                                        {/*Competitive Exam*/}
             <div ref={refs['competitive-exams']} id='competitive-exams'>
-                <div className='flex items-center justify-center w-full h-60'>
+                <div className='flex items-center justify-center w-full h-40'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Competitive Exams</p>
@@ -93,8 +96,69 @@ return (
                         <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
                     </div>
                 </div>
-                
-        </div>
+                <div className='mx-40 '>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>UPSE</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2">1) Remote access to e-journals, databases, and plagiarism detection tools.</p>
+                                <p className="py-2"><a href="https://upsc.gov.in/" target="_blank" rel="noopener noreferrer" className='underline '> Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>GRE</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2">1)Users are expected to maintain a quiet environment conducive to study.</p>
+                                <p className="py-2"><a href="https://www.ets.org/gre.html" target="_blank" rel="noopener noreferrer" className='underline '> Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>GATE</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2">1) Available for photocopying and printing documents.</p>
+                                <p className="py-2"><a href="http://gate.iitd.ac.in/" target="_blank" rel="noopener noreferrer" className='underline '> Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>SAT</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2">1) Provides textbooks on loan to economically disadvantaged students.</p>
+                                <p className="py-2"><a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener noreferrer" className='underline '> Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>TOFEL</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2">1) Borrowing books and journals from other libraries through DELNET.</p>
+                                <p className="py-2"><a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener noreferrer" className='underline '>Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             {/* <header className="mb-4 text-center h-14">
                 <h1 className="mt-10 mb-8 text-4xl font-bold border-b-4 border-orange-400 h-14">E-Resources</h1>
