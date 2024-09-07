@@ -93,9 +93,8 @@ return (
                         <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
                     </div>
                 </div>
-            </div>
-
-
+                
+        </div>
 
             {/* <header className="mb-4 text-center h-14">
                 <h1 className="mt-10 mb-8 text-4xl font-bold border-b-4 border-orange-400 h-14">E-Resources</h1>
