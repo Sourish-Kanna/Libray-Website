@@ -4,28 +4,27 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function StyledNavLink(props) {
     const { to, text, drop_link, drop_name} = props;
-  
     const activeClassName = 'text-[#f26d21]';
     const inactiveClassName = 'text-[#014da1] hover:text-blue-400';
-  
+
     return (
-      <li className='text-[#014da1] cursor-pointer font-medium text-xl relative group p-8'>
+    <li className='text-[#014da1] cursor-pointer font-medium text-xl relative group p-8'>
         <NavLink to={to}
-          className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
+        className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
         {`${text}`}<FontAwesomeIcon icon="fa-solid fa-caret-down" />
         </NavLink>
         <StyledDropdown to={`${drop_link}`} text={`${drop_name}`}/>
-      </li>
+    </li>
     );
 }
-  
+
 function CustomLink(props) {
     const { name, link } = props;
-  
+
     if (link.startsWith('/')) {
-      return <NavLink to={link}>{name}</NavLink>;
+        return <NavLink to={link}>{name}</NavLink>;
     } else {
-      return <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>;
+        return <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>;
     }
 }
 
@@ -36,7 +35,7 @@ function StyledDropdown(props) {
     const Route =  JSON.parse(to)
         
     return (
-      <div className='hidden group-hover:block absolute bg-[#efefef] w-52 mt-4 -left-11'>
+    <div className='hidden group-hover:block absolute bg-[#efefef] w-52 mt-4 -left-11'>
         <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-[#f26d21]'></div>
         <ul className='bg-gray-300'>
         {Display_name.map((item, index) => (
@@ -45,7 +44,7 @@ function StyledDropdown(props) {
             </li>
         ))}
         </ul>
-      </div>
+    </div>
     );
 }
 
@@ -53,7 +52,7 @@ const Scholarship = "https://scholarships.gov.in/"
 const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
 
 function NavBar() {
-  return (
+return (
     <div className='fixed top-0 z-20 flex w-full px-40 h-28 bg-Navbg'>
         <div className='py-2'>
             <img src={Sies_logo}alt="" />
@@ -85,7 +84,7 @@ function NavBar() {
             </ul>
         </div>
     </div>
-  )
+)
 }
 
 export default NavBar

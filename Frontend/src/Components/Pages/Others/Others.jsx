@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import event1 from './assets/event_1.jpg'
+import event2 from './assets/event_2.jpg'
+import event3 from './assets/event_3.png'
+import event4 from './assets/event_4.jpg'
 
 
 const faqs={
@@ -71,6 +75,12 @@ const moreLinks = [
     { name: "AICTE Collaborations (MoU)", url: "https://www.aicte-india.org/education/collaborations" },
 ];
 
+const events=[
+    {img:event1,content:"This event is organized to familiarize new students with the library’s resources, services, and policies. It includes a guided tour of the library, an introduction to the digital resources (e-journals, databases), and how to use the OPAC system for book searches."},
+    {img:event2,content:"The library periodically hosts book exhibitions showcasing new arrivals, important academic texts, and rare collections. This event is aimed at promoting reading habits and awareness of the latest publications."},
+    {img:event3,content:"Celebrated annually to honor the contributions of libraries in education, this event features guest lectures, workshops, and interactive sessions highlighting the role of libraries in fostering knowledge."},
+    {img:event4,content:"Organized in collaboration with IEEE, this event includes workshops, seminars, and presentations on recent developments in technology and engineering. Students and faculty are encouraged to explore the IEEE digital library for research and academic purposes"}
+]
 
 export default function Journals()
 
@@ -87,6 +97,52 @@ export default function Journals()
             </div>
         </div>
 
+                                                    {/* Events */}
+
+        <div>
+            <div className='w-full h-40  flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>Events</p>
+                    </div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                </div>
+            </div>
+        </div>
+        <div>
+            {
+                Object.keys[events].map((key)=>{
+                    <div key={key} className='group'>
+                        <div className='flex'>
+                            <img src={events[key][0]} alt="" />
+                            <p>{events[key][1]}</p>
+                        </div>
+                    </div>
+                })
+            }
+        </div>
+
+                                                    {/* More */}
+
+        <div>
+            <div className='w-full h-20 mt-10  flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>More</p>
+                    </div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                </div>
+            </div>
+        </div>
+        <div className='mx-40 rounded-2xl bg-[#f3f2ed]'>
+            <div>
+                <p className='bg-[#014da1]'>More Links</p>
+                <p className='*'>IEEE</p>
+                <p>DELNET-Developing Library Network</p>
+                <p>E-Books</p>
+            </div>
+        </div>
+
                                                     {/* FAQs */}
 
         <div>
@@ -100,7 +156,7 @@ export default function Journals()
             </div>
         </div>
         <div className=''>
-            <div className='mx-40'>
+            <div className='mx-40 mb-20'>
                 <div className="relative ">
                     {
                         Object.keys(faqs).map((key)=>(
@@ -122,30 +178,8 @@ export default function Journals()
             </div>
         </div>
                                         {/*More*/}
-        <div>
-            <div className='w-full h-60  flex items-center justify-center'>
-                <div >
-                    <div className='flex justify-center text-4xl font-bold '>
-                        <p>More</p>
-                    </div>
-                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
-                </div>
-            </div>
-        </div>
-        <div>
-            <div>
-
-            </div>
-        </div>
-        <div>
-            <div>
-                <p>More Links</p>
-                <p>IEEE</p>
-                <p>DELNET-Developing Library Network</p>
-                <p>E-Books</p>
-                <p></p>
-            </div>
-        </div>
+        
+        
         {/* <div className="max-w-7xl mx-40 px-4 py-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
             {moreLinks.map((link, index) => (
