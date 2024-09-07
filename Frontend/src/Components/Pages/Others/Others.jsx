@@ -137,7 +137,16 @@ export default function Journals()
 
             </div>
         </div>
-        <div className="max-w-7xl mx-40 px-4 py-8">
+        <div>
+            <div>
+                <p>More Links</p>
+                <p>IEEE</p>
+                <p>DELNET-Developing Library Network</p>
+                <p>E-Books</p>
+                <p></p>
+            </div>
+        </div>
+        {/* <div className="max-w-7xl mx-40 px-4 py-8">
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
             {moreLinks.map((link, index) => (
                 <div key={index} className="border rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-200 bg-yellow-200">
@@ -152,7 +161,7 @@ export default function Journals()
                 </div>
             ))}
             </div>
-        </div>
+        </div> */}
         
             
 </div>

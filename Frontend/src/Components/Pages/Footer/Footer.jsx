@@ -10,9 +10,9 @@ import { NavLink } from 'react-router-dom';
 function Footer() {
   return (
     <div className="py-12 text-white bg-[#014da1] overflow-x-hidden ">
-    <div className=" px-4 mx-40">
-      <div className="flex justify-between w-11/12">
-        <div>
+        <div className=" px-4 mx-40">
+            <div className="flex justify-between w-11/12">
+                <div>
           <div>
             <img className='w-56' src={Sies_logo} alt="" />
           </div>
