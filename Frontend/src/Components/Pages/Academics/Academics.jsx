@@ -1,7 +1,11 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import useScrollToHash from '../../../CustomHooks/Navigation'
 export default function EResources() {
-  return (
+
+const refs=useScrollToHash(['university-syllabus','academic-calender','competitive-exam']);
+
+return (
     <div className='font-serif mt-28'>
         <Link to='/academics'></Link>
 
@@ -16,7 +20,7 @@ export default function EResources() {
 
                             {/* University Syllabus */}
 
-        <div className='mx-40'>
+        <div className='mx-40' ref={refs['university-syllabus']} id='university-syllabus'>
             <div className='flex items-center justify-center w-full h-40'>
                 <div >
                     <div className='flex justify-center text-4xl font-bold '>
@@ -48,7 +52,7 @@ export default function EResources() {
             </form>
         </div>
                                         {/* Academic Calender */}
-            <div className='mx-40'>
+            <div className='mx-40' ref={refs['academic-calender']} id='academic-calender'>
                 <div className='flex items-center justify-center h-40 mx-40 mt-3'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold '>
@@ -80,11 +84,11 @@ export default function EResources() {
             </form>
             </div>
                                         {/*Achievements */}
-            <div>
+            <div ref={refs['competitive-exams']} id='competitive-exams'>
                 <div className='flex items-center justify-center w-full h-60'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold '>
-                            <p>Achievements</p>
+                            <p>Competitive Exams</p>
                         </div>
                         <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
                     </div>

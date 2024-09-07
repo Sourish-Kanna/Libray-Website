@@ -7,9 +7,18 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
+import useScrollToHash from '../../../CustomHooks/Navigation'
+
+
+
 library.add(fas, faClock);
 library.add(fas);
+
+
 export default function AboutUs() {
+
+const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
+
     return (
         <div className='font-serif mt-28'>
             <Link to='/about'></Link>
@@ -26,8 +35,8 @@ export default function AboutUs() {
 
                             {/* Library hours */}
 
-            <div>
-                <div className='h-28 flex items-center justify-center'>
+            <div ref={refs['library-hours']} id="library-hours">
+                <div className='h-28 mt-6 flex items-center justify-center'>
                     <div >
                     <div className='flex justify-center text-4xl font-bold '>
                         <p>Library-Hours</p>
@@ -64,7 +73,7 @@ export default function AboutUs() {
                 </div>
             </div>
                                         {/* Library Staffs */}
-            <div>
+            <div ref={refs['library-staffs']} id="library-staffs">
                 <div className='w-full h-36 flex items-center justify-center'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold '>
@@ -107,7 +116,7 @@ export default function AboutUs() {
                 </div>
             </div>    
                                         {/* Facilities */}
-            <div>
+            <div ref={refs['facilities']} id="facilities">
                 <div className='w-full h-40 flex items-center justify-center'>
                     <div >
                         <div className='flex justify-center  text-4xl font-bold '>

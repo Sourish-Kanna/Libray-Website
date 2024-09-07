@@ -67,20 +67,20 @@ function NavBar() {
                 <li className='pt-10 text-[#014da1] cursor-pointer font-medium text-xl h-full '><NavLink to='' className={({ isActive }) => `${isActive ? 'text-[#f26d21]' : 'text-[#014da1] hover:text-blue-400'}`}>Home</NavLink></li>
                 
                 <StyledNavLink to="/about" text="About Us" 
-                drop_link = '["/about","/about","/about","/about"]' 
-                drop_name='["Library Hours","Facilities","Library Staffs","Rules & Guildlines"]'/>
+                drop_link = {JSON.stringify(["/about#library-hours","/about#library-staffs","/about#facilities"] )}
+                drop_name={JSON.stringify(["Library Hours","Library Staffs","Facilities"])}/>
                 
                 <StyledNavLink to="/academics" text="Academics" 
-                drop_link = '["/academics","/academics","/academics"]' 
-                drop_name='["University Syllabus","Scholarship","Academic Calender"]'/>
+                drop_link = {JSON.stringify(["/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"])}
+                drop_name={JSON.stringify(["University Syllabus","Academic Calender","Competitive Exams"])}/>
                 
                 <StyledNavLink to="/quicklinks" text="Quick Links" 
                 drop_link = {JSON.stringify(["/quicklinks","/quicklinks","/quicklinks","/quicklinks",Scholarship,Research_fund,"/quicklinks"])} 
-                drop_name='["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]'/>
+                drop_name={JSON.stringify(["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"])}/>
                 
                 <StyledNavLink to="/others" text="Others" 
-                drop_link = '["/others","/others","/others","/others","/others","/others"]' 
-                drop_name='["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"]'/>
+                drop_link = {JSON.stringify(["/others","/others","/others","/others","/others","/others"])}
+                drop_name={JSON.stringify(["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"])}/>
             
             </ul>
         </div>
