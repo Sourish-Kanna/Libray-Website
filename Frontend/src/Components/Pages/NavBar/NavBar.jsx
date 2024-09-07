@@ -11,7 +11,7 @@ function StyledNavLink(props) {
       <li className='text-[#014da1] group relative cursor-pointer font-medium text-xl m-8'>
         <NavLink to={to}
         className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
-        {`${text}`}<FontAwesomeIcon icon="fa-solid fa-caret-down" />
+        {`${text}`}<FontAwesomeIcon icon="fa-solid fa-caret-down" className='px-1.5'/>
         </NavLink>
         <StyledDropdown to={`${drop_link}`} text={`${drop_name}`}/>
     </li>
@@ -25,7 +25,7 @@ function StyledDropdown(props) {
     const Route =  JSON.parse(to)
         
     return (
-        <div className='hidden group-hover:block absolute bg-transparent w-52 top-full -left-14'>
+        <div className='absolute hidden bg-transparent group-hover:block w-52 top-full -left-14'>
             <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 
             border-b-8 border-transparent border-b-[#f26d21]'></div>
             <ul className='bg-gray-300'>
@@ -61,7 +61,7 @@ function NavBar() {
             </div>
 
             <div className='flex-grow h-full mt-2'>
-                <ul className='flex font-serif w-full items-center justify-between flex-nowrap'>
+                <ul className='flex items-center justify-between w-full font-serif flex-nowrap'>
                     <li className='text-[#014da1] cursor-pointer font-medium text-xl m-8'>
                         <NavLink to='' className={({ isActive }) => `${isActive ? 'text-[#f26d21]' : 'text-[#014da1] hover:text-blue-400'}`}>Home</NavLink>
                     </li>
