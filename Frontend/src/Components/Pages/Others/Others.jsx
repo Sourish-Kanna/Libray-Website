@@ -109,17 +109,17 @@ export default function Journals()
                 </div>
             </div>
         </div>
-        <div>
-            {
-                Object.keys[events].map((key)=>{
-                    <div key={key} className='group'>
-                        <div className='flex'>
-                            <img src={events[key][0]} alt="" />
-                            <p>{events[key][1]}</p>
-                        </div>
-                    </div>
-                })
-            }
+        <div className='flex'>
+        {
+            events.map((event, index) => (
+            <div key={index} className='group'>
+                <div className='flex'>
+                <img src={event.img} alt={`Event ${index + 1}`} />
+                <p>{event.content}</p>
+                </div>
+            </div>
+            ))
+        }
         </div>
 
                                                     {/* More */}
