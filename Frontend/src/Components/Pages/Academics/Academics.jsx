@@ -56,8 +56,8 @@ export default function EResources() {
             </form>
         </div>
                                         {/* Academic Calender */}
-            <div>
-                <div className='flex items-center justify-center mx-40 h-60'>
+            <div className='mx-40'>
+                <div className='flex items-center justify-center h-40 mx-40 mt-3'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Academic Calender</p>
@@ -65,9 +65,35 @@ export default function EResources() {
                         <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
                     </div>
                 </div>
-                <div className='flex p-4 mx-40 border shadow-2xl hauto bg-gray-950 rounded-2xl'>
-                    Hello
-                </div>
+                <form id="question-paper-form" className="p-4 flex-col border bg-[#f3f2ed] rounded-2xl shadow-2xl w-3/4 h-auto mx-40 ">
+            <div className="px-10 mb-4">
+                <label for="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Year:</label>
+                <select id="exam" name="exam" className="w-full  p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600 ">
+                    <option value="">Select Year</option>
+                    <option value="c1">1</option>
+                    <option value="c2">2</option>
+                </select>
+            </div>
+            <div className="px-10 mb-4">
+                <label for="subject" className="block mb-2 text-lg font-bold text-gray-700">Select Half:</label>
+                <select id="subject" name="subject" className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]">
+                    <option value="">Select Half</option>
+                    <option value="b1">1</option>
+                    <option value="b2">2</option>
+                </select>
+             </div>
+            {/* <div className="px-10 mb-4 ">
+            <label for="year" className="block mb-2 text-lg font-bold text-gray-700">Select Year:</label>
+            <select id="year" name="year" className="w-full p-3.5 border border-gray-400 rounded-md">
+                <option value="">Select Semester</option>
+                <option value="s1">1</option>
+                <option value="s2">2</option>
+                </select>
+            </div> */}
+            <div className='flex justify-center'>
+            <button id="download-btn" className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641] ">Download Syllabus</button>
+            </div>
+            </form>
             </div>
                                         {/* Academic Calender
             <div>
