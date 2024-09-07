@@ -1,5 +1,5 @@
 // import { useState } from 'react'
-import './App.css'
+// import './App.css'
 import './index.css'
 import React from 'react'
 // import NavBar from './Components/Pages/NavBar/NavBar'
@@ -13,17 +13,18 @@ import ContactUs from './Components/Pages/ContactUs/ContactUs'
 import Academics from './Components/Pages/Academics/Academics'
 import Others from './Components/Pages/Others/Others'
 import Services from './Components/Pages/QuickLinks/QuickLinks'
+
   const router = createBrowserRouter(
     createRoutesFromElements(
      
       <Route path='/' element={<Layout/>}>
         <Route path='' element={<HomePage/>}/>
+        <Route path='home' element={<HomePage/>}/>
         <Route path='about' element={<AboutUs/>}/>
         <Route path='contactus' element={<ContactUs/>}/>
         <Route path='academics' element={<Academics/>}/>
         <Route path='others' element={<Others/>}/>
         <Route path='quicklinks' element={<Services/>}/>
-        {/* <Route path='faqs' element={<FAQs/>}/> */}
       </Route>
     )
   )
