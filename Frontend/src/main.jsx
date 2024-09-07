@@ -25,6 +25,7 @@ import Services from './Components/Pages/QuickLinks/QuickLinks'
         <Route path='academics' element={<Academics/>}/>
         <Route path='others' element={<Others/>}/>
         <Route path='quicklinks' element={<Services/>}/>
+        
       </Route>
     )
   )

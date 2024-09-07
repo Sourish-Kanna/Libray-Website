@@ -7,6 +7,7 @@ import event1 from './assets/event_1.jpg'
 import event2 from './assets/event_2.jpg'
 import event3 from './assets/event_3.png'
 import event4 from './assets/event_4.jpg'
+import './Others.css'
 
 
 const faqs={
@@ -109,18 +110,19 @@ export default function Journals()
                 </div>
             </div>
         </div>
-        <div className='flex'>
-        {
-            events.map((event, index) => (
-            <div key={index} className='group'>
-                <div className='flex'>
-                <img src={event.img} alt={`Event ${index + 1}`} />
-                <p>{event.content}</p>
+        <div className='carousel-container overflow-hidden'>
+            <div className='carousel-track'>
+                {events.map((event, index) => (
+                <div key={index} className='carousel-item flex z-10 mx-40'>
+                    <img src={event.img} className="w-60 h-60 m-10 " alt={`Event ${index + 1}`} />
+                    <p className=''>{event.content}</p>
                 </div>
+                ))}
             </div>
-            ))
-        }
         </div>
+
+
+
 
                                                     {/* More */}
 
