@@ -22,11 +22,7 @@ export default function EResources() {
                   <div className='flex justify-center text-4xl font-bold '>
                       <p>Scholarship</p>
                   </div>
-<<<<<<< HEAD
                   <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
-=======
-                  <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
->>>>>>> c2bf7614e716f413ced529ed990cfb487fab659f
               </div>
             </div>
             <div className='flex items-center justify-between w-full my-10 text-xl duration-700 bg-white shadow-xl rounded-xl hover:scale-105 h-5/6'>
@@ -40,11 +36,7 @@ export default function EResources() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Rules&Guildelines</p>
                         </div>
-<<<<<<< HEAD
                         <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
-=======
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
->>>>>>> c2bf7614e716f413ced529ed990cfb487fab659f
                     </div>
                 </div>
             </div>
@@ -55,11 +47,7 @@ export default function EResources() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Academic Calender</p>
                         </div>
-<<<<<<< HEAD
                         <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
-=======
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
->>>>>>> c2bf7614e716f413ced529ed990cfb487fab659f
                     </div>
                 </div>
             </div>
@@ -70,11 +58,7 @@ export default function EResources() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Achievements</p>
                         </div>
-<<<<<<< HEAD
                         <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
-=======
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
->>>>>>> c2bf7614e716f413ced529ed990cfb487fab659f
                     </div>
                 </div>
             </div>
