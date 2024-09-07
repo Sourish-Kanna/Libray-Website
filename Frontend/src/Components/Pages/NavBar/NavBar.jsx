@@ -25,16 +25,17 @@ function StyledDropdown(props) {
     const Route =  JSON.parse(to)
         
     return (
-        <div className='hidden group-hover:block absolute bg-[#efefef] w-52 top-full m-4 -left-10'>
-        <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-[#f26d21]'></div>
-        <ul className='bg-gray-300'>
-        {Display_name.map((item, index) => (
-            <li key={index} className='py-3 pl-2 border-b-2 hover:bg-gray-200'>
-                <CustomLink link={Route[index]} name={item}/>
-            </li>
-        ))}
-        </ul>
-    </div>
+        <div className='hidden group-hover:block absolute bg-transparent w-52 top-full -left-14'>
+            <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 
+            border-b-8 border-transparent border-b-[#f26d21]'></div>
+            <ul className='bg-gray-300'>
+            {Display_name.map((item, index) => (
+                <li key={index} className='py-3 pl-2 border-b-2 hover:bg-gray-200'>
+                    <CustomLink link={Route[index]} name={item}/>
+                </li>
+            ))}
+            </ul>
+        </div>
     );
 }
 
@@ -56,7 +57,7 @@ function NavBar() {
       <div className='fixed top-0 z-20 flex w-full px-40 h-fit bg-Navbg'>
 
             <div className='flex-grow'>
-                <img src={Sies_logo} alt="SIES Logo" className="h-24" />
+                <img src={Sies_logo} alt="SIES Logo" className="h-28" />
             </div>
 
             <div className='flex-grow h-full mt-2'>
@@ -74,12 +75,13 @@ function NavBar() {
                     drop_name={JSON.stringify(["University Syllabus","Academic Calender","Competitive Exams"])}/>
                     
                     <StyledNavLink to="/quicklinks" text="Quick Links" 
-                    drop_link = {JSON.stringify(["/quicklinks","/quicklinks","/quicklinks","/quicklinks",Scholarship,Research_fund,"/quicklinks"])} 
+                    drop_link = {JSON.stringify(["/quicklinks","/quicklinks","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks"])} 
                     drop_name={JSON.stringify(["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"])}/>
                     
                     <StyledNavLink to="/others" text="Others" 
                     drop_link = {JSON.stringify(["/others","/others","/others","/others","/others","/others"])}
                     drop_name={JSON.stringify(["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"])}/>
+
                 </ul>
             </div>
         </div>

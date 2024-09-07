@@ -13,6 +13,8 @@ import ContactUs from './Components/Pages/ContactUs/ContactUs'
 import Academics from './Components/Pages/Academics/Academics'
 import Others from './Components/Pages/Others/Others'
 import Services from './Components/Pages/QuickLinks/QuickLinks'
+import DonateBooks from './Components/Pages/Books/DonateBooks'
+import SuggestBooks from './Components/Pages/Books/SuggestBooks'
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -25,6 +27,8 @@ import Services from './Components/Pages/QuickLinks/QuickLinks'
         <Route path='academics' element={<Academics/>}/>
         <Route path='others' element={<Others/>}/>
         <Route path='quicklinks' element={<Services/>}/>
+        <Route path='donate-books' element={<DonateBooks/>}/>
+        <Route path='suggest-books' element={<SuggestBooks/>}/>
       </Route>
     )
   )
