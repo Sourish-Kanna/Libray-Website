@@ -9,7 +9,7 @@ function StyledNavLink(props) {
     const inactiveClassName = 'text-[#014da1] hover:text-blue-400';
   
     return (
-      <li className='text-[#014da1] cursor-pointer font-medium text-xl relative group p-8'>
+      <li className='text-[#014da1] group relative cursor-pointer font-medium text-xl m-8'>
         <NavLink to={to}
           className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
         {`${text}`}<FontAwesomeIcon icon="fa-solid fa-caret-down" />
@@ -17,16 +17,6 @@ function StyledNavLink(props) {
         <StyledDropdown to={`${drop_link}`} text={`${drop_name}`}/>
       </li>
     );
-}
-  
-function CustomLink(props) {
-    const { name, link } = props;
-  
-    if (link.startsWith('/')) {
-      return <NavLink to={link}>{name}</NavLink>;
-    } else {
-      return <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>;
-    }
 }
 
 function StyledDropdown(props) {
@@ -36,7 +26,7 @@ function StyledDropdown(props) {
     const Route =  JSON.parse(to)
         
     return (
-      <div className='hidden group-hover:block absolute bg-[#efefef] w-52 mt-4 -left-11'>
+        <div className='hidden group-hover:block absolute bg-[#efefef] w-52 top-full m-4 -left-10'>
         <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-[#f26d21]'></div>
         <ul className='bg-gray-300'>
         {Display_name.map((item, index) => (
@@ -49,45 +39,54 @@ function StyledDropdown(props) {
     );
 }
 
+function CustomLink(props) {
+    const { name, link } = props;
+  
+    if (link.startsWith('/')) {
+      return <NavLink to={link}>{name}</NavLink>;
+    } else {
+      return <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>;
+    }
+}
+
 const Scholarship = "https://scholarships.gov.in/"
 const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
 
 function NavBar() {
-  return (
-    <div className='fixed top-0 z-20 flex w-full px-40 h-28 bg-Navbg'>
-        <div className='py-2'>
-            <img src={Sies_logo}alt="" />
-        </div>
+    return (
+      <div className='fixed top-0 z-20 flex w-full px-40 h-fit bg-Navbg'>
 
-        <div className='mr-40 ml-80'></div>
-    
-        <div className='flex-col justify-around w-4/5 h-full '>
-            <ul className='flex justify-between font-serif'>
+            <div className='flex-grow'>
+                <img src={Sies_logo} alt="SIES Logo" className="h-28" />
+            </div>
 
-                <li className='pt-10 text-[#014da1] cursor-pointer font-medium text-xl h-full '><NavLink to='' className={({ isActive }) => `${isActive ? 'text-[#f26d21]' : 'text-[#014da1] hover:text-blue-400'}`}>Home</NavLink></li>
-                
-                <StyledNavLink to="/about" text="About Us" 
-                drop_link = {JSON.stringify(["/about#library-hours","/about#library-staffs","/about#facilities"] )}
-                drop_name={JSON.stringify(["Library Hours","Library Staffs","Facilities"])}/>
-                
-                <StyledNavLink to="/academics" text="Academics" 
-                drop_link = {JSON.stringify(["/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"])}
-                drop_name={JSON.stringify(["University Syllabus","Academic Calender","Competitive Exams"])}/>
-                
-                <StyledNavLink to="/quicklinks" text="Quick Links" 
-                drop_link = {JSON.stringify(["/quicklinks","/quicklinks","/quicklinks","/quicklinks",Scholarship,Research_fund,"/quicklinks"])} 
-                drop_name={JSON.stringify(["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"])}/>
-                
-                <StyledNavLink to="/others" text="Others" 
-                drop_link = {JSON.stringify(["/others","/others","/others","/others","/others","/others"])}
-                drop_name={JSON.stringify(["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"])}/>
-            
-            </ul>
+            <div className='flex-grow h-full'>
+                <ul className='flex font-serif w-full items-center justify-between flex-nowrap'>
+                    <li className='text-[#014da1] cursor-pointer font-medium text-xl m-8'>
+                        <NavLink to='' className={({ isActive }) => `${isActive ? 'text-[#f26d21]' : 'text-[#014da1] hover:text-blue-400'}`}>Home</NavLink>
+                    </li>
+                    
+                    <StyledNavLink to="/about" text="About Us" 
+                    drop_link = {JSON.stringify(["/about#library-hours","/about#library-staffs","/about#facilities"] )}
+                    drop_name={JSON.stringify(["Library Hours","Library Staffs","Facilities"])}/>
+                    
+                    <StyledNavLink to="/academics" text="Academics" 
+                    drop_link = {JSON.stringify(["/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"])}
+                    drop_name={JSON.stringify(["University Syllabus","Academic Calender","Competitive Exams"])}/>
+                    
+                    <StyledNavLink to="/quicklinks" text="Quick Links" 
+                    drop_link = {JSON.stringify(["/quicklinks","/quicklinks","/quicklinks","/quicklinks",Scholarship,Research_fund,"/quicklinks"])} 
+                    drop_name={JSON.stringify(["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"])}/>
+                    
+                    <StyledNavLink to="/others" text="Others" 
+                    drop_link = {JSON.stringify(["/others","/others","/others","/others","/others","/others"])}
+                    drop_name={JSON.stringify(["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"])}/>
+                </ul>
+            </div>
         </div>
-    </div>
-  )
+    )
 }
-
+  
 export default NavBar
 
 // // import React from 'react'
