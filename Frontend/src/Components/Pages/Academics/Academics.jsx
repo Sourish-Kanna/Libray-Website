@@ -10,11 +10,7 @@ export default function EResources() {
                 <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
                   <p>Academics</p>
                 </div>
-<<<<<<< HEAD
                 <div className="mx-auto mt-2 mb-10 border-b-4 border-red-600 w-44"></div>
-=======
-                <div className=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
->>>>>>> c2bf7614e716f413ced529ed990cfb487fab659f
               </div>
           </div>
 
