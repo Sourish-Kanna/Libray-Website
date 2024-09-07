@@ -42,10 +42,10 @@ function NavBar() {
                         <div className='hidden group-hover:block absolute bg-[#efefef] w-52 mt-4   -left-11'>
                         <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-[#f26d21]'></div>
                             <ul className='bg-gray-300'>
+                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Library Hours</li>
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Facilities</li>
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Library Staffs</li>
-                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Library Hours</li>
-                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Infrastructure</li>
+                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Rules&Guildlines</li>
                             </ul>
 
                         </div>
@@ -61,10 +61,10 @@ function NavBar() {
                         <div className='hidden group-hover:block absolute bg-[#efefef] w-52 mt-4  -left-5'>
                         <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-[#f26d21]'></div>
                             <ul className='bg-gray-300'>
+                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>University Syllabus</li>
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Scholarship</li>
-                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Rules&Guildelines</li>
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Academic Calender</li>
-                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Achievements</li>
+                                {/* <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Achievements</li> */}
 
                             </ul>
 
@@ -82,7 +82,7 @@ function NavBar() {
                         <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-[#f26d21]'></div>
                             <ul className='bg-gray-300'>
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Question Banks</li>
-                                <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>University Syllabus</li>
+                                {/* <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>University Syllabus</li> */}
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Plagiarism Tool</li>
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Donate Books</li>
                                 <li className='py-3 pl-2 border-b-2 hover:bg-gray-200'>Suggest Books</li>

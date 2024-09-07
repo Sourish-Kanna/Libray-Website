@@ -13,7 +13,6 @@ import ContactUs from './Components/Pages/ContactUs/ContactUs'
 import Academics from './Components/Pages/Academics/Academics'
 import Others from './Components/Pages/Others/Others'
 import Services from './Components/Pages/QuickLinks/QuickLinks'
-import FAQs from './Components/Pages/FAQs/FAQs'
   const router = createBrowserRouter(
     createRoutesFromElements(
      
@@ -24,7 +23,7 @@ import FAQs from './Components/Pages/FAQs/FAQs'
         <Route path='academics' element={<Academics/>}/>
         <Route path='others' element={<Others/>}/>
         <Route path='quicklinks' element={<Services/>}/>
-        <Route path='faqs' element={<FAQs/>}/>
+        {/* <Route path='faqs' element={<FAQs/>}/> */}
       </Route>
     )
   )
