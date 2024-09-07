@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { Link } from 'react-router-dom'
 export default function Journals() {
   return (
@@ -9,7 +9,7 @@ export default function Journals() {
                     <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
                         <p>Academics</p>
                     </div>
-                    <div class=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
                 </div>
             </div>
 
@@ -21,7 +21,7 @@ export default function Journals() {
                   <div className='flex justify-center text-4xl font-bold '>
                       <p>FAQs</p>
                   </div>
-                  <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                  <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
               </div>
             </div>
           </div>
@@ -32,7 +32,7 @@ export default function Journals() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Contact Us</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -43,7 +43,7 @@ export default function Journals() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Feedback</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>
@@ -54,7 +54,7 @@ export default function Journals() {
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>More</p>
                         </div>
-                        <div class=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
             </div>

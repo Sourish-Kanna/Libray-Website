@@ -57,15 +57,15 @@ export default function ContactUs() {
                     <h2 className="text-xl font-semibold mb-4">Get in Touch</h2>
                     <form action="#" method="POST" className="flex flex-col gap-4">
                         <div>
-                            <label for="name" className="text-sm font-medium text-gray-800">Your Name</label>
+                            <label htmlFor="name" className="text-sm font-medium text-gray-800">Your Name</label>
                             <input type="text" id="name" name="name" required className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:border-blue-500 focus:outline-none"/>
                         </div>
                         <div>
-                            <label for="email" className="text-sm font-medium text-gray-800">Your Email</label>
+                            <label htmlFor="email" className="text-sm font-medium text-gray-800">Your Email</label>
                             <input type="email" id="email" name="email" required className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:border-blue-500 focus:outline-none"/>
                         </div>
                         <div>
-                            <label for="message" className="text-sm font-medium text-gray-800">Message</label>
+                            <label htmlFor="message" className="text-sm font-medium text-gray-800">Message</label>
                             <textarea id="message" name="message" required rows="4" className="w-full p-3 border border-gray-300 rounded-lg text-gray-800 focus:border-blue-500 focus:outline-none"></textarea>
                         </div>
                         <button type="submit" className="p-3 bg-orange-500 text-white rounded-lg text-lg hover:bg-orange-600 focus:outline-none">Send Message</button>
