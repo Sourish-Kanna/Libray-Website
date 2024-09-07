@@ -73,37 +73,36 @@ export default function AboutUs() {
                         <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
-                <div className="h-screen mx-40 mt my-0.5 bg-blue-500 shadow-2xl flex rounded-xl items-center hover:scale-105 duration-700 ">
-                    <div className="m-20 w-56 mr-16 ">
-                    <img src={sand} className="h-60 w-56 rounded-2xl"></img>
-                    <div className="bg-white p-8 mt-10 rounded-xl ">
-                        <ul>
-                        <li className="text-2xl font-extrabold">Library Clerk</li>
-                        <li className="font-bold ml-6">Mr.Sandip Patil</li> 
-                        <li className="font-semibold ml-3"> M.A,B.Ed.,M.L.I.Sc</li>
-                        </ul>
-                    </div>
+                <div className=" mx-40 mt my-0.5 bg-blue-500 shadow-2xl flex rounded-xl items-center hover:scale-105 duration-700 ">
+                    <div className="mx-20 w-56 mr-16 ">
+                        <img src={sand} className="h-60 w-56 rounded-2xl mt-10"></img>
+                        <div className="text-white p-8 mt-5 rounded-xl ">
+                            <ul>
+                                <li className="text-2xl font-extrabold">Library Clerk</li>
+                                <li className="font-bold ml-6">Mr.Sandip Patil</li> 
+                                <li className="font-semibold ml-3"> M.A,B.Ed.,M.L.I.Sc</li>
+                            </ul>
+                        </div>
                     </div> 
-                    <div className="m-20 w-5/12 mr-10">
-                    <img src={sac} className="h-60 w-56 rounded-2xl "></img>
-                    <div className="bg-white p-8 mt-10 w-64 rounded-xl">
-                        <ul>
-                        <li className="text-2xl font-extrabold">Library Attendant</li>
-                        <li className="font-bold ml-6">Mr.Sachin Gurav</li> 
-                        <li className="font-semibold ml-5"> M.A,B.Ed.,M.L.I.Sc</li>
-                        </ul>
+                    <div className="mx-20 w-5/12 mr-10">
+                        <img src={sac} className="h-60 w-56 rounded-2xl mt-10 "></img>
+                            <div className="text-white p-8 mt-5 w-64 rounded-xl">
+                            <ul>
+                                <li className="text-2xl font-extrabold">Library Attendant</li>
+                                <li className="font-bold ml-6">Mr.Sachin Gurav</li> 
+                                <li className="font-semibold ml-5"> M.A,B.Ed.,M.L.I.Sc</li>
+                            </ul>
+                            </div>
                     </div>
-                    </div>
-                    <div className="m-20  w-5/12 ml-16">
-                    <img src={indra} className="h-60 w-56 rounded-2xl"></img>
-                    <div className="bg-white p-8 mt-10 w-64 rounded-xl ">
-                        <ul>
-                        <li className="text-2xl font-extrabold">Library Attendant</li>
-                        <li className="font-bold ml-4">Mr.Indrabahadur singh</li> 
-                        <li className="font-semibold ml-20"> 11th</li>
-                        </ul>
-                    </div>
-                    
+                    <div className="mx-20  w-5/12 ml-16">
+                        <img src={indra} className="h-60 w-56 rounded-2xl mt-10"></img>
+                            <div className="text-white p-8 mt-5 w-64 rounded-xl ">
+                                <ul>
+                                    <li className="text-2xl font-extrabold">Library Attendant</li>
+                                    <li className="font-bold ml-4">Mr.Indrabahadur singh</li> 
+                                    <li className="font-semibold ml-20"> BSc(Phys)</li>
+                                </ul>
+                            </div>
                     </div>
                 </div>
             </div>    
