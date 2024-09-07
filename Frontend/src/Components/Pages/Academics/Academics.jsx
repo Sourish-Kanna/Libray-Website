@@ -42,14 +42,6 @@ export default function EResources() {
                     <option value="b2">2</option>
                 </select>
              </div>
-            {/* <div className="px-10 mb-4 ">
-            <label for="year" className="block mb-2 text-lg font-bold text-gray-700">Select Year:</label>
-            <select id="year" name="year" className="w-full p-3.5 border border-gray-400 rounded-md">
-                <option value="">Select Semester</option>
-                <option value="s1">1</option>
-                <option value="s2">2</option>
-                </select>
-            </div> */}
             <div className='flex justify-center'>
             <button id="download-btn" className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641] ">Download Syllabus</button>
             </div>
@@ -82,30 +74,11 @@ export default function EResources() {
                     <option value="b2">2</option>
                 </select>
              </div>
-            {/* <div className="px-10 mb-4 ">
-            <label for="year" className="block mb-2 text-lg font-bold text-gray-700">Select Year:</label>
-            <select id="year" name="year" className="w-full p-3.5 border border-gray-400 rounded-md">
-                <option value="">Select Semester</option>
-                <option value="s1">1</option>
-                <option value="s2">2</option>
-                </select>
-            </div> */}
             <div className='flex justify-center'>
-            <button id="download-btn" className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641] ">Download Syllabus</button>
+            <button id="download-btn" className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641] ">Download </button>
             </div>
             </form>
             </div>
-                                        {/* Academic Calender
-            <div>
-                <div className='flex items-center justify-center w-full h-60'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>Academic Calender</p>
-                        </div>
-                        <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
-                    </div>
-                </div>
-            </div> */}
                                         {/*Achievements */}
             <div>
                 <div className='flex items-center justify-center w-full h-60'>
