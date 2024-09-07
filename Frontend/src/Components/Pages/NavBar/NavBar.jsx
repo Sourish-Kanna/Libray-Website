@@ -56,10 +56,10 @@ function NavBar() {
       <div className='fixed top-0 z-20 flex w-full px-40 h-fit bg-Navbg'>
 
             <div className='flex-grow'>
-                <img src={Sies_logo} alt="SIES Logo" className="h-28" />
+                <img src={Sies_logo} alt="SIES Logo" className="h-24" />
             </div>
 
-            <div className='flex-grow h-full'>
+            <div className='flex-grow h-full mt-2'>
                 <ul className='flex font-serif w-full items-center justify-between flex-nowrap'>
                     <li className='text-[#014da1] cursor-pointer font-medium text-xl m-8'>
                         <NavLink to='' className={({ isActive }) => `${isActive ? 'text-[#f26d21]' : 'text-[#014da1] hover:text-blue-400'}`}>Home</NavLink>
