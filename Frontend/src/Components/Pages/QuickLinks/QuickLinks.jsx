@@ -7,71 +7,71 @@ export default function Services() {
     <div className='font-serif mt-28'>
         <Link to='/services'>
         </Link>
-          <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
+        <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
             <div >
-              <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
-                <p>Quick Links</p>
-              </div>
-              <div className=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
-              </div>
-          </div>
+                <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
+                    <p>Quick Links</p>
+                </div>
+                <div className=" border-b-4 mx-auto w-44 mt-2 border-red-600 mb-10"></div>
+            </div>
+        </div>
 
                                                   {/* Question Banks */}
 
-                                                  <div>
+        <div>
             <div className='w-full h-60  flex items-center justify-center'>
-              <div >
-                  <div className='flex justify-center text-4xl font-bold '>
-                      <p>Question Banks</p>
-                  </div>
-                  <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
-              </div>
+                <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>Question Banks</p>
+                    </div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                </div>
             </div>
-          </div>
+        </div>
                                         {/* Library Brochure */}
-            <div>
-                <div className='w-full h-60  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>Library Brochure</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+        <div>
+            <div className='w-full h-60  flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>Library Brochure</p>
                     </div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                 </div>
             </div>
+        </div>
                                         {/* University Syllabus*/}
-            <div>
-                <div className='w-full h-60  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>University Syllabus</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+        <div>
+            <div className='w-full h-60  flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>University Syllabus</p>
                     </div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                 </div>
             </div>
+        </div>
                                         {/*Scholarships*/}
-            <div>
-                <div className='w-full h-60  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>Scholarships</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+        <div>
+            <div className='w-full h-60  flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>Scholarships</p>
                     </div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                 </div>
             </div>
+        </div>
                                         {/*Research Funds*/}
-            <div>
-                <div className='w-full h-60  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>Research Funds</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+        <div>
+            <div className='w-full h-60  flex items-center justify-center'>
+                <div >
+                    <div className='flex justify-center text-4xl font-bold '>
+                        <p>Research Funds</p>
                     </div>
+                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                 </div>
             </div>
+        </div>
 
 
 {/* 
