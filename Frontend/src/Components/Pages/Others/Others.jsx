@@ -110,15 +110,22 @@ export default function Journals()
                 </div>
             </div>
         </div>
-        <div className='carousel-container overflow-hidden'>
-            <div className='carousel-track'>
+        <div className='carousel-container overflow-hidden flex mx-40'>
+            <div className='flex-col content-center my-10'>
+                <p className="bg-blue-500 py-5 px-10 text-3xl rounded-r-full mb-5">User Orientation</p>
+                <p className='bg-blue-500 py-5 px-10 text-3xl rounded-r-full mb-5'>Book Exhibition</p>
+                <p className='bg-blue-500 py-5 px-10 text-3xl rounded-r-full mb-5'>National Library Day</p>
+                <p className='bg-blue-500 py-5 px-10 text-3xl rounded-r-full mb-5'>IEEE Day</p>
+            </div>
+
+            {/* <div className='carousel-track'>
                 {events.map((event, index) => (
                 <div key={index} className='carousel-item flex z-10 mx-40'>
                     <img src={event.img} className="w-60 h-60 m-10 " alt={`Event ${index + 1}`} />
                     <p className=''>{event.content}</p>
                 </div>
                 ))}
-            </div>
+            </div> */}
         </div>
 
 

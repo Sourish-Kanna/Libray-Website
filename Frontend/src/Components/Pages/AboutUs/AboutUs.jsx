@@ -7,7 +7,7 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
-import useScrollToHash from '../../../CustomHooks/Navigation'
+import {useScrollToHash} from '../../../CustomHooks/Navigation'
 
 
 

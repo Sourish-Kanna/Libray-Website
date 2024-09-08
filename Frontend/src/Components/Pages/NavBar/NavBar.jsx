@@ -1,53 +1,8 @@
 import Sies_logo from './assets/sies_logo.png'
 import {NavLink} from 'react-router-dom'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { StyledNavLink } from '../../../CustomHooks/Navigation.jsx'
 
-function StyledNavLink(props) {
-    const { to, text, drop_link, drop_name} = props;
-    const activeClassName = 'text-[#f26d21]';
-    const inactiveClassName = 'text-[#014da1] hover:text-blue-400';
 
-    return (
-      <li className='text-[#014da1] group relative cursor-pointer font-medium text-xl m-8'>
-        <NavLink to={to}
-        className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
-        {`${text}`}<FontAwesomeIcon icon="fa-solid fa-caret-down" className='px-1.5'/>
-        </NavLink>
-        <StyledDropdown to={`${drop_link}`} text={`${drop_name}`}/>
-    </li>
-    );
-}
-
-function StyledDropdown(props) {
-    const { to, text} = props;
-
-    const Display_name = JSON.parse(text)
-    const Route =  JSON.parse(to)
-        
-    return (
-        <div className='absolute hidden bg-transparent group-hover:block w-52 top-full -left-14'>
-            <div className='absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 
-            border-b-8 border-transparent border-b-[#f26d21]'></div>
-            <ul className='bg-gray-300'>
-            {Display_name.map((item, index) => (
-                <li key={index} className='py-3 pl-2 border-b-2 hover:bg-gray-200'>
-                    <CustomLink link={Route[index]} name={item}/>
-                </li>
-            ))}
-            </ul>
-        </div>
-    );
-}
-
-function CustomLink(props) {
-    const { name, link } = props;
-  
-    if (link.startsWith('/')) {
-      return <NavLink to={link}>{name}</NavLink>;
-    } else {
-      return <a href={link} target="_blank" rel="noopener noreferrer">{name}</a>;
-    }
-}
 
 const Scholarship = "https://scholarships.gov.in/"
 const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
@@ -66,21 +21,29 @@ function NavBar() {
                         <NavLink to='' className={({ isActive }) => `${isActive ? 'text-[#f26d21]' : 'text-[#014da1] hover:text-blue-400'}`}>Home</NavLink>
                     </li>
                     
-                    <StyledNavLink to="/about" text="About Us" 
-                    drop_link = {JSON.stringify(["/about#library-hours","/about#library-staffs","/about#facilities"] )}
-                    drop_name={JSON.stringify(["Library Hours","Library Staffs","Facilities"])}/>
+                    <StyledNavLink 
+                    to="/about" 
+                    text="About Us" 
+                    drop_link = {["/about#library-hours","/about#library-staffs","/about#facilities"]}
+                    drop_name={["Library Hours","Library Staffs","Facilities"]}/>
                     
-                    <StyledNavLink to="/academics" text="Academics" 
-                    drop_link = {JSON.stringify(["/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"])}
-                    drop_name={JSON.stringify(["University Syllabus","Academic Calender","Competitive Exams"])}/>
+                    <StyledNavLink 
+                    to="/academics" 
+                    text="Academics" 
+                    drop_link = {["/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"]}
+                    drop_name={["University Syllabus","Academic Calender","Competitive Exams"]}/>
                     
-                    <StyledNavLink to="/quicklinks" text="Quick Links" 
-                    drop_link = {JSON.stringify(["/quicklinks","/quicklinks","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks"])} 
-                    drop_name={JSON.stringify(["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"])}/>
+                    <StyledNavLink 
+                    to="/quicklinks" 
+                    text="Quick Links" 
+                    drop_link = {["/quicklinks","/quicklinks","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks"]} 
+                    drop_name={["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/>
                     
-                    <StyledNavLink to="/others" text="Others" 
-                    drop_link = {JSON.stringify(["/others","/others","/others","/others","/others","/others"])}
-                    drop_name={JSON.stringify(["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"])}/>
+                    <StyledNavLink 
+                    to="/others" 
+                    text="Others" 
+                    drop_link = {["/others","/others","/others","/others","/others","/others"]}
+                    drop_name={["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"]}/>
 
                 </ul>
             </div>
