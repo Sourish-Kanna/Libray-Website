@@ -100,17 +100,25 @@ export default function HomePage() {
             </div>
 
             {/*Photos section */}
-            <div className='mx-40 mb-10 overflow-hidden '>
+            <div className='mx-40 mb-10 overflow-hidden'>
                 <div>
                     <div className='flex justify-center text-4xl font-bold'>
                         <p>Images</p>
                     </div>
                     <div className="border-b-4 mx-auto w-28 mt-2 border-blue-700 mb-10"></div>
                 </div>
-                <div className='flex justify-center items-center '>
-                    <div className='flex animate-scroll my-10'>
+                <div className='flex justify-center items-center slider'>
+                    <div className='flex animate-scroll my-10 slider-track'>
                         {imagesItems.map((image, index) => (
-                        <img key={index} className="h-80 ml-36 hover:scale-105 duration-700" src={image} alt={`Image ${index + 1}`} />
+                        <img key={index} className="h-80 ml-36 hover:scale-105 duration-700 slide" src={image} alt={`Image ${index + 1}`} />
+                        ))}
+                    </div>
+
+                        {/* same images doubled */}
+
+                    <div className='flex animate-scroll my-10 slider-track'>
+                        {imagesItems.map((image, index) => (
+                        <img key={index} className="h-80 ml-36 hover:scale-105 duration-700 slide" src={image} alt={`Image ${index + 1}`} />
                         ))}
                     </div>
                 </div>
