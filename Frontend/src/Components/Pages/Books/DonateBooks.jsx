@@ -10,7 +10,7 @@ const handleInputChange = (event) => {
     } else {
       event.target.style.borderColor = "";
     }
-  };
+};
 
 export default function EResources() {
 return (
@@ -62,17 +62,19 @@ return (
 
                     <label htmlFor="condition">Condition of the Book:</label>
                     <select id="condition" name="condition">
-                    <option value="new">New</option>
-                    <option value="used-good">Used (Good)</option>
-                    <option value="used-fair">Used (Fair)</option>
-                    <option value="damaged">Damaged</option>
+                        <option value="choose">Choose Condition</option>
+                        <option value="new">New</option>
+                        <option value="used-good">Used (Good)</option>
+                        <option value="used-fair">Used (Fair)</option>
+                        <option value="damaged">Damaged</option>
                     </select>
                 </div>
 
                 <h2 className='mt-8'>Agreement</h2>
                 <div className='flex items-center'>
                     <input className='w-1/3' type="checkbox" name="agreement" required/> 
-                    <label className="w-auto">I hereby declare that the information provided is true, and I agree to donate the book(s) as per the rules.</label>
+                    <label className="w-auto">I hereby declare that the information provided is true,
+                         and I agree to donate the book(s) as per the rules.</label>
                 </div>
 
                 <input className='' type="submit" value="Submit Donation"></input>
