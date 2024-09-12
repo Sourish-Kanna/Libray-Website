@@ -3,6 +3,9 @@ import Images from '../HomePage/assets/img5.webp'
 import sand from '../HomePage/assets/sandip.webp'
 import indra from '../HomePage/assets/indrabahadur.webp'
 import sac from '../HomePage/assets/sachin.webp'
+import ref from '../HomePage/assets/img4.webp'
+import ret from '../HomePage/assets/bookret.webp'
+import fac from '../HomePage/assets/img9.webp'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -109,7 +112,7 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                                 <ul>
                                     <li className="text-2xl font-extrabold">Library Attendant</li>
                                     <li className="font-bold ml-4">Mr.Indrabahadur singh</li> 
-                                    <li className="font-semibold ml-20"> BSc(Phys)</li>
+                                    <li className="font-semibold ml-14"> BSc(Phys)</li>
                                 </ul>
                             </div>
                     </div>
@@ -125,11 +128,54 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                         <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
-            </div>
-            <div className="h-screen mx-40 my-0.5 bg-[#f3f2ed] shadow-2xl flex items-center">
+                <div>
                 
-
                 </div>
+                
+            </div>
+            <div className="h-screen mx-40 my-0.5 bg-[#f3f2ed] shadow-2xl flex flex-wrap items-center">
+                <div className="mx-20 w-56 mr-16  hover:scale-105 duration-700 ">
+                        <img src={ref} className="h-60 w-56 rounded-2xl mt-10"></img>
+                        <div className=" p-5  rounded-xl h-3 ">
+                            <h1 className="font-extrabold text-blue-700">Reference Service</h1>
+                        </div>
+                </div>
+                <div>
+                    <div className="mx-20 w-56 hover:scale-105 duration-700">
+                        <img src={ret} className="h-60 w-56 rounded-2xl mt-10 "></img>
+                            <div className=" p-5 h-3 rounded-xl">
+                                <h1 className="font-extrabold text-blue-700" >Book return</h1>
+                            </div>
+                    </div>
+                </div>
+                <div className="mx-20  w-56 hover:scale-105 duration-700 ">
+                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
+                            <div className="p-5 h-3 rounded-xl ">
+                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                            </div>
+                </div>
+                <div className="mx-20  w-56 mr-16 hover:scale-105 duration-700 mb-10 ">
+                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
+                            <div className=" p-5 h-3 rounded-xl ">
+                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                            </div>
+                </div>
+                <div className="mx-20  w-56 hover:scale-105 duration-700 mb-10">
+                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
+                            <div className=" p-5 h-3 rounded-xl ">
+                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                            </div>
+                </div>
+                <div className="mx-20  w-56 hover:scale-105 duration-700 mb-10">
+                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
+                            <div className=" p-5 h-3 rounded-xl ">
+                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                            </div>
+                </div>
+                
+                
+               
+            </div>
                                         {/* Infratructure */}
             <div>
                 <div className='w-full h-60  flex items-center justify-center'>
