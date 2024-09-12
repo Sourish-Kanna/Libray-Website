@@ -6,6 +6,8 @@ import sac from '../HomePage/assets/sachin.webp'
 import ref from '../HomePage/assets/img4.webp'
 import ret from '../HomePage/assets/bookret.webp'
 import fac from '../HomePage/assets/img9.webp'
+import repo from '../HomePage/assets/img3.webp'
+import opa from '../HomePage/assets/img11.webp'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -41,7 +43,7 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
             <div ref={refs['library-hours']} id="library-hours">
                 <div className='h-28 mt-6 flex items-center justify-center'>
                     <div >
-                    <div className='flex justify-center text-4xl font-bold '>
+                    <div className='flex justify-center text-4xl font-bold mt-12 '>
                         <p>Library-Hours</p>
                         </div>
                         <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
@@ -79,14 +81,14 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
             <div ref={refs['library-staffs']} id="library-staffs">
                 <div className='w-full h-36 flex items-center justify-center'>
                     <div >
-                        <div className='flex justify-center text-4xl font-bold '>
+                        <div className='flex justify-center text-4xl font-bold mt-12 '>
                             <p>Library Staffs</p>
                         </div>
                         <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
                 <div className=" mx-40 mt my-0.5 bg-blue-500 shadow-2xl flex rounded-xl items-center hover:scale-105 duration-700 ">
-                    <div className="mx-20 w-56 mr-16 ">
+                    <div className="mx-20 w-56 mr-24 ">
                         <img src={sand} className="h-60 w-56 rounded-2xl mt-10"></img>
                         <div className="text-white p-8 mt-5 rounded-xl ">
                             <ul>
@@ -106,9 +108,9 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                             </ul>
                             </div>
                     </div>
-                    <div className="mx-20  w-5/12 ml-16">
+                    <div className="mx-20  w-5/12 ml-24">
                         <img src={indra} className="h-60 w-56 rounded-2xl mt-10"></img>
-                            <div className="text-white p-8 mt-5 w-64 rounded-xl ">
+                            <div className="text-white p-6 mt-5 w-64 rounded-xl ">
                                 <ul>
                                     <li className="text-2xl font-extrabold">Library Attendant</li>
                                     <li className="font-bold ml-4">Mr.Indrabahadur singh</li> 
@@ -122,7 +124,7 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
             <div ref={refs['facilities']} id="facilities">
                 <div className='w-full h-40 flex items-center justify-center'>
                     <div >
-                        <div className='flex justify-center  text-4xl font-bold '>
+                        <div className='flex justify-center  text-4xl font-bold mt-12 '>
                             <p>Facilities</p>
                         </div>
                         <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
@@ -133,43 +135,43 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                 </div>
                 
             </div>
-            <div className="h-screen mx-40 my-0.5 bg-[#f3f2ed] shadow-2xl flex flex-wrap items-center">
+            <div className="h-screen mx-40 my-0.5 bg-blue-500 shadow-2xl flex flex-wrap  items-center rounded-xl">
                 <div className="mx-20 w-56 mr-16  hover:scale-105 duration-700 ">
                         <img src={ref} className="h-60 w-56 rounded-2xl mt-10"></img>
                         <div className=" p-5  rounded-xl h-3 ">
-                            <h1 className="font-extrabold text-blue-700">Reference Service</h1>
+                            <h1 className="font-extrabold text-white text-2xl">Reference Service</h1>
                         </div>
                 </div>
                 <div>
-                    <div className="mx-20 w-56 hover:scale-105 duration-700">
+                    <div className="ml-24 w-56 hover:scale-105 duration-700">
                         <img src={ret} className="h-60 w-56 rounded-2xl mt-10 "></img>
                             <div className=" p-5 h-3 rounded-xl">
-                                <h1 className="font-extrabold text-blue-700" >Book return</h1>
+                                <h1 className="font-extrabold text-white text-2xl" >HomeIssue/Book return</h1>
                             </div>
                     </div>
                 </div>
-                <div className="mx-20  w-56 hover:scale-105 duration-700 ">
+                <div className="ml-36  w-56 hover:scale-105 duration-700 ">
                         <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
                             <div className="p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                                <h1 className="font-extrabold text-white text-2xl">Book Bank facility</h1>
                             </div>
                 </div>
                 <div className="mx-20  w-56 mr-16 hover:scale-105 duration-700 mb-10 ">
-                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
+                        <img src={repo} className="h-60 w-56 rounded-2xl mt-10"></img>
                             <div className=" p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                                <h1 className="font-extrabold text-white text-2xl">Repography service</h1>
                             </div>
                 </div>
-                <div className="mx-20  w-56 hover:scale-105 duration-700 mb-10">
-                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
+                <div className="ml-24  w-56 hover:scale-105 duration-700 mb-10">
+                        <img src={opa} className="h-60 w-56 rounded-2xl mt-10"></img>
                             <div className=" p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                                <h1 className="font-extrabold text-white text-2xl">Library OPAC</h1>
                             </div>
                 </div>
-                <div className="mx-20  w-56 hover:scale-105 duration-700 mb-10">
+                <div className="ml-36 w-56 hover:scale-105 duration-700 mb-10">
                         <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
                             <div className=" p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-blue-700">book facility</h1>
+                                <h1 className="font-extrabold text-white text-2xl">Newspaper clipping</h1>
                             </div>
                 </div>
                 
