@@ -133,24 +133,84 @@ export default function Journals()
 
                                                     {/* More */}
 
-        <div>
+        <div className=' rounded-2xl'> {/*bg-[#f3f2ed]*/} 
             <div className='w-full h-20 mt-10  flex items-center justify-center'>
                 <div >
-                    <div className='flex justify-center text-4xl font-bold '>
+                    <div className='flex justify-center text-4xl font-bold mt-8'>
                         <p>More</p>
                     </div>
-                    <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    <div className=" border-b-4 mx-auto w-44  border-blue-700 mb-10"></div>
                 </div>
             </div>
-        </div>
-        <div className='mx-40 rounded-2xl bg-[#f3f2ed]'>
-            <div>
-                <p className='bg-[#014da1]'>More Links</p>
-                <p className='*'>IEEE</p>
-                <p>DELNET-Developing Library Network</p>
-                <p>E-Books</p>
+            <div className='mx-40'>
+                <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>MORE LINKS</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="more-links h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-[37rem] rounded-xl">
+                            <div className="grid grid-cols-3 gap-0 auto-rows-min content-center mx-10 my-3 text-base transition-all  transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                {moreLinks.map((link, index) => (
+                                    <div key={index} className='grid my-2'>
+                                        <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#f26d21] "> 
+                                            {link.name}
+                                        </a>
+                                    </div>
+                                    ))
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>IEEE</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2 text-lg">The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.</p>
+                                <p className="py-2 text-lg"><a href="https://www.ets.org/gre.html" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>GATE</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2 text-lg">GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.</p>
+                                <p className="py-2 text-lg"><a href="http://gate.iitd.ac.in/" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>SAT</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2 text-lg">The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.</p>
+                                <p className="py-2 text-lg"><a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div className="relative group">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                            <p className='text-white'>TOFEL</p>
+                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                        </div>
+                        <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
+                            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                                <p className="py-2 text-lg">TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.</p>
+                                <p className="py-2 text-lg"><a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'>Click here for more information</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
 
                                                     {/* FAQs */}
 
