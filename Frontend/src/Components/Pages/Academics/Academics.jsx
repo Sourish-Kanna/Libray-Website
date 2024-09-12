@@ -104,7 +104,7 @@ return (
                         </div>
                         <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                             <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                <p className="py-2 text-lg">1) UPSC conducts the Civil Services Examination for recruitment to various Indian Administrative Service (IAS) and other top civil services.</p>
+                                <p className="py-2 text-lg">UPSC conducts the Civil Services Examination for recruitment to various Indian Administrative Service (IAS) and other top civil services.</p>
                                 <p className="py-2 text-lg"><a href="https://upsc.gov.in/" target="_blank" rel="noopener noreferrer" className='text-[#f26d21] underline '> Click here for more information</a></p>
                             </div>
                         </div>
@@ -116,7 +116,7 @@ return (
                         </div>
                         <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                             <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                <p className="py-2 text-lg">1) The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.</p>
+                                <p className="py-2 text-lg">The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.</p>
                                 <p className="py-2 text-lg"><a href="https://www.ets.org/gre.html" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
                             </div>
                         </div>
@@ -128,7 +128,7 @@ return (
                         </div>
                         <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                             <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                <p className="py-2 text-lg">1) GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.</p>
+                                <p className="py-2 text-lg">GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.</p>
                                 <p className="py-2 text-lg"><a href="http://gate.iitd.ac.in/" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
                             </div>
                         </div>
@@ -140,7 +140,7 @@ return (
                         </div>
                         <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                             <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                <p className="py-2 text-lg">1) The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.</p>
+                                <p className="py-2 text-lg">The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.</p>
                                 <p className="py-2 text-lg"><a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
                             </div>
                         </div>
@@ -152,7 +152,7 @@ return (
                         </div>
                         <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                             <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                <p className="py-2 text-lg">1) TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.</p>
+                                <p className="py-2 text-lg">TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.</p>
                                 <p className="py-2 text-lg"><a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'>Click here for more information</a></p>
                             </div>
                         </div>
