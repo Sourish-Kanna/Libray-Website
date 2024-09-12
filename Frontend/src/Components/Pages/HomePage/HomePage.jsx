@@ -59,7 +59,7 @@ export default function HomePage() {
             <div className='w-full h-screen bg-center bg-no-repeat bg-cover bg-homepage-bg'>
 
                 {/* News Row */}
-                <div className='flex mt-5 bg-yellow-100 text-xl'>
+                <div className='flex mt-8 bg-yellow-100 text-xl'>
                     <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">News</p>
                     <div className="flex justify-around w-11/12 p-2 bg-news-back">
                         {newsItems.map((newsItem, index) => (
