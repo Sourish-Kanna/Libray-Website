@@ -8,7 +8,7 @@ import event1 from './assets/event_1.jpg'
 import event2 from './assets/event_2.jpg'
 import event3 from './assets/event_3.png'
 import event4 from './assets/event_4.jpg'
-import './Others.css'
+
 
 export default function Journals(){
 
@@ -86,7 +86,7 @@ export default function Journals(){
     ]
     
 
-    const [activeIndex, setActiveIndex] = useState(null);
+    const [activeIndex, setActiveIndex] = useState(0);
 
     const handleClick = (index) => {
     setActiveIndex(index);
@@ -117,41 +117,34 @@ return (
                 </div>
             </div>
         </div>
-        <div className='carousel-container overflow-hidden flex mx-40'>
+        <div className='carousel-container overflow-hidden flex overflow-visible px-40'>
+            {/* Event Names (on the left side) */}
             <div className='flex-col content-center my-10'>
-                {/* Rendering the paragraphs */}
-            {['User Orientation', 'Book Exhibition', 'National Library Day', 'IEEE Day'].map((text, index) => (
-                <div key={index} className="mb-5 flex">
-                    <p
-                    className={`w-96 bg-[#014da1] py-5 px-10 text-3xl rounded-r-full mb-2 transition-transform duration-300 cursor-pointer text-white h-fit ${
-                    activeIndex === index ? 'scale-110 text-orange-400 bg-[#3090ff] w-96' : ''
-                    }`}
-                    onClick={() => handleClick(index)}
-                    >
-                    {text}
-                    </p>
-
-                    {/* Conditionally render the event details below the paragraph when clicked */}
-
-                    {activeIndex === index && (
-                    <div className="flex  bg-gray-100 p-5 rounded-md shadow-md w-[45rem] ml-10">
-                        <img src={events[index].img} alt={text} className="w-60 h-60 object-cover mr-5" /> {/* Display event image */}
-                        <p className=" text-gray-700 text-2xl">{events[index].content}</p> {/* Display event content */}
+                {['User Orientation', 'Book Exhibition', 'National Library Day', 'IEEE Day'].map((text, index) => (
+                    <div key={index} className="mb-5">
+                        <p
+                            className={`w-96 bg-[#014da1] py-5 px-10 text-3xl rounded-r-full mb-2 transition-transform duration-300 cursor-pointer text-white h-fit ${
+                                activeIndex === index ? 'scale-110 text-orange-600 bg-[#3090ff] w-96 shadow-lg shadow-black/50' : ''
+                            }`}
+                            onClick={() => handleClick(index)}
+                        >
+                            {text}
+                        </p>
                     </div>
-                    )}
-                </div>
                 ))}
             </div>
 
-            {/* <div className='carousel-track'>
-                {events.map((event, index) => (
-                <div key={index} className='carousel-item flex z-10 mx-40'>
-                    <img src={event.img} className="w-60 h-60 m-10 " alt={`Event ${index + 1}`} />
-                    <p className=''>{event.content}</p>
-                </div>
-                ))}
-            </div> */}
+            {/* Event Details (on the right side) */}
+            <div className='flex-grow ml-10 mt-12'>
+                {activeIndex !== null && (
+                    <div className="flex bg-gray-100 p-5 py-12 rounded-md shadow-md w-full hover:scale-105 duration-700">
+                        <img src={events[activeIndex].img} alt={events[activeIndex].text} className="w-60 h-60 object-cover mr-5" />
+                        <p className="text-gray-700 text-2xl">{events[activeIndex].content}</p>
+                    </div>
+                )}
+            </div>
         </div>
+
 
 
 
