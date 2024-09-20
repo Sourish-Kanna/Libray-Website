@@ -80,104 +80,111 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                                         {/* Library Staffs */}
             <div ref={refs['library-staffs']} id="library-staffs">
                 <div className='w-full h-36 flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold mt-12 '>
+                    <div>
+                        <div className='flex justify-center text-4xl font-bold mt-12'>
                             <p>Library Staffs</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                            </div>
+                            <div className="border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
                     </div>
                 </div>
-                <div className=" mx-40 mt my-0.5 bg-blue-500 shadow-2xl flex rounded-xl items-center hover:scale-105 duration-700 ">
-                    <div className="mx-20 w-56 mr-24 ">
-                        <img src={sand} className="h-60 w-56 rounded-2xl mt-10"></img>
-                        <div className="text-white p-8 mt-5 rounded-xl ">
-                            <ul>
-                                <li className="text-2xl font-extrabold">Library Clerk</li>
-                                <li className="font-bold ml-6">Mr.Sandip Patil</li> 
-                                <li className="font-semibold ml-3"> M.A,B.Ed.,M.L.I.Sc</li>
-                            </ul>
+
+                <div className="bg-blue-500 shadow-2xl rounded-xl mx-40 my-0.5 p-12 min-h-[600px] flex items-center">
+                    <div className="flex justify-center gap-12 w-full">
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-80">
+                            <img src={sand} className="h-80 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-2xl font-extrabold text-orange-500">Library Clerk</h3>
+                                <p className="font-bold text-orange-500 mt-2">Mr. Sandip Patil</p>
+                                <p className="font-semibold text-orange-500">M.A, B.Ed., M.L.I.Sc</p>
+                            </div>
                         </div>
-                    </div> 
-                    <div className="mx-20 w-5/12 mr-10">
-                        <img src={sac} className="h-60 w-56 rounded-2xl mt-10 "></img>
-                            <div className="text-white p-8 mt-5 w-64 rounded-xl">
-                            <ul>
-                                <li className="text-2xl font-extrabold">Library Attendant</li>
-                                <li className="font-bold ml-6">Mr.Sachin Gurav</li> 
-                                <li className="font-semibold ml-5"> M.A,B.Ed.,M.L.I.Sc</li>
-                            </ul>
+
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-80">
+                            <img src={sac} className="h-56w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-2xl font-extrabold text-orange-500">Library Attendant</h3>
+                                <p className="font-bold text-orange-500 mt-2">Mr. Sachin Gurav</p>
+                                <p className="font-semibold text-orange-500">M.A, B.Ed., M.L.I.Sc</p>
                             </div>
-                    </div>
-                    <div className="mx-20  w-5/12 ml-24">
-                        <img src={indra} className="h-60 w-56 rounded-2xl mt-10"></img>
-                            <div className="text-white p-6 mt-5 w-64 rounded-xl ">
-                                <ul>
-                                    <li className="text-2xl font-extrabold">Library Attendant</li>
-                                    <li className="font-bold ml-4">Mr.Indrabahadur singh</li> 
-                                    <li className="font-semibold ml-14"> BSc(Phys)</li>
-                                </ul>
+                        </div>
+
+            
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-80">
+                            <img src={indra} className="h-80 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-2xl font-extrabold text-orange-500">Library Attendant</h3>
+                                <p className="font-bold text-orange-500 mt-2">Mr. Indrabahadur Singh</p>
+                                <p className="font-semibold text-orange-500">BSc (Phys)</p>
                             </div>
+                        </div>
                     </div>
                 </div>
-            </div>    
+            </div>
+
                                         {/* Facilities */}
             <div ref={refs['facilities']} id="facilities">
-                <div className='w-full h-40 flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center  text-4xl font-bold mt-12 '>
-                            <p>Facilities</p>
+                <div className='w-full h-36 flex items-center justify-center'>
+                <div>
+                    <div className='flex justify-center text-4xl font-bold mt-12'>
+                    <p>Facilities</p>
+                </div>
+                <div className="border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                </div>
+                </div>
+                <div className="bg-blue-500 shadow-2xl rounded-xl mx-40 my-0.5 p-12 min-h-[800px] flex items-center">
+                    <div className="flex flex-wrap justify-center gap-12 w-full">
+                        <div className="bg-white rounded-xl overflow-hidden mr-10 hover:scale-105 duration-700 w-64">
+                            <img src={ref} className="h-60 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-xl font-extrabold text-orange-500">Reference Service</h3>
+                            </div>
                         </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+
+            
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-64">
+                            <img src={ret} className="h-60 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-xl font-extrabold text-orange-500">HomeIssue/Book return</h3>
+                            </div>
+                        </div>
+
+        
+                        <div className="bg-white rounded-xl overflow-hidden ml-10 hover:scale-105 duration-700 w-64">
+                            <img src={fac} className="h-60 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-xl font-extrabold text-orange-500">Book Bank facility</h3>
+                            </div>
+                        </div>
+
+            
+                        <div className="bg-white rounded-xl overflow-hidden mr-10 hover:scale-105 duration-700 w-64">
+                            <img src={repo} className="h-60 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-xl font-extrabold text-orange-500">Repography service</h3>
+                            </div>
+                        </div>
+
+        
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-64">
+                            <img src={opa} className="h-60 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-xl font-extrabold text-orange-500">Library OPAC</h3>
+                            </div>
+                        </div>
+
+                        <div className="bg-white rounded-xl overflow-hidden ml-10 hover:scale-105 duration-700 w-64">
+                            <img src={fac} className="h-60 w-full object-cover"></img>
+                            <div className="p-6">
+                                <h3 className="text-xl font-extrabold text-orange-500">Newspaper clipping</h3>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div>
-                
-                </div>
-                
             </div>
-            <div className="h-screen mx-40 my-0.5 bg-blue-500 shadow-2xl flex flex-wrap  items-center rounded-xl">
-                <div className="mx-20 w-56 mr-16  hover:scale-105 duration-700 ">
-                        <img src={ref} className="h-60 w-56 rounded-2xl mt-10"></img>
-                        <div className=" p-5  rounded-xl h-3 ">
-                            <h1 className="font-extrabold text-white text-2xl">Reference Service</h1>
-                        </div>
-                </div>
-                <div>
-                    <div className="ml-24 w-56 hover:scale-105 duration-700">
-                        <img src={ret} className="h-60 w-56 rounded-2xl mt-10 "></img>
-                            <div className=" p-5 h-3 rounded-xl">
-                                <h1 className="font-extrabold text-white text-2xl" >HomeIssue/Book return</h1>
-                            </div>
-                    </div>
-                </div>
-                <div className="ml-36  w-56 hover:scale-105 duration-700 ">
-                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
-                            <div className="p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-white text-2xl">Book Bank facility</h1>
-                            </div>
-                </div>
-                <div className="mx-20  w-56 mr-16 hover:scale-105 duration-700 mb-10 ">
-                        <img src={repo} className="h-60 w-56 rounded-2xl mt-10"></img>
-                            <div className=" p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-white text-2xl">Repography service</h1>
-                            </div>
-                </div>
-                <div className="ml-24  w-56 hover:scale-105 duration-700 mb-10">
-                        <img src={opa} className="h-60 w-56 rounded-2xl mt-10"></img>
-                            <div className=" p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-white text-2xl">Library OPAC</h1>
-                            </div>
-                </div>
-                <div className="ml-36 w-56 hover:scale-105 duration-700 mb-10">
-                        <img src={fac} className="h-60 w-56 rounded-2xl mt-10"></img>
-                            <div className=" p-5 h-3 rounded-xl ">
-                                <h1 className="font-extrabold text-white text-2xl">Newspaper clipping</h1>
-                            </div>
-                </div>
-                
+    
                 
                
-            </div>
+    
                                         {/* Infratructure */}
             <div>
                 <div className='w-full h-60  flex items-center justify-center'>
