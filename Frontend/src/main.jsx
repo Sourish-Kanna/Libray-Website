@@ -15,10 +15,11 @@ import Others from './Components/Pages/Others/Others'
 import Services from './Components/Pages/QuickLinks/QuickLinks'
 import DonateBooks from './Components/Pages/Books/DonateBooks'
 import SuggestBooks from './Components/Pages/Books/SuggestBooks'
+import Register from './Components/Pages/Registration/Register'
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-     
+    <>
       <Route path='/' element={<Layout/>}>
         <Route path='' element={<HomePage/>}/>
         <Route path='home' element={<HomePage/>}/>
@@ -30,6 +31,8 @@ import SuggestBooks from './Components/Pages/Books/SuggestBooks'
         <Route path='donate-books' element={<DonateBooks/>}/>
         <Route path='suggest-books' element={<SuggestBooks/>}/>
       </Route>
+      <Route path='register' element={<Register/>} />
+    </>
     )
   )
 

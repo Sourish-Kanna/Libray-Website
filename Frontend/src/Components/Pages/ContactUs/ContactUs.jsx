@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 export default function ContactUs() {
   return (
-    <div>
+    <div className='mx-40'>
         <Link to='/contact'>
         </Link>
         <section className="min-h-screen flex flex-col justify-center font-serif">

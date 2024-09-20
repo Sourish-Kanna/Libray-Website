@@ -8,10 +8,12 @@ import event1 from './assets/event_1.jpg'
 import event2 from './assets/event_2.jpg'
 import event3 from './assets/event_3.png'
 import event4 from './assets/event_4.jpg'
+import { useSmoothScroll } from '../../../CustomHooks/Navigation'
+
 
 
 export default function Journals(){
-
+useSmoothScroll();
     const faqs={
         1:["Who can access the library?","All SIES GST students, faculty, and staff can access the library with a valid ID."],
     
@@ -117,7 +119,7 @@ return (
                 </div>
             </div>
         </div>
-        <div className='carousel-container overflow-hidden flex overflow-visible px-40'>
+        <div className='carousel-container  flex overflow-visible px-40'>
             {/* Event Names (on the left side) */}
             <div className='flex-col content-center my-10'>
                 {['User Orientation', 'Book Exhibition', 'National Library Day', 'IEEE Day'].map((text, index) => (

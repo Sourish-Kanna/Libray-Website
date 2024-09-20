@@ -1,7 +1,7 @@
 import Sies_logo from './assets/sies_logo.png'
 import {NavLink} from 'react-router-dom'
 import { StyledNavLink } from '../../../CustomHooks/Navigation.jsx'
-
+import { Link } from 'react-router-dom'
 
 
 const Scholarship = "https://scholarships.gov.in/"
@@ -24,8 +24,8 @@ function NavBar() {
                     <StyledNavLink 
                     to="/about" 
                     text="About Us" 
-                    drop_link = {["/about#library-hours","/about#library-staffs","/about#facilities"]}
-                    drop_name={["Library Hours","Library Staffs","Facilities"]}/>
+                    drop_link = {["/about#library-hours","/about#library-staffs","/about#facilities","/about#infrastructure"]}
+                    drop_name={["Library Hours","Library Staffs","Facilities","Infrastructure"]}/>
                     
                     <StyledNavLink 
                     to="/academics" 
@@ -42,10 +42,14 @@ function NavBar() {
                     <StyledNavLink 
                     to="/others" 
                     text="Others" 
-                    drop_link = {["/others","/others","/others","/others","/others","/others"]}
+                    drop_link = {["/others","/others","/others","/others","/contactus","/others"]}
                     drop_name={["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"]}/>
 
                 </ul>
+            </div>
+            <div className='flex align-center h-12 w-40 bg-orange-400 justify-center rounded-full my-6'>
+                <img src="" alt="" />
+                <Link to='/register'><p className='my-2'>Register</p></Link>
             </div>
         </div>
     )
