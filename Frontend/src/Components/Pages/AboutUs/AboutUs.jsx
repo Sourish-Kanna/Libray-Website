@@ -8,6 +8,9 @@ import ret from '../HomePage/assets/bookret.webp'
 import fac from '../HomePage/assets/img9.webp'
 import repo from '../HomePage/assets/img3.webp'
 import opa from '../HomePage/assets/img11.webp'
+import idi from '../HomePage/assets/img6.webp'
+import comp from '../HomePage/assets/img12.webp'
+import dig from '../HomePage/assets/image1.webp'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -186,17 +189,64 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                
     
                                         {/* Infratructure */}
-            <div>
-                <div className='w-full h-60  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>Infratructure</p>
+            
+            <div ref={refs['infrastructure']} id="infrastructure">
+                <div className='w-full h-36 flex items-center justify-center'>
+                    <div>
+                        <div className='flex justify-center text-4xl font-bold mt-12'>
+                            <p>Infrastructure</p>
                         </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+                    <div className="border-b-4 mx-auto w-44 mt-2  border-blue-700 mb-10"></div>
+                    </div>
+                </div>
+                <div className="bg-blue-500 shadow-2xl rounded-xl mx-40 my-0.5 p-12 mb-10 min-h-[600px] flex items-center">
+                    <div className="flex justify-center gap-12 w-full">
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-80">
+                            <div className=" w-full bg-gray-300 flex items-center justify-center">
+                                <img src={idi} className="h-80 w-full object-cover"></img>
+                            </div>
+                            <div className="p-6">
+                                <h3 className="text-2xl font-extrabold text-orange-500">Network Infrastructure</h3>
+                                    <ul className="list-disc list-inside mt-2 text-orange-500">
+                                        <li>High-Speed Internet</li>
+                                        <li>Secure Wi-Fi for students and staff</li>
+                                    </ul>
+                            </div>
+                        </div>
+
+            
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-80">
+                            <div className=" w-full bg-gray-300 flex items-center justify-center">
+                                <img src={comp} className="h-80 w-full object-cover"></img>
+                            </div>
+                            <div className="p-6">
+                                <h3 className="text-2xl font-extrabold text-orange-500">Hardware Infrastructure</h3>
+                                    <ul className="list-disc list-inside mt-2 text-orange-500">
+                                        <li>Computing devices for catalog browsing</li>
+                                        <li>ID card scanning attendance system</li>
+                                    </ul>
+                            </div>
+                        </div>
+
+                        <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-80">
+                            <div className=" w-full bg-gray-300 flex items-center justify-center">
+                                <img src={dig} className="h-80 w-full object-cover"></img>
+                            </div>
+                            <div className="p-6">
+                                <h3 className="text-2xl font-extrabold text-orange-500">Digital Library</h3>
+                                    <ul className="list-disc list-inside mt-2 text-orange-500">
+                                        <li>E-book and digital resource management</li>
+                                        <li>Integration with external repositories</li>
+                                        <li>Remote access to resources</li>
+                                    </ul>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </div>
+        
     )
 }
 

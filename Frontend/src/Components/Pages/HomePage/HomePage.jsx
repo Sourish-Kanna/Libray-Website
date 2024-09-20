@@ -1,4 +1,4 @@
-// import React from 'react'
+import React from 'react'
 // import Library_office_photo from './assets/library_office_photo.png'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -36,19 +36,7 @@ const newsItems = [
     'news 7',
     'news 8',
   ];
-const imagesItems=[
-    image1,
-    image2,
-    image3,
-    image4,
-    image5,
-    image6,
-    image7,
-    image8,
-    image9,
-    image10,
-    image11
-]
+
 
 export default function HomePage() {
   return (
