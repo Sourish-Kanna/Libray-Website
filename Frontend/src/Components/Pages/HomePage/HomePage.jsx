@@ -105,78 +105,78 @@ export default function HomePage() {
                     <div className='flex justify-center text-4xl font-bold'>
                         <p>Images</p>
                     </div>
-                    <div className="border-b-4 mx-auto w-28 mt-2 border-blue-700 mb-10"></div>
+                    <div className="border-b-4 mx-auto w-28 mt-2 border-blue-700 "></div>
                 </div>
-                <div className='slider h-96'>
+                <div className='slider h-[200px] overflow-visible'>
                     <div className="slide-track mb-0">
-                        <div className="slide hover:scale-125 duration-700">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image1} alt="" />
+                        <div className="slide hover:scale-110 duration-700">
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image1} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image2} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image2} alt="" />
                         </div>
                         {/* <div className="slide">
                             <img src={image3} alt="" />
                         </div> */}
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image4} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image4} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image5} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image5} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image6} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image6} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image7} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image7} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image8} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image8} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image9} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image9} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image10} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image10} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image11} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image11} alt="" />
                         </div>
                         
                         {/* same 11 slides doubled */}
 
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image1} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image1} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image2} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image2} alt="" />
                         </div>
                         {/* <div className="slide">
                             <img src={image3} alt="" />
                         </div> */}
                         <div className="slide ">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image4} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image4} alt="" />
                         </div>
                         <div className="slide ">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image5} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image5} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image6} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image6} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image7} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image7} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image8} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image8} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image9} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image9} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image10} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image10} alt="" />
                         </div>
                         <div className="slide">
-                            <img className="hover:scale-125 duration-700 h-96 w-auto" src={image11} alt="" />
+                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image11} alt="" />
                         </div>
                     </div>
                 </div>
