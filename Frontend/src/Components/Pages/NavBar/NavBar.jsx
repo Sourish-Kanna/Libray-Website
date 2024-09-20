@@ -36,8 +36,8 @@ function NavBar() {
                     <StyledNavLink 
                     to="/quicklinks" 
                     text="Quick Links" 
-                    drop_link = {["/quicklinks","/quicklinks","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks"]} 
-                    drop_name={["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/>
+                    drop_link = {["/quicklinks#pyq","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks#lib-brochure"]} 
+                    drop_name={["PYQs","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/>
                     
                     <StyledNavLink 
                     to="/others" 
