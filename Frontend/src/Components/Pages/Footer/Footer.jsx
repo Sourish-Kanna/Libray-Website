@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram } from '@fortawesome/free-brands-svg-icons'; // for brand icons
 import Sies_logo from './assets/sies white logo.png'

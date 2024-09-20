@@ -1,8 +1,8 @@
 // import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
+// import { library } from '@fortawesome/fontawesome-svg-core';
+// import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import event1 from './assets/event_1.jpg'
 import event2 from './assets/event_2.jpg'
@@ -11,7 +11,7 @@ import event4 from './assets/event_4.jpg'
 
 
 export default function Journals(){
-
+    
     const faqs={
         1:["Who can access the library?","All SIES GST students, faculty, and staff can access the library with a valid ID."],
     
@@ -85,9 +85,8 @@ export default function Journals(){
         {img:event4,content:"Organized in collaboration with IEEE, this event includes workshops, seminars, and presentations on recent developments in technology and engineering. Students and faculty are encouraged to explore the IEEE digital library for research and academic purposes"}
     ]
     
-
     const [activeIndex, setActiveIndex] = useState(0);
-
+    
     const handleClick = (index) => {
     setActiveIndex(index);
     };
@@ -105,7 +104,7 @@ return (
             </div>
         </div>
 
-                                                    {/* Events */}
+        {/* Events */}
 
         <div>
             <div className='w-full h-40  flex items-center justify-center'>
@@ -146,10 +145,7 @@ return (
         </div>
 
 
-
-
-
-                                                    {/* More */}
+        {/* More */}
 
         <div className=' rounded-2xl'> {/*bg-[#f3f2ed]*/} 
             <div className='w-full h-20 mt-10  flex items-center justify-center'>
@@ -230,7 +226,7 @@ return (
                 </div>
             </div>
 
-                                                    {/* FAQs */}
+        {/* FAQs */}
 
         <div>
             <div className='w-full h-20 mt-10  flex items-center justify-center'>
@@ -264,7 +260,7 @@ return (
                 </div>
             </div>
         </div>
-                                        {/*More*/}
+        {/*More*/}
         
         
         {/* <div className="max-w-7xl mx-40 px-4 py-8">

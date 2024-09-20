@@ -81,8 +81,7 @@ return (
             </form>
         </div>
 
-            <div className='flex items-center justify-center w-full h-32'>
-            </div>
+        <div className='flex items-center justify-center w-full h-32'/>
     </div>
   )
 }
