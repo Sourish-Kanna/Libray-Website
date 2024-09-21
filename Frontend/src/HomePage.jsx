@@ -2,19 +2,19 @@ import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link } from 'react-router-dom';
-import '../css/HomePage.css'
-import Overview from '../assets/overview.webp'
-import Librian from '../assets/librian.webp'
-import image1 from '../assets/image1.webp'
-import image2 from '../assets/img2.webp'
-import image4 from '../assets/img4.webp'
-import image5 from '../assets/img5.webp'
-import image6 from '../assets/img6.webp'
-import image7 from '../assets/img7.webp'
-import image8 from '../assets/img8.webp'
-import image9 from '../assets/img9.webp'
-import image10 from '../assets/img10.webp'
-import image11 from '../assets/img11.webp'
+import './css/HomePage.css'
+import Overview from './assets/overview.webp'
+import Librian from './assets/librian.webp'
+import image1 from './assets/image1.webp'
+import image2 from './assets/img2.webp'
+import image4 from './assets/img4.webp'
+import image5 from './assets/img5.webp'
+import image6 from './assets/img6.webp'
+import image7 from './assets/img7.webp'
+import image8 from './assets/img8.webp'
+import image9 from './assets/img9.webp'
+import image10 from './assets/img10.webp'
+import image11 from './assets/img11.webp'
 
 
 
