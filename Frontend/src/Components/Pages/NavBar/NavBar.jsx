@@ -2,6 +2,7 @@ import Sies_logo from './assets/sies_logo.png'
 import {NavLink} from 'react-router-dom'
 import { StyledNavLink } from '../../../CustomHooks/Navigation.jsx'
 import { Link } from 'react-router-dom'
+import user from './assets/user_icon.png'
 
 
 const Scholarship = "https://scholarships.gov.in/"
@@ -9,7 +10,7 @@ const Research_fund = "https://www.aicte-india.org/opportunities/students/resear
 
 function NavBar() {
     return (
-      <div className='fixed top-0 z-20 flex w-full px-40 h-fit bg-Navbg'>
+      <div className='fixed top-0 z-20 flex w-full px-30 h-fit bg-Navbg'>
 
             <div className='flex-grow'>
                 <img src={Sies_logo} alt="SIES Logo" className="h-28" />
@@ -47,10 +48,14 @@ function NavBar() {
 
                 </ul>
             </div>
-            <div className='flex align-center h-12 w-40 bg-orange-400 justify-center rounded-full my-6'>
-                <img src="" alt="" />
-                <Link to='/register'><p className='my-2'>Register</p></Link>
+            <div className='flex align-center h-12 w-40 bg-orange-400 justify-center rounded-full mt-8 '>
+                <Link to='/register'><p className='my-3 '>Register</p></Link>
             </div>
+            
+            <div className='flex items-center'>
+                <img src={user} className='h-12 w-12 mb-4 mx-5 ' alt="" />
+            </div>
+            
         </div>
     )
 }

@@ -3,6 +3,7 @@ import { useState } from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../Books/Books.css'
 import {useScrollToHash} from '../../../CustomHooks/Navigation'
+import { useSmoothScroll } from '../../../CustomHooks/Navigation';
 
 const createOption = (value, text) => {
     return (
@@ -40,7 +41,7 @@ const Scholarship = "https://scholarships.gov.in/"
 const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
 
 export default function Quicklinks() {
-
+    useSmoothScroll();
     const [branch, setBranch] = useState('');
     const [semester, setSemester] = useState('');
     const [showPYQs, setShowPYQs] = useState(false);
@@ -85,10 +86,10 @@ export default function Quicklinks() {
     };
 
     const refs=useScrollToHash(['pyq','lib-brochure',"more"]);
-
+    
   return (
-
-    <div className='font-serif mt-28'>
+    
+    <div className='font-serif mt-28 mb-28'>
 
         <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
             <div >
@@ -101,8 +102,8 @@ export default function Quicklinks() {
 
         {/* Question Papers (PYQs) */}
 
-        <div className='mx-40' id='PYQ' ref={refs['pyq']} >
-            <div className='flex items-center justify-center w-full h-40'>
+        <div className='mx-40' id='pyq' ref={refs['pyq']} >
+            <div className='flex items-center justify-center w-full h-32'>
                 <div>
                     <div className='flex justify-center text-4xl font-bold'>
                         <p>Pervious Year Questions</p>
@@ -145,7 +146,8 @@ export default function Quicklinks() {
         
         {/* Library Brochure */}
 
-        <div className='mx-40' ref={refs['lib-brochure']}>
+        {/* <div className='mx-40' ref={refs['lib-brochure']}>
+
             <div className='flex items-center justify-center w-full h-40 mt-12'>
                 <div>
                     <div className='flex justify-center text-4xl font-bold'>
@@ -163,8 +165,7 @@ export default function Quicklinks() {
                 </div>
             </div>
         </div>
-
-        {/* More links */}
+        {/* More links 
 
         <div className='mx-40' ref={refs['more']}>
             <div className='flex items-center justify-center w-full h-40 mt-12'>
@@ -185,7 +186,7 @@ export default function Quicklinks() {
             </div>
         </div>
 
-        <div className='flex items-center justify-center w-full h-32'/>
+        */}
         
     </div>
   )
