@@ -1,7 +1,5 @@
-// import React from 'react'
-// import { Link } from 'react-router-dom'
-import { useSmoothScroll } from '../../../CustomHooks/Navigation';
-import './Books.css'
+import { useSmoothScroll } from './Navigation';
+import '../css/form.css'
 
 const currentYear = new Date().getFullYear()
 const handleInputChange = (event) => {

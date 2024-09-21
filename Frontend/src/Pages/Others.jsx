@@ -1,14 +1,11 @@
-// import React from 'react'
 import { Link } from 'react-router-dom'
 import { useState } from 'react';
-// import { library } from '@fortawesome/fontawesome-svg-core';
-// import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import event1 from './assets/event_1.jpg'
-import event2 from './assets/event_2.jpg'
-import event3 from './assets/event_3.png'
-import event4 from './assets/event_4.jpg'
-import { useSmoothScroll } from '../../../CustomHooks/Navigation'
+import event1 from '../assets/event_1.jpg'
+import event2 from '../assets/event_2.jpg'
+import event3 from '../assets/event_3.png'
+import event4 from '../assets/event_4.jpg'
+import { useSmoothScroll } from './Navigation'
 
 
 
@@ -262,25 +259,6 @@ return (
                 </div>
             </div>
         </div>
-        {/*More*/}
-        
-        
-        {/* <div className="max-w-7xl mx-40 px-4 py-8">
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-16">
-            {moreLinks.map((link, index) => (
-                <div key={index} className="border rounded-lg p-4 shadow hover:shadow-lg transition-shadow duration-200 bg-yellow-200">
-                    <a 
-                    href={link.url} 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-blue-600 hover:text-blue-800 font-semibold text-lg block text-center"
-                    >
-                    {link.name}
-                    </a>
-                </div>
-            ))}
-            </div>
-        </div> */}
         
             
 </div>

@@ -1,26 +1,21 @@
-import { Link,useLocation } from 'react-router-dom'
-import Images from '../HomePage/assets/img5.webp'
-import sand from '../HomePage/assets/sandip.webp'
-import indra from '../HomePage/assets/indrabahadur.webp'
-import sac from '../HomePage/assets/sachin.webp'
-import ref from '../HomePage/assets/img4.webp'
-import ret from '../HomePage/assets/bookret.webp'
-import fac from '../HomePage/assets/img9.webp'
-import repo from '../HomePage/assets/img3.webp'
-import opa from '../HomePage/assets/img11.webp'
-import idi from '../HomePage/assets/img6.webp'
-import comp from '../HomePage/assets/img12.webp'
-import dig from '../HomePage/assets/image1.webp'
+import Images from '../assets/img5.webp'
+import sand from '../assets/sandip.webp'
+import indra from '../assets/indrabahadur.webp'
+import sac from '../assets/sachin.webp'
+import ref from '../assets/img4.webp'
+import ret from '../assets/bookret.webp'
+import fac from '../assets/img9.webp'
+import repo from '../assets/img3.webp'
+import opa from '../assets/img11.webp'
+import idi from '../assets/img6.webp'
+import comp from '../assets/img12.webp'
+import dig from '../assets/image1.webp'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
-import {useScrollToHash} from '../../../CustomHooks/Navigation'
-import { useEffect } from 'react'
-import { useSmoothScroll } from '../../../CustomHooks/Navigation'
-
-
-
+import {useScrollToHash, useSmoothScroll} from './Navigation'
+import { Link } from 'react-router-dom'
 
 library.add(fas, faClock);
 library.add(fas);
