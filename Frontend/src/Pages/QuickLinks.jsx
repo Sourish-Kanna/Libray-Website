@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import '../css/form.css'
-import {useScrollToHash, useSmoothScroll} from './Navigation'
+import {useScrollToHash, useSmoothScroll} from '../Navigation'
 
 const createOption = (value, text) => {
     return (

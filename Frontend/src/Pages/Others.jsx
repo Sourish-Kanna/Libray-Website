@@ -5,7 +5,7 @@ import event1 from '../assets/event_1.jpg'
 import event2 from '../assets/event_2.jpg'
 import event3 from '../assets/event_3.png'
 import event4 from '../assets/event_4.jpg'
-import { useSmoothScroll } from './Navigation'
+import { useSmoothScroll } from '../Navigation'
 
 
 

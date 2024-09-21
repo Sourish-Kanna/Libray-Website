@@ -1,5 +1,5 @@
 import {NavLink} from 'react-router-dom'
-import { StyledNavLink } from './Navigation.jsx'
+import { StyledNavLink } from '../Navigation.jsx'
 import { Link } from 'react-router-dom'
 import Sies_logo from '../assets/sies_logo_header.png'
 import user from '../assets/user_icon.png'

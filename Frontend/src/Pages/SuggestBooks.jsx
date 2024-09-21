@@ -1,4 +1,4 @@
-import { useSmoothScroll } from './Navigation';
+import { useSmoothScroll } from '../Navigation';
 import '../css/form.css'
 
 const currentYear = new Date().getFullYear()

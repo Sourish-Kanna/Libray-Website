@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {useScrollToHash, useSmoothScroll} from './Navigation'
+import {useScrollToHash, useSmoothScroll} from '../Navigation'
 
 export default function EResources() {
 useSmoothScroll();
