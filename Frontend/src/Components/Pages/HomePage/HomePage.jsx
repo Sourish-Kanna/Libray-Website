@@ -1,4 +1,4 @@
-import React from 'react'
+// import React from 'react'
 // import Library_office_photo from './assets/library_office_photo.png'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
@@ -211,7 +211,7 @@ export default function HomePage() {
                         </p>
                     </div>
                     <div className=' text-xl flex-col content-center'>
-                        <p className='bg-yellow-400 my-10  h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer'>Staffs</p>
+                        <Link to='/about#library-staffs'><p className='bg-yellow-400 my-10  h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer'>Staffs</p></Link>
                         <p className='bg-yellow-400 my-10  h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer '>Rules & Regulations</p>
                     </div>
                 </div>

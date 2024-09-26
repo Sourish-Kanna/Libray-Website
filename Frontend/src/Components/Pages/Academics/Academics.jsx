@@ -1,11 +1,13 @@
-import React from 'react'
+// import React from 'react'
 import { Link } from 'react-router-dom'
 import {useScrollToHash} from '../../../CustomHooks/Navigation'
 // import { library } from '@fortawesome/fontawesome-svg-core';
 // import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-export default function EResources() {
+import { useSmoothScroll } from '../../../CustomHooks/Navigation'
 
+export default function EResources() {
+useSmoothScroll();
 const refs=useScrollToHash(['university-syllabus','academic-calender','competitive-exam']);
 
 return (
@@ -37,16 +39,29 @@ return (
                 <label htmlFor="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Branch:</label>
                 <select id="exam" name="exam" className="w-full  p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600 ">
                     <option value="">Select Branch</option>
-                    <option value="c1">1</option>
-                    <option value="c2">2</option>
+                    <option value="c1">MECHANICAL</option>
+                    <option value="c2">AIDS</option>
+                    <option value="c3">AIML</option>
+                    <option value="c4">IT</option>
+                    <option value="c5">EXTC</option>
+                    <option value="c6">ECS</option>
+                    <option value="c7">IOT</option>
+
+
                 </select>
             </div>
             <div className="px-10 mb-4">
                 <label htmlFor="subject" className="block mb-2 text-lg font-bold text-gray-700">Select Semester:</label>
                 <select id="subject" name="subject" className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]">
                     <option value="">Select Semester</option>
-                    <option value="b1">1</option>
-                    <option value="b2">2</option>
+                    <option value="b1">SEM 1</option>
+                    <option value="b2">SEM 2</option>
+                    <option value="b3">SEM 3</option>
+                    <option value="b4">SEM 4</option>
+                    <option value="b5">SEM 5</option>
+                    <option value="b6">SEM 6</option>
+                    <option value="b7">SEM 7</option>
+                    <option value="b8">SEM 8</option>
                 </select>
              </div>
             <div className='flex justify-center'>
@@ -69,8 +84,10 @@ return (
                 <label htmlFor="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Year:</label>
                 <select id="exam" name="exam" className="w-full  p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600 ">
                     <option value="">Select Year</option>
-                    <option value="c1">1</option>
-                    <option value="c2">2</option>
+                    <option value="c1">1st Year</option>
+                    <option value="c2">2nd Year</option>
+                    <option value="c3">3rd Year</option>
+                    <option value="c4">4th Year</option>
                 </select>
             </div>
             <div className="px-10 mb-4">
@@ -93,12 +110,11 @@ return (
                         <div className='flex justify-center text-4xl font-bold '>
                             <p>Competitive Exams</p>
                         </div>
-                        <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
                     </div>
                 </div>
                 <div className='mx-40 '>
                     <div className="relative group">
-                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
                             <p className='text-white'>UPSE</p>
                             <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
                         </div>
@@ -110,7 +126,7 @@ return (
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
                             <p className='text-white'>GRE</p>
                             <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
                         </div>
@@ -122,7 +138,7 @@ return (
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
                             <p className='text-white'>GATE</p>
                             <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
                         </div>
@@ -134,7 +150,7 @@ return (
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
                             <p className='text-white'>SAT</p>
                             <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
                         </div>
@@ -146,7 +162,7 @@ return (
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
                             <p className='text-white'>TOFEL</p>
                             <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
                         </div>

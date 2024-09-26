@@ -1,5 +1,6 @@
 // import React from 'react'
 // import { Link } from 'react-router-dom'
+import { useSmoothScroll } from '../../../CustomHooks/Navigation';
 import './Books.css'
 
 const currentYear = new Date().getFullYear()
@@ -13,6 +14,7 @@ const handleInputChange = (event) => {
 };
 
 export default function EResources() {
+    useSmoothScroll();
 return (
     <div className='font-serif mt-28'>
         {/* <Link to='/academics'></Link> */}
@@ -50,8 +52,7 @@ return (
             </form>
         </div>
 
-            <div className='flex items-center justify-center w-full h-32'>
-            </div>
+            <div className='flex items-center justify-center w-full h-32'/>
     </div>
   )
 }

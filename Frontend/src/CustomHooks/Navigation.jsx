@@ -66,8 +66,24 @@ useEffect(() => {
     refs[hash.replace('#', '')].current.scrollIntoView({ behavior: 'smooth' });
     }
 }, [location, refs]);
-
 return refs;
 };
 
-export { StyledNavLink, StyledDropdown, CustomLink, useScrollToHash };
+//modifying default navigation
+const useSmoothScroll = (offset = 100) => {
+    const location = useLocation();
+    
+    useEffect(() => {
+    if (location.hash) {
+        const element = document.getElementById(location.hash.replace('#', ''));
+        if (element) {
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+            top: elementPosition - offset,
+            behavior: 'smooth',
+            });
+        }
+        }
+    }, [location, offset]);
+};
+export { StyledNavLink, StyledDropdown, CustomLink, useScrollToHash, useSmoothScroll };

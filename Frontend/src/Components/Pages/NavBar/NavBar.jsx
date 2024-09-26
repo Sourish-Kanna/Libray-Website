@@ -1,7 +1,8 @@
 import Sies_logo from './assets/sies_logo.png'
 import {NavLink} from 'react-router-dom'
 import { StyledNavLink } from '../../../CustomHooks/Navigation.jsx'
-
+import { Link } from 'react-router-dom'
+import user from './assets/user_icon.png'
 
 
 const Scholarship = "https://scholarships.gov.in/"
@@ -9,7 +10,7 @@ const Research_fund = "https://www.aicte-india.org/opportunities/students/resear
 
 function NavBar() {
     return (
-      <div className='fixed top-0 z-20 flex w-full px-40 h-fit bg-Navbg'>
+      <div className='fixed top-0 z-20 flex w-full px-30 h-fit bg-Navbg'>
 
             <div className='flex-grow'>
                 <img src={Sies_logo} alt="SIES Logo" className="h-28" />
@@ -24,8 +25,8 @@ function NavBar() {
                     <StyledNavLink 
                     to="/about" 
                     text="About Us" 
-                    drop_link = {["/about#library-hours","/about#library-staffs","/about#facilities"]}
-                    drop_name={["Library Hours","Library Staffs","Facilities"]}/>
+                    drop_link = {["/about#library-hours","/about#library-staffs","/about#facilities","/about#infrastructure"]}
+                    drop_name={["Library Hours","Library Staffs","Facilities","Infrastructure"]}/>
                     
                     <StyledNavLink 
                     to="/academics" 
@@ -36,17 +37,25 @@ function NavBar() {
                     <StyledNavLink 
                     to="/quicklinks" 
                     text="Quick Links" 
-                    drop_link = {["/quicklinks","/quicklinks","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks"]} 
-                    drop_name={["Question Banks","Plagiarism Tool","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/>
+                    drop_link = {["/quicklinks#pyq","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks#lib-brochure"]} 
+                    drop_name={["PYQs","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/>
                     
                     <StyledNavLink 
                     to="/others" 
                     text="Others" 
-                    drop_link = {["/others","/others","/others","/others","/others","/others"]}
+                    drop_link = {["/others","/others","/others","/others","/contactus","/others"]}
                     drop_name={["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"]}/>
 
                 </ul>
             </div>
+            <div className='flex align-center h-12 w-40 bg-orange-400 justify-center rounded-full mt-8 '>
+                <Link to='/register'><p className='my-3 '>Register</p></Link>
+            </div>
+            
+            <div className='flex items-center'>
+                <img src={user} className='h-12 w-12 mb-4 mx-5 ' alt="" />
+            </div>
+            
         </div>
     )
 }

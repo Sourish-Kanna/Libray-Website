@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom'
+import { Link,useLocation } from 'react-router-dom'
 import Images from '../HomePage/assets/img5.webp'
 import sand from '../HomePage/assets/sandip.webp'
 import indra from '../HomePage/assets/indrabahadur.webp'
@@ -16,6 +16,9 @@ import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClock } from '@fortawesome/free-regular-svg-icons';
 import {useScrollToHash} from '../../../CustomHooks/Navigation'
+import { useEffect } from 'react'
+import { useSmoothScroll } from '../../../CustomHooks/Navigation'
+
 
 
 
@@ -24,6 +27,8 @@ library.add(fas);
 
 
 export default function AboutUs() {
+useSmoothScroll();
+    
 
 const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
 
