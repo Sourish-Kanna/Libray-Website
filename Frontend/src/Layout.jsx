@@ -1,4 +1,4 @@
-import NavBar from './Pages/Header'
+import NavBar from './Header'
 import Footer from './Footer'
 import { Outlet,ScrollRestoration } from 'react-router-dom'
 // import Register from './Pages/Register'
