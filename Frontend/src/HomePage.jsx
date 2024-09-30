@@ -1,16 +1,12 @@
-// import React from 'react'
-// import Library_office_photo from './assets/library_office_photo.png'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-// import booksof_library from './assets/library-view.png'
 import { Link } from 'react-router-dom';
-import './HomePage.css'
+import './css/HomePage.css'
 import Overview from './assets/overview.webp'
 import Librian from './assets/librian.webp'
 import image1 from './assets/image1.webp'
 import image2 from './assets/img2.webp'
-import image3 from './assets/img3.webp'
 import image4 from './assets/img4.webp'
 import image5 from './assets/img5.webp'
 import image6 from './assets/img6.webp'
@@ -168,23 +164,6 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
-                {/* <div className=' slider'>
-                    <div className='slider-track'>
-                        <div className='slide'>
-                            {imagesItems.map((image, index) => (
-                            <img key={index} className="ml-10 " src={image} alt={`Image ${index + 1}`} />
-                            ))}
-                        </div>
-
-                                   {/* same images doubled */}
-
-                        {/* <div className='slide'>
-                            {imagesItems.map((image, index) => (
-                            <img key={index} className="h-96 ml-36 hover:scale-125 duration-700" src={image} alt={`Image ${index + 1}`} />
-                            ))}
-                        </div>
-                    </div>
-                </div> */}
             </div>
 
             {/* Librarian */}
