@@ -64,13 +64,15 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                         <FontAwesomeIcon icon="fa-regular fa-clock" className="mr-2 text-blue-500" />
                             OPERATING HOURS</li>
                         <li className="ml-8 font-semibold">
-                            9:00 AM to 6:00 PM</li>
-                        <li className='ml-8 font-semibold'>Monday to Friday</li>
+                            8:00 AM to 7:00 PM</li>
+                            <li className='ml-8 font-semibold'>Circulation time 9:00 AM to 5:00 PM</li>    
+                        <li className='ml-8 font-semibold'>Monday to Saturday</li>
                         <li className='mt-4 text-2xl font-bold text-orange-500'>
                         <FontAwesomeIcon icon="fa-regular fa-clock" className="mr-2 text-blue-500" />
                             SATURDAYS</li>
                         <li className='ml-8 font-semibold'>
                             9:00 AM to 2:00 PM</li>
+                            <li className='ml-8 font-semibold'>2ND and 4TH SATURDAYS CLOSED</li>    
                         <li className='mt-4 text-3xl font-bold text-orange-500'>Closed on Sundays and public holidays</li>
                         </ul>
                     </div>
@@ -107,7 +109,7 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                             <div className="p-6">
                                 <h3 className="text-2xl font-extrabold text-orange-500">Library Attendant</h3>
                                 <p className="font-bold text-orange-500 mt-2">Mr. Sachin Gurav</p>
-                                <p className="font-semibold text-orange-500">M.A, B.Ed., M.L.I.Sc</p>
+                                <p className="font-semibold text-orange-500"> M.L.I.c</p>
                             </div>
                         </div>
 
@@ -117,7 +119,7 @@ const refs = useScrollToHash(['library-hours','library-staffs','facilities']);
                             <div className="p-6">
                                 <h3 className="text-2xl font-extrabold text-orange-500">Library Attendant</h3>
                                 <p className="font-bold text-orange-500 mt-2">Mr. Indrabahadur Singh</p>
-                                <p className="font-semibold text-orange-500">BSc (Phys)</p>
+                                <p className="font-semibold text-orange-500">10TH</p>
                             </div>
                         </div>
                     </div>
