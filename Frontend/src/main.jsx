@@ -9,8 +9,8 @@ import ContactUs from './Pages/ContactUs'
 import Academics from './Pages/Academics'
 import Others from './Pages/Others'
 import Services from './Pages/QuickLinks'
-import DonateBooks from './Pages/DonateBooks'
-import SuggestBooks from './Pages/SuggestBooks'
+import DonateBooks from './Pages/Books-Donate'
+import SuggestBooks from './Pages/Books-Suggest'
 import Register from './Pages/Register'
 
   const router = createBrowserRouter(

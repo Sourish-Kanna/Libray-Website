@@ -161,10 +161,11 @@ export default function Quicklinks() {
                     <a href={Research_fund} className='underline hover:text-[#f26d21] grid my-2'>Reseach Fund</a>
                 </div>
             </div>
-        </div>
-        {/* More links 
+        </div> */}
 
-        <div className='mx-40' ref={refs['more']}>
+        {/* More links  */}
+
+        {/* <div className='mx-40' ref={refs['more']}>
             <div className='flex items-center justify-center w-full h-40 mt-12'>
                 <div>
                     <div className='flex justify-center text-4xl font-bold'>
@@ -181,9 +182,8 @@ export default function Quicklinks() {
                     <a href={Research_fund} className='underline hover:text-[#f26d21] grid my-2'>Reseach Fund</a>
                 </div>
             </div>
-        </div>
+        </div> */}
 
-        */}
         
     </div>
   )
