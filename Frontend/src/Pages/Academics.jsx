@@ -1,10 +1,33 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useScrollToHash, useSmoothScroll} from '../Navigation'
+import React, { useRef } from 'react';
+import useSyllabusStore from '../Store/syllabus.store.js';
 
 export default function EResources() {
 useSmoothScroll();
 const refs=useScrollToHash(['university-syllabus','academic-calender','competitive-exam']);
+
+const {
+branch,
+semester,
+setBranch,
+setSemester,
+fetchSyllabus,
+downloadSyllabus,
+syllabus,
+loading,
+error,
+} = useSyllabusStore();
+
+const handleSubmit = async (e) => {
+e.preventDefault();
+await fetchSyllabus();
+};
+
+const handleDownload = async () => {
+await downloadSyllabus();
+};
 
 return (
     <div className='font-serif mt-28'>
@@ -21,52 +44,90 @@ return (
 
                             {/* University Syllabus */}
 
-        <div className='mx-40' ref={refs['university-syllabus']} id='university-syllabus'>
-            <div className='flex items-center justify-center w-full h-40'>
-                <div >
-                    <div className='flex justify-center text-4xl font-bold '>
-                        <p>University Syllabus</p>
-                    </div>
-                <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
+                            <div className='mx-40' ref={refs['university-syllabus']} id='university-syllabus'>
+        <div className='flex items-center justify-center w-full h-40'>
+            <div>
+            <div className='flex justify-center text-4xl font-bold '>
+                <p>University Syllabus</p>
             </div>
+            <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
             </div>
-            <form id="question-paper-form" className="p-4 flex-col border bg-[#f3f2ed] rounded-2xl shadow-2xl w-3/4 h-auto mx-40 ">
+        </div>
+        <form
+            id="question-paper-form"
+            className="p-4 flex-col border bg-[#f3f2ed] rounded-2xl shadow-2xl w-3/4 h-auto mx-40"
+            onSubmit={handleSubmit}
+        >
             <div className="px-10 mb-4">
-                <label htmlFor="exam" className="block mb-2 text-lg font-bold text-gray-700 ">Select Branch:</label>
-                <select id="exam" name="exam" className="w-full  p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600 ">
-                    <option value="">Select Branch</option>
-                    <option value="c1">MECHANICAL</option>
-                    <option value="c2">AIDS</option>
-                    <option value="c3">AIML</option>
-                    <option value="c4">IT</option>
-                    <option value="c5">EXTC</option>
-                    <option value="c6">ECS</option>
-                    <option value="c7">IOT</option>
-
-
-                </select>
+            <label htmlFor="branch" className="block mb-2 text-lg font-bold text-gray-700">Select Branch:</label>
+            <select
+                id="branch"
+                name="branch"
+                value={branch}
+                onChange={(e) => setBranch(e.target.value)}
+                className="w-full p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600"
+            >
+                <option value="">Select Branch</option>
+                <option value="Computer Engineering">Computer Engineering</option>
+                <option value="MECHANICAL">MECHANICAL</option>
+                <option value="AIDS">AIDS</option>
+                <option value="AIML">AIML</option>
+                <option value="IT">IT</option>
+                <option value="EXTC">EXTC</option>
+                <option value="ECS">ECS</option>
+                <option value="IOT">IOT</option>
+            </select>
             </div>
             <div className="px-10 mb-4">
-                <label htmlFor="subject" className="block mb-2 text-lg font-bold text-gray-700">Select Semester:</label>
-                <select id="subject" name="subject" className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]">
-                    <option value="">Select Semester</option>
-                    <option value="b1">SEM 1</option>
-                    <option value="b2">SEM 2</option>
-                    <option value="b3">SEM 3</option>
-                    <option value="b4">SEM 4</option>
-                    <option value="b5">SEM 5</option>
-                    <option value="b6">SEM 6</option>
-                    <option value="b7">SEM 7</option>
-                    <option value="b8">SEM 8</option>
-                </select>
-             </div>
+            <label htmlFor="semester" className="block mb-2 text-lg font-bold text-gray-700">Select Semester:</label>
+            <select
+                id="semester"
+                name="semester"
+                value={semester}
+                onChange={(e) => setSemester(e.target.value)}
+                className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]"
+            >
+                <option value="">Select Semester</option>
+                <option value="SEM 1">SEM 1</option>
+                <option value="SEM 2">SEM 2</option>
+                <option value="SEM 3">SEM 3</option>
+                <option value="SEM 4">SEM 4</option>
+                <option value="SEM 5">SEM 5</option>
+                <option value="SEM 6">SEM 6</option>
+                <option value="SEM 7">SEM 7</option>
+                <option value="SEM 8">SEM 8</option>
+            </select>
+            </div>
+            {error && (
+            <div className="px-10 mb-4 text-red-500">
+                {error}
+            </div>
+            )}
             <div className='flex justify-center'>
-            <button id="download-btn" className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641] ">Download Syllabus</button>
+            <button
+                type="submit"
+                id="download-btn"
+                className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641]"
+                disabled={loading}
+            >
+                {loading ? 'Loading...' : 'Get Syllabus'}
+            </button>
             </div>
-            </form>
+            {syllabus && (
+            <div className="px-10 mt-4 flex justify-center">
+                <button
+                type="button"
+                onClick={handleDownload}
+                className="px-4 py-2 text-white rounded-md bg-blue-500 active:bg-blue-700"
+                >
+                Click to Download
+                </button>
+            </div>
+            )}
+        </form>
         </div>
                                         {/* Academic Calender */}
-            <div className='mx-40' ref={refs['academic-calender']} id='academic-calender'>
+            {/* <div className='mx-40' ref={refs['academic-calender']} id='academic-calender'>
                 <div className='flex items-center justify-center h-40 mx-40 mt-3'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold '>
@@ -98,7 +159,7 @@ return (
             <button id="download-btn" className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641] ">Download </button>
             </div>
             </form>
-            </div>
+            </div> */}
                                         {/*Competitive Exam*/}
             <div ref={refs['competitive-exams']} id='competitive-exams'>
                 <div className='flex items-center justify-center w-full h-40'>
