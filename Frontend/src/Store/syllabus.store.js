@@ -39,22 +39,25 @@ try {
 },
 
 downloadSyllabus: async () => {
-const { syllabus } = useSyllabusStore.getState();
-if (!syllabus) {
-    set({ error: 'No syllabus available to download.' });
-    return;
-}
+    const { syllabus } = useSyllabusStore.getState();
+    if (!syllabus) {
+        set({ error: 'No syllabus available to download.' });
+        return;
+    }
 
-try {
-    window.location.href = `${API_BASE_URL}/syllabus/${syllabus._id}/download`;
-} catch (err) {
-    set({
-    error:
-        err.response?.data?.message ||
-        'Failed to download syllabus. Please try again.',
-    });
-}
+    try {
+        // Direct download from the backend route
+        window.location.href = `${API_BASE_URL}/syllabus/${syllabus._id}/download`;
+    } catch (err) {
+        set({
+            error:
+                err.response?.data?.message ||
+                'Failed to download syllabus. Please try again.',
+        });
+    }
 },
+
+
 
 createSyllabus: async (formData) => {
 set({ loading: true, error: null });

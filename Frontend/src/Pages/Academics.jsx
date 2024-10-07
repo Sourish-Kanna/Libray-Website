@@ -74,7 +74,7 @@ return (
                 <option value="AIML">AIML</option>
                 <option value="IT">IT</option>
                 <option value="EXTC">EXTC</option>
-                <option value="ECS">ECS</option>
+                <option value="Electronics and Computer Science">Electronics and Computer Science</option>
                 <option value="IOT">IOT</option>
             </select>
             </div>

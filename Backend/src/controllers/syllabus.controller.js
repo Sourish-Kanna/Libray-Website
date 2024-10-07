@@ -3,6 +3,7 @@ import {asyncHandler} from '../utils/asyncHandler.js'
 import {ApiResponse} from '../utils/ApiResponse.js'
 import {ApiError} from '../utils/ApiError.js'
 import {uploadOnCloudinary} from '../utils/cloudinary.js'
+import axios from 'axios'
 
 const updateSyllabus = asyncHandler(async (req, res) => {
     const { branch, semester } = req.body;
@@ -58,11 +59,11 @@ const createSyllabus = asyncHandler(async (req, res) => {
     if(!syllabusUrl){
         throw new ApiError(400,"Failed to upload syllabus !!");
     }
-
+    const syllabusUrlForDownload = syllabusUrl.url +'?dl=true';
     const syllabus = await Syllabus.create({ 
         branch, 
         semester, 
-        syllabusUrl:syllabusUrl.url,
+        syllabusUrl:syllabusUrlForDownload,
     });
     await syllabus.save();
 
@@ -98,8 +99,20 @@ const downloadSyllabus = asyncHandler(async (req, res) => {
         throw new ApiError(404, "Syllabus not found");
     }
 
-    res.redirect(syllabus.syllabusUrl);
+    const cloudinaryFileUrl = syllabus.syllabusUrl;
+
+    const fileStream = await axios({
+        url: cloudinaryFileUrl,
+        method: 'GET',
+        responseType: 'stream',
+    });
+
+    res.setHeader('Content-Type', 'application/pdf');
+    res.setHeader('Content-Disposition', `attachment; filename="${syllabus.title}.pdf"`);
+
+    fileStream.data.pipe(res);
 });
+
 
 
 export{
