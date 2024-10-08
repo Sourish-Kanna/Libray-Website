@@ -162,14 +162,14 @@ const handleBranchChange = (e) => {
     console.log("Branch changed to:", selectedBranch); // Debug
     setBranch(e.target.value);
     setSemester("choose");
-    setSubject("");
+    setSubject("choose");
 };
 
 const handleSemesterChange = (e) => {
     const selectedSemester = e.target.value;
     console.log("Semester changed to:", selectedSemester); // Debug
     setSemester(e.target.value);
-    setSubject("");
+    setSubject("choose");
 };
 
 const handleSubjectChange = (e) => {
@@ -195,7 +195,7 @@ const availableSubjects = subjectOptions[branch]?.[semester] || [];
 const isSubmitDisabled =
     branch === "choose" ||
     semester === "choose" ||
-    subject === "" ||
+    subject === "choose" ||
     year === "choose" ||
     month === "choose" ||
     loading;
