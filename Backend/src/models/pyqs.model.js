@@ -29,6 +29,15 @@ const pyqSchema = new Schema({
         required:true,
         transform: (val) => val.toLowerCase()
     },
+    year:{
+        type:Number,
+        required:true,
+    },
+    month:{
+        type:String,
+        required:true,
+        transform: (val) => val.toLowerCase()
+    },
     questionPaperUrl: {
         type: String,
         required: true
