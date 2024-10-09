@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import '../css/form.css'
+import '../css/QuickLinks.css'
 import {useScrollToHash, useSmoothScroll} from '../Navigation'
 import usePyqsStore from '../Store/pyqs.store';
 import axios from 'axios';
