@@ -1,7 +1,7 @@
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link } from 'react-router-dom';
+import { Link,NavLink } from 'react-router-dom';
 import './css/HomePage.css'
 import Overview from './assets/overview.webp'
 import Librian from './assets/librian.webp'
@@ -60,8 +60,12 @@ export default function HomePage() {
                 
                 {/*Quick Links */}
                 <div className='flex justify-around w-3/6 pl-20 pr-32 mt-20 mr-40 text-3xl ml-96'>
-                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer  rounded-xl  active:scale-95 active:text-white'>PYQs <FontAwesomeIcon className='py-1 px-3 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
-                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer   rounded-xl active:scale-95 active:text-white'>Learn more <FontAwesomeIcon className='py-1 text-3xl px-3 ' icon="fa-solid fa-arrow-up-right-from-square" /></div>
+                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer  rounded-xl  active:scale-95 active:text-white'>
+                        <NavLink to='quicklinks#pyq'>Question Papers</NavLink>
+                        <FontAwesomeIcon className='py-1 px-3 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
+                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer   rounded-xl active:scale-95 active:text-white'>
+                        <NavLink to='about'>FAQs</NavLink>
+                        <FontAwesomeIcon className='py-1 text-3xl px-3 ' icon="fa-solid fa-arrow-up-right-from-square" /></div>
                 </div>
             </div>
 

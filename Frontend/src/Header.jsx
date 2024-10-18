@@ -1,12 +1,14 @@
 import {NavLink} from 'react-router-dom'
 import { StyledNavLink } from './Navigation.jsx'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 import Sies_logo from './assets/sies_logo_header.png'
-import user from './assets/user_icon.png'
+// import user from './assets/user_icon.png'
 
 
 const Scholarship = "https://scholarships.gov.in/"
 const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
+const activeClassName = 'text-[#f26d21]';
+const inactiveClassName = 'text-[#014da1] hover:text-blue-400';
 
 function NavBar() {
     return (
@@ -19,42 +21,51 @@ function NavBar() {
             <div className='flex-grow h-full mt-2'>
                 <ul className='flex items-center justify-between w-full font-serif flex-nowrap'>
                     <li className='text-[#014da1] cursor-pointer font-medium text-xl m-8'>
-                        <NavLink to='' className={({ isActive }) => `${isActive ? 'text-[#f26d21]' : 'text-[#014da1] hover:text-blue-400'}`}>Home</NavLink>
+                        <NavLink to='' className={({ isActive }) => 
+                            `${isActive ? activeClassName : inactiveClassName}`
+                            }>Home</NavLink>
                     </li>
+                    
+                    <StyledNavLink 
+                    to="/academics" 
+                    text="E-Resources" 
+                    drop_link = {["/quicklinks#pyq","/academics","/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"]}
+                    drop_name={["Question Papers","OER","DELNET","IEEE","OPAC"]}/>
                     
                     <StyledNavLink 
                     to="/about" 
                     text="About Us" 
-                    drop_link = {["/about#library-hours","/about#library-staffs","/about#facilities","/about#infrastructure"]}
-                    drop_name={["Library Hours","Library Staffs","Facilities","Infrastructure"]}/>
-                    
-                    <StyledNavLink 
-                    to="/academics" 
-                    text="Academics" 
-                    drop_link = {["/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"]}
-                    drop_name={["University Syllabus","Academic Calender","Competitive Exams"]}/>
-                    
-                    <StyledNavLink 
+                    drop_link = {["/about#library-hours","/about#library-hours","/about#library-staffs","/about#infrastructure"]}
+                    drop_name={["Library Hours","Libray Rules","Library Staffs","FAQs"]}/>
+
+                    {/* <StyledNavLink 
                     to="/quicklinks" 
                     text="Quick Links" 
                     drop_link = {["/quicklinks#pyq","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks#lib-brochure"]} 
-                    drop_name={["PYQs","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/>
+                    drop_name={["PYQs","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/> */}
                     
                     <StyledNavLink 
                     to="/others" 
                     text="Others" 
-                    drop_link = {["/others","/others","/others","/others","/contactus","/others"]}
-                    drop_name={["IEEE","DELNET","E-Books","Events","Contact Us","FeedBack"]}/>
+                    drop_link = {["/donate-books","/suggest-books","/others","/others","/about#facilities","/about#infrastructure"]}
+                    drop_name={["Donate Books","Suggest Books","Book Bank","Feedback","Facilities","Infrastructure"]}/>
+
+                    <li className='text-[#014da1] cursor-pointer font-medium text-xl mr-8'>
+                        <NavLink to='contactus' className={({ isActive }) => 
+                            `${isActive ? activeClassName : inactiveClassName}`
+                            }>Contact Us</NavLink>
+                    </li>
 
                 </ul>
             </div>
-            <div className='flex align-center h-12 w-40 bg-orange-400 justify-center rounded-full mt-8 '>
+
+            {/* <div className='flex align-center h-12 w-40 bg-orange-400 justify-center rounded-full mt-8 '>
                 <Link to='/register'><p className='my-3 '>Register</p></Link>
             </div>
             
             <div className='flex items-center'>
                 <img src={user} className='h-12 w-12 mb-4 mx-5 ' alt="" />
-            </div>
+            </div> */}
             
         </div>
     )
