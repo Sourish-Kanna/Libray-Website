@@ -1,17 +1,43 @@
 import {NavLink} from 'react-router-dom'
+import { useState } from 'react';
 import { StyledNavLink } from './Navigation.jsx'
-// import { Link } from 'react-router-dom'
-import Sies_logo from './assets/sies_logo_header.png'
-// import user from './assets/user_icon.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import { useState } from 'react';
+import Sies_logo from './assets/sies_logo_header.png'
+// import user from './assets/user_icon.png'
+// import { Link } from 'react-router-dom'
 
 
-const Scholarship = "https://scholarships.gov.in/"
-const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
+// const Scholarship = "https://scholarships.gov.in/"
+// const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
 const activeClassName = 'text-[#f26d21]';
 const inactiveClassName = 'text-[#014da1] hover:text-blue-400';
+const navLinks = [
+    {
+      to: "/academics",
+      text: "E-Resources",
+      drop_link: ["/quicklinks#pyq", "/academics", "/academics#university-syllabus", "/academics#academic-calender", "/academics#competitive-exams"],
+      drop_name: ["Question Papers", "OER", "DELNET", "IEEE", "OPAC"],
+    },
+    {
+      to: "/about",
+      text: "About Us",
+      drop_link: [ "/about#library-hours", "/about#library-hours", "/about#library-staffs", "/about#infrastructure"],
+      drop_name: ["Library Hours", "Library Rules", "Library Staffs", "FAQs"],
+    },
+    // {
+    //   to: "/quicklinks",
+    //   text: "Quick Links",
+    //   drop_link: ["/quicklinks#pyq", "/donate-books", "/suggest-books", "Scholarship", "Research_fund", "/quicklinks#lib-brochure"],
+    //   drop_name: ["PYQs",  "Donate Books",  "Suggest Books",  "Scholarships",  "Research Funds",  "Library Brochure"]
+    // },
+    {
+      to: "/others",
+      text: "Others",
+      drop_link: ["/donate-books", "/suggest-books", "/others", "/others", "/about#facilities", "/about#infrastructure"],
+      drop_name: ["Donate Books", "Suggest Books", "Book Bank", "Feedback", "Facilities", "Infrastructure"],
+    },
+  ];
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
@@ -45,29 +71,15 @@ function NavBar() {
                             }>Home</NavLink>
                     </li>
                     
-                    <StyledNavLink 
-                    to="/academics" 
-                    text="E-Resources" 
-                    drop_link = {["/quicklinks#pyq","/academics","/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"]}
-                    drop_name={["Question Papers","OER","DELNET","IEEE","OPAC"]}/>
-                    
-                    <StyledNavLink 
-                    to="/about" 
-                    text="About Us" 
-                    drop_link = {["/about#library-hours","/about#library-hours","/about#library-staffs","/about#infrastructure"]}
-                    drop_name={["Library Hours","Libray Rules","Library Staffs","FAQs"]}/>
-
-                    {/* <StyledNavLink 
-                    to="/quicklinks" 
-                    text="Quick Links" 
-                    drop_link = {["/quicklinks#pyq","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks#lib-brochure"]} 
-                    drop_name={["PYQs","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/> */}
-                    
-                    <StyledNavLink 
-                    to="/others" 
-                    text="Others" 
-                    drop_link = {["/donate-books","/suggest-books","/others","/others","/about#facilities","/about#infrastructure"]}
-                    drop_name={["Donate Books","Suggest Books","Book Bank","Feedback","Facilities","Infrastructure"]}/>
+                    {navLinks.map((link, index) => (
+                        <StyledNavLink
+                        key={index}
+                        to={link.to}
+                        text={link.text}
+                        drop_link={link.drop_link}
+                        drop_name={link.drop_name}
+                        />
+                    ))}
 
                     <li className='text-[#014da1] cursor-pointer font-medium text-xl mr-4'>
                         <NavLink to='contactus' className={({ isActive }) => 
@@ -90,29 +102,15 @@ function NavBar() {
                             }>Home</NavLink>
                     </li>
                     
-                    <StyledNavLink 
-                    to="/academics" 
-                    text="E-Resources" 
-                    drop_link = {["/quicklinks#pyq","/academics","/academics#university-syllabus","/academics#academic-calender","/academics#competitive-exams"]}
-                    drop_name={["Question Papers","OER","DELNET","IEEE","OPAC"]}/>
-                    
-                    <StyledNavLink 
-                    to="/about" 
-                    text="About Us" 
-                    drop_link = {["/about#library-hours","/about#library-hours","/about#library-staffs","/about#infrastructure"]}
-                    drop_name={["Library Hours","Libray Rules","Library Staffs","FAQs"]}/>
-
-                    {/* <StyledNavLink 
-                    to="/quicklinks" 
-                    text="Quick Links" 
-                    drop_link = {["/quicklinks#pyq","/donate-books","/suggest-books",Scholarship,Research_fund,"/quicklinks#lib-brochure"]} 
-                    drop_name={["PYQs","Donate Books","Suggest Books","Scholarships", "Research Funds", "Library Brochure"]}/> */}
-                    
-                    <StyledNavLink 
-                    to="/others" 
-                    text="Others" 
-                    drop_link = {["/donate-books","/suggest-books","/others","/others","/about#facilities","/about#infrastructure"]}
-                    drop_name={["Donate Books","Suggest Books","Book Bank","Feedback","Facilities","Infrastructure"]}/>
+                    {navLinks.map((link, index) => (
+                        <StyledNavLink
+                        key={index}
+                        to={link.to}
+                        text={link.text}
+                        drop_link={link.drop_link}
+                        drop_name={link.drop_name}
+                        />
+                    ))}
 
                     <li className='text-[#014da1] cursor-pointer font-medium text-xl m-8'>
                         <NavLink to='contactus' className={({ isActive }) => 
