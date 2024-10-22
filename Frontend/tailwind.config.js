@@ -9,10 +9,10 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'Navbg': "url('/src/Components/Pages/NavBar/assets/innerheadercommon.jpg')",
+        'Navbg': "url('/src/assets/header_bg.jpg')",
 
         'homepage-bg':"linear-gradient(rgba(108, 150, 245, 0.6), rgba(108, 150, 245, 0.6), rgba(108, 150, 245, 0.6)),"
-        +"url('/src/Components/Pages/HomePage/assets/library-view.png')",        
+        +"url('/src/assets/library-view.png')",        
       }
     },
   },
