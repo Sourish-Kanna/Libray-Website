@@ -36,7 +36,7 @@ const newsItems = [
 
 export default function HomePage() {
   return (
-        <div className='w-full h-full mt-20 overflow-x-hidden font-serif '>
+        <div className='w-full h-full mt-24 pt-3 overflow-x-hidden font-serif '>
             <Link to='/'></Link>
 
             {/* Inital View */}
