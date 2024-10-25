@@ -16,11 +16,11 @@ const createPYQ = asyncHandler(async (req, res) => {
 
     // Check if the same PYQ already exists
     const existingPYQ = await PYQ.findOne({
-        branch,
-        semester,
-        subject: subject.toLowerCase(), // Ensure subject comparison is case-insensitive
-        year,
-        month
+        branch: { $eq: branch },
+        semester: { $eq: semester },
+        subject: { $eq: subject.toLowerCase() }, // Ensure subject comparison is case-insensitive
+        year: { $eq: year },
+        month: { $eq: month }
     });
 
     if (existingPYQ) {
