@@ -79,7 +79,7 @@ const getSyllabus = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Please provide branch and semester");
     }
 
-    const syllabus = await Syllabus.findOne({ branch, semester });
+    const syllabus = await Syllabus.findOne({ branch: { $eq: branch }, semester: { $eq: semester } });
     if (!syllabus) {
         throw new ApiError(404, "Syllabus not found");
     }
