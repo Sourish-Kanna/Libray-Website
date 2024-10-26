@@ -1,24 +1,21 @@
-// import { useState } from 'react'
-// import './App.css'
-import './index.css'
+import './css/index.css'
 import React from 'react'
-// import NavBar from './Components/Pages/NavBar/NavBar'
-// import Footer from './Components/Pages/Footer/Footer'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import ReactDOM from 'react-dom/client'
-import Layout from './Components/Layout'
-import HomePage from './Components/Pages/HomePage/HomePage'
-import AboutUs from './Components/Pages/AboutUs/AboutUs'
-import ContactUs from './Components/Pages/ContactUs/ContactUs'
-import Academics from './Components/Pages/Academics/Academics'
-import Others from './Components/Pages/Others/Others'
-import Services from './Components/Pages/QuickLinks/QuickLinks'
-import DonateBooks from './Components/Pages/Books/DonateBooks'
-import SuggestBooks from './Components/Pages/Books/SuggestBooks'
+import Layout from './Layout'
+import HomePage from './HomePage'
+import AboutUs from './Pages/AboutUs'
+import ContactUs from './Pages/ContactUs'
+import Academics from './Pages/Academics'
+import Others from './Pages/Others'
+import Services from './Pages/QuickLinks'
+import DonateBooks from './Pages/Books-Donate'
+import SuggestBooks from './Pages/Books-Suggest'
+import Register from './Pages/Register'
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-     
+    <>
       <Route path='/' element={<Layout/>}>
         <Route path='' element={<HomePage/>}/>
         <Route path='home' element={<HomePage/>}/>
@@ -30,6 +27,8 @@ import SuggestBooks from './Components/Pages/Books/SuggestBooks'
         <Route path='donate-books' element={<DonateBooks/>}/>
         <Route path='suggest-books' element={<SuggestBooks/>}/>
       </Route>
+      <Route path='register' element={<Register/>} />
+    </>
     )
   )
 
