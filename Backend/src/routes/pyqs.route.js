@@ -12,12 +12,15 @@ import {upload} from '../middlewares/multer.middleware.js';
 
 const router = Router();
 
+
 // set up rate limiter: maximum of 100 requests per 15 minutes
+
 const limiter = RateLimit({
     windowMs: 15 * 60 * 1000, // 15 minutes
     max: 100, // max 100 requests per windowMs
 });
 
+router.use(limiter);
 router.post('/create',upload.single("questionPaper"), createPYQ);
 router.get('/', getPYQ);
 router.patch('/:pyqId/update',upload.single("questionPaper"), updatePYQ);
