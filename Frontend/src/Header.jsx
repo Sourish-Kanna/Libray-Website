@@ -4,12 +4,8 @@ import { StyledNavLink } from './Navigation.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Sies_logo from './assets/sies_logo_header.png'
-// import user from './assets/user_icon.png'
-// import { Link } from 'react-router-dom'
 
 
-// const Scholarship = "https://scholarships.gov.in/"
-// const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
 const activeClassName = 'text-[#f26d21]';
 const inactiveClassName = 'text-[#014da1] hover:text-blue-400';
 const navLinks = [
@@ -25,12 +21,6 @@ const navLinks = [
       drop_link: [ "/about#library-hours", "/about#library-hours", "/about#library-staffs", "/about#infrastructure"],
       drop_name: ["Library Hours", "Library Rules", "Library Staffs", "FAQs"],
     },
-    // {
-    //   to: "/quicklinks",
-    //   text: "Quick Links",
-    //   drop_link: ["/quicklinks#pyq", "/donate-books", "/suggest-books", "Scholarship", "Research_fund", "/quicklinks#lib-brochure"],
-    //   drop_name: ["PYQs",  "Donate Books",  "Suggest Books",  "Scholarships",  "Research Funds",  "Library Brochure"]
-    // },
     {
       to: "/others",
       text: "Others",
@@ -47,7 +37,7 @@ function NavBar() {
     };
 
     return (
-      <div className='fixed top-0 z-20 w-full h-fit bg-Navbg'>
+      <div className=' top-0 z-20 w-full h-fit bg-Navbg'>
 
             <div className='flex items-center justify-between px-4 lg:px-10 xl:px-30 '>
                 <div className='flex items-center'>

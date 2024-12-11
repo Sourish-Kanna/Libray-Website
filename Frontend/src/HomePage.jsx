@@ -40,7 +40,7 @@ export default function HomePage() {
             <Link to='/'></Link>
 
             {/* Inital View */}
-            <div className='w-full h-screen bg-center bg-no-repeat bg-cover bg-homepage-bg'>
+            <div className='w-full h-screen bg-center bg-no-repeat bg-cover homepage-bg'>
 
                 {/* News Row */}
                 <div className='flex mt-8 bg-yellow-100 text-xl'>
