@@ -18,8 +18,6 @@ import image11 from './assets/img11.webp'
 
 
 
-
-
 library.add(fas);
 
 const newsItems = [
@@ -36,14 +34,14 @@ const newsItems = [
 
 export default function HomePage() {
   return (
-        <div className='w-full h-full mt-24 pt-3 overflow-x-hidden font-serif '>
+        <div className='w-full h-full overflow-x-hidden  '>
             <Link to='/'></Link>
 
             {/* Inital View */}
             <div className='w-full h-screen bg-center bg-no-repeat bg-cover homepage-bg'>
 
                 {/* News Row */}
-                <div className='flex mt-8 bg-yellow-100 text-xl'>
+                <div className='flex bg-yellow-100 text-xl'>
                     <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">News</p>
                     <div className="flex justify-around w-11/12 p-2 bg-news-back">
                         {newsItems.map((newsItem, index) => (
@@ -54,7 +52,7 @@ export default function HomePage() {
                 </div>
                 
                 {/* Typing Logo */}
-                <div className='mx-40 mt-44 bg-typing font-bold text-white typing-demo text-9xl'>
+                <div className='mx-40 mt-44 bg-typing font-serif font-bold text-white typing-demo text-9xl'>
                      SIES GST LIBRARY
                 </div>
                 
@@ -82,7 +80,12 @@ export default function HomePage() {
                         <img className='h-60 rounded-xl' src={Overview} alt="" />
                     </div>
                     <div className='w-7/12 mr-10'>
-                        <p>SIES Graduate School of Technology (GST) is a premier engineering institution located in Navi Mumbai. Established with a vision to impart quality education, SIES GST offers undergraduate and postgraduate programs in various engineering disciplines. The college is known for its strong academic curriculum, experienced faculty, and state-of-the-art facilities. With a focus on innovation, research, and holistic development, SIES GST prepares students to excel in their careers and contribute to the industry and society. The college emphasizes ethical values and community service, aligning with the SIES tradition of education for life.</p>
+                        <p>SIES Graduate School of Technology (GST) is a premier engineering institution located in Navi Mumbai. 
+                            Established with a vision to impart quality education, SIES GST offers undergraduate and postgraduate 
+                            programs in various engineering disciplines. The college is known for its strong academic curriculum, 
+                            experienced faculty, and state-of-the-art facilities. With a focus on innovation, research, and holistic 
+                            development, SIES GST prepares students to excel in their careers and contribute to the industry and society. 
+                            The college emphasizes ethical values and community service, aligning with the SIES tradition of education for life.</p>
                     </div>
                 </div>
             </div>

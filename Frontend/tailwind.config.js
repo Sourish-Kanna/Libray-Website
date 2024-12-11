@@ -3,18 +3,17 @@ export default {
   content: [
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
-  ],  theme: {
+  ],  
+  theme: {
     fontFamily: {
-      serif: ['Merriweather', 'serif'],
+      serif: ['Merriweather', 'Fraunces', 'serif'],
+      sans: ['Open Sans', 'Signika', 'Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {
       backgroundImage: {
         'Navbg': "url('/src/assets/header_bg.jpg')",
-      
       }
     },
   },
   plugins: [],
 }
-
-
