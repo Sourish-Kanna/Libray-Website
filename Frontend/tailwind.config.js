@@ -11,9 +11,26 @@ export default {
     },
     extend: {
       backgroundImage: {
-        'Navbg': "url('/src/assets/header_bg.jpg')",
-      }
-    },
+        'header-bg': "url('../assets/Header/header_bg.jpg')",
+      },
+      backgroundPosition: {
+        'top-header': 'top',
+      },
+      backgroundSize: {
+        'cover-header': 'cover',
+      },
+      colors: {
+        'header-color': '#f3f2ed',
+      },
+      fontSize: {
+        "Title": '1.5rem',
+        "Primary": '1.25rem',
+        "Secondary": '1.125rem',
+        "Body": '1rem',
+        "SubBody": '.875rem',
+        "small": '.75rem',
+      },
+    },        
   },
   plugins: [],
 }

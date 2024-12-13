@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import { StyledNavLink } from './Navigation.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
-import Sies_logo from './assets/sies_logo_header.png'
+import Sies_logo from './assets/Header/sies_logo_header.png'
 
 const activeClassName = 'text-[#f26d21]';
 const inactiveClassName = 'text-[#014da1] hover:text-blue-400';
@@ -31,13 +31,12 @@ const navLinks = [
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+    const toggleMenu = () => {setIsOpen(!isOpen);};
 
     return (
-        <header className=" top-0 z-20 w-full h-fit bg-Navbg ">
+        <header className="top-0 z-20 w-full h-fit bg-header-color bg-header-bg bg-top-header bg-cover-header">
             <div className='flex items-center justify-between px-4 lg:px-10 xl:px-30 '>
+
                 <div className='flex items-center'>
                     <img src={Sies_logo} alt="SIES Logo" className="h-full" />
                 </div>
