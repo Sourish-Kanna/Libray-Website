@@ -121,31 +121,42 @@ export default function HomePage() {
             </div>
 
             {/* Librarian */}
-            <div className='text-xl  h-screen'>
-                <div className='z-0'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold'>
-                        <p>Librarian</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-36 mt-2 border-blue-700 mb-10"></div>
+            <div className="text-xl h-auto sm:h-screen bg-gray-100 py-10">
+                {/* Section Header */}
+                <div>
+                    <div className="flex justify-center text-3xl sm:text-4xl font-bold">
+                    <p>Librarian</p>
                     </div>
+                    <div className="border-b-4 mx-auto w-24 sm:w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
-                <div className='flex justify-between bg-blue-500 opacity-0.1 mx-40 rounded-xl p-16 hover:scale-105 duration-700'>
-                    <div className='flex-col '>
-                        <img className='rounded-full h-72 mb-5' src={Librian} alt="" />
-                        <p className="text-center text-white">Librarian - Mrs.Arunadevi Lingam</p>
-                        <p className="text-center text-white">B.Sc(Phy), MLISc, NET</p>
-                        {/* <p>email</p> */}
-                    </div>
-                    <div className='flex items-center w-6/12 text-white'>
-                        <p className='text-xl'>Welcome to the SIES GST Library, your gateway to knowledge and learning. Our library is more than just a collection of books; it’s a vibrant space where ideas come to life and innovation begins. We are here to support your academic journey with a vast array of resources, from physical books to digital content. Make the most of this treasure trove of information, and remember, the library is a place where your curiosity is encouraged and your questions are valued.
 
-                            <p className='mt-5'>Best wishes for your academic success!</p>
-                        </p>
+                {/* Content Container */}
+                <div className="flex flex-col lg:flex-row justify-between bg-blue-500 bg-opacity-10 mx-5 lg:mx-40 rounded-xl p-10 sm:p-16 hover:scale-105 duration-700">
+                    {/* Librarian Image and Details */}
+                    <div className="flex flex-col items-center text-center mb-8 lg:mb-0">
+                    <img className="rounded-full h-48 sm:h-72 mb-5 object-cover" src={Librian} alt="Librarian" />
+                    <p className="text-lg sm:text-xl text-blue-900 font-semibold">Librarian - Mrs. Arunadevi Lingam</p>
+                    <p className="text-sm sm:text-base text-gray-700">B.Sc(Phy), MLISc, NET</p>
                     </div>
-                    <div className=' text-xl flex-col content-center'>
-                        <Link to='/about#library-staffs'><p className='bg-yellow-400 my-10  h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer'>Staffs</p></Link>
-                        <p className='bg-yellow-400 my-10  h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer '>Rules & Regulations</p>
+
+                    {/* Librarian Message */}
+                    <div className="lg:w-6/12 text-blue-900 mb-8 lg:mb-0">
+                    <p>
+                        Welcome to the SIES GST Library, your gateway to knowledge and learning. Our library is more than just a collection of books; it’s a vibrant space where ideas come to life and innovation begins. We are here to support your academic journey with a vast array of resources, from physical books to digital content. Make the most of this treasure trove of information, and remember, the library is a place where your curiosity is encouraged and your questions are valued.
+                    </p>
+                    <p className="mt-5">Best wishes for your academic success!</p>
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="flex flex-col justify-center space-y-5">
+                    <Link to="/about#library-staffs">
+                        <p className="bg-yellow-400 h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer text-sm sm:text-base">
+                        Staffs
+                        </p>
+                    </Link>
+                    <p className="p-3 bg-yellow-400 h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer text-sm sm:text-base">
+                        Rules & Regulations
+                    </p>
                     </div>
                 </div>
             </div>
