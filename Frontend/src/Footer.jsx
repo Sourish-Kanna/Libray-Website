@@ -10,6 +10,7 @@ const inactiveClassName = "text-white hover:text-gray-300";
 const sections = [
   {
     title: 'E-Resources',
+    to: "/academics",
     links: [
       { name: 'Question Papers', path: '/quicklinks#pyq' },
       { name: 'OER', path: '/academics' },
@@ -20,6 +21,7 @@ const sections = [
   },
   {
     title: 'About Us',
+    to: "/about",
     links: [
       { name: 'Library Hours', path: '/about#library-hours' },
       { name: 'Library Rules', path: '/about#library-rules' },
@@ -29,6 +31,7 @@ const sections = [
   },
   {
     title: 'Others',
+    to: "/others",
     links: [
       { name: 'Donate Books', path: '/donate-books' },
       { name: 'Suggest Books', path: '/suggest-books' },
@@ -73,7 +76,7 @@ function Footer() {
             {sections.map((section) => (
               <div key={section.title} className="py-6">
                 <NavLink 
-                  to={`/${section.title.toLowerCase()}`} 
+                  to={`${section.to}`} 
                   className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}
                   aria-label={`Go to ${section.title} section`}
                 >
