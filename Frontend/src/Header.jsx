@@ -27,29 +27,26 @@ const navLinks = [
   },
 ];
 
-const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile, toggleDropdown, index }) => {
+const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile}) => {
     if (isMobile) {
         return (
-            <li id={index} className="text-s_blue group cursor-pointer font-medium text-2-Primary mt-8 flex items-center">
+            <li className="text-s_blue group cursor-pointer font-medium text-2-Primary mt-8 flex items-center">
               <NavLink
               to={to}
-              className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}
-              onClick={() => toggleDropdown(index)}>
+              className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
                 {text}
                 <FontAwesomeIcon icon="fa-solid fa-caret-down" className="px-1.5" />
               </NavLink>
                 <MobStyledDropdown
                   to={drop_link}
                   text={drop_name}
-                  isOpen={toggleDropdown[index]}
-                  toggleDropdown={() => toggleDropdown(index)}
                 />
               {!isMobile && <StyledDropdown to={drop_link} text={drop_name} />}
             </li>
           );
     }
   return (
-    <li id={index} className="text-s_blue group relative cursor-pointer font-medium text-Primary m-8 flex items-center">
+    <li className="text-s_blue group relative cursor-pointer font-medium text-Primary m-8 flex items-center">
       <NavLink
         to={to}
         className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
@@ -76,19 +73,18 @@ const StyledDropdown = ({ to, text }) => {
   );
 };
 
-const MobStyledDropdown = ({ to, text, isOpen, toggleDropdown }) => {
-    console.log(toggleDropdown)
+const MobStyledDropdown = ({ to, text}) => {
     return (
-      <div className={` ${isOpen ? 'block' : 'hidden'} bg-transparent w-52 top-8 -left-14`}>
-        <ul className="bg-gray-300 text-center">
-          {text.map((item, index) => (
-            <li key={index} className="py-3 pl-2 border-b-2 hover:bg-gray-200">
-              <CustomLink link={to[index]} name={item} />
-            </li>
-          ))}
-        </ul>
-      </div>
-    );
+        <div className=" hidden group-hover:flex w-52 top-8 -left-14">
+          <ul className="bg-header-color text-center">
+            {text.map((item, index) => (
+              <li key={index} className="py-3 pl-2 border-b-2 hover:bg-gray-200">
+                <CustomLink link={to[index]} name={item} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      );
   };
 
 const CustomLink = ({ name, link }) => {
@@ -101,17 +97,11 @@ const CustomLink = ({ name, link }) => {
 
 function NavBar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [dropdownState, setDropdownState] = useState(Array(navLinks.length).fill(false));
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
   };
 
-  const toggleDropdown = (index) => {
-    const newState = [...dropdownState];
-    newState[index] = !newState[index];
-    setDropdownState(newState);
-  };
 
   return (
     <header className="top-0 z-20 w-full h-fit bg-header-color bg-header-bg bg-top-header bg-cover-header">
@@ -143,10 +133,7 @@ function NavBar() {
                 text={link.text}
                 drop_link={link.drop_link}
                 drop_name={link.drop_name}
-                isMobile={false}
-                toggleDropdown={dropdownState}
-                index={index}
-              />
+                isMobile={false} />
             ))}
 
             <li className="text-s_blue cursor-pointer font-medium text-Primary mr-4">
@@ -175,10 +162,7 @@ function NavBar() {
                 text={link.text}
                 drop_link={link.drop_link}
                 drop_name={link.drop_name}
-                isMobile={true}
-                toggleDropdown={toggleDropdown} // Pass the function here
-                index={index}
-              />
+                isMobile={true} />
             ))}
 
             <li className="text-s_blue cursor-pointer font-medium text-2-Primary mx-8">
@@ -194,56 +178,3 @@ function NavBar() {
 }
 
 export default NavBar;
-
-{/* <div style="padding:0px float:left; width:100%; padding:10px 0px 10px 20px; text-align:center; border-bottom:1px solid #f26d21;" 
-onclick="javascript:$('.mobile_submenus').hide(); $(this).children('div').show('slow');">
-<a href="javascript:void(0);" class="menu_links">About</a>
-<div id="mobile_menu_1" class="mobile_submenus" style="">
-<div style="float:left; padding:15px 10px;  width:100%; text-align:left;">
-<div style="padding:2px 0px;">
-<a href="https://siesgst.edu.in/about-sies" style="color:#000; font-weight:500;">About SIES</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="https://siesgst.edu.in/about-sies-gst" style="color:#000; font-weight:500;">About SIES GST</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="https://siesgst.edu.in/message-hon-advisor" style="color:#000; font-weight:500;">Message from Hon. Advisor</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="https://siesgst.edu.in/principals-desk" style="color:#000; font-weight:500;">From The Principal's Desk</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="https://siesgst.edu.in/management" style="color:#000; font-weight:500;">Management</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="images/Annual Report 2023-24.pdf" target="_blank" style="color:#000; font-weight:500;">Annual Report</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="images/MANDATORY DISCLOSURE April 2023.pdf" target="_blank" style="color:#000; font-weight:500;">Mandatory Disclosure</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="docs/Accreditional_Details.pdf" target="_blank" style="color:#000; font-weight:500;">Accreditation Details</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="https://siesgst.edu.in/compliance-documents" style="color:#000; font-weight:500;">Compliance Documents</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="https://siesgst.edu.in/administrative-staff" style="color:#000; font-weight:500;">Administrative Staff</a> 
-<br>
-</div>
-<div style="padding:2px 0px;">
-<a href="college-committee" target="_blank" style="color:#000; font-weight:500;">College Committees</a> 
-<br>
-</div>
-</div>
-</div>
-</div> */}
