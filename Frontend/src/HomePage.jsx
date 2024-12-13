@@ -27,6 +27,74 @@ function generateSlides(images) {
     ));
 }
 
+const policies = [
+    {
+        title: "Borrowing Privileges",
+        details: [
+            "Members can borrow a specified number of books for a predetermined duration.",
+            "Renewals and reservations can be made online, subject to availability."
+        ]
+    },
+    {
+        title: "Reference Services",
+        details: [
+            "Personalized assistance in locating information and resources.",
+            "Guidance on research methodologies and using library tools."
+        ]
+    },
+    {
+        title: "E-Resources Access",
+        details: [
+            "Remote access to e-journals, databases, and plagiarism detection tools.",
+            "Resources include IEEE, DELNET, and various e-books."
+        ]
+    },
+    {
+        title: "Code of Conduct",
+        details: [
+            "Users are expected to maintain a quiet environment conducive to study.",
+            "Misuse of library resources or breach of rules may result in suspension of privileges."
+        ]
+    },
+    {
+        title: "Reprography Services",
+        details: [
+            "Available for photocopying and printing documents.",
+            "Charges apply per page as per the library's pricing policy."
+        ]
+    },
+    {
+        title: "Book Bank Facility",
+        details: [
+            "Provides textbooks on loan to economically disadvantaged students.",
+            "Books must be returned at the end of the semester or academic year."
+        ]
+    },
+    {
+        title: "Interlibrary Loan (ILL)",
+        details: [
+            "Borrowing books and journals from other libraries through DELNET.",
+            "ILL requests can be made online, with delivery times varying based on availability."
+        ]
+    }
+];
+
+const PolicyItem = ({ title, details }) => (
+    <div className="relative group">
+        <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
+            <p>{title}</p>
+            <FontAwesomeIcon className="text-2xl text-s_orange" icon="fa-solid fa-chevron-down" />
+        </div>
+        <div className="h-0 group-hover:h-28 shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-sm sm:text-xl flex-col content-center mx-10 my-3">
+                {details.map((detail, index) => (
+                    <p key={index} className="py-2">{detail}</p>
+                ))}
+            </div>
+        </div>
+    </div>
+);
+
 const images = [image1, image2, image4, image5, image6, image7, image8, image9, image10, image11];
 const newsItems = ['news 1', 'news 2', 'news 3', 'news 4', 'news 5', 'news 6', 'news 7', 'news 8'];
 
@@ -162,99 +230,19 @@ export default function HomePage() {
             </div>
 
             {/* Explore Policies */}
-            <div className='mx-40'>
-                <div >
-                    <div className='flex justify-center text-4xl font-bold'>
-                    <p>Explore Policies</p>
+            <div className='mx-5 sm:mx-10 md:mx-40'>
+                <div className='pt-8'>
+                    {/* Heading */}
+                    <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
+                        <p>Explore Policies</p>
                     </div>
-                    <div className=" border-b-4 mx-auto w-28 mt-2 border-blue-700 mb-10"></div>
+                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
-                <div className='w-full '>
-                    <div className="relative group">
-                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                            <p>Borrowing Privileges</p>
-                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
-                        </div>
-                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                <p className="py-2">1) Members can borrow a specified number of books for a predetermined duration.</p>
-                                <p className="py-2">2) Renewals and reservations can be made online, subject to availability.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative group">
-                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                            <p>Reference Services</p>
-                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
-                        </div>
-                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                <p className="py-2">1) Personalized assistance in locating information and resources.</p>
-                                <p className="py-2">2) Guidance on research methodologies and using library tools.</p>
-                            </div>
-                        </div>
-                        
-                    </div>
-                    <div className="relative group">
-                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                            <p>E-Resources Access</p>
-                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
-                        </div>
-                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                <p className="py-2">1) Remote access to e-journals, databases, and plagiarism detection tools.</p>
-                                <p className="py-2">2) Resources include IEEE, DELNET, and various e-books.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative group">
-                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                            <p>Code of Conduct</p>
-                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
-                        </div>
-                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                <p className="py-2">1)Users are expected to maintain a quiet environment conducive to study.</p>
-                                <p className="py-2">2) Misuse of library resources or breach of rules may result in suspension of privileges.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative group">
-                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                            <p>Reprography Services</p>
-                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
-                        </div>
-                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                <p className="py-2">1) Available for photocopying and printing documents.</p>
-                                <p className="py-2">2) Charges apply per page as per the library's pricing policy.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative group">
-                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                            <p>Book Bank Facility</p>
-                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
-                        </div>
-                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                <p className="py-2">1) Provides textbooks on loan to economically disadvantaged students.</p>
-                                <p className="py-2">2) Books must be returned at the end of the semester or academic year.</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="relative group">
-                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
-                            <p> Interlibrary Loan (ILL)</p>
-                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
-                        </div>
-                        <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                <p className="py-2">1) Borrowing books and journals from other libraries through DELNET.</p>
-                                <p className="py-2">2) ILL requests can be made online, with delivery times varying based on availability.</p>
-                            </div>
-                        </div>
-                    </div>
+                <div className='w-full'>
+                    {/* Loop through policies */}
+                    {policies.map((policy, index) => (
+                        <PolicyItem key={index} title={policy.title} details={policy.details} />
+                    ))}
                 </div>
             </div>
 
