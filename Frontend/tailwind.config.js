@@ -6,7 +6,7 @@ export default {
   ],  
   theme: {
     fontFamily: {
-      serif: ['Merriweather', 'Fraunces', 'serif'],
+      serif: ['Merriweather', 'Fraunces', 'Georgia', 'Times New Roman', 'serif'],
       sans: ['Open Sans', 'Signika', 'Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {
@@ -21,14 +21,17 @@ export default {
       },
       colors: {
         'header-color': '#f3f2ed',
+        's_orange': '#f26d21',
+        's_blue': '#014da1',
+        "s_blue_400": "#3492fe"
       },
       fontSize: {
         "Title": '1.5rem',
-        "Primary": '1.25rem',
+        "Primary": ['1.25rem', '1.75rem'],
         "Secondary": '1.125rem',
-        "Body": '1rem',
+        "Body": ['1rem','1rem'],
         "SubBody": '.875rem',
-        "small": '.75rem',
+        "2-Primary": ['1.5rem','2rem'],
       },
     },        
   },
