@@ -23,7 +23,7 @@ export default {
         'header-color': '#f3f2ed',
         's_orange': '#f26d21',
         's_blue': '#014da1',
-        "s_blue_400": "#3492fe"
+        "s_blue_400": "#3492fe",
       },
       fontSize: {
         "Title": '1.5rem',

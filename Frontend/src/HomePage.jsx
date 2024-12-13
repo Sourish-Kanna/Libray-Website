@@ -58,10 +58,10 @@ export default function HomePage() {
                 
                 {/*Quick Links */}
                 <div className='flex justify-around w-3/6 pl-20 pr-32 mt-20 mr-40 text-3xl ml-96'>
-                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer  rounded-xl  active:scale-95 active:text-white'>
+                    <div className='bg-s_orange px-5 py-2  cursor-pointer  rounded-xl  active:scale-95 active:text-white'>
                         <NavLink to='quicklinks#pyq'>Question Papers</NavLink>
                         <FontAwesomeIcon className='py-1 px-3 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
-                    <div className='bg-[#f26d21] px-5 py-2  cursor-pointer   rounded-xl active:scale-95 active:text-white'>
+                    <div className='bg-s_orange px-5 py-2  cursor-pointer   rounded-xl active:scale-95 active:text-white'>
                         <NavLink to='about'>FAQs</NavLink>
                         <FontAwesomeIcon className='py-1 text-3xl px-3 ' icon="fa-solid fa-arrow-up-right-from-square" /></div>
                 </div>
@@ -75,7 +75,7 @@ export default function HomePage() {
                     </div>
                     <div className=" border-b-4 mx-auto w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
-                <div className='flex justify-between items-center text-xl bg-[#f3f2ed] w-full rounded-xl my-10 hover:scale-105 duration-700 h-5/6'>
+                <div className='flex justify-between items-center text-xl bg-header-color w-full rounded-xl my-10 hover:scale-105 duration-700 h-5/6'>
                     <div className='m-20 w-5/12'>
                         <img className='h-60 rounded-xl' src={Overview} alt="" />
                     </div>
@@ -213,9 +213,9 @@ export default function HomePage() {
                 </div>
                 <div className='w-full '>
                     <div className="relative group">
-                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
                             <p>Borrowing Privileges</p>
-                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
                         </div>
                         <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
@@ -225,9 +225,9 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
                             <p>Reference Services</p>
-                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
                         </div>
                         <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
@@ -238,9 +238,9 @@ export default function HomePage() {
                         
                     </div>
                     <div className="relative group">
-                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
                             <p>E-Resources Access</p>
-                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
                         </div>
                         <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
@@ -250,9 +250,9 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
                             <p>Code of Conduct</p>
-                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
                         </div>
                         <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
@@ -262,21 +262,21 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
                             <p>Reprography Services</p>
-                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
                         </div>
                         <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
                                 <p className="py-2">1) Available for photocopying and printing documents.</p>
-                                <p className="py-2">2) Charges apply per page as per the library’s pricing policy.</p>
+                                <p className="py-2">2) Charges apply per page as per the library's pricing policy.</p>
                             </div>
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
                             <p>Book Bank Facility</p>
-                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
                         </div>
                         <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
@@ -286,9 +286,9 @@ export default function HomePage() {
                         </div>
                     </div>
                     <div className="relative group">
-                        <div className="bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
+                        <div className="bg-header-color text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700">
                             <p> Interlibrary Loan (ILL)</p>
-                            <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                            <FontAwesomeIcon className="text-2xl text-s_orange"icon="fa-solid fa-chevron-down"/>
                         </div>
                         <div className="h-0 group-hover:h-28  shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
