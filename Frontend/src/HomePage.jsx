@@ -1,5 +1,3 @@
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Link,NavLink } from 'react-router-dom';
 import './css/HomePage.css'
@@ -17,8 +15,6 @@ import image10 from './assets/img10.webp'
 import image11 from './assets/img11.webp'
 
 
-
-library.add(fas);
 
 const newsItems = [
     'news 1',
@@ -38,34 +34,43 @@ export default function HomePage() {
             <Link to='/'></Link>
 
             {/* Inital View */}
-            <div className='w-full h-screen bg-center bg-no-repeat bg-cover homepage-bg'>
+            <div className="w-full h-fit bg-center bg-no-repeat bg-cover homepage-bg">
 
                 {/* News Row */}
-                <div className='flex bg-yellow-100 text-xl'>
-                    <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">News</p>
-                    <div className="flex justify-around w-11/12 p-2 bg-news-back">
-                        {newsItems.map((newsItem, index) => (
-                        <p key={index} className="bg-news">
-                            {newsItem}</p>
-                        ))}
+                <div className="flex flex-nowrap items-center bg-yellow-100 text-base sm:text-lg md:text-xl">
+                    <p className="w-fit pl-2 text-lg sm:text-xl md:text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">
+                    News </p>
+                    <div className="flex flex-nowrap justify-center sm:justify-around w-full sm:w-11/12 p-2 bg-news-back">
+                    {newsItems.map((newsItem, index) => (
+                        <p key={index} className="bg-news text-sm sm:text-base p-2">
+                        {newsItem}
+                        </p>
+                    ))}
                     </div>
                 </div>
-                
-                {/* Typing Logo */}
-                <div className='mx-40 mt-44 bg-typing font-serif font-bold text-white typing-demo text-9xl'>
-                     SIES GST LIBRARY
-                </div>
-                
-                {/*Quick Links */}
-                <div className='flex justify-around w-3/6 pl-20 pr-32 mt-20 mr-40 text-3xl ml-96'>
-                    <div className='bg-s_orange px-5 py-2  cursor-pointer  rounded-xl  active:scale-95 active:text-white'>
-                        <NavLink to='quicklinks#pyq'>Question Papers</NavLink>
-                        <FontAwesomeIcon className='py-1 px-3 text-3xl' icon="fa-solid fa-arrow-up-right-from-square" /></div>
-                    <div className='bg-s_orange px-5 py-2  cursor-pointer   rounded-xl active:scale-95 active:text-white'>
-                        <NavLink to='about'>FAQs</NavLink>
-                        <FontAwesomeIcon className='py-1 text-3xl px-3 ' icon="fa-solid fa-arrow-up-right-from-square" /></div>
+
+                {/* Center Section */}
+                <div className="flex flex-col items-center py-10 sm:py-20 md:py-44">
+                    
+                    {/* Typing Logo */}
+                    <div className="mx-4 sm:mx-20 lg:mx-40 bg-typing font-serif font-bold text-white text-center typing-demo text-4xl sm:text-6xl lg:text-9xl">
+                    SIES GST LIBRARY
+                    </div>
+
+                    {/* Quick Links */}
+                    <div className="flex flex-wrap justify-center md:justify-around w-full md:w-3/4 lg:w-1/2 mt-10 sm:mt-20 gap-5">
+                    <div className="bg-s_orange px-4 sm:px-5 py-2 text-lg sm:text-2xl md:text-3xl cursor-pointer rounded-xl active:scale-95 active:text-white text-center">
+                        <NavLink to="quicklinks#pyq">Question Papers</NavLink>
+                        <FontAwesomeIcon className="py-1 px-3" icon="fa-solid fa-arrow-up-right-from-square" />
+                    </div>
+                    <div className="bg-s_orange px-4 sm:px-5 text-lg sm:text-2xl md:text-3xl py-2 cursor-pointer rounded-xl active:scale-95 active:text-white text-center">
+                        <NavLink to="about">FAQs</NavLink>
+                        <FontAwesomeIcon className="py-1 px-3" icon="fa-solid fa-arrow-up-right-from-square" />
+                    </div>
+                    </div>
                 </div>
             </div>
+
 
             {/* Overview */}
             <div className='p-10 mx-40 flex-col content-center'>
