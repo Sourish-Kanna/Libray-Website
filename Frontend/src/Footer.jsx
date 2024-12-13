@@ -3,7 +3,7 @@ import { faInstagram, faFacebook, faLinkedin, faYoutube } from '@fortawesome/fre
 import Sies_logo from './assets/sies_logo_footer.png';
 import { NavLink, Link } from 'react-router-dom';
 
-const activeClassName = 'text-[#f26d21]';
+const activeClassName = 'text-s_orange';
 const inactiveClassName = "text-white hover:text-gray-300";
 
 // Sections and Links Data
@@ -50,16 +50,17 @@ const socialIcons = [
 function Footer() {
 
   return (
-    <div className="py-12 bg-[#014ca1] overflow-x-hidden">
+    <div className="py-12 bg-s_blue overflow-x-hidden">
       <div className="px-6 lg:mx-44">
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full">
+
           <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
             <img src={Sies_logo} alt="SIES Logo" className="h-full" />
             <div className="flex space-x-6">
-              {socialIcons.map((social, index) => (
-                <a key={index} href={social.link} target="_blank" rel="noopener noreferrer">
+              {socialIcons.map((social) => (
+                <a key={social.link} href={social.link} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${social.link}`}>
                   <FontAwesomeIcon 
-                    className="text-3xl p-3 lg:text-4xl text-white hover:text-[#f26d21] duration-700" 
+                    className="text-3xl p-3 lg:text-4xl text-white hover:text-s_orange duration-700" 
                     icon={social.icon} 
                   />
                 </a>
@@ -68,15 +69,19 @@ function Footer() {
           </div>
 
           {/* Render sections dynamically */}
-          <div className="grid grid-cols-1 gap-8 lg:gap-16 lg:flex lg:space-x-16">
-            {sections.map((section, index) => (
-              <div key={index} className="py-6">
-                <NavLink to={`/${section.title.toLowerCase()}`} className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
+          <div className="flex flex-cols-1 gap-8 lg:gap-16 lg:flex lg:space-x-16">
+            {sections.map((section) => (
+              <div key={section.title} className="py-6">
+                <NavLink 
+                  to={`/${section.title.toLowerCase()}`} 
+                  className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}
+                  aria-label={`Go to ${section.title} section`}
+                >
                   <p className="mb-4 font-serif font-bold text-center lg:text-left">{section.title}</p>
                 </NavLink>
                 <ul className="font-serif space-y-2">
-                  {section.links.map((link, linkIndex) => (
-                    <Link key={linkIndex} to={link.path}>
+                  {section.links.map((link) => (
+                    <Link key={link.name} to={link.path} aria-label={`Go to ${link.name}`}>
                       <li>
                         <p className={`${inactiveClassName} text-center lg:text-left cursor-pointer`}>{link.name}</p>
                       </li>
