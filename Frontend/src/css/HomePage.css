@@ -62,7 +62,7 @@ to {
   width: 90%;
   display: grid;
   place-items: center;
-  /* overflow: hidden; */
+  overflow: hidden;
 }
 
 .slide-track{

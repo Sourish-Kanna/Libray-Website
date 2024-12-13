@@ -60,7 +60,7 @@ const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile}) => {
 
 const StyledDropdown = ({ to, text }) => {
   return (
-    <div className="absolute hidden bg-transparent group-hover:block w-52 top-8 -left-14">
+    <div className="absolute hidden bg-transparent z-10 group-hover:block w-52 top-8 -left-14">
       <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-s_orange"></div>
       <ul className="bg-gray-300 text-center">
         {text.map((item, index) => (

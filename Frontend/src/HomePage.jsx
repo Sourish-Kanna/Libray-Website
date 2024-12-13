@@ -15,17 +15,20 @@ import image10 from './assets/img10.webp'
 import image11 from './assets/img11.webp'
 
 
+function generateSlides(images) {
+    return images.map((image, index) => (
+        <div key={index} className="slide">
+            <img 
+                className="hover:scale-110 duration-700 h-96 w-auto" 
+                src={image} 
+                alt={`Slide ${index + 1}`} 
+            />
+        </div>
+    ));
+}
 
-const newsItems = [
-    'news 1',
-    'news 2',
-    'news 3',
-    'news 4',
-    'news 5',
-    'news 6',
-    'news 7',
-    'news 8',
-  ];
+const images = [image1, image2, image4, image5, image6, image7, image8, image9, image10, image11];
+const newsItems = ['news 1', 'news 2', 'news 3', 'news 4', 'news 5', 'news 6', 'news 7', 'news 8'];
 
 
 export default function HomePage() {
@@ -40,7 +43,7 @@ export default function HomePage() {
                 <div className="flex flex-nowrap items-center bg-yellow-100 text-base sm:text-lg md:text-xl">
                     <p className="w-fit pl-2 text-lg sm:text-xl md:text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">
                     News </p>
-                    <div className="flex flex-nowrap justify-center sm:justify-around w-full sm:w-11/12 p-2 bg-news-back">
+                    <div className="flex flex-nowrap overflow-hidden justify-center sm:justify-around w-full sm:w-11/12 p-2 bg-news-back">
                     {newsItems.map((newsItem, index) => (
                         <p key={index} className="bg-news text-sm sm:text-base p-2">
                         {newsItem}
@@ -73,107 +76,46 @@ export default function HomePage() {
 
 
             {/* Overview */}
-            <div className='p-10 mx-40 flex-col content-center'>
-                <div > 
-                    <div className='flex justify-center text-4xl font-bold'>
-                    <p>Overview</p>
-                    </div>
-                    <div className=" border-b-4 mx-auto w-36 mt-2 border-blue-700 mb-10"></div>
+            <div className="p-5 sm:p-10 mx-4 sm:mx-10 md:mx-20 lg:mx-40 flex flex-col items-center">
+            <div>
+                {/* Heading */}
+                <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
+                <p>Overview</p>
                 </div>
-                <div className='flex justify-between items-center text-xl bg-header-color w-full rounded-xl my-10 hover:scale-105 duration-700 h-5/6'>
-                    <div className='m-20 w-5/12'>
-                        <img className='h-60 rounded-xl' src={Overview} alt="" />
-                    </div>
-                    <div className='w-7/12 mr-10'>
-                        <p>SIES Graduate School of Technology (GST) is a premier engineering institution located in Navi Mumbai. 
-                            Established with a vision to impart quality education, SIES GST offers undergraduate and postgraduate 
-                            programs in various engineering disciplines. The college is known for its strong academic curriculum, 
-                            experienced faculty, and state-of-the-art facilities. With a focus on innovation, research, and holistic 
-                            development, SIES GST prepares students to excel in their careers and contribute to the industry and society. 
-                            The college emphasizes ethical values and community service, aligning with the SIES tradition of education for life.</p>
-                    </div>
-                </div>
+                <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"></div>
             </div>
 
+            {/* Content Section */}
+            <div className="flex flex-col md:flex-row justify-between items-center text-base sm:text-lg md:text-xl bg-header-color w-full rounded-xl my-5 sm:my-10 hover:scale-105 duration-700">
+                {/* Image Section */}
+                <div className="m-5 md:m-10 px-5 w-full md:w-5/12 flex justify-center">
+                <img className="w-full sm:w-auto h-40 sm:h-60 md:h-72 rounded-xl" src={Overview} alt="Overview" />
+                </div>
+
+                {/* Text Section */}
+                <div className="w-full md:w-7/12 p-5 md:mr-10 text-justify">
+                <p>
+                    SIES Graduate School of Technology (GST) is a premier engineering institution located in Navi Mumbai. Established with a vision to impart quality education, SIES GST offers undergraduate and postgraduate programs in various engineering disciplines. The college is known for its strong academic curriculum, experienced faculty, and state-of-the-art facilities. With a focus on innovation, research, and holistic development, SIES GST prepares students to excel in their careers and contribute to the industry and society. The college emphasizes ethical values and community service, aligning with the SIES tradition of education for life.
+                </p>
+                </div>
+            </div>
+            </div>
+
+
             {/*Photos section */}
-            <div className=' mb-10 image-animation'>
+            <div className='mb-10 image-animation'>
                 <div>
-                    <div className='flex justify-center text-4xl font-bold'>
+                    {/* Heading */}
+                    <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
                         <p>Images</p>
                     </div>
-                    <div className="border-b-4 mx-auto w-28 mt-2 border-blue-700 "></div>
+                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"/>
                 </div>
-                <div className='slider h-[200px] overflow-visible'>
+                <div className='slider h-[200px]'>
                     <div className="slide-track mb-0">
-                        <div className="slide hover:scale-110 duration-700">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image1} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image2} alt="" />
-                        </div>
-                        {/* <div className="slide">
-                            <img src={image3} alt="" />
-                        </div> */}
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image4} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image5} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image6} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image7} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image8} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image9} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image10} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image11} alt="" />
-                        </div>
-                        
-                        {/* same 11 slides doubled */}
-
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image1} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image2} alt="" />
-                        </div>
-                        {/* <div className="slide">
-                            <img src={image3} alt="" />
-                        </div> */}
-                        <div className="slide ">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image4} alt="" />
-                        </div>
-                        <div className="slide ">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image5} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image6} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image7} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image8} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image9} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image10} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image11} alt="" />
-                        </div>
+                        {/* Render the slides twice */}
+                        {generateSlides(images)}
+                        {/* {generateSlides(images)} */}
                     </div>
                 </div>
             </div>
