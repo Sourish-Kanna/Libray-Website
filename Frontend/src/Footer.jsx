@@ -44,10 +44,10 @@ const sections = [
 ];
 
 const socialIcons = [
-  { icon: faInstagram, link: "https://instagram.com" },
-  { icon: faFacebook, link: "https://facebook.com" },
-  { icon: faLinkedin, link: "https://linkedin.com" },
-  { icon: faYoutube, link: "https://youtube.com" }
+  { icon: faInstagram, link: "https://www.instagram.com/siesgstevents" },
+  { icon: faFacebook, link: "https://www.facebook.com/SIESGST" },
+  { icon: faLinkedin, link: "https://www.linkedin.com/school/sies-graduate-school-of-technology/" },
+  { icon: faYoutube, link: "https://youtube.com/@siesgstweb" }
 ];
 
 function Footer() {

@@ -71,7 +71,10 @@ const infrastructureData = [
     {
         image: idi,
         title: "Network Infrastructure",
-        points: ["High-Speed Internet", "Secure Wi-Fi for students and staff"],
+        points: [
+            "High-Speed Internet", 
+            "Secure Wi-Fi for students and staff"
+        ],
     },
     {
         image: comp,
