@@ -1,15 +1,15 @@
-import Images from '../assets/img5.webp'
+import Images from '../assets/HomePage/img5.webp'
 import sand from '../assets/sandip.webp'
 import indra from '../assets/indrabahadur.webp'
 import sac from '../assets/sachin.webp'
-import ref from '../assets/img4.webp'
+import ref from '../assets/HomePage/img4.webp'
 import ret from '../assets/bookret.webp'
-import fac from '../assets/img9.webp'
-import repo from '../assets/img3.webp'
-import opa from '../assets/img11.webp'
-import idi from '../assets/img6.webp'
-import comp from '../assets/img12.webp'
-import dig from '../assets/image1.webp'
+import fac from '../assets/HomePage/img9.webp'
+import repo from '../assets/HomePage/img3.webp'
+import opa from '../assets/HomePage/img11.webp'
+import idi from '../assets/HomePage/img6.webp'
+import comp from '../assets/HomePage/img12.webp'
+import dig from '../assets/HomePage/image1.webp'
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';

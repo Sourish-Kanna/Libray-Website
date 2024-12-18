@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faInstagram, faFacebook, faLinkedin, faYoutube } from '@fortawesome/free-brands-svg-icons'; 
-import Sies_logo from './assets/sies_logo_footer.png';
+import Sies_logo from './assets/Footer/sies_logo_footer.png';
 import { NavLink, Link } from 'react-router-dom';
 
 const activeClassName = 'text-s_orange';
