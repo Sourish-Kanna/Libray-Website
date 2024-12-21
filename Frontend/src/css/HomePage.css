@@ -68,7 +68,11 @@ to {
 .slide-track{
   display: flex;
   /* width: calc(500px *18); */
-  animation: scroll 60s alternate infinite;
+  animation: scroll;
+  animation-timing-function: linear;
+  animation-direction: alternate;
+  animation-duration: 60s;
+  animation-iteration-count: infinite;
 }
 
 .slide{

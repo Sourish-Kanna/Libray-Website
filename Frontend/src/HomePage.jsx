@@ -17,7 +17,7 @@ import { faChevronDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid
 
 function generateSlides(images) {
     return images.map((image, index) => (
-        <div key={index} className="slide mx-4">
+        <div key={index} className="slide">
             <img 
                 className="hover:scale-110 duration-700 h-auto w-auto" 
                 src={image} 
