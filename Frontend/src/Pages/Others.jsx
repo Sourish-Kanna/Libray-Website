@@ -6,28 +6,8 @@ import event3 from '../assets/Others/event_3.png'
 import event4 from '../assets/Others/event_4.jpg'
 import { useSmoothScroll } from '../Navigation'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
+import { Helmet } from 'react-helmet';
 
-const faqs={
-    1:["Who can access the library?","All SIES GST students, faculty, and staff can access the library with a valid ID."],
-
-    2:["What are the library timings?","Monday to Friday: 9 AM to 5 PM, Saturday: 9 AM to 1 PM."],
-
-    3:["How many books can I borrow?","Students can borrow up to 3 books for 15 days. Faculty can borrow up to 5 books."],
-
-    4:["How can I renew a book?","Books can be renewed online or in-person before the due date, subject to availability"],
-
-    5:["Does the library offer digital resources?","Yes, access to e-journals, databases (IEEE, DELNET), and e-books is available."],
-
-    6:["What is the fine for late returns?","A nominal fine is charged per day for overdue books."],
-
-    7:[`How can I suggest a book for the library?`,"Use the Suggest Books form available on the website."],
-
-    8:["Can I donate books?","Yes, donations are accepted through the Donate Books section."],
-
-    9:["Does the library provide internet access?","Yes, free Wi-Fi is available within the library premises."],
-
-    10:["How do I access the plagiarism detection tool?","The tool can be accessed through the Plagiarism Tool section of the website."],
-}
 
 const moreLinks = [
     { name: "National Digital Library", url: "https://ndl.iitkgp.ac.in" },
@@ -80,6 +60,92 @@ const events=[
     {img:event4,content:"Organized in collaboration with IEEE, this event includes workshops, seminars, and presentations on recent developments in technology and engineering. Students and faculty are encouraged to explore the IEEE digital library for research and academic purposes"}
 ]
 
+const faqs = [
+    {
+        title: "Who can access the library?",
+        details: [
+            "All SIES GST students, faculty, and staff can access the library with a valid ID."
+        ]
+    },
+    {
+        title: "What are the library timings?",
+        details: [
+            "Monday to Friday: 9 AM to 5 PM.",
+            "Saturday: 9 AM to 1 PM."
+        ]
+    },
+    {
+        title: "How many books can I borrow?",
+        details: [
+            "Students can borrow up to 3 books for 15 days.",
+            "Faculty can borrow up to 5 books."
+        ]
+    },
+    {
+        title: "How can I renew a book?",
+        details: [
+            "Books can be renewed online or in-person before the due date.",
+            "Renewals are subject to availability."
+        ]
+    },
+    {
+        title: "Does the library offer digital resources?",
+        details: [
+            "Yes, access to e-journals, databases (IEEE, DELNET), and e-books is available."
+        ]
+    },
+    {
+        title: "What is the fine for late returns?",
+        details: [
+            "A nominal fine is charged per day for overdue books."
+        ]
+    },
+    {
+        title: "How can I suggest a book for the library?",
+        details: [
+            "Use the Suggest Books form available on the website."
+        ]
+    },
+    {
+        title: "Can I donate books?",
+        details: [
+            "Yes, donations are accepted through the Donate Books section."
+        ]
+    },
+    {
+        title: "Does the library provide internet access?",
+        details: [
+            "Yes, free Wi-Fi is available within the library premises."
+        ]
+    },
+    {
+        title: "How do I access the plagiarism detection tool?",
+        details: [
+            "The tool can be accessed through the Plagiarism Tool section of the website."
+        ]
+    }
+];
+
+
+const FaqItem = ({ title, details }) => (
+    <div className="relative group">
+        <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
+            <p>{title}</p>
+            <FontAwesomeIcon
+                className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700"
+                icon={faChevronDown}
+            />
+        </div>
+        <div className="max-h-0 group-hover:max-h-[500px] shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-sm sm:text-xl flex-col content-center mx-10 my-3">
+                {details.map((detail, index) => (
+                    <p key={index} className="py-2">{detail}</p>
+                ))}
+            </div>
+        </div>
+    </div>
+);
+
 export default function Journals(){
     useSmoothScroll();
     const [activeIndex, setActiveIndex] = useState(0);
@@ -90,7 +156,11 @@ export default function Journals(){
     return (
         <div className='overflow-x-hidden w-full h-full'>
 
-            {/* About us */}
+            <Helmet>
+                <title>Others | Library | SIESGST</title>
+            </Helmet>
+
+            {/* Others */}
             <div className='bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16'>
             <div>
                 <div className='flex justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-s_blue'>
@@ -141,7 +211,7 @@ export default function Journals(){
 
 
             {/* More */}
-            <div className=' rounded-2xl'> 
+            <div className=' bg-gray-100'> 
                 <div className='w-full h-20 mt-10  flex items-center justify-center'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold mt-8'>
@@ -221,36 +291,18 @@ export default function Journals(){
                 </div>
 
             {/* FAQs */}
-            <div>
-                <div className='w-full h-20 mt-10  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>FAQs</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+            <div className='mx-5 sm:mx-10 md:mx-40'>
+                <div className='pt-8'>
+                    {/* Heading */}
+                    <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
+                        <p>FAQs</p>
                     </div>
+                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
-            </div>
-            <div className=''>
-                <div className='mx-40 mb-20'>
-                    <div className="relative ">
-                        {
-                            Object.keys(faqs).map((key)=>(
-                                <div key={key} className='group'>
-                                    <div className='bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700 '>
-                                        <p>{faqs[key][0]}</p>
-                                        <FontAwesomeIcon className="text-2xl text-s_orange" icon={faChevronDown} />
-                                    </div>
-                                    <div className="h-0 group-hover:h-28 shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-                                        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
-                                            <p className="py-2">{faqs[key][1]}</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                
-                            ))
-                        }
-                    </div>
+                <div className='w-full'>
+                    {faqs.map((faqs, index) => (
+                        <FaqItem key={index} title={faqs.title} details={faqs.details} />
+                    ))}
                 </div>
             </div>
             

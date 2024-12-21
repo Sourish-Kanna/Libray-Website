@@ -83,7 +83,6 @@ const PolicyItem = ({ title, details }) => (
     <div className="relative group">
         <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
             <p>{title}</p>
-            {/* <FontAwesomeIcon className="text-2xl text-s_orange" icon="fa-solid fa-chevron-down" /> */}
             <FontAwesomeIcon
                 className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700"
                 icon={faChevronDown}
@@ -145,7 +144,6 @@ export default function HomePage() {
                 </div>
             </div>
 
-
             {/* Overview */}
             <div className="p-5 sm:p-10 mx-4 sm:mx-10 md:mx-20 lg:mx-40 flex flex-col items-center">
             <div>
@@ -171,7 +169,6 @@ export default function HomePage() {
                 </div>
             </div>
             </div>
-
 
             {/*Photos section */}
             <div className='mb-20 image-animation'>
