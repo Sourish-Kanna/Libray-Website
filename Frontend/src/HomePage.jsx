@@ -13,13 +13,13 @@ import image8 from './assets/HomePage/img8.webp'
 import image9 from './assets/HomePage/img9.webp'
 import image10 from './assets/HomePage/img10.webp'
 import image11 from './assets/HomePage/img11.webp'
-
+import { faChevronDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 
 function generateSlides(images) {
     return images.map((image, index) => (
-        <div key={index} className="slide">
+        <div key={index} className="slide mx-4">
             <img 
-                className="hover:scale-110 duration-700 h-96 w-auto" 
+                className="hover:scale-110 duration-700 h-auto w-auto" 
                 src={image} 
                 alt={`Slide ${index + 1}`} 
             />
@@ -83,9 +83,13 @@ const PolicyItem = ({ title, details }) => (
     <div className="relative group">
         <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
             <p>{title}</p>
-            <FontAwesomeIcon className="text-2xl text-s_orange" icon="fa-solid fa-chevron-down" />
+            {/* <FontAwesomeIcon className="text-2xl text-s_orange" icon="fa-solid fa-chevron-down" /> */}
+            <FontAwesomeIcon
+                className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700"
+                icon={faChevronDown}
+            />
         </div>
-        <div className="h-0 group-hover:h-28 shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+        <div className="max-h-0 group-hover:max-h-[500px] shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
             <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-sm sm:text-xl flex-col content-center mx-10 my-3">
                 {details.map((detail, index) => (
                     <p key={index} className="py-2">{detail}</p>
@@ -102,7 +106,6 @@ const newsItems = ['news 1', 'news 2', 'news 3', 'news 4', 'news 5', 'news 6', '
 export default function HomePage() {
   return (
         <div className='w-full h-full overflow-x-hidden  '>
-            <Link to='/'></Link>
 
             {/* Inital View */}
             <div className="w-full h-fit bg-center bg-no-repeat bg-cover homepage-bg">
@@ -132,11 +135,11 @@ export default function HomePage() {
                     <div className="flex flex-wrap justify-center md:justify-around w-full md:w-3/4 lg:w-1/2 mt-10 sm:mt-20 gap-5">
                     <div className="bg-s_orange px-4 sm:px-5 py-2 text-lg sm:text-2xl md:text-3xl cursor-pointer rounded-xl active:scale-95 active:text-white text-center">
                         <NavLink to="quicklinks#pyq">Question Papers</NavLink>
-                        <FontAwesomeIcon className="py-1 px-3" icon="fa-solid fa-arrow-up-right-from-square" />
+                        <FontAwesomeIcon className="py-1 px-3" icon={faArrowUpRightFromSquare} />
                     </div>
                     <div className="bg-s_orange px-4 sm:px-5 text-lg sm:text-2xl md:text-3xl py-2 cursor-pointer rounded-xl active:scale-95 active:text-white text-center">
                         <NavLink to="about">FAQs</NavLink>
-                        <FontAwesomeIcon className="py-1 px-3" icon="fa-solid fa-arrow-up-right-from-square" />
+                        <FontAwesomeIcon className="py-1 px-3" icon={faArrowUpRightFromSquare} />
                     </div>
                     </div>
                 </div>
@@ -171,7 +174,7 @@ export default function HomePage() {
 
 
             {/*Photos section */}
-            <div className='mb-10 image-animation'>
+            <div className='mb-20 image-animation'>
                 <div>
                     {/* Heading */}
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -179,17 +182,15 @@ export default function HomePage() {
                     </div>
                     <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"/>
                 </div>
-                <div className='slider h-[200px] py-4'>
-                    <div className="slide-track mb-0">
-                        {/* Render the slides twice */}
+                <div className='slider h-fit'>
+                    <div className="slide-track">
                         {generateSlides(images)}
-                        {/* {generateSlides(images)} */}
                     </div>
                 </div>
             </div>
 
             {/* Librarian */}
-            <div className="text-xl h-auto sm:h-screen bg-gray-100 py-10">
+            <div className="text-xl bg-gray-100 py-10">
                 {/* Section Header */}
                 <div>
                     <div className="flex justify-center text-3xl sm:text-4xl font-bold">

@@ -67,12 +67,12 @@ to {
 
 .slide-track{
   display: flex;
-  width: calc(500px *18);
-  height: 400px;
-  animation: scroll 40s linear infinite;
+  /* width: calc(500px *18); */
+  animation: scroll 60s alternate infinite;
 }
+
 .slide{
-  height: 400px;
+  height: max-content;
   width: 550px;
   display: flex;
   align-items: center;
@@ -85,7 +85,7 @@ to {
   width: 100%;
   transition: transform 1s;
   z-index:5;
-  height: 280px;
+  /* height: 280px; */
 }
 
 /* Gradient shadows */
@@ -98,6 +98,8 @@ to {
   position: absolute;
   width: 15%;
   z-index: 5;
+  left: 0dvw;
+  top: px;
 }
 .slider::after {
   background: linear-gradient(to left, rgba(255, 255, 255, 1) 75%, rgba(255, 255, 255, 0) 100%);
@@ -106,12 +108,7 @@ to {
   position: absolute;
   width: 15%;
   z-index: 5;
-  right: -155px;
-  top: px;
-}
-
-.slider::before{
-  left: 0px;
+  right: 0dvw;
   top: px;
 }
 

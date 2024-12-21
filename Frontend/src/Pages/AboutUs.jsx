@@ -170,7 +170,7 @@ export default function AboutUs() {
             </div>
 
             {/* Library Staffs */}
-            <div ref={refs['library-staffs']} id="library-staffs" className=" h-auto sm:h-screen bg-gray-100 py-10">
+            <div ref={refs['library-staffs']} id="library-staffs" className="  bg-gray-100 py-10">
                 {/* Heading */}
                 <div>
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">

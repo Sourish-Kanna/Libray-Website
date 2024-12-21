@@ -55,7 +55,7 @@ function Footer() {
   return (
     <div className="py-12 bg-s_blue overflow-x-hidden">
       <div className="px-6 lg:mx-44">
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center w-full">
+        <div className="flex flex-wrap justify-between items-start lg:items-center w-full">
 
           <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
             <img src={Sies_logo} alt="SIES Logo" className="h-full" />

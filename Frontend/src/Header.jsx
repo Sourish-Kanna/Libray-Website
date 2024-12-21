@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faCaretDown } from '@fortawesome/free-solid-svg-icons';
 import Sies_logo from './assets/Header/sies_logo_header.png'
 
 const activeClassName = 'text-s_orange';
@@ -35,7 +35,7 @@ const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile}) => {
               to={to}
               className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
                 {text}
-                <FontAwesomeIcon icon="fa-solid fa-caret-down" className="px-1.5" />
+                <FontAwesomeIcon icon={faCaretDown} className="px-1.5" />
               </NavLink>
                 <MobStyledDropdown
                   to={drop_link}
@@ -51,7 +51,7 @@ const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile}) => {
         to={to}
         className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
         {text}
-        <FontAwesomeIcon icon="fa-solid fa-caret-down" className="px-1.5" />
+        <FontAwesomeIcon icon={faCaretDown} className="px-1.5" />
       </NavLink>
       <StyledDropdown to={drop_link} text={drop_name} />
     </li>
