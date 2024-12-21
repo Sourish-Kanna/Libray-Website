@@ -13,6 +13,7 @@ import dig from '../assets/HomePage/image1.webp'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useScrollToHash, useSmoothScroll} from '../Navigation'
 import { faClock } from '@fortawesome/free-regular-svg-icons';
+import { Helmet } from 'react-helmet';
 
 const facilities = [
     { image: ref, title: "Reference Service" },

@@ -1,5 +1,6 @@
 import { useSmoothScroll } from '../Navigation';
 import '../css/form.css'
+import { Helmet } from 'react-helmet';
 
 const currentYear = new Date().getFullYear()
 const handleInputChange = (event) => {

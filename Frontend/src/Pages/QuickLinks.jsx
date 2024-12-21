@@ -2,7 +2,7 @@ import { useState } from 'react'
 import '../css/QuickLinks.css'
 import {useScrollToHash, useSmoothScroll} from '../Navigation'
 import usePyqsStore from '../Store/pyqs.store';
-import axios from 'axios';
+import { Helmet } from 'react-helmet';
 
 const branchOptions = [
     { value: "choose", text: "Choose Branch" },

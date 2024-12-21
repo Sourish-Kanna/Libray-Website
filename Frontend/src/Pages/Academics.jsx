@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useScrollToHash, useSmoothScroll} from '../Navigation'
 import React, { useRef } from 'react';
 import useSyllabusStore from '../Store/syllabus.store.js';
+import { Helmet } from 'react-helmet';
 
 export default function EResources() {
 useSmoothScroll();

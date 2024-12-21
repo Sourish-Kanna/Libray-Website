@@ -14,6 +14,7 @@ import image9 from './assets/HomePage/img9.webp'
 import image10 from './assets/HomePage/img10.webp'
 import image11 from './assets/HomePage/img11.webp'
 import { faChevronDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { Helmet } from 'react-helmet';
 
 function generateSlides(images) {
     return images.map((image, index) => (
