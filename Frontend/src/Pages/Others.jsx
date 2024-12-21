@@ -1,11 +1,11 @@
-import { Link } from 'react-router-dom'
 import { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import event1 from '../assets/event_1.jpg'
-import event2 from '../assets/event_2.jpg'
-import event3 from '../assets/event_3.png'
-import event4 from '../assets/event_4.jpg'
+import event1 from '../assets/Others/event_1.jpg'
+import event2 from '../assets/Others/event_2.jpg'
+import event3 from '../assets/Others/event_3.png'
+import event4 from '../assets/Others/event_4.jpg'
 import { useSmoothScroll } from '../Navigation'
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
 const faqs={
     1:["Who can access the library?","All SIES GST students, faculty, and staff can access the library with a valid ID."],
@@ -28,6 +28,7 @@ const faqs={
 
     10:["How do I access the plagiarism detection tool?","The tool can be accessed through the Plagiarism Tool section of the website."],
 }
+
 const moreLinks = [
     { name: "National Digital Library", url: "https://ndl.iitkgp.ac.in" },
     { name: "SWAYAM Online Courses", url: "https://storage.googleapis.com/uniquecourses/online.html" },
@@ -71,6 +72,7 @@ const moreLinks = [
     { name: "AICTE Training And Learning (ATAL) Academy", url: "https://www.aicte-india.org/atal" },
     { name: "AICTE Collaborations (MoU)", url: "https://www.aicte-india.org/education/collaborations" },
 ];
+
 const events=[
     {img:event1,content:"This event is organized to familiarize new students with the library’s resources, services, and policies. It includes a guided tour of the library, an introduction to the digital resources (e-journals, databases), and how to use the OPAC system for book searches."},
     {img:event2,content:"The library periodically hosts book exhibitions showcasing new arrivals, important academic texts, and rare collections. This event is aimed at promoting reading habits and awareness of the latest publications."},
@@ -84,6 +86,7 @@ export default function Journals(){
     const handleClick = (index) => {
     setActiveIndex(index);
     };
+
     return (
         <div className='overflow-x-hidden w-full h-full'>
 
@@ -138,7 +141,7 @@ export default function Journals(){
 
 
             {/* More */}
-            <div className=' rounded-2xl'> {/*bg-[#f3f2ed]*/} 
+            <div className=' rounded-2xl'> 
                 <div className='w-full h-20 mt-10  flex items-center justify-center'>
                     <div >
                         <div className='flex justify-center text-4xl font-bold mt-8'>
@@ -151,13 +154,13 @@ export default function Journals(){
                     <div className="relative group">
                             <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
                                 <p className='text-white'>MORE LINKS</p>
-                                <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
                             </div>
                             <div className="more-links h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-[37rem] rounded-xl">
                                 <div className="grid grid-cols-3 gap-0 auto-rows-min content-center mx-10 my-3 text-base transition-all  transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
                                     {moreLinks.map((link, index) => (
                                         <div key={index} className='grid my-2'>
-                                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-[#f26d21] "> 
+                                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-s_orange "> 
                                                 {link.name}
                                             </a>
                                         </div>
@@ -169,48 +172,48 @@ export default function Journals(){
                         <div className="relative group">
                             <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
                                 <p className='text-white'>IEEE</p>
-                                <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
                             </div>
                             <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                                 <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
                                     <p className="py-2 text-lg">The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.</p>
-                                    <p className="py-2 text-lg"><a href="https://www.ets.org/gre.html" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
+                                    <p className="py-2 text-lg"><a href="https://www.ets.org/gre.html" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'> Click here for more information</a></p>
                                 </div>
                             </div>
                         </div>
                         <div className="relative group">
                             <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
                                 <p className='text-white'>GATE</p>
-                                <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
                             </div>
                             <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                                 <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
                                     <p className="py-2 text-lg">GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.</p>
-                                    <p className="py-2 text-lg"><a href="http://gate.iitd.ac.in/" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
+                                    <p className="py-2 text-lg"><a href="http://gate.iitd.ac.in/" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'> Click here for more information</a></p>
                                 </div>
                             </div>
                         </div>
                         <div className="relative group">
                             <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
                                 <p className='text-white'>SAT</p>
-                                <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
                             </div>
                             <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                                 <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
                                     <p className="py-2 text-lg">The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.</p>
-                                    <p className="py-2 text-lg"><a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'> Click here for more information</a></p>
+                                    <p className="py-2 text-lg"><a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'> Click here for more information</a></p>
                                 </div>
                             </div>
                         </div>
                         <div className="relative group">
                             <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
                                 <p className='text-white'>TOFEL</p>
-                                <FontAwesomeIcon className="text-2xl text-[#f26d21]"icon="fa-solid fa-chevron-down"/>
+                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
                             </div>
                             <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
                                 <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
                                     <p className="py-2 text-lg">TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.</p>
-                                    <p className="py-2 text-lg"><a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener noreferrer" className='underline text-[#f26d21]'>Click here for more information</a></p>
+                                    <p className="py-2 text-lg"><a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'>Click here for more information</a></p>
                                 </div>
                             </div>
                         </div>
@@ -236,7 +239,7 @@ export default function Journals(){
                                 <div key={key} className='group'>
                                     <div className='bg-[#efefef] text-2xl py-5 px-10 flex justify-between my-5 shadow-xl duration-700 '>
                                         <p>{faqs[key][0]}</p>
-                                        <FontAwesomeIcon className="text-2xl text-[#f26d21]" icon="fa-solid fa-chevron-down" />
+                                        <FontAwesomeIcon className="text-2xl text-s_orange" icon={faChevronDown} />
                                     </div>
                                     <div className="h-0 group-hover:h-28 shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
                                         <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-xl flex-col content-center mx-10 my-3">
