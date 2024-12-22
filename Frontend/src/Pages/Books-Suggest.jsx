@@ -17,6 +17,9 @@ export default function EResources() {
 return (
     <div className='font-serif mt-28'>
         {/* <Link to='/academics'></Link> */}
+        <Helmet>
+                <title>Others | Library | SIESGST</title>
+            </Helmet>
         
         {/* Suggest Books */}
         <div className='mx-40' id='Suggest-books'>

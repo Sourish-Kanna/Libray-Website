@@ -126,7 +126,6 @@ const faqs = [
     }
 ];
 
-
 const FaqItem = ({ title, details }) => (
     <div className="relative group">
         <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
@@ -210,7 +209,7 @@ export default function Journals(){
             </div>
 
 
-            {/* More */}
+            {/* More
             <div className=' bg-gray-100'> 
                 <div className='w-full h-20 mt-10  flex items-center justify-center'>
                     <div >
@@ -288,7 +287,23 @@ export default function Journals(){
                             </div>
                         </div>
                     </div>
+                </div> */}
+
+            {/* More */}
+            <div className='mx-5 sm:mx-10 md:mx-40'>
+                <div className='pt-8'>
+                    {/* Heading */}
+                    <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
+                        <p>More</p>
+                    </div>
+                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
+                <div className='w-full'>
+                    {faqs.map((faqs, index) => (
+                        <FaqItem key={index} title={faqs.title} details={faqs.details} />
+                    ))}
+                </div>
+            </div>
 
             {/* FAQs */}
             <div className='mx-5 sm:mx-10 md:mx-40'>

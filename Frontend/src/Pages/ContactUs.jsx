@@ -7,6 +7,9 @@ export default function ContactUs() {
     <div className='mx-40'>
         <Link to='/contact'>
         </Link>
+        <Helmet>
+                <title>Others | Library | SIESGST</title>
+            </Helmet>
         <section className="min-h-screen flex flex-col justify-center font-serif">
         <div className="flex flex-col h-full">
             <header className="text-center mb-4">

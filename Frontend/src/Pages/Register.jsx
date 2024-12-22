@@ -58,6 +58,9 @@ const Register = () => {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-blue-600 to-orange-400">
+            <Helmet>
+                <title>Others | Library | SIESGST</title>
+            </Helmet>
             <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
                 <h2 className="text-3xl font-semibold text-center text-blue-700 mb-6">Register</h2>
                 <form onSubmit={handleSubmit} className="space-y-4">

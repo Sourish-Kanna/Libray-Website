@@ -32,6 +32,9 @@ await downloadSyllabus();
 
 return (
     <div className='font-serif mt-28'>
+        <Helmet>
+                <title>Others | Library | SIESGST</title>
+            </Helmet>
         <Link to='/academics'></Link>
 
         <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>

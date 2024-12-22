@@ -107,6 +107,10 @@ export default function HomePage() {
   return (
         <div className='w-full h-full overflow-x-hidden  '>
 
+            <Helmet>
+                <title>Home | Library | SIESGST</title>
+            </Helmet>
+
             {/* Inital View */}
             <div className="w-full h-fit bg-center bg-no-repeat bg-cover homepage-bg">
 

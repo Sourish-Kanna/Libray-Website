@@ -118,6 +118,10 @@ export default function AboutUs() {
     return (
         <div className='w-full h-full overflow-x-hidden'>
 
+            <Helmet>
+                <title>About Us | Library | SIESGST</title>
+            </Helmet>
+
             {/* About us */}
             <div className='bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16'>
             <div>
