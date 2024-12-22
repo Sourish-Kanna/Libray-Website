@@ -230,9 +230,7 @@ const MoreLinksSection = ({ moreLinks }) => {
 
 export default function Journals(){
     useSmoothScroll();
-
     const [activeIndex, setActiveIndex] = useState(0);
-
     const handleClick = (index) => {
         setActiveIndex(index);
     };
@@ -250,7 +248,7 @@ export default function Journals(){
                 <div className='flex justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-s_blue'>
                 <p>Others</p>
                 </div>
-                <div className="border-b-4 mx-auto w-32 sm:w-44 mt-2 border-s_orange"></div>
+                <div className="border-b-4 mx-auto w-32 sm:w-44 mt-2 border-s_orange"/>
             </div>
             </div>
 
@@ -295,7 +293,6 @@ export default function Journals(){
                     </div>
                 </div>
             </div>
-
 
             {/* More */}
             <div className='px-5 sm:px-10 md:px-40 bg-gray-100'>

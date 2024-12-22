@@ -6,17 +6,16 @@ import { NavLink, Link } from 'react-router-dom';
 const activeClassName = 'text-s_orange';
 const inactiveClassName = "text-white hover:text-gray-300";
 
-// Sections and Links Data
 const sections = [
   {
     title: 'E-Resources',
-    to: "/academics",
+    to: "/E-Resources",
     links: [
       { name: 'Question Papers', path: '/quicklinks#pyq' },
-      { name: 'OER', path: '/academics' },
-      { name: 'DELNET', path: '/academics#university-syllabus' },
-      { name: 'IEEE', path: '/academics#academic-calender' },
-      { name: 'OPAC', path: '/academics#competitive-exams' }
+      { name: 'OER', path: '/E-Resources' },
+      { name: 'DELNET', path: '/E-Resources#university-syllabus' },
+      { name: 'IEEE', path: '/E-Resources#academic-calender' },
+      { name: 'OPAC', path: '/E-Resources#competitive-exams' }
     ]
   },
   {

@@ -8,9 +8,9 @@ const activeClassName = 'text-s_orange';
 const inactiveClassName = 'text-s_blue hover:text-s_blue_400';
 const navLinks = [
   {
-    to: "/academics",
+    to: "/E-Resources",
     text: "E-Resources",
-    drop_link: ["/quicklinks#pyq", "/academics", "/academics#university-syllabus", "/academics#academic-calender", "/academics#competitive-exams"],
+    drop_link: ["/quicklinks#pyq", "/E-Resources", "/E-Resources#university-syllabus", "/E-Resources#academic-calender", "/E-Resources#competitive-exams"],
     drop_name: ["Question Papers", "OER", "DELNET", "IEEE", "OPAC"],
   },
   {

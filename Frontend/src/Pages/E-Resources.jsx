@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import {useScrollToHash, useSmoothScroll} from '../Navigation'
+import {useScrollToHash, useSmoothScroll} from '../Navigation.jsx'
 import React, { useRef } from 'react';
 import useSyllabusStore from '../Store/syllabus.store.js';
 import { Helmet } from 'react-helmet';
@@ -31,22 +31,22 @@ await downloadSyllabus();
 };
 
 return (
-    <div className='font-serif mt-28'>
+    <div className='overflow-x-hidden w-full h-full'>
         <Helmet>
-                <title>Others | Library | SIESGST</title>
-            </Helmet>
-        <Link to='/academics'></Link>
+            <title>Others | Library | SIESGST</title>
+        </Helmet>
 
-        <div className='w-full h-48 bg-[#efefef] flex items-center justify-center'>
-            <div >
-                <div className='flex justify-center text-6xl font-bold text-[#014da1]'>
-                    <p>Academics</p>
+        {/* E-Resources */}
+        <div className='bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16'>
+            <div>
+                <div className='flex justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-s_blue'>
+                    <p>E-Resources</p>
                 </div>
-                <div className="mx-auto mt-2 mb-10 border-b-4 border-red-600 w-44"></div>
+                <div className="border-b-4 mx-auto w-32 sm:w-44 mt-2 border-s_orange"/>
             </div>
         </div>
 
-                            {/* University Syllabus */}
+        {/* University Syllabus */}
 
                             <div className='mx-40' ref={refs['university-syllabus']} id='university-syllabus'>
         <div className='flex items-center justify-center w-full h-40'>
