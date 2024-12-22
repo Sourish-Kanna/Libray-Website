@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Helmet } from 'react-helmet';
+import '../css/form.css';
 
 export default function ContactUs() {
   return (

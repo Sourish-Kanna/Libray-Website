@@ -1,4 +1,19 @@
-h2 {
+/* form.css */
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    max-width: 800px; /* Updated max-width */
+    margin: auto;
+    background-color: #f8f8f8;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Title */
+.form-container h1, .form-container h2 {
     color: #014da1;
     font-size: 1.875rem; /* 30px */
     line-height: 2.25rem; /* 36px */
@@ -7,24 +22,27 @@ h2 {
     margin-bottom: 1.5rem; /* Adds spacing below the heading */
 }
 
-form {
-    font-size: 1.25rem; /* 20px */
-    line-height: 1.75rem; /* 28px */
-    margin: 0 auto; /* Centers the form */
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    max-width: 800px; /* Prevents form from getting too wide */
-    padding: 2rem; /* Adds padding around the form */
+    margin-bottom: 15px;
 }
 
-label {
-    margin-bottom: 0.5rem;
+/* Label */
+.form-group label {
+    margin-bottom: 0.5rem; /* Slightly adjusted spacing */
     display: block;
     font-size: 1rem; /* Ensures consistency with input */
     font-weight: 500;
     color: #333; /* Darker text for better contrast */
 }
 
-input, select, textarea {
+/* Select and Textarea Fields */
+.form-group select,
+.form-group textarea,
+.form-group input {
     width: 100%; /* Ensures full width of the container */
     padding: 0.8rem;
     margin-bottom: 1rem;
@@ -34,11 +52,19 @@ input, select, textarea {
     font-size: 1rem;
 }
 
-input[type="submit"] {
+.form-group select:focus,
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    border-color: #014da1; /* Focused border color */
+}
+
+/* Submit Button */
+.submit-btn {
+    padding: 12px 24px;
     background-color: #014da1;
     color: white;
     width: auto;
-    padding: 12px 24px; /* Ensures button is properly padded */
     border: none;
     cursor: pointer;
     border-radius: 25px;
@@ -49,17 +75,58 @@ input[type="submit"] {
     font-size: 1.1rem;
 }
 
-input[type="submit"]:hover {
+/* Button Hover and Disabled State */
+.submit-btn:hover {
     background-color: #f26d21; /* Slightly brighter hover color */
     transition: background-color 0.2s ease; /* Smooth transition for hover effect */
 }
 
-input:focus, select:focus, textarea:focus {
-    outline: none;
-    border-color: #014da1; /* Focused border color for better user experience */
-}
-
-input[type="submit"]:disabled {
+.submit-btn:disabled {
     background-color: #aaa;
     cursor: not-allowed;
+}
+
+/* Error and Success Messages */
+.form-container p {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #777;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.success-message {
+    color: green;
+    font-size: 14px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .form-container {
+        padding: 15px;
+        max-width: 100%;
+    }
+
+    .submit-btn {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .form-group select,
+    .form-group label {
+        font-size: 14px;
+    }
+
+    .form-container h1,
+    .form-container h2 {
+        font-size: 1.5rem; /* Adjusted heading size for smaller screens */
+        margin-bottom: 1rem;
+    }
 }
