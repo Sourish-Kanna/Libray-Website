@@ -124,12 +124,12 @@ export default function AboutUs() {
 
             {/* About us */}
             <div className='bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16'>
-            <div>
-                <div className='flex justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-s_blue'>
-                <p>About Us</p>
+                <div>
+                    <div className='flex justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-s_blue'>
+                        <p>About Us</p>
+                    </div>
+                    <div className="border-b-4 mx-auto w-32 sm:w-44 mt-2 border-s_orange"/>
                 </div>
-                <div className="border-b-4 mx-auto w-32 sm:w-44 mt-2 border-s_orange"/>
-            </div>
             </div>
 
             {/* Library Hours */}
