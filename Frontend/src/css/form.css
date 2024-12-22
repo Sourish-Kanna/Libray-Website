@@ -1,43 +1,65 @@
 h2 {
     color: #014da1;
-    font-size: 1.875rem;
-    line-height: 2.25rem;
+    font-size: 1.875rem; /* 30px */
+    line-height: 2.25rem; /* 36px */
     text-align: center;
     font-weight: 700;
+    margin-bottom: 1.5rem; /* Adds spacing below the heading */
 }
 
 form {
-    font-size: 1.25rem;
-    line-height: 1.75rem;
+    font-size: 1.25rem; /* 20px */
+    line-height: 1.75rem; /* 28px */
+    margin: 0 auto; /* Centers the form */
+    width: 100%;
+    max-width: 800px; /* Prevents form from getting too wide */
+    padding: 2rem; /* Adds padding around the form */
 }
 
 label {
-    /* font-weight: bold; */
-    margin-bottom: 5px;
+    margin-bottom: 0.5rem;
     display: block;
+    font-size: 1rem; /* Ensures consistency with input */
+    font-weight: 500;
+    color: #333; /* Darker text for better contrast */
 }
 
 input, select, textarea {
-    width: 98%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border-radius: 5px;
+    width: 100%; /* Ensures full width of the container */
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border-radius: 0.375rem; /* Rounded corners */
     border: 1px solid #ccc;
-    transition: all 1s ease;
-    
+    transition: all 0.3s ease; /* Shortened transition for smooth interaction */
+    font-size: 1rem;
 }
 
 input[type="submit"] {
     background-color: #014da1;
     color: white;
-    width: 25%;
-    margin-left: 38%;
+    width: auto;
+    padding: 12px 24px; /* Ensures button is properly padded */
     border: none;
     cursor: pointer;
-    padding: 10px 20px;
-    border-radius: 20px;
+    border-radius: 25px;
+    margin-top: 1rem; /* Adds some spacing above the button */
+    margin-left: auto;
+    margin-right: auto; /* Centers the button horizontally */
+    display: block;
+    font-size: 1.1rem;
 }
 
 input[type="submit"]:hover {
-    background-color: #f26d21;
+    background-color: #f26d21; /* Slightly brighter hover color */
+    transition: background-color 0.2s ease; /* Smooth transition for hover effect */
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border-color: #014da1; /* Focused border color for better user experience */
+}
+
+input[type="submit"]:disabled {
+    background-color: #aaa;
+    cursor: not-allowed;
 }
