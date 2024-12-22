@@ -53,12 +53,29 @@ const moreLinks = [
     { name: "AICTE Collaborations (MoU)", url: "https://www.aicte-india.org/education/collaborations" },
 ];
 
-const events=[
-    {img:event1,content:"This event is organized to familiarize new students with the library’s resources, services, and policies. It includes a guided tour of the library, an introduction to the digital resources (e-journals, databases), and how to use the OPAC system for book searches."},
-    {img:event2,content:"The library periodically hosts book exhibitions showcasing new arrivals, important academic texts, and rare collections. This event is aimed at promoting reading habits and awareness of the latest publications."},
-    {img:event3,content:"Celebrated annually to honor the contributions of libraries in education, this event features guest lectures, workshops, and interactive sessions highlighting the role of libraries in fostering knowledge."},
-    {img:event4,content:"Organized in collaboration with IEEE, this event includes workshops, seminars, and presentations on recent developments in technology and engineering. Students and faculty are encouraged to explore the IEEE digital library for research and academic purposes"}
-]
+const events = [
+    {
+        text: 'User Orientation',
+        img: event1,
+        content: "This event is organized to familiarize new students with the library’s resources, services, and policies. It includes a guided tour of the library, an introduction to the digital resources (e-journals, databases), and how to use the OPAC system for book searches."
+    },
+    {
+        text: 'Book Exhibition',
+        img: event2,
+        content: "The library periodically hosts book exhibitions showcasing new arrivals, important academic texts, and rare collections. This event is aimed at promoting reading habits and awareness of the latest publications."
+    },
+    {
+        text: 'National Library Day',
+        img: event3,
+        content: "Celebrated annually to honor the contributions of libraries in education, this event features guest lectures, workshops, and interactive sessions highlighting the role of libraries in fostering knowledge."
+    },
+    {
+        text: 'IEEE Day',
+        img: event4,
+        content: "Organized in collaboration with IEEE, this event includes workshops, seminars, and presentations on recent developments in technology and engineering. Students and faculty are encouraged to explore the IEEE digital library for research and academic purposes."
+    },
+];
+
 
 const faqs = [
     {
@@ -126,6 +143,31 @@ const faqs = [
     }
 ];
 
+const sections = [
+    {
+        title: "IEEE",
+        content: "The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.",
+        link: { text: 'Click here for more information', url: 'https://www.ets.org/gre.html' }
+    },
+    {
+        title: "GATE",
+        content: "GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.",
+        link: { text: 'Click here for more information', url: 'http://gate.iitd.ac.in/' }
+    },
+    {
+        title: "SAT",
+        content: "The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.",
+        link: { text: 'Click here for more information', url: 'https://satsuite.collegeboard.org/sat' }
+    },
+    {
+        title: "TOEFL",
+        content: "TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.",
+        link: { text: 'Click here for more information', url: 'https://www.ets.org/toefl.html' }
+    }
+];
+
+
+
 const FaqItem = ({ title, details }) => (
     <div className="relative group">
         <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
@@ -145,11 +187,54 @@ const FaqItem = ({ title, details }) => (
     </div>
 );
 
+const CollapsibleSection = ({ title, content, link }) => (
+    <div className="relative group">
+        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+            <p className='text-white'>{title}</p>
+            <FontAwesomeIcon className="text-2xl text-s_orange" icon={faChevronDown} />
+        </div>
+        <div className="max-h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:max-h-[500px] rounded-xl">
+            <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                <p className="py-2 text-lg">{content}</p>
+                <p className="py-2 text-lg">
+                    <a href={link.url} target="_blank" rel="noopener noreferrer" className='underline text-s_orange'>
+                        {link.text}
+                    </a>
+                </p>
+            </div>
+        </div>
+    </div>
+);
+
+const MoreLinksSection = ({ moreLinks }) => {
+    return (
+        <div className="relative group">
+            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+                <p className='text-white'>More Links</p>
+                <FontAwesomeIcon className="text-2xl text-s_orange" icon={faChevronDown} />
+            </div>
+            <div className="more-links max-h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:max-h-[500px] rounded-xl">
+                <div className="grid grid-cols-3 gap-0 auto-rows-min content-center mx-10 my-3 text-base transition-all transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                    {moreLinks.map((link, index) => (
+                        <div key={index} className='grid my-2'>
+                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-s_orange">
+                                {link.name}
+                            </a>
+                        </div>
+                    ))}
+                </div>
+            </div>
+        </div>
+    );
+};
+
 export default function Journals(){
     useSmoothScroll();
+
     const [activeIndex, setActiveIndex] = useState(0);
+
     const handleClick = (index) => {
-    setActiveIndex(index);
+        setActiveIndex(index);
     };
 
     return (
@@ -170,127 +255,50 @@ export default function Journals(){
             </div>
 
             {/* Events */}
-            <div>
-                <div className='w-full h-40  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold '>
-                            <p>Events</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44 mt-2 border-blue-700 mb-10"></div>
+            <div className='mx-5 sm:mx-10 md:mx-40'>
+                <div className='pt-8'>
+                    {/* Heading */}
+                    <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
+                        <p>Events</p>
                     </div>
+                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
-            </div>
-            <div className='carousel-container  flex overflow-visible px-40'>
-                {/* Event Names (on the left side) */}
-                <div className='flex-col content-center my-10'>
-                    {['User Orientation', 'Book Exhibition', 'National Library Day', 'IEEE Day'].map((text, index) => (
-                        <div key={index} className="mb-5">
-                            <p
-                                className={`w-96 bg-[#014da1] py-5 px-10 text-3xl rounded-r-full mb-2 transition-transform duration-300 cursor-pointer text-white h-fit ${
-                                    activeIndex === index ? 'scale-110 text-orange-600 bg-[#3090ff] w-96 shadow-lg shadow-black/50' : ''
+                
+                <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between md:space-x-10">
+                    {/* Event Names (on the left side) */}
+                    <div className="flex flex-col items-center md:items-start my-5">
+                        {events.map((event, index) => (
+                            <button
+                                key={index}
+                                className={`w-64 sm:w-80 md:w-96 bg-blue-700 py-4 px-6 text-lg sm:text-2xl md:text-3xl rounded-r-full mb-2 transition-transform duration-300 text-white h-fit ${
+                                    activeIndex === index ? 'scale-110 text-orange-600 bg-blue-500 shadow-lg shadow-black/50' : ''
                                 }`}
                                 onClick={() => handleClick(index)}
                             >
-                                {text}
-                            </p>
-                        </div>
-                    ))}
-                </div>
+                                {event.text}
+                            </button>
+                        ))}
+                    </div>
 
-                {/* Event Details (on the right side) */}
-                <div className='flex-grow ml-10 mt-12'>
-                    {activeIndex !== null && (
-                        <div className="flex bg-gray-100 p-5 py-12 rounded-md shadow-md w-full hover:scale-105 duration-700">
-                            <img src={events[activeIndex].img} alt={events[activeIndex].text} className="w-60 h-60 object-cover mr-5" />
-                            <p className="text-gray-700 text-2xl">{events[activeIndex].content}</p>
-                        </div>
-                    )}
+                    {/* Event Details (on the right side) */}
+                    <div className="flex-grow w-full mt-5 md:mt-0 py-6">
+                        {activeIndex !== null && (
+                            <div className="flex flex-col sm:flex-row bg-gray-100 p-5 rounded-md shadow-md transition-transform duration-500 transform hover:scale-105">
+                                <img
+                                    src={events[activeIndex].img}
+                                    alt={events[activeIndex].text}
+                                    className="w-full sm:w-60 sm:h-60 object-cover mr-0 sm:mr-5 mb-4 sm:mb-0"
+                                />
+                                <p className="text-gray-700 text-lg sm:text-xl md:text-2xl">{events[activeIndex].content}</p>
+                            </div>
+                        )}
+                    </div>
                 </div>
             </div>
 
 
-            {/* More
-            <div className=' bg-gray-100'> 
-                <div className='w-full h-20 mt-10  flex items-center justify-center'>
-                    <div >
-                        <div className='flex justify-center text-4xl font-bold mt-8'>
-                            <p>More</p>
-                        </div>
-                        <div className=" border-b-4 mx-auto w-44  border-blue-700 mb-10"></div>
-                    </div>
-                </div>
-                <div className='mx-40'>
-                    <div className="relative group">
-                            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
-                                <p className='text-white'>MORE LINKS</p>
-                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
-                            </div>
-                            <div className="more-links h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-[37rem] rounded-xl">
-                                <div className="grid grid-cols-3 gap-0 auto-rows-min content-center mx-10 my-3 text-base transition-all  transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                    {moreLinks.map((link, index) => (
-                                        <div key={index} className='grid my-2'>
-                                            <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-s_orange "> 
-                                                {link.name}
-                                            </a>
-                                        </div>
-                                        ))
-                                    }
-                                </div>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
-                                <p className='text-white'>IEEE</p>
-                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
-                            </div>
-                            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-                                <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                    <p className="py-2 text-lg">The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.</p>
-                                    <p className="py-2 text-lg"><a href="https://www.ets.org/gre.html" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'> Click here for more information</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
-                                <p className='text-white'>GATE</p>
-                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
-                            </div>
-                            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-                                <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                    <p className="py-2 text-lg">GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.</p>
-                                    <p className="py-2 text-lg"><a href="http://gate.iitd.ac.in/" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'> Click here for more information</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
-                                <p className='text-white'>SAT</p>
-                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
-                            </div>
-                            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-                                <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                    <p className="py-2 text-lg">The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.</p>
-                                    <p className="py-2 text-lg"><a href="https://satsuite.collegeboard.org/sat" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'> Click here for more information</a></p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="relative group">
-                            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
-                                <p className='text-white'>TOFEL</p>
-                                <FontAwesomeIcon className="text-2xl text-s_orange"icon={faChevronDown}/>
-                            </div>
-                            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-                                <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                                    <p className="py-2 text-lg">TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.</p>
-                                    <p className="py-2 text-lg"><a href="https://www.ets.org/toefl.html" target="_blank" rel="noopener noreferrer" className='underline text-s_orange'>Click here for more information</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
-
             {/* More */}
-            <div className='mx-5 sm:mx-10 md:mx-40'>
+            <div className='px-5 sm:px-10 md:px-40 bg-gray-100'>
                 <div className='pt-8'>
                     {/* Heading */}
                     <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
@@ -299,8 +307,14 @@ export default function Journals(){
                     <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
                 </div>
                 <div className='w-full'>
-                    {faqs.map((faqs, index) => (
-                        <FaqItem key={index} title={faqs.title} details={faqs.details} />
+                    <MoreLinksSection moreLinks={moreLinks} />
+                    {sections.map((section, index) => (
+                        <CollapsibleSection
+                            key={index}
+                            title={section.title}
+                            content={section.content}
+                            link={section.link}
+                        />
                     ))}
                 </div>
             </div>
