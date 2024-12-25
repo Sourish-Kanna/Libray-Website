@@ -1,57 +1,44 @@
 import React, { useState } from "react";
-import axios from "axios";
-import { useNavigate } from "react-router-dom"; // Import the useNavigate hook
+import { useNavigate } from "react-router-dom";
+import useAuthStore from "./Store/userAuth.store";
 
 const Register = () => {
+    const { registerUser, loading, error, success } = useAuthStore();
+    const navigate = useNavigate();
+
     const [formData, setFormData] = useState({
         username: "",
         email: "",
-        password: "",
         fullName: "",
-        avatar: "",
-        role: "student" // Default role
+        avatar: null,
+        password: "",
     });
-
-    const navigate = useNavigate(); // Initialize the navigate function
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData({
-            ...formData,
-            [name]: value
-        });
+        setFormData((prev) => ({
+            ...prev,
+            [name]: value,
+        }));
     };
 
     const handleFileChange = (e) => {
-        setFormData({
-            ...formData,
-            avatar: e.target.files[0], // Attach the file object here
-        });
+        setFormData((prev) => ({
+            ...prev,
+            avatar: e.target.files[0],
+        }));
     };
 
     const handleSubmit = async (e) => {
-        e.preventDefault(); // Prevent default form submission
-
-        // Create FormData object to handle file uploads
-        const formDataToSend = new FormData();
-        Object.keys(formData).forEach(key => {
-            formDataToSend.append(key, formData[key]);
+        e.preventDefault();
+        const form = new FormData();
+        Object.keys(formData).forEach((key) => {
+            form.append(key, formData[key]);
         });
 
-        try {
-            // Make API request to register the user
-            const response = await axios.post("http://localhost:8000/api/v1/users/register", formDataToSend, {
-                headers: {
-                    "Content-Type": "multipart/form-data"
-                }
-            });
-
-            console.log(response.data); // Handle success
-
-            // Redirect to homepage after successful registration
-            navigate("/home"); // Change this to your homepage route
-        } catch (error) {
-            console.error("There was an error submitting the form!", error); // Handle error
+        await registerUser(form);
+        if (success) {
+            navigate("/login");
         }
     };
 
@@ -59,6 +46,8 @@ const Register = () => {
         <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-500 via-blue-600 to-orange-400">
             <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
                 <h2 className="text-3xl font-semibold text-center text-blue-700 mb-6">Register</h2>
+                {error && <p className="text-red-500 text-center">{error}</p>}
+                {success && <p className="text-green-500 text-center">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                         <input
@@ -97,7 +86,7 @@ const Register = () => {
                         <input
                             type="file"
                             name="avatar"
-                            onChange={handleFileChange} // Handle file change
+                            onChange={handleFileChange}
                             className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
                             required
                         />
@@ -115,9 +104,10 @@ const Register = () => {
                     </div>
                     <button
                         type="submit"
+                        disabled={loading}
                         className="w-full py-3 px-4 bg-blue-600 hover:bg-orange-500 text-white font-bold rounded-lg shadow-md transition duration-300"
                     >
-                        Register
+                        {loading ? "Registering..." : "Register"}
                     </button>
                 </form>
             </div>

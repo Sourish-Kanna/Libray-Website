@@ -31,9 +31,9 @@ const registerUser = asyncHandler(async (req, res) => {
         throw new ApiError(400, "All fields are required");
     }
 
-    if (!email.endsWith('@gst.sies.edu.in')) {
-        throw new ApiError(400, "Please enter a valid college email ID");
-    }
+    // if (!email.endsWith('@gst.sies.edu.in')) {
+    //     throw new ApiError(400, "Please enter a valid college email ID");
+    // }
 
     const existedUser = await User.findOne({
         $or: [{ username }, { email }]
@@ -55,8 +55,8 @@ const registerUser = asyncHandler(async (req, res) => {
     }
 
     // Identify if the user is a teacher or student based on email
-    const isStudent = /\d/.test(email);
-    const role = isStudent ? "student" : "teacher";
+    // const isStudent = /\d/.test(email);
+    // const role = isStudent ? "student" : "teacher";
 
     // Create the user
     const user = await User.create({
@@ -65,7 +65,7 @@ const registerUser = asyncHandler(async (req, res) => {
         email, 
         password,
         username: username.toLowerCase(),
-        role,
+        // role,
     });
 
     const createdUser = await User.findById(user._id).select(

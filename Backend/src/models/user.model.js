@@ -36,11 +36,11 @@ const userSchema = new Schema(
         refreshToken: {
             type: String
         },
-        role: {
-            type: String,
-            enum: ['student', 'teacher'],
-            required: true
-        }
+        // role: {
+        //     type: String,
+        //     enum: ['student', 'teacher'],
+        //     required: true
+        // }
     },
     {
         timestamps: true
