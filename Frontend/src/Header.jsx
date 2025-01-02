@@ -141,6 +141,18 @@ function NavBar() {
                 Contact Us
               </NavLink>
             </li>
+                    <li>
+                        {/* <div className="w-full h-full border-black	bg-orange-500 rounded-full flex	">
+                            <button className="bg-white w-17 h-20 rounded-full m-5  ">login </button>
+                        </div> */}
+                        <div class="flex items-center  bg-[#f3f2ed] font-serif rounded-full px-4 py-2 shadow-md">
+                                <button class=" text-[#014da1] font-medium mr-4 text-xl hover: active:text-[#f26d21]">Login</button>
+                                <button class="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic
+                                </button>
+                        </div>
+
+                    </li>
+
           </ul>
         </div>
       </div>
