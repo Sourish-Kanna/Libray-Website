@@ -12,6 +12,7 @@ export default {
     extend: {
       backgroundImage: {
         'header-bg': "url('../assets/Header/header_bg.jpg')",
+        'register-bg': "url('../assets/register_bg.jpg')",
       },
       backgroundPosition: {
         'top-header': 'top',
