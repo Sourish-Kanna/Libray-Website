@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import useAuthStore from "./Store/userAuth.store"; 
 
 const Login = () => {
@@ -64,7 +64,11 @@ const Login = () => {
                     >
                         {loading ? "Logging in..." : "Login"}
                     </button>
-                    <div className=""><a href="" className="flex justify-center underline text-sm hover:[#f26d21]">Don't have an account</a></div>
+                     <NavLink to="/register">
+                        <div className="">
+                            <a href="" className="flex justify-center underline text-sm hover:[#f26d21]">Don't have an account</a>
+                        </div>
+                    </NavLink>
                 </form>
             </div>
         </div>
