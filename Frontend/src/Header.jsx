@@ -143,10 +143,12 @@ function NavBar() {
             </li>
 
             <li>
-              <div className="flex items-center  bg-[#f3f2ed] font-serif rounded-full px-4 py-2 shadow-md">
-                <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">Login</button>
-                <button className="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic</button>
-              </div>
+              <NavLink to="login">
+                <div className="flex items-center  bg-header-color font-serif rounded-full px-4 py-2 shadow-md">
+                  <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">Login</button>
+                  <button className="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic</button>
+                </div>
+              </NavLink>
             </li>
 
           </ul>
@@ -180,10 +182,12 @@ function NavBar() {
             </li>
 
             <li>
-              <div className="flex items-center  bg-[#f3f2ed] font-serif rounded-full px-4 py-2 shadow-md">
-                <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">Login</button>
-                <button className="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic</button>
-              </div>
+            <NavLink to="login">
+                <div className="flex items-center  bg-header-color font-serif rounded-full px-4 py-2 shadow-md">
+                  <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">Login</button>
+                  <button className="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic</button>
+                </div>
+              </NavLink>
             </li>
 
           </ul>
