@@ -88,7 +88,7 @@ export default function EResources() {
         </div>
         <form
           id="donate-books-form"
-          className="p-6 border bg-[#f3f2ed] rounded-2xl shadow-2xl w-full max-w-3xl mx-auto"
+          className="form-container"
           onSubmit={handleFormSubmit}
           noValidate
         >

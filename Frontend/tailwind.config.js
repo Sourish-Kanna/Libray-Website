@@ -34,11 +34,11 @@ export default {
         "SubBody": '.875rem',
         "2-Primary": ['1.5rem','2rem'],
       },
-      screens: {
-        // 'lg': '1470px',
-        // 'md': '1470x',
-        'sm': '600px',
-      },
+      // screens: {
+      //   // 'lg': '1470px',
+      //   // 'md': '1470x',
+      //   // 'sm': '600px',
+      // },
     },        
   },
   plugins: [],

@@ -178,89 +178,116 @@ function Quicklinks() {
     year === "choose" ||
     month === "choose" ||
     loading;
+  
+    const handleBranchChange = (e) => {
+      setBranch(e.target.value);
+      setSemester("choose"); // Reset semester when branch changes
+      setSubject("choose"); // Reset subject when branch changes
+    };
+  
+    const handleSemesterChange = (e) => {
+      setSemester(e.target.value);
+      setSubject("choose"); // Reset subject when semester changes
+    };
+  
+    const handleSubjectChange = (e) => {
+      setSubject(e.target.value);
+    };
+  
 
-  return (
-    <div className="default-bg">
-      <Helmet>
-        <title>Others | Library | SIESGST</title>
-      </Helmet>
-      <div className="form-container bg-[#f3f2ed] p-6 rounded-lg shadow-lg">
-        <h1>Download Question Papers</h1>
-        <form onSubmit={handleSubmit} aria-labelledby="form-title">
-          <fieldset disabled={loading}>
+    return (
+      <div className="overflow-x-hidden w-full h-full">
+        <Helmet>
+          <title>others | Library | SIESGST</title>
+        </Helmet>
+  
+        <div className="mx-4 sm:mx-16 lg:mx-40" id="Select-PYQs">
+          <div className="flex items-center justify-center w-full h-auto py-8">
+            <div>
+              <div className="flex justify-center text-3xl lg:text-4xl font-bold">
+                <p>Download Question Paper</p>
+              </div>
+              <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 lg:w-44" />
+            </div>
+          </div>
+  
+          <form id="select-pyqs-form" className="form-container">
+            <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4">
+              Select Details
+            </h2>
+  
+            {/* Branch */}
             <div className="form-group">
-              <label htmlFor="branch">Branch</label>
+              <label htmlFor="branch">Branch:</label>
               <select
                 id="branch"
                 value={branch}
-                onChange={(e) => setBranch(e.target.value)}
-                aria-required="true"
+                onChange={handleBranchChange}
+                className="form-control"
               >
-                {branchOptions.map(option => (
+                {branchOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.text}
                   </option>
                 ))}
               </select>
             </div>
+  
+            {/* Semester */}
             <div className="form-group">
-              <label htmlFor="semester">Semester</label>
+              <label htmlFor="semester">Semester:</label>
               <select
                 id="semester"
                 value={semester}
-                onChange={(e) => setSemester(e.target.value)}
-                aria-required="true"
+                onChange={handleSemesterChange}
+                disabled={branch === "choose"}
+                className="form-control"
               >
-                {semesterOptions.map(option => (
+                {semesterOptions.map((option) => (
                   <option key={option.value} value={option.value}>
                     {option.text}
                   </option>
                 ))}
               </select>
             </div>
+  
+            {/* Subject */}
             <div className="form-group">
-              <label htmlFor="year">Year</label>
+              <label htmlFor="subject">Subject:</label>
               <select
-                id="year"
-                value={year}
-                onChange={(e) => setYear(e.target.value)}
-                aria-required="true"
+                id="subject"
+                value={subject}
+                onChange={handleSubjectChange}
+                disabled={branch === "choose" || semester === "choose"}
+                className="form-control"
               >
-                {yearOptions.map(option => (
-                  <option key={option.value} value={option.value}>
-                    {option.text}
+                <option value="choose">Choose Subject</option>
+                {subjectOptions[branch]?.[semester]?.map((sub, idx) => (
+                  <option key={idx} value={sub}>
+                    {sub}
                   </option>
                 ))}
               </select>
             </div>
-            <div className="form-group">
-              <label htmlFor="month">Month</label>
-              <select
-                id="month"
-                value={month}
-                onChange={(e) => setMonth(e.target.value)}
-                aria-required="true"
+  
+            {/* Submit Button */}
+            <div className="flex justify-center mt-6">
+              <button
+                type="submit"
+                className={`submit-btn ${isSubmitDisabled && "opacity-50"}`}
+                disabled={isSubmitDisabled}
               >
-                {monthOptions.map(option => (
-                  <option key={option.value} value={option.value}>
-                    {option.text}
-                  </option>
-                ))}
-              </select>
+                Get PYQs
+              </button>
             </div>
-            <button
-              type="submit"
-              className={`submit-btn ${isSubmitDisabled ? 'disabled' : ''}`}
-              disabled={isSubmitDisabled}
-            >
-              {loading ? "Processing..." : "Download PYQ"}
-            </button>
-          </fieldset>
-        </form>
-        {error && <p className="error-message" role="alert">{error}</p>}
+          </form>
+        </div>
+  
+        <div className="flex items-center justify-center w-full h-16" />
       </div>
-    </div>
-  );
+    );
 }
+
+
 
 export default Quicklinks;

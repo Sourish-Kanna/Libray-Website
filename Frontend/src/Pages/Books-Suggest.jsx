@@ -36,7 +36,7 @@ export default function EResources() {
 
         <form
           id="suggest-books-form"
-          className="p-6 border bg-[#f3f2ed] rounded-2xl shadow-2xl w-full max-w-3xl mx-auto"
+          className="form-container"
         >
           <h2 className="text-lg sm:text-xl lg:text-2xl font-bold mb-4">Book Details</h2>
           
