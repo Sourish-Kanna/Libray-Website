@@ -4,7 +4,7 @@ import Sies_logo from './assets/Footer/sies_logo_footer.png';
 import { NavLink, Link } from 'react-router-dom';
 
 const activeClassName = 'text-s_orange';
-const inactiveClassName = "text-white hover:text-gray-300";
+const inactiveClassName = "text-white hover:text-s_orange_400";
 
 const sections = [
   {
@@ -79,7 +79,7 @@ function Footer() {
                   className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}
                   aria-label={`Go to ${section.title} section`}
                 >
-                  <p className="mb-4 font-serif font-bold text-center lg:text-left">{section.title}</p>
+                  <p className="mb-4 font-serif font-bold text-center hover:text-s_orange_400 lg:text-left">{section.title}</p>
                 </NavLink>
                 <ul className="font-serif space-y-2">
                   {section.links.map((link) => (

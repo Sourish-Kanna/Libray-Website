@@ -104,7 +104,7 @@ function NavBar() {
 
 
   return (
-    <header className="top-0 z-20 w-full h-fit bg-header-color bg-header-bg bg-top-header bg-cover-header">
+    <nav className="top-0 z-20 w-full h-fit bg-header-color bg-header-bg bg-top-header bg-cover-header">
       <div className="flex items-center justify-between px-4 lg:px-10 xl:px-30">
         <div className="flex items-center">
           <img src={Sies_logo} alt="SIES Logo" className="h-full" />
@@ -141,17 +141,13 @@ function NavBar() {
                 Contact Us
               </NavLink>
             </li>
-                    <li>
-                        {/* <div className="w-full h-full border-black	bg-orange-500 rounded-full flex	">
-                            <button className="bg-white w-17 h-20 rounded-full m-5  ">login </button>
-                        </div> */}
-                        <div class="flex items-center  bg-[#f3f2ed] font-serif rounded-full px-4 py-2 shadow-md">
-                                <button class=" text-[#014da1] font-medium mr-4 text-xl hover: active:text-[#f26d21]">Login</button>
-                                <button class="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic
-                                </button>
-                        </div>
 
-                    </li>
+            <li>
+              <div className="flex items-center  bg-[#f3f2ed] font-serif rounded-full px-4 py-2 shadow-md">
+                <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">Login</button>
+                <button className="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic</button>
+              </div>
+            </li>
 
           </ul>
         </div>
@@ -182,10 +178,18 @@ function NavBar() {
                 Contact Us
               </NavLink>
             </li>
+
+            <li>
+              <div className="flex items-center  bg-[#f3f2ed] font-serif rounded-full px-4 py-2 shadow-md">
+                <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">Login</button>
+                <button className="w-10 h-10 bg-gray-400  rounded-full flex items-center justify-center text-white text-lg">Pic</button>
+              </div>
+            </li>
+
           </ul>
         </div>
       )}
-    </header>
+    </nav>
   );
 }
 

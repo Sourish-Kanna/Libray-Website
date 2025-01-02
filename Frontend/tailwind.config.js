@@ -24,6 +24,7 @@ export default {
         's_orange': '#f26d21',
         's_blue': '#014da1',
         "s_blue_400": "#3492fe",
+        "s_orange_400": "#f48748",
       },
       fontSize: {
         "Title": '1.5rem',
@@ -32,6 +33,11 @@ export default {
         "Body": ['1rem','1rem'],
         "SubBody": '.875rem',
         "2-Primary": ['1.5rem','2rem'],
+      },
+      screens: {
+        // 'lg': '1470px',
+        // 'md': '1470x',
+        'sm': '600px',
       },
     },        
   },
