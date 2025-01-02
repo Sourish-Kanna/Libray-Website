@@ -36,8 +36,8 @@ const subjectOptions = {
         "SEM 4": ["Engineering Mathematics-4", "AOA", "DBMS", "Operating System", "Microprocessor"],
         "SEM 5": ["Computer Network", "Web Computing", "Artificial Intelligence", "DWM", "DLO-1"],
         "SEM 6": ["Data Analytics and Visualization", "Cryptography and System Security", "Software Engineering and Project Management", "Machine Learning", "DLO-2"],
-        "SEM 7": ["Deep Learning", "Big Data Analytics", "DLO-3", "DLo-4", "ILO-4"],
-        "SEM 8": ["Advanced Artificial Intelligence", "DLO-5", "DLO-6", "ILO-2",],
+        "SEM 7": ["Deep Learning", "Big Data Analytics", "DLO-3", "DLo-4", "ILO-1"],
+        "SEM 8": ["Advanced Artificial Intelligence", "DLO-5", "DLO-6", "ILO-2"],
         
     },
     "Computer Engineering": {
@@ -87,12 +87,12 @@ const subjectOptions = {
     "AIML": {
         "SEM 1": ["Engineering Mathematics-1", "Applied Physics-1", "Engineering Chemistry-1", "Engineering Mechanics", "Basic Electrical and Electronics Engineering"],
         "SEM 2": ["Engineering Mathematics-2", "Engineering Physics-2", "Engineering Chemistry-2", "Engineering Graphics", "C Programming","PCE-1"],
-        "SEM 3": ["AIML Sem3 Sub1", "AIML Sem3 Sub2", "AIML Sem3 Sub3", "AIML Sem3 Sub4", "AIML Sem3 Sub5"],
-        "SEM 4": ["AIML Sem4 Sub1", "AIML Sem4 Sub2", "AIML Sem4 Sub3", "AIML Sem4 Sub4", "AIML Sem4 Sub5"],
-        "SEM 5": ["AIML Sem5 Sub1", "AIML Sem5 Sub2", "AIML Sem5 Sub3", "AIML Sem5 Sub4", "AIML Sem5 Sub5"],
-        "SEM 6": ["AIML Sem6 Sub1", "AIML Sem6 Sub2", "AIML Sem6 Sub3", "AIML Sem6 Sub4", "AIML Sem6 Sub5"],
-        "SEM 7": ["AIML Sem7 Sub1", "AIML Sem7 Sub2", "AIML Sem7 Sub3", "AIML Sem7 Sub4", "AIML Sem7 Sub5"],
-        "SEM 8": ["AIML Sem8 Sub1", "AIML Sem8 Sub2", "AIML Sem8 Sub3", "AIML Sem8 Sub4", "AIML Sem8 Sub5"],
+        "SEM 3": ["Engineering Mathematics-3", "DSGT", "Data Structure", "DLCOA", "Computer Graphics"],
+        "SEM 4": ["Engineering Mathematics-4", "AOA", "DBMS", "Operating System", "Microprocessor"],
+        "SEM 5": ["Computer Network", "Web Computing", "Artificial Intelligence", "DWM", "DLO-1"],
+        "SEM 6": ["Data Analytics and Visualization", "Cryptography and System Security", "Software Engineering and Project Management", "Machine Learning", "DLO-2"],
+        "SEM 7": ["Deep Learning", "Big Data Analytics", "DLO-3", "DLo-4", "ILO-4"],
+        "SEM 8": ["Advanced Artificial Intelligence", "DLO-5", "DLO-6", "ILO-2"],
     
     },
     "CS IOT": {
@@ -100,15 +100,15 @@ const subjectOptions = {
         "SEM 2": ["Engineering Mathematics-2", "Engineering Physics-2", "Engineering Chemistry-2", "Engineering Graphics", "C Programming","PCE-1"],
         "SEM 3": ["IOT Sem3 Sub1", "IOT Sem3 Sub2", "IOT Sem3 Sub3", "IOT Sem3 Sub4", "IOT Sem3 Sub5"],
         "SEM 4": ["IOT Sem4 Sub1", "IOT Sem4 Sub2", "IOT Sem4 Sub3", "IOT Sem4 Sub4", "IOT Sem4 Sub5"],
-        "SEM 5": ["IOT Sem5 Sub1", "IOT Sem5 Sub2", "IOT Sem5 Sub3", "IOT Sem5 Sub4", "IOT Sem5 Sub5"],
-        "SEM 6": ["IOT Sem6 Sub1", "IOT Sem6 Sub2", "IOT Sem6 Sub3", "IOT Sem6 Sub4", "IOT Sem6 Sub5"],
+        "SEM 5": ["TCS", "Software Engineering", "Computer Network", "DWM", "DLO-1"],
+        "SEM 6": ["Cryptography and System Security", "IOT Architecture and Protocols", "Blockchain Technology", "Web X.0", "DLO-2"],
         "SEM 7": ["IOT Sem7 Sub1", "IOT Sem7 Sub2", "IOT Sem7 Sub3", "IOT Sem7 Sub4", "IOT Sem7 Sub5"],
         "SEM 8": ["IOT Sem8 Sub1", "IOT Sem8 Sub2", "IOT Sem8 Sub3", "IOT Sem8 Sub4", "IOT Sem8 Sub5"],
     
     },
     "First Year Engineering":{
-        "SEM 1": ["FE Sem1 Sub1", "FE Sem1 Sub2", "FE Sem1 Sub3", "FE Sem1 Sub4", "FE Sem1 Sub5"],
-        "SEM 2": ["FE Sem2 Sub1", "FE Sem2 Sub2", "FE Sem2 Sub3", "FE Sem2 Sub4", "FE Sem2 Sub5"], 
+        "SEM 1": ["Engineering Mathematics-1", "Engineering Physics-1", "Engineering Chemistry-1", "Engineering Mechanics", "Basic Electrical and Electronics Engineering"],
+        "SEM 2": ["Engineering Mathematics-2", "Engineering Physics-2", "Engineering Chemistry-2", "Engineering Graphics", "C Programming","PCE-1"], 
     }
     
 };
