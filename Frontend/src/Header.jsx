@@ -61,7 +61,8 @@ const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile}) => {
 const StyledDropdown = ({ to, text }) => {
   return (
     <div className="absolute hidden bg-transparent z-10 group-hover:block w-52 top-8 -left-14">
-      <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 border-r-8 border-b-8 border-transparent border-b-s_orange"></div>
+      <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 
+        border-r-8 border-b-8 border-transparent border-b-s_orange"/>
       <ul className="bg-gray-300 text-center">
         {text.map((item, index) => (
           <li key={index} className="py-3 pl-2 border-b-2 hover:bg-gray-200">
@@ -143,16 +144,17 @@ function NavBar() {
             </li>
 
             <li>
-              <div className="flex items-center bg-header-color rounded-full px-4 py-2 shadow-md  border-2	 border-s_blue hover:border-s_orange transform transition duration-500 ease-in-out">
-                <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">
-                  <NavLink to="Login" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}` }>
-                    Login
-                  </NavLink>
-                </button>
-                <div class="w-12 h-12 bg-gray-400 hover:cursor-pointer rounded-full flex items-center justify-center text-white text-lg">
-                  Pic
+              <NavLink to="Login" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}` }>
+                <div className="flex items-center bg-header-color rounded-full px-4 py-2 shadow-md  border-2
+                 border-s_blue hover:border-s_orange transform transition duration-500 ease-in-out">
+                    <button className=" text-s_blue font-medium mr-4 text-xl hover:text-s_orange active:text-s_orange_400">
+                      Login
+                    </button>
+                    <div class="w-12 h-12 bg-gray-400 hover:cursor-pointer rounded-full flex items-center justify-center text-white text-lg">
+                      Pic
+                    </div>
                 </div>
-              </div>
+              </NavLink>
             </li>
 
           </ul>

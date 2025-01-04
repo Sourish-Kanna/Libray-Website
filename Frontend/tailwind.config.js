@@ -6,7 +6,7 @@ export default {
   ],  
   theme: {
     fontFamily: {
-      serif: ['Merriweather', 'Fraunces', 'Georgia', 'Times New Roman', 'serif'],
+      serif: ['Fraunces', 'Georgia', 'Times New Roman', 'serif'],
       sans: ['Open Sans', 'Signika', 'Helvetica', 'Arial', 'sans-serif'],
     },
     extend: {
@@ -36,9 +36,9 @@ export default {
         "2-Primary": ['1.5rem','2rem'],
       },
       // screens: {
-      //   // 'lg': '1470px',
-      //   // 'md': '1470x',
-      //   // 'sm': '600px',
+      //   // 'lg': '1024px',
+      //   // 'md': '768',
+      //   // 'sm': '640px',
       // },
     },        
   },

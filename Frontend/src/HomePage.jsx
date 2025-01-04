@@ -1,9 +1,11 @@
+import { faChevronDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Link,NavLink } from 'react-router-dom';
-import './css/HomePage.css'
 import Overview from './assets/HomePage/overview.webp'
 import Librian from './assets/HomePage/librian.webp'
+import React, { useState, useEffect } from "react";
 import image1 from './assets/HomePage/image1.webp'
+import image11 from './assets/HomePage/img11.webp'
+import image10 from './assets/HomePage/img10.webp'
 import image2 from './assets/HomePage/img2.webp'
 import image4 from './assets/HomePage/img4.webp'
 import image5 from './assets/HomePage/img5.webp'
@@ -11,10 +13,9 @@ import image6 from './assets/HomePage/img6.webp'
 import image7 from './assets/HomePage/img7.webp'
 import image8 from './assets/HomePage/img8.webp'
 import image9 from './assets/HomePage/img9.webp'
-import image10 from './assets/HomePage/img10.webp'
-import image11 from './assets/HomePage/img11.webp'
-import { faChevronDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
+import { Link,NavLink } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import './css/HomePage.css'
 
 function generateSlides(images) {
     return images.map((image, index) => (
@@ -104,6 +105,16 @@ const newsItems = ['news 1', 'news 2', 'news 3', 'news 4', 'news 5', 'news 6', '
 
 
 export default function HomePage() {
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
+
+  useEffect(() => {
+      const handleResize = () => {
+          setIsMobile(window.innerWidth < 768);
+      };
+
+      window.addEventListener("resize", handleResize);
+      return () => window.removeEventListener("resize", handleResize);
+  }, []);
   return (
         <div className='w-full h-full overflow-x-hidden  '>
 
@@ -128,23 +139,28 @@ export default function HomePage() {
                 </div>
 
                 {/* Center Section */}
-                <div className="flex flex-col items-center py-10 sm:py-20 md:py-44">
+                <div className="flex flex-col items-center justify-center  h-dvh text-center">
                     
                     {/* Typing Logo */}
-                    <div className="mx-4 sm:mx-20 lg:mx-40 bg-typing font-serif font-bold text-white text-center typing-demo text-4xl sm:text-6xl lg:text-9xl">
-                    SIES GST LIBRARY
+                    <div className={`${isMobile ? "typing-demo-mobile" : "typing-demo"} 
+                    mx-4 sm:mx-20 lg:mx-40 bg-typing font-serif font-bold text-white text-6xl sm:text-7xl lg:text-9xl `}>
+                        SIES GST LIBRARY
                     </div>
 
                     {/* Quick Links */}
-                    <div className="flex flex-wrap justify-center md:justify-around w-full md:w-3/4 lg:w-1/2 mt-10 sm:mt-20 gap-5">
-                    <div className="bg-s_orange px-4 sm:px-5 py-2 text-lg sm:text-2xl md:text-3xl cursor-pointer rounded-xl active:scale-95 active:text-white text-center">
-                        <NavLink to="quicklinks#pyq">Question Papers</NavLink>
-                        <FontAwesomeIcon className="py-1 px-3" icon={faArrowUpRightFromSquare} />
-                    </div>
-                    <div className="bg-s_orange px-4 sm:px-5 text-lg sm:text-2xl md:text-3xl py-2 cursor-pointer rounded-xl active:scale-95 active:text-white text-center">
-                        <NavLink to="about">FAQs</NavLink>
-                        <FontAwesomeIcon className="py-1 px-3" icon={faArrowUpRightFromSquare} />
-                    </div>
+                    <div className="flex flex-wrap justify-center w-full md:w-3/4 lg:w-1/2 mt-10 sm:mt-20 gap-5">
+                        <div className="bg-s_orange px-4 sm:px-5 py-2 text-2xl sm:text-3xl md:text-4xl cursor-pointer rounded-xl active:scale-95 hover:text-white">
+                            <NavLink to="quicklinks#pyq" className="flex items-center justify-center">
+                                Question Papers
+                                <FontAwesomeIcon className="ml-2" icon={faArrowUpRightFromSquare} />
+                            </NavLink>
+                        </div>
+                        <div className="bg-s_orange px-4 sm:px-5 py-2 text-2xl sm:text-3xl md:text-4xl cursor-pointer rounded-xl active:scale-95 hover:text-white">
+                            <NavLink to="about" className="flex items-center justify-center">
+                                FAQs
+                                <FontAwesomeIcon className="ml-2" icon={faArrowUpRightFromSquare} />
+                            </NavLink>
+                        </div>
                     </div>
                 </div>
             </div>
