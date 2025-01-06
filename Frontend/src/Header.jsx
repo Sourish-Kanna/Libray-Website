@@ -47,11 +47,11 @@ function NavBar() {
     };
 
     return (
-      <div className='fixed top-0 z-20 w-full h-fit bg-Navbg'>
+      <div className='fixed top-0 z-20 w-full h-32 bg-Navbg'>
 
-            <div className='flex items-center justify-between px-4 lg:px-10 xl:px-30 '>
-                <div className='flex items-center'>
-                    <img src={Sies_logo} alt="SIES Logo" className="h-full" />
+            <div className='flex items-center justify-between h-full px-4 lg:px-8 xl:px-16 '>
+                <div className='flex items-center  '>
+                    <img src={Sies_logo} alt="SIES Logo" className='h-fit mb-3' />
                 </div>
 
             {/* Hamburger Icon (visible on small screens) */}
