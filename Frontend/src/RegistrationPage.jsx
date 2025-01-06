@@ -46,7 +46,7 @@ const Register = () => {
         <div className="min-h-screen flex items-center justify-center bg-[#f3f2ed] font-serif">
             <div className="w-full max-w-md p-8 bg-white rounded-lg shadow-lg">
                 <h2 className="text-3xl font-semibold text-center text-black mb-2">Register</h2>
-                <div className=" border-b-4 mx-auto w-36  border-[#014da1] mb-5"></div>
+                <div className=" border-b-4 mx-auto w-36  border-blue-700 mb-5"></div>
                 {error && <p className="text-red-500 text-center">{error}</p>}
                 {success && <p className="text-green-500 text-center">{success}</p>}
                 <form onSubmit={handleSubmit} className="space-y-4">
@@ -68,7 +68,7 @@ const Register = () => {
                             value={formData.email}
                             onChange={handleChange}
                             placeholder="Email"
-                            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#014da1]"
                             required
                         />
                     </div>
@@ -79,7 +79,7 @@ const Register = () => {
                             value={formData.fullName}
                             onChange={handleChange}
                             placeholder="Full Name"
-                            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+                            className="w-full p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#014da1]"
                             required
                         />
                     </div>
