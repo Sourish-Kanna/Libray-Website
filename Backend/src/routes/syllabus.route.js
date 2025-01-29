@@ -4,7 +4,8 @@ import {
     createSyllabus, 
     getSyllabus, 
     updateSyllabus, 
-    downloadSyllabus 
+    downloadSyllabus,
+    deleteSyllabus
 } from '../controllers/syllabus.controller.js'
 import {upload} from '../middlewares/multer.middleware.js';
 import {verifyJWT} from '../middlewares/auth.middleware.js';
@@ -15,6 +16,6 @@ router.post('/create',upload.single("syllabus"), createSyllabus);
 router.get('/', getSyllabus);
 router.patch('/:syllabusId/update',upload.single("syllabus"), updateSyllabus);
 router.get('/:syllabusId/download', downloadSyllabus);
-
+router.delete('/:syllabusId', deleteSyllabus);
 export default router
 

@@ -4,6 +4,9 @@ import { StyledNavLink } from './Navigation.jsx'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 import Sies_logo from './assets/sies_logo_header.png'
+import useAuthStore from './Store/userAuth.store.js';
+import image1 from './assets/defaultUser.png'
+
 // import user from './assets/user_icon.png'
 // import { Link } from 'react-router-dom'
 
@@ -41,9 +44,14 @@ const navLinks = [
 
 function NavBar() {
     const [isOpen, setIsOpen] = useState(false);
+    const { login, isLoading, error, isAuthenticated,user,logoutUser } = useAuthStore();
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
+    };
+
+    const submitHandler = () => {
+      logoutUser();
     };
 
     return (
@@ -100,19 +108,25 @@ function NavBar() {
                             <button className="bg-white w-17 h-20 rounded-full m-5  ">login </button>
                         </div> */}
                 <NavLink
-                  to="Login"
+                  to={isAuthenticated ? "#" : "Login"} // Prevent navigation when logging out
+                  onClick={isAuthenticated ? submitHandler : null} // Call logout if authenticated
                   className={({ isActive }) =>
-                    `flex items-center bg-[#f3f2ed] font-serif rounded-full px-4 py-2 shadow-2xl border-2 border-b-2 border-[#014da1] hover:border-[#f26d21] ${
-                      isActive ? activeClassName : inactiveClassName
-                    }`
+                    `flex items-center font-serif rounded-full px-4 py-2 shadow-2xl border-2 border-b-2 
+                    ${isAuthenticated ? "bg-orange-500" : "bg-[#f3f2ed]"} 
+                    border-[#014da1] hover:border-[#f26d21] 
+                    ${isActive ? activeClassName : inactiveClassName}`
                   }
                 >
-                  <div class="flex items-center w-full cursor-pointer">
-                    <span class="text-[#014da1] font-medium mr-4 text-xl hover:active:text-[#f26d21]">
-                      Login
+                  <div className="flex items-center w-full cursor-pointer">
+                    <span className={`${isAuthenticated ? "text-[#014da1]" : "text-orange-500"} font-medium mr-4 text-xl hover:active:text-[#f26d21]"`}>
+                      {isAuthenticated ? "Logout" : "Login"}
                     </span>
-                    <div class="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center text-white text-lg">
-                      Pic
+                    <div className="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center overflow-hidden">
+                      <img
+                        src={isAuthenticated && user?.avatar ? user.avatar : image1}
+                        className="profile-image w-full h-full object-cover"
+                        alt=""
+                      />
                     </div>
                   </div>
                 </NavLink>

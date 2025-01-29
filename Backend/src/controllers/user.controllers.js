@@ -99,9 +99,8 @@ const loginUser = asyncHandler(async (req, res) => {
     }
 
     const token = generateAccessAndRefereshTokens({
-        id: user._id,
+        _id: user._id,
         email: user.email,
-        role: user.role,
     });
 
     res.cookie("token", token, {
@@ -117,6 +116,7 @@ const loginUser = asyncHandler(async (req, res) => {
         role: user.role,
         avatar: user.avatar,
         username: user.username,
+        token,
     };
 
     return res.status(200).json(

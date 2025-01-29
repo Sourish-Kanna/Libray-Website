@@ -46,7 +46,7 @@ const updateSyllabus = asyncHandler(async (req, res) => {
 
 const createSyllabus = asyncHandler(async (req, res) => {
     const { branch, semester } = req.body;
-
+    console.log('hello')
     if (!branch || !semester) {
         throw new ApiError(400, "Please provide branch, semester, and syllabus URL");
     }
@@ -114,10 +114,25 @@ const downloadSyllabus = asyncHandler(async (req, res) => {
 });
 
 
+const deleteSyllabus = asyncHandler(async (req, res) => {
+    const { syllabusId } = req.params;
 
-export{
+    if (!syllabusId) {
+        throw new ApiError(400, "Syllabus ID is missing");
+    }
+
+    const syllabus = await Syllabus.findByIdAndDelete(syllabusId);
+    if (!syllabus) {
+        throw new ApiError(404, "Syllabus not found");
+    }
+
+    res.status(200).json(new ApiResponse(200, null, "Syllabus deleted successfully !!"));
+});
+
+export {
     updateSyllabus,
     createSyllabus,
     getSyllabus,
     downloadSyllabus,
+    deleteSyllabus,
 }

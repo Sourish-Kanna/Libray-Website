@@ -15,6 +15,7 @@ import image8 from './assets/img8.webp'
 import image9 from './assets/img9.webp'
 import image10 from './assets/img10.webp'
 import image11 from './assets/img11.webp'
+import useAuthStore from './Store/userAuth.store'
 
 
 
@@ -35,6 +36,8 @@ const newsItems = [
 
 
 export default function HomePage() {
+
+    const{user,isAuthenticated} = useAuthStore();
   return (
         <div className='w-full h-full mt-24 pt-3 overflow-x-hidden font-serif '>
             <Link to='/'></Link>
@@ -52,10 +55,17 @@ export default function HomePage() {
                         ))}
                     </div>
                 </div>
+                {isAuthenticated && (
+                    <div className="mt-2 relative">
+                        <button className="absolute right-4 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
+                            Edit News
+                        </button>
+                    </div>
+                )}
                 
                 {/* Typing Logo */}
                 <div className='mx-40 mt-44 bg-typing font-bold text-white typing-demo text-9xl'>
-                     SIES GST LIBRARY
+                    SIES GST LIBRARY
                 </div>
                 
                 {/*Quick Links */}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "./Store/userAuth.store";
 import { NavLink } from "react-router-dom";
@@ -6,7 +6,7 @@ import Register from "./RegistrationPage";
 
 
 const Login = () => {
-  const { loginUser, loading, error, success, user } = useAuthStore();
+  const { loginUser, loading, error, success, user ,isAuthenticated} = useAuthStore();
   const navigate = useNavigate();
 
   const [credentials, setCredentials] = useState({
@@ -22,12 +22,15 @@ const Login = () => {
     }));
   };
 
+  useEffect(()=>{
+    if (isAuthenticated) {
+      navigate("/");
+    }
+  },[isAuthenticated])
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     await loginUser(credentials);
-    if (user) {
-      navigate("/");
-    }
   };
 
   return (

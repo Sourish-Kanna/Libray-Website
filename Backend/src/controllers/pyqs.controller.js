@@ -140,9 +140,26 @@ const downloadPYQ = asyncHandler(async (req, res) => {
     fileStream.data.pipe(res);
 });
 
+const deletePYQ = asyncHandler(async (req, res) => {
+    const { pyqId } = req.params;
+
+    if (!pyqId) {
+        throw new ApiError(400, "PYQ ID is missing");
+    }
+
+    const pyq = await PYQ.findByIdAndDelete(pyqId);
+
+    if (!pyq) {
+        throw new ApiError(404, "PYQ not found");
+    }
+
+    res.status(200).json(new ApiResponse(200, null, "PYQ deleted successfully"));
+});
+
 export {
     createPYQ,
     updatePYQ,
     getPYQ,
-    downloadPYQ
+    downloadPYQ,
+    deletePYQ
 };

@@ -5,7 +5,8 @@ import {
     createPYQ, 
     getPYQ, 
     updatePYQ, 
-    downloadPYQ 
+    downloadPYQ,
+    deletePYQ
 } from '../controllers/pyqs.controller.js'
 import {upload} from '../middlewares/multer.middleware.js';
 // import {verifyJWT} from '../middlewares/auth.middleware.js';
@@ -25,6 +26,7 @@ router.post('/create',upload.single("questionPaper"), createPYQ);
 router.get('/', getPYQ);
 router.patch('/:pyqId/update',upload.single("questionPaper"), updatePYQ);
 router.get('/:pyqId/download', downloadPYQ);
+router.delete('/delete/:pyqId', deletePYQ);
 
 export default router
 
