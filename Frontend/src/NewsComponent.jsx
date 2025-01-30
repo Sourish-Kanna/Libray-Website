@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import useNewsStore from './Store/useNewsStore.js';
 import useAuthStore from './Store/userAuth.store.js';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const NewsComponent = () => {
     const [newNewsTitle, setNewNewsTitle] = useState('');
@@ -12,15 +14,60 @@ const NewsComponent = () => {
         fetchNews();
     }, [fetchNews]);
 
-    const handleAddNews = () => {
+    const handleAddNews = async () => {
         if (newNewsTitle.trim()) {
-        addNews(newNewsTitle);
-        setNewNewsTitle('');
+        try {
+            await addNews(newNewsTitle);
+            setNewNewsTitle('');
+            toast.success('News added successfully!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            });
+        } catch (error) {
+            toast.error('Failed to add news. Please try again.', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            });
+        }
+        }
+    };
+
+    const handleDeleteNews = async (id) => {
+        try {
+        await deleteNews(id);
+        toast.success('News deleted successfully!', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
+        } catch (error) {
+        toast.error('Failed to delete news. Please try again.', {
+            position: 'top-right',
+            autoClose: 3000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+        });
         }
     };
 
     return (
         <div className='flex mt-5 bg-yellow-100 text-xl relative'>
+        {/* Toast Container */}
+        <ToastContainer />
+
         <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">
             News
         </p>
@@ -30,7 +77,7 @@ const NewsComponent = () => {
                 <p>{newsItem.title}</p>
                 {isAuthenticated && (
                 <button
-                    onClick={() => deleteNews(newsItem._id)}
+                    onClick={() => handleDeleteNews(newsItem._id)}
                     className="ml-2 text-red-600 hover:text-red-800"
                 >
                     Delete
@@ -56,9 +103,6 @@ const NewsComponent = () => {
                 >
                 Add News
                 </button>
-                {/* <button className="ml-2 bg-red-600 text-white px-4 py-2 rounded-md hover:bg-blue-700">
-                Edit News
-                </button> */}
             </div>
             </div>
         )}
