@@ -8,7 +8,7 @@ const useNewsStore = create((set) => ({
     // Action to add a news item
     addNews: async (title) => {
         try {
-        const response = await axios.post("http://localhost:8000/api/v1/news", {
+        const response = await axios.post("https://libray-website.vercel.app/api/v1/news", {
             title,
         });
         if (response.status === 201) {
@@ -25,7 +25,7 @@ const useNewsStore = create((set) => ({
     deleteNews: async (id) => {
         try {
         const response = await axios.delete(
-            `http://localhost:8000/api/v1/news/${id}`
+            `https://libray-website.vercel.app/api/v1/news/${id}`
         );
         if (response.status === 200) {
             set((state) => ({
@@ -42,7 +42,7 @@ const useNewsStore = create((set) => ({
     // Action to fetch all news items
     fetchNews: async () => {
         try {
-        const response = await axios.get("http://localhost:8000/api/v1/news");
+        const response = await axios.get("https://libray-website.vercel.app/api/v1/news");
         if (response.status === 200) {
             set({ newsItems: response.data });
         } else {
