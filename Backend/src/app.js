@@ -25,6 +25,8 @@ import userRouter from './routes/user.routes.js'
 import pyqRouter from './routes/pyqs.route.js';
 import syllabusRouter from './routes/syllabus.route.js';
 import newsRouter from './routes/newsRoute.js';
+import branchRoutes from './routes/branchRoutes.js'
+import semesterRoutes from './routes/semesterRoutes.js'
 
 app.use("/api/v1/syllabus",syllabusRouter)
 app.use("/api/v1/pyqs",pyqRouter)
@@ -32,6 +34,11 @@ app.use("/api/v1/pyqs",pyqRouter)
 app.use("/api/v1/users",userRouter)
 
 app.use("/api/v1/news",newsRouter)
+
+app.use('/api/v1/branch', branchRoutes);
+
+app.use('/api/v1/semester', semesterRoutes);
+
 
 
 export { app }
