@@ -27,8 +27,12 @@ import syllabusRouter from './routes/syllabus.route.js';
 import newsRouter from './routes/newsRoute.js';
 import branchRoutes from './routes/branchRoutes.js'
 import semesterRoutes from './routes/semesterRoutes.js'
+import monthRoutes from './routes/monthRoutes.js';
+import yearRoutes from './routes/yearRoutes.js';
+import subjectRoutes from './routes/subjectRoutes.js';
 
 app.use("/api/v1/syllabus",syllabusRouter)
+
 app.use("/api/v1/pyqs",pyqRouter)
 
 app.use("/api/v1/users",userRouter)
@@ -38,6 +42,12 @@ app.use("/api/v1/news",newsRouter)
 app.use('/api/v1/branch', branchRoutes);
 
 app.use('/api/v1/semester', semesterRoutes);
+
+app.use('/api/v1/month', monthRoutes);
+
+app.use('/api/v1/year', yearRoutes);
+
+app.use('/api/v1/subject', subjectRoutes);
 
 
 
