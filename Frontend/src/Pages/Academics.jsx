@@ -1,15 +1,39 @@
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useScrollToHash, useSmoothScroll } from "../Navigation";
-import React, { useRef, useState } from "react";
 import useSyllabusStore from "../Store/syllabus.store.js";
 import useAuthStore from "../Store/userAuth.store.js";
+import useBranchStore from "../Store/branch.store.js"; // Import branch store
+import useSemesterStore from "../Store/semester.store.js"; // Import semester store
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 export default function EResources() {
-  const { isAuthenticated } = useAuthStore(); // Ensure this is a function call
-  const [file, setFile] = useState(null); // State for file upload
+  const { isAuthenticated } = useAuthStore();
+  const [file, setFile] = useState(null);
+
+  // Zustand stores for branches and semesters
+  const {
+    branches,
+    loading: branchLoading,
+    error: branchError,
+    fetchBranches,
+    addBranch,
+    updateBranch,
+    deleteBranch,
+  } = useBranchStore();
+
+  const {
+    semesters,
+    loading: semesterLoading,
+    error: semesterError,
+    fetchSemesters,
+    addSemester,
+    updateSemester,
+    deleteSemester,
+  } = useSemesterStore();
 
   const {
     branch,
@@ -22,8 +46,8 @@ export default function EResources() {
     updateSyllabus,
     deleteSyllabus,
     syllabus,
-    loading,
-    error,
+    loading: syllabusLoading,
+    error: syllabusError,
   } = useSyllabusStore();
 
   useSmoothScroll();
@@ -32,6 +56,12 @@ export default function EResources() {
     "academic-calender",
     "competitive-exam",
   ]);
+
+  // Fetch branches and semesters on component mount
+  useEffect(() => {
+    fetchBranches();
+    fetchSemesters();
+  }, [fetchBranches, fetchSemesters]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -95,6 +125,94 @@ export default function EResources() {
     }
   };
 
+  // Add, edit, and delete branches
+  const handleAddBranch = async (name) => {
+    try {
+      await addBranch(name);
+      toast.success("Branch added successfully!");
+    } catch (err) {
+      toast.error("Failed to add branch.");
+    }
+  };
+
+  const handleEditBranch = async (id, newName) => {
+    try {
+      await updateBranch(id, newName);
+      toast.success("Branch updated successfully!");
+    } catch (err) {
+      toast.error("Failed to update branch.");
+    }
+  };
+
+  const handleDeleteBranch = async () => {
+    if (!branch) {
+      toast.error("Please select a branch to delete.");
+      return;
+    }
+
+    try {
+      // Find the branch object from the branches array
+      const branchToDelete = branches.find((b) => b.name === branch);
+      if (!branchToDelete) {
+        toast.error("Selected branch not found.");
+        return;
+      }
+
+      // Call the deleteBranch function from the store
+      await deleteBranch(branchToDelete._id);
+      toast.success("Branch deleted successfully!");
+
+      // Clear the selected branch after deletion
+      setBranch("");
+    } catch (err) {
+      toast.error("Failed to delete branch.");
+    }
+  };
+
+  // Add, edit, and delete semesters
+  const handleAddSemester = async (name) => {
+    try {
+      await addSemester(name);
+      toast.success("Semester added successfully!");
+    } catch (err) {
+      toast.error("Failed to add semester.");
+    }
+  };
+
+  const handleEditSemester = async (id, newName) => {
+    try {
+      await updateSemester(id, newName);
+      toast.success("Semester updated successfully!");
+    } catch (err) {
+      toast.error("Failed to update semester.");
+    }
+  };
+
+  const handleDeleteSemester = async () => {
+    if (!semester) {
+      toast.error("Please select a semester to delete.");
+      return;
+    }
+
+    try {
+      // Find the semester object from the semesters array
+      const semesterToDelete = semesters.find((s) => s.name === semester);
+      if (!semesterToDelete) {
+        toast.error("Selected semester not found.");
+        return;
+      }
+
+      // Call the deleteSemester function from the store
+      await deleteSemester(semesterToDelete._id);
+      toast.success("Semester deleted successfully!");
+
+      // Clear the selected semester after deletion
+      setSemester("");
+    } catch (err) {
+      toast.error("Failed to delete semester.");
+    }
+  };
+
   return (
     <div className="font-serif mt-28">
       <Link to="/academics"></Link>
@@ -143,17 +261,30 @@ export default function EResources() {
               className="w-full p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600"
             >
               <option value="">Select Branch</option>
-              <option value="Computer Engineering">Computer Engineering</option>
-              <option value="Mechanical Engineering">Mechanical Engineering</option>
-              <option value="AIDS">AIDS</option>
-              <option value="AIML">AIML</option>
-              <option value="IT">IT</option>
-              <option value="EXTC">EXTC</option>
-              <option value="Electronics and Computer Science">
-                Electronics and Computer Science
-              </option>
-              <option value="IOT">IOT</option>
+              {branches.map((branchOption) => (
+                <option key={branchOption._id} value={branchOption.name}>
+                  {branchOption.name}
+                </option>
+              ))}
             </select>
+            {isAuthenticated && (
+              <div className="flex gap-2 mt-2">
+                <button
+                  type="button"
+                  onClick={() => handleAddBranch(prompt("Enter branch name:"))}
+                  className="px-2 py-1 text-white bg-green-500 rounded-md"
+                >
+                  Add Branch
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteBranch}
+                  className="px-2 py-1 text-white bg-red-500 rounded-md"
+                >
+                  Delete Selected Branch
+                </button>
+              </div>
+            )}
           </div>
           <div className="px-10 mb-4">
             <label
@@ -170,17 +301,36 @@ export default function EResources() {
               className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]"
             >
               <option value="">Select Semester</option>
-              <option value="SEM 1">SEM 1</option>
-              <option value="SEM 2">SEM 2</option>
-              <option value="SEM 3">SEM 3</option>
-              <option value="SEM 4">SEM 4</option>
-              <option value="SEM 5">SEM 5</option>
-              <option value="SEM 6">SEM 6</option>
-              <option value="SEM 7">SEM 7</option>
-              <option value="SEM 8">SEM 8</option>
+              {semesters.map((semesterOption) => (
+                <option key={semesterOption._id} value={semesterOption.name}>
+                  {semesterOption.name}
+                </option>
+              ))}
             </select>
+            {isAuthenticated && (
+              <div className="flex gap-2 mt-2">
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleAddSemester(prompt("Enter semester name:"))
+                  }
+                  className="px-2 py-1 text-white bg-green-500 rounded-md"
+                >
+                  Add Semester
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteSemester}
+                  className="px-2 py-1 text-white bg-red-500 rounded-md"
+                >
+                  Delete Selected Semester
+                </button>
+              </div>
+            )}
           </div>
-          {error && <div className="px-10 mb-4 text-red-500">{error}</div>}
+          {syllabusError && (
+            <div className="px-10 mb-4 text-red-500">{syllabusError}</div>
+          )}
           {isAuthenticated && (
             <>
               <div className="mb-4">
@@ -228,9 +378,9 @@ export default function EResources() {
               type="submit"
               id="download-btn"
               className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641]"
-              disabled={loading}
+              disabled={syllabusLoading}
             >
-              {loading ? "Loading..." : "Get Syllabus"}
+              {syllabusLoading ? "Loading..." : "Get Syllabus"}
             </button>
           </div>
         </form>
