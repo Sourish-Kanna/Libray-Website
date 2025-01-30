@@ -16,6 +16,7 @@ import image9 from './assets/img9.webp'
 import image10 from './assets/img10.webp'
 import image11 from './assets/img11.webp'
 import useAuthStore from './Store/userAuth.store'
+import NewsComponent from './NewsComponent';
 
 
 
@@ -23,16 +24,16 @@ import useAuthStore from './Store/userAuth.store'
 
 library.add(fas);
 
-const newsItems = [
-    'news 1',
-    'news 2',
-    'news 3',
-    'news 4',
-    'news 5',
-    'news 6',
-    'news 7',
-    'news 8',
-  ];
+// const newsItems = [
+//     'news 1',
+//     'news 2',
+//     'news 3',
+//     'news 4',
+//     'news 5',
+//     'news 6',
+//     'news 7',
+//     'news 8',
+//   ];
 
 
 export default function HomePage() {
@@ -46,7 +47,8 @@ export default function HomePage() {
             <div className='w-full h-screen bg-center bg-no-repeat bg-cover bg-homepage-bg'>
 
                 {/* News Row */}
-                <div className='flex mt-5 bg-yellow-100 text-xl '>
+                <NewsComponent/>
+                {/* <div className='flex mt-5 bg-yellow-100 text-xl '>
                     <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">News</p>
                     <div className="flex justify-around w-11/12 p-2 bg-news-back">
                         {newsItems.map((newsItem, index) => (
@@ -61,7 +63,7 @@ export default function HomePage() {
                             Edit News
                         </button>
                     </div>
-                )}
+                )} */}
                 
                 {/* Typing Logo */}
                 <div className='mx-40 mt-44 bg-typing font-bold text-white typing-demo text-9xl'>

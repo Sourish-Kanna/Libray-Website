@@ -17,11 +17,14 @@ app.use(cookieParser())
 import userRouter from './routes/user.routes.js'
 import pyqRouter from './routes/pyqs.route.js';
 import syllabusRouter from './routes/syllabus.route.js';
+import newsRouter from './routes/newsRoute.js';
 
 app.use("/api/v1/syllabus",syllabusRouter)
 app.use("/api/v1/pyqs",pyqRouter)
 
 app.use("/api/v1/users",userRouter)
+
+app.use("/api/v1/news",newsRouter)
 
 
 export { app }
