@@ -23,7 +23,7 @@ const useAuthStore = create((set) => ({
     registerUser: async (formData) => {
         set({ loading: true, error: null, success: null });
         try {
-            const response = await axios.post('https://libray-website.vercel.app/api/v1/users/register', formData, {
+            const response = await axios.post('https://libray-website-server.onrender.com/api/v1/users/register', formData, {
                 headers: {
                     'Content-Type': 'multipart/form-data',
                 },
@@ -43,7 +43,7 @@ const useAuthStore = create((set) => ({
     loginUser: async (credentials) => {
         set({ loading: true, error: null, success: null });
         try {
-            const response = await axios.post('https://libray-website.vercel.app/api/v1/users/login', credentials);
+            const response = await axios.post('https://libray-website-server.onrender.com/api/v1/users/login', credentials);
             const userData = response.data.data;
             set({ 
                 user: userData, 
