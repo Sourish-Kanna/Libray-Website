@@ -9,6 +9,7 @@ app.use(cors({
         [
             'http://localhost:5173', 
             'https://libray-website-client.vercel.app',
+            'https://libray-website.vercel.app',
         ],
     credentials: true
 }))
