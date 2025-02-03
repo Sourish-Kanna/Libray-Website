@@ -64,16 +64,16 @@ const NewsComponent = () => {
     };
 
     return (
-        <div className='flex mt-5 bg-yellow-100 text-xl relative'>
+        <div className='flex flex-nowrap items-center bg-yellow-100 text-base sm:text-lg md:text-xl'>
         {/* Toast Container */}
         <ToastContainer />
 
-        <p className="w-fit pl-2 text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">
+        <p className="w-fit pl-2 text-lg sm:text-xl md:text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">
             News
         </p>
-        <div className="flex justify-around w-11/12 p-2 bg-news-back">
-            {newsItems.map((newsItem) => (
-            <div key={newsItem._id} className="bg-news flex items-center">
+        <div className="flex flex-nowrap overflow-hidden justify-center w-full p-2 bg-news-back">
+            {newsItems.map((newsItem, index) => (
+            <div key={newsItem._id} className="bg-news text-sm sm:text-base p-2">
                 <p>{newsItem.title}</p>
                 {isAuthenticated && (
                 <button

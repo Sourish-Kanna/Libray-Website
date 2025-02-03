@@ -1,0 +1,36 @@
+.admin-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.create-button,
+.update-button,
+.delete-button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.create-button {
+    background-color: #4CAF50;
+    color: white;
+}
+
+.update-button {
+    background-color: #2196F3;
+    color: white;
+}
+
+.delete-button {
+    background-color: #f44336;
+    color: white;
+}
+
+.create-button:hover,
+.update-button:hover,
+.delete-button:hover {
+    opacity: 0.8;
+}
