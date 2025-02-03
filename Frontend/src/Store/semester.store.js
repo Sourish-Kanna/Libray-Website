@@ -10,7 +10,7 @@ const useSemesterStore = create((set) => ({
     fetchSemesters: async () => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get('http://localhost:8000/api/v1/semester/semesters');
+            const response = await axios.get('https://libray-website-server.onrender.com/api/v1/semester/semesters');
             set({ semesters: response.data, loading: false });
         } catch (error) {
             set({ error: error.message, loading: false });
@@ -21,7 +21,7 @@ const useSemesterStore = create((set) => ({
     addSemester: async (name) => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.post('http://localhost:8000/api/v1/semester/semesters', { name });
+            const response = await axios.post('https://libray-website-server.onrender.com/api/v1/semester/semesters', { name });
             set((state) => ({ semesters: [...state.semesters, response.data], loading: false }));
         } catch (error) {
             set({ error: error.message, loading: false });
@@ -32,7 +32,7 @@ const useSemesterStore = create((set) => ({
     deleteSemester: async (id) => {
         set({ loading: true, error: null });
         try {
-            await axios.delete(`http://localhost:8000/api/v1/semester/semesters/${id}`);
+            await axios.delete(`https://libray-website-server.onrender.com/api/v1/semester/semesters/${id}`);
             set((state) => ({
                 semesters: state.semesters.filter((semester) => semester._id !== id),
                 loading: false,
