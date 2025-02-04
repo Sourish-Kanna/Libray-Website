@@ -10,25 +10,25 @@ import image1 from './assets/defaultUser.png'
 const activeClassName = 'text-s_orange';
 const inactiveClassName = 'text-s_blue hover:text-s_blue_400';
 const navLinks = [
-    {
+  {
     to: "/E-Resources",
-      text: "E-Resources",
+    text: "E-Resources",
     drop_link: ["/quicklinks#pyq", "/E-Resources", "/E-Resources#university-syllabus", "/E-Resources#academic-calender", "/E-Resources#competitive-exams"],
-      drop_name: ["Question Papers", "OER", "DELNET", "IEEE", "OPAC"],
-    },
-    {
-      to: "/about",
-      text: "About Us",
+    drop_name: ["Question Papers", "OER", "DELNET", "IEEE", "OPAC"],
+  },
+  {
+    to: "/about",
+    text: "About Us",
     drop_link: ["/about#library-hours", "/about#library-hours", "/about#library-staffs", "/about#infrastructure"],
-      drop_name: ["Library Hours", "Library Rules", "Library Staffs", "FAQs"],
-    },
-    {
-      to: "/others",
-      text: "Others",
-      drop_link: ["/donate-books", "/suggest-books", "/others", "/others", "/about#facilities", "/about#infrastructure"],
-      drop_name: ["Donate Books", "Suggest Books", "Book Bank", "Feedback", "Facilities", "Infrastructure"],
-    },
-  ];
+    drop_name: ["Library Hours", "Library Rules", "Library Staffs", "FAQs"],
+  },
+  {
+    to: "/others",
+    text: "Others",
+    drop_link: ["/donate-books", "/suggest-books", "/others", "/others", "/about#facilities", "/about#infrastructure"],
+    drop_name: ["Donate Books", "Suggest Books", "Book Bank", "Feedback", "Facilities", "Infrastructure"],
+  },
+];
 
 const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile}) => {
     if (isMobile) {
@@ -100,73 +100,74 @@ const CustomLink = ({ name, link }) => {
 };
 
 function NavBar() {
-    const [isOpen, setIsOpen] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
     const { login, isLoading, error, isAuthenticated,user,logoutUser } = useAuthStore();
 
-    const toggleMenu = () => {
-        setIsOpen(!isOpen);
-    };
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
 
     const submitHandler = () => {
       logoutUser();
     };
 
-    return (
+  return (
     <nav className="top-0 z-20 w-full h-fit bg-header-color bg-header-bg bg-top-header bg-cover-header">
       <div className="flex items-center justify-between px-4 lg:px-10 xl:px-30">
         <div className="flex items-center">
           <img src={Sies_logo} alt="SIES Logo" className="h-full" />
-          </div>
+        </div>
 
-          {/* Hamburger Icon (visible on small screens) */}
-          <div className="flex items-center lg:hidden">
+        {/* Hamburger Icon (visible on small screens) */}
+        <div className="flex items-center lg:hidden">
           <button onClick={toggleMenu} className="text-Primary text-s_blue">
-              <FontAwesomeIcon icon={isOpen ? faTimes : faBars} size="lg" />
-            </button>
-          </div>
+            <FontAwesomeIcon icon={isOpen ? faTimes : faBars} size="lg" />
+          </button>
+        </div>
 
-          {/* Desktop Menu (hidden on small screens) */}
-          <div className="hidden lg:flex-grow lg:flex items-center justify-between w-full mt-2 pl-48">
-            <ul className="flex items-center justify-between w-full font-serif flex-nowrap">
+        {/* Desktop Menu (hidden on small screens) */}
+        <div className="hidden lg:flex-grow lg:flex items-center justify-between w-full mt-2 pl-48">
+          <ul className="flex items-center justify-between w-full font-serif flex-nowrap">
             <li className="text-s_blue cursor-pointer font-medium text-Primary mr-4">
               <NavLink to="" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
-                  Home
-                </NavLink>
-              </li>
+                Home
+              </NavLink>
+            </li>
 
-              {navLinks.map((link, index) => (
-                <StyledNavLink
-                  key={index}
-                  to={link.to}
-                  text={link.text}
-                  drop_link={link.drop_link}
-                  drop_name={link.drop_name}
+            {navLinks.map((link, index) => (
+              <StyledNavLink
+                key={index}
+                to={link.to}
+                text={link.text}
+                drop_link={link.drop_link}
+                drop_name={link.drop_name}
                 isMobile={false} />
-              ))}
+            ))}
 
             <li className="text-s_blue cursor-pointer font-medium text-Primary mr-4">
               <NavLink to="contactus" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
-                  Contact Us
-                </NavLink>
-              </li>
+                Contact Us
+              </NavLink>
+            </li>
 
               <li>
-              <NavLink
+                <NavLink
                   to={isAuthenticated ? "#" : "Login"} // Prevent navigation when logging out
                   onClick={isAuthenticated ? submitHandler : null} // Call logout if authenticated
                   className={({ isActive }) =>
-                    `flex items-center font-serif rounded-full px-4 py-2 shadow-2xl border-2 border-b-2 
-                    ${isAuthenticated ? "bg-orange-500" : "bg-[#f3f2ed]"} 
-                    border-[#014da1] hover:border-[#f26d21] 
-                    ${isActive ? activeClassName : inactiveClassName}`
+                    // `flex items-center font-serif rounded-full px-4 py-2 shadow-2xl border-2 border-b-2 `
+                    // `${isAuthenticated ? "bg-orange-500" : "bg-[#f3f2ed]"} `
+                    // border-s_blue hover:border-s_orange
+                    `${isActive ? activeClassName : inactiveClassName}`
                   }
                 >
-                  <div className="flex items-center w-full cursor-pointer">
-                    <span className={`${isAuthenticated ? "text-[#014da1]" : "text-orange-500"} font-medium mr-4 text-xl hover:active:text-[#f26d21]"`}>
+                  <div className="flex items-center w-full cursor-pointer bg-header-color rounded-full px-4 py-2 shadow-md  border-2
+                 border-s_blue hover:border-s_orange transform transition duration-500 ease-in-out">
+                    <span className={`${isAuthenticated ? "text-s_blue" : "text-orange-500"} font-medium mr-4 text-xl hover:active:text-[#f26d21] text-s_blue hover:text-s_orange active:text-s_orange_400" `}>
                       {isAuthenticated ? "Logout" : "Login"}
                     </span>
-                    <div className="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center overflow-hidden">
+                    <div className="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center overflow-hidden hover:cursor-pointer text-white text-lg">
                       <img
                         src={isAuthenticated && user?.avatar ? user.avatar : image1}
                         className="profile-image w-full h-full object-cover"
@@ -180,25 +181,25 @@ function NavBar() {
           </div>
         </div>
 
-        {/* Mobile Menu (only visible when the hamburger is open) */}
-        {isOpen && (
-          <div className="lg:hidden">
+      {/* Mobile Menu (only visible when the hamburger is open) */}
+      {isOpen && (
+        <div className="lg:hidden">
           <ul className="flex flex-col items-center px-4 py-2 space-y-2">
             <li className="text-s_blue cursor-pointer font-medium text-2-Primary mt-8">
               <NavLink to="" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
-                  Home
-                </NavLink>
-              </li>
+                Home
+              </NavLink>
+            </li>
 
-              {navLinks.map((link, index) => (
-                <StyledNavLink
-                  key={index}
-                  to={link.to}
-                  text={link.text}
-                  drop_link={link.drop_link}
-                  drop_name={link.drop_name}
+            {navLinks.map((link, index) => (
+              <StyledNavLink
+                key={index}
+                to={link.to}
+                text={link.text}
+                drop_link={link.drop_link}
+                drop_name={link.drop_name}
                 isMobile={true} />
-              ))}
+            ))}
 
             <li className="text-s_blue cursor-pointer font-medium text-2-Primary mx-8">
               <NavLink to="contactus" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
@@ -234,11 +235,11 @@ function NavBar() {
               </li>
               
 
-            </ul>
-          </div>
-        )}
+          </ul>
+        </div>
+      )}
     </nav>
-    );
+  );
 }
-  
-export default NavBar
+
+export default NavBar;
