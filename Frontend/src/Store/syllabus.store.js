@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_BASE_URL = "https://libray-website.vercel.app/api/v1";
+const API_BASE_URL = "https://libray-website-server.onrender.com/api/v1";
 
 const useSyllabusStore = create((set) => ({
   branch: "",
