@@ -73,7 +73,7 @@ const NewsComponent = () => {
         </p>
         <div className="flex flex-nowrap overflow-hidden justify-center w-full p-2 bg-news-back">
             {newsItems.map((newsItem, index) => (
-            <div key={newsItem._id} className="bg-news text-sm sm:text-base p-2">
+            <div key={newsItem._id} className="flex bg-news text-sm sm:text-base p-2">
                 <p>{newsItem.title}</p>
                 {isAuthenticated && (
                 <button
