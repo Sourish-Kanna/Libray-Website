@@ -13,19 +13,19 @@ const navLinks = [
   {
     to: "/E-Resources",
     text: "E-Resources",
-    drop_link: ["/quicklinks#pyq", "/E-Resources", "/E-Resources#university-syllabus", "/E-Resources#academic-calender", "/E-Resources#competitive-exams"],
-    drop_name: ["Question Papers", "OER", "DELNET", "IEEE", "OPAC"],
+    drop_link: ["/quicklinks#pyq","/E-Resources#university-syllabus", "/E-Resources", "/E-Resources", "/E-Resources", "https://siesgstlibrary.ourlib.in"],
+    drop_name: ["Question Papers", "University Syllabus", "OER", "DELNET", "IEEE", "OPAC"],
   },
   {
     to: "/about",
     text: "About Us",
-    drop_link: ["/about#library-hours", "/about#library-hours", "/about#library-staffs", "/about#infrastructure"],
+    drop_link: ["/about#library-hours", "/others#FAQs", "/about#library-staffs", "/others#FAQs"],
     drop_name: ["Library Hours", "Library Rules", "Library Staffs", "FAQs"],
   },
   {
     to: "/others",
     text: "Others",
-    drop_link: ["/donate-books", "/suggest-books", "/others", "/others", "/about#facilities", "/about#infrastructure"],
+    drop_link: ["/donate-books", "/suggest-books", "/others", "/contactus", "/about#facilities", "/about#infrastructure"],
     drop_name: ["Donate Books", "Suggest Books", "Book Bank", "Feedback", "Facilities", "Infrastructure"],
   },
 ];

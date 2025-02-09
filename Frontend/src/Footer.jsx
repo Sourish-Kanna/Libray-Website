@@ -12,10 +12,11 @@ const sections = [
     to: "/E-Resources",
     links: [
       { name: 'Question Papers', path: '/quicklinks#pyq' },
+      { name: 'University Syllabus', path: '/E-Resources#university-syllabus' },
       { name: 'OER', path: '/E-Resources' },
-      { name: 'DELNET', path: '/E-Resources#university-syllabus' },
-      { name: 'IEEE', path: '/E-Resources#academic-calender' },
-      { name: 'OPAC', path: '/E-Resources#competitive-exams' }
+      { name: 'DELNET', path: '/E-Resources' },
+      { name: 'IEEE', path: '/E-Resources' },
+      { name: 'OPAC', path: 'https://siesgstlibrary.ourlib.in' }
     ]
   },
   {
@@ -23,9 +24,9 @@ const sections = [
     to: "/about",
     links: [
       { name: 'Library Hours', path: '/about#library-hours' },
-      { name: 'Library Rules', path: '/about#library-rules' },
+      { name: 'Library Rules', path: '/others#FAQs' }, // Updated link
       { name: 'Library Staffs', path: '/about#library-staffs' },
-      { name: 'FAQs', path: '/about#faqs' }
+      { name: 'FAQs', path: '/others#FAQs' }
     ]
   },
   {
@@ -34,8 +35,8 @@ const sections = [
     links: [
       { name: 'Donate Books', path: '/donate-books' },
       { name: 'Suggest Books', path: '/suggest-books' },
-      { name: 'Book Bank', path: '/others#book-bank' },
-      { name: 'Feedback', path: '/others#feedback' },
+      { name: 'Book Bank', path: '/others' }, // Updated link
+      { name: 'Feedback', path: '/contactus' }, // Updated link
       { name: 'Facilities', path: '/about#facilities' },
       { name: 'Infrastructure', path: '/about#infrastructure' }
     ]

@@ -1,5 +1,6 @@
 import { faChevronDown, faArrowUpRightFromSquare } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {useScrollToHash, useSmoothScroll} from './Navigation'
 import Overview from './assets/HomePage/overview.webp'
 import Librian from './assets/HomePage/librian.webp'
 import React, { useState, useEffect } from "react";
@@ -105,9 +106,6 @@ const PolicyItem = ({ title, details }) => (
 );
 
 const images = [image1, image2, image4, image5, image6, image7, image8, image9, image10, image11];
-const newsItems = ['news 1', 'news 2', 'news 3', 'news 4', 'news 5', 'news 6', 'news 7', 'news 8'];
-
-
 
 export default function HomePage() {
     const{user,isAuthenticated} = useAuthStore();
@@ -122,14 +120,17 @@ export default function HomePage() {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
+    useSmoothScroll();
+    const refs = useScrollToHash(['Initial','overview','photos','librarian','policies']);
+
   return (
         <div className='w-full h-full overflow-x-hidden'>
             <Helmet>
                 <title>Home | Library | SIESGST</title>
             </Helmet>
 
-            {/* Inital View */}
-            <div className='w-full h-screen bg-center bg-no-repeat bg-cover homepage-bg'>
+            {/* Initial View */}
+            <div  ref={refs['Initial']} className='w-full h-screen bg-center bg-no-repeat bg-cover homepage-bg'>
 
                 {/* News Row */}
                 <NewsComponent/>
@@ -189,7 +190,7 @@ export default function HomePage() {
                         </NavLink>
                     </div>
                     <div className="bg-s_orange px-4 sm:px-5 py-2 text-2xl sm:text-3xl md:text-4xl cursor-pointer rounded-xl active:scale-95 hover:text-white">
-                        <NavLink to="about" className="flex items-center justify-center">
+                        <NavLink to="others#FAQs" className="flex items-center justify-center">
                             FAQs
                             <FontAwesomeIcon className="ml-2" icon={faArrowUpRightFromSquare} />
                         </NavLink>
@@ -200,8 +201,7 @@ export default function HomePage() {
             </div>
 
             {/* Overview */}
-            
-            <div className="p-5 sm:p-10 mx-4 sm:mx-10 md:mx-20 lg:mx-40 flex flex-col items-center">
+            <div  ref={refs['overview']} className="p-5 sm:p-10 mx-4 sm:mx-10 md:mx-20 lg:mx-40 flex flex-col items-center">
             <div>
                 {/* Heading */}
                 <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -226,90 +226,8 @@ export default function HomePage() {
             </div>
             </div>
 
-            {/*Photos section */}
-            <div className=' mb-10 image-animation'>
-                <div>
-                    <div className='flex justify-center text-4xl font-bold'>
-                        <p>Images</p>
-                    </div>
-                    <div className="border-b-4 mx-auto w-28 mt-2 border-blue-700 "></div>
-                </div>
-                <div className='slider h-[200px] overflow-visible'>
-                    <div className="slide-track mb-0">
-                        <div className="slide hover:scale-110 duration-700">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image1} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image2} alt="" />
-                        </div>
-                        {/* <div className="slide">
-                            <img src={image3} alt="" />
-                        </div> */}
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image4} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image5} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image6} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image7} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image8} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image9} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image10} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image11} alt="" />
-                        </div>
-                        
-                        {/* same 11 slides doubled */}
-
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image1} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image2} alt="" />
-                        </div>
-                        {/* <div className="slide">
-                            <img src={image3} alt="" />
-                        </div> */}
-                        <div className="slide ">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image4} alt="" />
-                        </div>
-                        <div className="slide ">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image5} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image6} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image7} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image8} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image9} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image10} alt="" />
-                        </div>
-                        <div className="slide">
-                            <img className="hover:scale-110 duration-700 h-96 w-auto" src={image11} alt="" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            {/* <div className='mb-20 image-animation'>
+            {/*Photos section */}            
+            <div  ref={refs['photos']} className='mb-20 image-animation'>
                 <div>
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
                         <p>Images</p>
@@ -321,10 +239,10 @@ export default function HomePage() {
                         {generateSlides(images)}
                     </div>
                 </div>
-            </div> */}
+            </div>
 
             {/* Librarian */}
-            <div className="text-xl py-10">
+            <div  ref={refs['librarian']} className="text-xl py-10">
                 {/* Section Header */}
                 <div>
                     <div className="flex justify-center text-3xl sm:text-4xl font-bold">
@@ -334,7 +252,8 @@ export default function HomePage() {
                 </div>
 
                 {/* Content Container */}
-                <div className="flex flex-col lg:flex-row justify-between bg-blue-500 bg-opacity-10 mx-5 lg:mx-40 rounded-xl p-10 sm:p-16 hover:scale-105 duration-700">
+                <div className="flex flex-col lg:flex-row justify-between bg-blue-500 bg-opacity-10 mx-5 lg:mx-40 rounded-xl 
+                p-10 sm:p-16 hover:scale-105 duration-700">
                     {/* Librarian Image and Details */}
                     <div className="flex flex-col items-center text-center mb-8 lg:mb-0">
                     <img className="rounded-full h-48 sm:h-72 mb-5 object-cover" src={Librian} alt="Librarian" />
@@ -357,15 +276,17 @@ export default function HomePage() {
                         Staffs
                         </p>
                     </Link>
-                    <p className="p-3 bg-yellow-400 h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer text-sm sm:text-base">
-                        Rules & Regulations
-                    </p>
+                    <Link to="/#policies">
+                        <p className="p-3 bg-yellow-400 h-10 flex items-center justify-center rounded-xl hover:bg-yellow-300 active:text-red-500 cursor-pointer text-sm sm:text-base">
+                            Rules & Regulations
+                        </p>
+                    </Link>
                     </div>
                 </div>
             </div>
 
             {/* Explore Policies */}
-            <div className='mx-5 sm:mx-10 md:mx-40'>
+            <div  ref={refs['policies']} className='mx-5 sm:mx-10 md:mx-40'>
                 <div className='pt-8'>
                     {/* Heading */}
                     <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>

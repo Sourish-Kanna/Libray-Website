@@ -4,9 +4,9 @@ import event1 from '../assets/Others/event_1.jpg'
 import event2 from '../assets/Others/event_2.jpg'
 import event3 from '../assets/Others/event_3.png'
 import event4 from '../assets/Others/event_4.jpg'
-import { useSmoothScroll } from '../Navigation'
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { Helmet } from 'react-helmet';
+import {useScrollToHash, useSmoothScroll} from '../Navigation'
 
 
 const moreLinks = [
@@ -166,8 +166,6 @@ const sections = [
     }
 ];
 
-
-
 const FaqItem = ({ title, details }) => (
     <div className="relative group">
         <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
@@ -189,9 +187,10 @@ const FaqItem = ({ title, details }) => (
 
 const CollapsibleSection = ({ title, content, link }) => (
     <div className="relative group">
-        <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+        <div className="bg-blue-700 text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
             <p className='text-white'>{title}</p>
-            <FontAwesomeIcon className="text-2xl text-s_orange" icon={faChevronDown} />
+            <FontAwesomeIcon className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700" 
+            icon={faChevronDown} />
         </div>
         <div className="max-h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:max-h-[500px] rounded-xl">
             <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
@@ -209,9 +208,10 @@ const CollapsibleSection = ({ title, content, link }) => (
 const MoreLinksSection = ({ moreLinks }) => {
     return (
         <div className="relative group">
-            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-700 shadow-xl rounded-xl">
+            <div className="bg-blue-700 text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
                 <p className='text-white'>More Links</p>
-                <FontAwesomeIcon className="text-2xl text-s_orange" icon={faChevronDown} />
+                <FontAwesomeIcon className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700" 
+                icon={faChevronDown} />
             </div>
             <div className="more-links max-h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:max-h-[500px] rounded-xl">
                 <div className="grid grid-cols-3 gap-0 auto-rows-min content-center mx-10 my-3 text-base transition-all transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
@@ -234,6 +234,7 @@ export default function Journals(){
     const handleClick = (index) => {
         setActiveIndex(index);
     };
+    const refs = useScrollToHash(['Others','Events','More','FAQs']);
 
     return (
         <div className='overflow-x-hidden w-full h-full'>
@@ -243,7 +244,7 @@ export default function Journals(){
             </Helmet>
 
             {/* Others */}
-            <div className='bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16'>
+            <div ref={refs['Others']} className='bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16'>
             <div>
                 <div className='flex justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-s_blue'>
                 <p>Others</p>
@@ -253,7 +254,7 @@ export default function Journals(){
             </div>
 
             {/* Events */}
-            <div className='mx-5 sm:mx-10 md:mx-40'>
+            <div ref={refs['Events']} className='mx-5 sm:mx-10 md:mx-40'>
                 <div className='pt-8'>
                     {/* Heading */}
                     <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
@@ -295,7 +296,7 @@ export default function Journals(){
             </div>
 
             {/* More */}
-            <div className='px-5 sm:px-10 md:px-40'>
+            <div ref={refs['More']} className='px-5 sm:px-10 md:px-40'>
                 <div className='pt-8'>
                     {/* Heading */}
                     <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
@@ -317,7 +318,7 @@ export default function Journals(){
             </div>
 
             {/* FAQs */}
-            <div className='mx-5 sm:mx-10 md:mx-40'>
+            <div ref={refs['FAQs']} className='mx-5 sm:mx-10 md:mx-40'>
                 <div className='pt-8'>
                     {/* Heading */}
                     <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
