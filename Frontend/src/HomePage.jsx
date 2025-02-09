@@ -20,7 +20,7 @@ import { Helmet } from 'react-helmet';
 import './css/HomePage.css'
 import './css/admin.css'
 
-
+//check
 function generateSlides(images) {
     return images.map((image, index) => (
         <div key={index} className="slide">
