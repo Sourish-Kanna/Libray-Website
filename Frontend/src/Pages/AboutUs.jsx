@@ -59,7 +59,7 @@ const staffMembers = [
 
 const StaffCard = ({ name, position, qualifications, image, alt }) => (
     <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-full sm:w-[300px] lg:w-[320px]">
-        <img src={image} className="w-full h-[250px] object-cover" alt={alt} />
+        <img src={image} className="w-full h-[340px] object-cover" alt={alt} />
         <div className="p-6">
             <h3 className="text-2xl font-extrabold text-s_orange">{position}</h3>
             <p className="font-bold text-s_orange mt-2">{name}</p>
@@ -175,7 +175,7 @@ export default function AboutUs() {
             </div>
 
             {/* Library Staffs */}
-<div ref={refs['library-staffs']} id="library-staffs" className="bg-gray-100 py-10">
+<div ref={refs['library-staffs']} id="library-staffs" className=" py-10">
     {/* Heading */}
     <div>
         <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
