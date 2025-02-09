@@ -268,8 +268,8 @@ export default function Journals(){
                         {events.map((event, index) => (
                             <button
                                 key={index}
-                                className={`w-64 sm:w-80 md:w-96 bg-blue-700 py-4 px-6 text-lg sm:text-2xl md:text-3xl rounded-r-full mb-2 transition-transform duration-300 text-white h-fit ${
-                                    activeIndex === index ? 'scale-110 text-orange-600 bg-blue-500 shadow-lg shadow-black/50' : ''
+                                className={`w-64 sm:w-80 md:w-96  py-4 px-6 text-lg sm:text-2xl md:text-3xl rounded-r-full mb-2 transition-transform duration-300   h-fit ${
+                                    activeIndex === index ? 'scale-110 text-yellow-400 bg-blue-600 shadow-lg shadow-black/50' : 'bg-blue-700 text-white '
                                 }`}
                                 onClick={() => handleClick(index)}
                             >
@@ -295,7 +295,7 @@ export default function Journals(){
             </div>
 
             {/* More */}
-            <div className='px-5 sm:px-10 md:px-40 bg-gray-100'>
+            <div className='px-5 sm:px-10 md:px-40'>
                 <div className='pt-8'>
                     {/* Heading */}
                     <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
