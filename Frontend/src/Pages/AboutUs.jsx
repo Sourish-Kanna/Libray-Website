@@ -200,8 +200,8 @@ export default function AboutUs() {
     </div>
 </div>
 
-            {/* Facilities Section */}
-            <div ref={refs['facilities']} id="facilities" className='py-10'>
+           {/* Facilities Section */}
+<div ref={refs['facilities']} id="facilities" className="py-10">
     {/* Heading */}
     <div>
         <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -211,40 +211,39 @@ export default function AboutUs() {
     </div>
 
     {/* Grid Layout for Facilities */}
-    <div className="bg-s_blue_400 shadow-2xl rounded-xl mx-5 sm:mx-10 md:mx-20 lg:mx-40 py-6 sm:py-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 px-6">
+    <div className="shadow-2xl rounded-xl bg-s_blue_400 p-5 sm:p-10 sm:mx-10 md:mx-20 lg:mx-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
         {facilities.map((facility, index) => (
-            <div key={index} className="flex flex-col items-center justify-center w-full h-auto bg-white rounded-lg shadow-lg p-4">
+            <div key={index} className="flex flex-col items-center justify-center h-full bg-white rounded-lg shadow-lg p-4">
                 <FacilityCard image={facility.image} title={facility.title} />
             </div>
         ))}
     </div>
 </div>
 
-
-
-
             {/* Infrastructure Section */}
-            <div ref={refs['infrastructure']} id="infrastructure"  className="py-10 bg-gray-100">
-                {/* Heading */}
-                <div>
-                    <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
-                        <p>Infrastructure</p>
-                    </div>
-                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"></div>
-                </div>
+<div ref={refs['infrastructure']} id="infrastructure" className="py-10">
+    {/* Heading */}
+    <div>
+        <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
+            <p>Infrastructure</p>
+        </div>
+        <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"></div>
+    </div>
 
-                {/* Infrastructure Details */}
-                <div className="bg-s_blue_400 shadow-2xl rounded-xl mx-5 sm:mx-10 md:mx-20 lg:mx-40 py-6 sm:py-12 flex flex-wrap justify-center gap-8">
-                    {infrastructureData.map((infra, index) => (
-                        <InfrastructureCard
-                            key={index}
-                            image={infra.image}
-                            title={infra.title}
-                            points={infra.points}
-                        />
-                    ))}
-                </div>
-            </div>
+    {/* Infrastructure Section - Matching Library Staffs */}
+    <div className="shadow-2xl rounded-xl flex flex-wrap justify-center items-center gap-6 lg:gap-8 p-5 sm:p-10 sm:mx-10 md:mx-20 lg:mx-40 bg-s_blue_400">
+        {infrastructureData.map((infra, index) => (
+            <InfrastructureCard
+                key={index}
+                image={infra.image}
+                title={infra.title}
+                points={infra.points}
+                className="p-3 text-sm"
+            />
+        ))}
+    </div>
+</div>
+
 
         </div>
     )
