@@ -1,5 +1,5 @@
-import {create} from 'zustand';
-import axios from 'axios';
+import { create } from "zustand";
+import axios from "axios";
 
 const getStoredUser = () => {
     const storedUser = localStorage.getItem("user");
@@ -23,38 +23,51 @@ const useAuthStore = create((set) => ({
     registerUser: async (formData) => {
         set({ loading: true, error: null, success: null });
         try {
-            const response = await axios.post('https://libray-website-server.onrender.com/api/v1/users/register', formData, {
-                headers: {
-                    'Content-Type': 'multipart/form-data',
-                },
-            });
-            set({ 
-                user: response.data, 
-                success: response.data.message, 
-                isAuthenticated:true,
-                loading: false 
+            const response = await axios.post(
+                "http://localhost:8000/api/v1/users/register",
+                formData,
+                {
+                    headers: {
+                        "Content-Type": "multipart/form-data",
+                    },
+                }
+            );
+            set({
+                user: response.data,
+                success: response.data.message,
+                isAuthenticated: true,
+                loading: false,
             });
             localStorage.setItem("user", JSON.stringify(response.data));
         } catch (error) {
-            set({ error: error.response?.data?.message || "Registration failed", loading: false });
+            set({
+                error: error.response?.data?.message || "Registration failed",
+                loading: false,
+            });
         }
     },
 
     loginUser: async (credentials) => {
         set({ loading: true, error: null, success: null });
         try {
-            const response = await axios.post('https://libray-website-server.onrender.com/api/v1/users/login', credentials);
+            const response = await axios.post(
+                "http://localhost:8000/api/v1/users/login",
+                credentials
+            );
             const userData = response.data.data;
-            set({ 
-                user: userData, 
-                success: response.data.message, 
+            set({
+                user: userData,
+                success: response.data.message,
                 loading: false,
-                isAuthenticated:true,
+                isAuthenticated: true,
             });
             localStorage.setItem("user", JSON.stringify(response.data.data));
             // localStorage.setItem("accessToken",response.data.token)
         } catch (error) {
-            set({ error: error.response?.data?.message || "Login failed", loading: false });
+            set({
+                error: error.response?.data?.message || "Login failed",
+                loading: false,
+            });
         }
     },
 
@@ -71,7 +84,7 @@ const useAuthStore = create((set) => ({
         } catch (error) {
             set({
                 error: error?.response?.data?.message,
-            })
+            });
         }
     },
 }));

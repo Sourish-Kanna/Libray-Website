@@ -1,5 +1,5 @@
-import { create } from 'zustand';
-import axios from 'axios';
+import { create } from "zustand";
+import axios from "axios";
 
 const useBranchStore = create((set) => ({
     branches: [], // State to store branches
@@ -10,7 +10,9 @@ const useBranchStore = create((set) => ({
     fetchBranches: async () => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.get('https://libray-website-server.onrender.com/api/v1/branch/branches');
+            const response = await axios.get(
+                "http://localhost:8000/api/v1/branch/branches"
+            );
             set({ branches: response.data, loading: false });
         } catch (error) {
             set({ error: error.message, loading: false });
@@ -21,8 +23,14 @@ const useBranchStore = create((set) => ({
     addBranch: async (name) => {
         set({ loading: true, error: null });
         try {
-            const response = await axios.post('https://libray-website-server.onrender.com/api/v1/branch/branches', { name });
-            set((state) => ({ branches: [...state.branches, response.data], loading: false }));
+            const response = await axios.post(
+                "http://localhost:8000/api/v1/branch/branches",
+                { name }
+            );
+            set((state) => ({
+                branches: [...state.branches, response.data],
+                loading: false,
+            }));
         } catch (error) {
             set({ error: error.message, loading: false });
         }
@@ -32,7 +40,9 @@ const useBranchStore = create((set) => ({
     deleteBranch: async (id) => {
         set({ loading: true, error: null });
         try {
-            await axios.delete(`https://libray-website-server.onrender.com/api/v1/branch/branches/${id}`);
+            await axios.delete(
+                `http://localhost:8000/api/v1/branch/branches/${id}`
+            );
             set((state) => ({
                 branches: state.branches.filter((branch) => branch._id !== id),
                 loading: false,
