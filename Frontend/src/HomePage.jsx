@@ -227,14 +227,14 @@ export default function HomePage() {
             </div>
 
             {/*Photos section */}            
-            <div  ref={refs['photos']} className='mb-20 image-animation'>
+            <div  ref={refs['photos']} className='mb-5 sm:mb-10 md:mb-40 image-animation'>
                 <div>
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
                         <p>Images</p>
                     </div>
                     <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"/>
                 </div>
-                <div className='slider h-fit'>
+                <div className='slider h-fit w-full'>
                     <div className="slide-track">
                         {generateSlides(images)}
                     </div>
