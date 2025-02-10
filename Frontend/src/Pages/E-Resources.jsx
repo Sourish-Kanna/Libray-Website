@@ -1,14 +1,85 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
 import { useScrollToHash, useSmoothScroll } from "../Navigation";
 import useSyllabusStore from "../Store/syllabus.store.js";
 import useAuthStore from "../Store/userAuth.store.js";
-import useBranchStore from "../Store/branch.store.js"; // Import branch store
-import useSemesterStore from "../Store/semester.store.js"; // Import semester store
+import useBranchStore from "../Store/branch.store.js";
+import useSemesterStore from "../Store/semester.store.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from 'react-helmet';
 import axios from "axios";
+
+const exams = [
+  {
+    title: 'UPSC',
+    description: 'UPSC conducts the Civil Services Examination for recruitment to various Indian Administrative Service (IAS) and other top civil services.',
+    link: 'https://upsc.gov.in/',
+  },
+  {
+    title: 'GRE',
+    description: 'The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.',
+    link: 'https://www.ets.org/gre.html',
+  },
+  {
+    title: 'GATE',
+    description: 'GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.',
+    link: 'http://gate.iitd.ac.in/',
+  },
+  {
+    title: 'SAT',
+    description: 'The SAT is a college admission test that assesses a student\'s readiness for higher education through math, reading, and writing sections.',
+    link: 'https://satsuite.collegeboard.org/sat',
+  },
+  {
+    title: 'TOEFL',
+    description: 'TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.',
+    link: 'https://www.ets.org/toefl.html',
+  },
+  {
+    title: 'CAT',
+    description: 'The Common Admission Test (CAT) is an entrance exam for management programs, testing verbal, logical, and quantitative aptitude.',
+    link: 'https://iimcat.ac.in/',
+  },
+  {
+    title: 'IELTS',
+    description: 'IELTS assesses English language proficiency for education, work, or migration in English-speaking countries.',
+    link: 'https://www.ielts.org/',
+  },
+  {
+    title: 'JEE',
+    description: 'JEE is a competitive exam for engineering program admissions, assessing physics, chemistry, and math proficiency.',
+    link: 'https://jeemain.nta.nic.in/',
+  },
+  {
+    title: 'NEET',
+    description: 'NEET is an entrance exam for medical programs, assessing biology, chemistry, and physics knowledge.',
+    link: 'https://neet.nta.nic.in/',
+  },
+];
+
+const examComponent = (exam, index) => {
+  return (
+    <div key={index} className="relative group">
+      <div className="bg-blue-500 text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-1000">
+        <p className="text-white">{exam.title}</p>
+        <FontAwesomeIcon className="text-2xl text-white transition-transform group-hover:rotate-180 duration-700" icon={faChevronDown} />
+      </div>
+      <div className="max-h-0 group-hover:max-h-[500px] shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
+        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-sm sm:text-xl flex-col content-center mx-10 my-3">
+          <p className="py-2">{exam.description}</p>
+          <p className="py-2">
+            <a href={exam.link} target="_blank" rel="noopener noreferrer" className="text-s_orange underline">
+              Click here for more information
+            </a>
+          </p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export default function EResources() {
   const { isAuthenticated } = useAuthStore();
@@ -214,42 +285,46 @@ export default function EResources() {
   };
 
   return (
-    <div className="font-serif mt-28">
-      <Link to="/academics"></Link>
+    <div className="overflow-x-hidden w-full h-full">
+      {/* <Link to="/academics"></Link> */}
+      <Helmet>
+        <title>E-Resources | Library | SIESGST</title>
+      </Helmet>
       <ToastContainer />
 
-      <div className="w-full h-48 bg-[#efefef] flex items-center justify-center">
+      {/* E-Resources */}
+      <div className="bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16">
         <div>
-          <div className="flex justify-center text-6xl font-bold text-[#014da1]">
-            <p>Academics</p>
+          <div className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-bold text-s_blue">
+            <p>E-Resources</p>
           </div>
-          <div className="mx-auto mt-2 mb-10 border-b-4 border-red-600 w-44"></div>
+          <div className="border-b-4 mx-auto w-20 sm:w-32 mt-2 border-s_orange" />
         </div>
       </div>
 
       {/* University Syllabus */}
       <div
-        className="mx-40"
+        className="mx-4 sm:mx-16 md:mx-40 py-10"
         ref={refs["university-syllabus"]}
         id="university-syllabus"
       >
-        <div className="flex items-center justify-center w-full h-40">
+        <div className="flex items-center justify-center w-full py-6">
           <div>
-            <div className="flex justify-center text-4xl font-bold ">
+            <div className="flex justify-center text-2xl sm:text-3xl font-bold">
               <p>University Syllabus</p>
             </div>
-            <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
+            <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 sm:w-32"></div>
           </div>
         </div>
         <form
           id="question-paper-form"
-          className="p-4 flex-col border bg-[#f3f2ed] rounded-2xl shadow-2xl w-3/4 h-auto mx-40"
+          className="p-4 border bg-header-color rounded-2xl shadow-2xl w-full max-w-2xl mx-auto"
           onSubmit={handleSubmit}
         >
-          <div className="px-10 mb-4">
+          <div className="px-4 mb-4">
             <label
               htmlFor="branch"
-              className="block mb-2 text-lg font-bold text-gray-700"
+              className="block mb-2 text-base sm:text-lg font-bold text-gray-700"
             >
               Select Branch:
             </label>
@@ -258,7 +333,7 @@ export default function EResources() {
               name="branch"
               value={branch}
               onChange={(e) => setBranch(e.target.value)}
-              className="w-full p-3.5 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600"
+              className="w-full p-3 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600"
             >
               <option value="">Select Branch</option>
               {branches.map((branchOption) => (
@@ -286,7 +361,7 @@ export default function EResources() {
               </div>
             )}
           </div>
-          <div className="px-10 mb-4">
+          <div className="px-4 mb-4">
             <label
               htmlFor="semester"
               className="block mb-2 text-lg font-bold text-gray-700"
@@ -298,7 +373,7 @@ export default function EResources() {
               name="semester"
               value={semester}
               onChange={(e) => setSemester(e.target.value)}
-              className="w-full p-3.5 border border-gray-400 rounded-md focus:border-[#f26d21] focus:ring-[#f26d21]"
+              className="w-full p-3 border border-gray-400 rounded-md focus:border-s_orange focus:ring-s_orange"
             >
               <option value="">Select Semester</option>
               {semesters.map((semesterOption) => (
@@ -377,7 +452,7 @@ export default function EResources() {
             <button
               type="submit"
               id="download-btn"
-              className="px-4 py-2 mt-2 text-white rounded-md bg-[#f26d21] w-50 active:bg-[#fe8641]"
+              className="px-4 py-2 mt-2 text-white rounded-md bg-s_orange w-36 sm:w-40 active:bg-s_orange_400"
               disabled={syllabusLoading}
             >
               {syllabusLoading ? "Loading..." : "Get Syllabus"}
@@ -387,16 +462,16 @@ export default function EResources() {
       </div>
 
       {/* Competitive Exam */}
-      <div ref={refs["competitive-exams"]} id="competitive-exams">
-        <div className="flex items-center justify-center w-full h-40">
+      <div ref={refs["competitive-exams"]} id="competitive-exams" className="mx-4 sm:mx-16 md:mx-40 py-10">
+        <div className="flex items-center justify-center w-full py-6">
           <div>
-            <div className="flex justify-center text-4xl font-bold ">
+            <div className="flex justify-center text-2xl sm:text-3xl font-bold">
               <p>Competitive Exams</p>
             </div>
           </div>
         </div>
-        <div className="mx-40 ">
-          <div className="relative group">
+        <div>
+          {/* <div className="relative group">
             <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
               <p className="text-white">UPSE</p>
               <FontAwesomeIcon
@@ -538,7 +613,8 @@ export default function EResources() {
                 </p>
               </div>
             </div>
-          </div>
+          </div> */}
+          {exams.map((exam, index) => examComponent(exam, index))}
         </div>
       </div>
     </div>

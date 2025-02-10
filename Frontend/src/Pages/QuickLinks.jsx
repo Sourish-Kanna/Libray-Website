@@ -1,23 +1,18 @@
 import { useState } from "react";
-import "../css/QuickLinks.css";
+import "../css/admin.css";
 import { useScrollToHash, useSmoothScroll } from "../Navigation";
 import usePyqsStore from "../Store/pyqs.store";
-import axios from "axios";
 import useAuthStore from "../Store/userAuth.store";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from 'react-helmet';
+
 
 const branchOptions = [
   { value: "choose", text: "Choose Branch" },
   { value: "Computer Engineering", text: "Computer Engineering" },
-  {
-    value: "Electronics and Telecommunication",
-    text: "Electronics and Telecommunication",
-  },
-  {
-    value: "Electronics and Computer Science",
-    text: "Electronics and Computer Science",
-  },
+  { value: "Electronics and Telecommunication", text: "Electronics and Telecommunication"},
+  { value: "Electronics and Computer Science", text: "Electronics and Computer Science"},
   { value: "Information Technology", text: "Information Technology" },
   { value: "CS IOT", text: "CS IOT" },
   { value: "First Year Engineering", text: "First Year Engineering" },
@@ -416,12 +411,6 @@ const subjectOptions = {
   },
 };
 
-// const yearOptions = [
-//     "2019 May", "2019 November", "2020 May", "2020 November",
-//     "2021 May", "2021 November", "2022 May", "2022 November",
-//     "2023 May", "2023 November", "2024 May", "2024 November"
-// ];
-
 const yearOptions = [
   { value: "2019", text: "2019" },
   { value: "2020", text: "2020" },
@@ -436,8 +425,6 @@ const monthOptions = [
   { value: "may", text: "May" },
   { value: "november", text: "November" },
 ];
-// const Scholarship = "https://scholarships.gov.in/"
-// const Research_fund = "https://www.aicte-india.org/opportunities/students/research-funds"
 
 function Quicklinks() {
   useSmoothScroll();
@@ -508,41 +495,6 @@ function Quicklinks() {
     year === "choose" ||
     month === "choose" ||
     loading;
-
-  // const handleSubmit = async (e) => {
-  //     e.preventDefault();
-  //     try {
-  //         const pyqData = await fetchPYQ();
-  //         if (pyqData && pyqData._id) { // Assuming the PYQ data contains an 'id' field
-
-  //             const response = await downloadPYQ(pyqData._id);
-
-  //             const url = window.URL.createObjectURL(new Blob([response.data]));
-  //             const link = document.createElement('a');
-  //             link.href = url;
-
-  //             const contentDisposition = response.headers['content-disposition'];
-  //             let fileName = 'pyq.pdf';
-  //             if (contentDisposition) {
-  //                 const fileNameMatch = contentDisposition.match(/filename="?([^"]+)"?/);
-  //                 if (fileNameMatch && fileNameMatch.length === 2) {
-  //                     fileName = fileNameMatch[1];
-  //                 }
-  //             }
-
-  //             link.setAttribute('download', fileName);
-  //             document.body.appendChild(link);
-  //             link.click();
-  //             link.parentNode.removeChild(link);
-  //             window.URL.revokeObjectURL(url);
-  //             console.log("Download initiated");
-  //         } else {
-  //             console.log("PYQ Data is undefined or missing 'id'");
-  //         }
-  //     } catch (err) {
-  //         console.error("Error fetching or downloading PYQ:", err);
-  //     }
-  // };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -619,133 +571,141 @@ function Quicklinks() {
   };
 
   return (
-    <div className="font-serif mt-28">
-    <ToastContainer />
-      <div className="mx-40" id="Donate-books">
-        <div className="flex items-center justify-center w-full h-40">
+    <div className="overflow-x-hidden w-full h-full">
+      <Helmet>
+        <title>others | Library | SIESGST</title>
+      </Helmet>
+      <ToastContainer/>
+
+      <div className="mx-4 sm:mx-16 lg:mx-40" id="Select-PYQs">
+
+        <div className="flex items-center justify-center w-full h-auto py-8">
           <div>
-            <div className="flex justify-center text-4xl font-bold">
-              <p>Question Papers</p>
+            <div className="flex justify-center text-4xl font-bold lg:text-4xl">
+              {/* <p>Question Papers</p> */}
+              <p>Download Question Paper</p>
             </div>
-            <div className="mx-auto mt-2 mb-10 border-b-4 border-blue-700 w-44"></div>
+            <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 lg:w-44"/>
           </div>
         </div>
-        <form
-          id="question-paper"
-          className="form-container"
-          onSubmit={handleSubmit}
-        >
-          <label htmlFor="branch">Branch:</label>
-          <select id="branch" value={branch} onChange={handleBranchChange}>
-            {branchOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
 
-          <label htmlFor="semester">Semester:</label>
-          <select
-            id="semester"
-            value={semester}
-            onChange={handleSemesterChange}
-            disabled={branch === "choose"}
-          >
-            {semesterOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
+        <form id="select-pyqs-form" className="form-container" onSubmit={handleSubmit}>
+  {/* Branch */}
+  <div className="form-group">
+    <label htmlFor="branch">Branch:</label>
+    <select
+      id="branch"
+      value={branch}
+      onChange={handleBranchChange}
+      className="form-control"
+    >
+      {branchOptions.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.text}
+        </option>
+      ))}
+    </select>
+  </div>
 
-          <label htmlFor="subject">Subject:</label>
-          <select
-            id="subject"
-            value={subject}
-            onChange={handleSubjectChange}
-            disabled={semester === "choose"}
-          >
-            {availableSubjects.length > 0 ? (
-              availableSubjects.map((subj, index) => (
-                <option key={index} value={subj}>
-                  {subj}
-                </option>
-              ))
-            ) : (
-              <option value="">No subjects available</option>
-            )}
-          </select>
+  {/* Semester */}
+  <div className="form-group">
+    <label htmlFor="semester">Semester:</label>
+    <select
+      id="semester"
+      value={semester}
+      onChange={handleSemesterChange}
+      disabled={branch === "choose"}
+      className="form-control"
+    >
+      {semesterOptions.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.text}
+        </option>
+      ))}
+    </select>
+  </div>
 
-          <label htmlFor="year">Year:</label>
-          <select id="year" value={year} onChange={handleYearChange}>
-            <option value="choose">Choose Year</option>
-            {yearOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
+  {/* Subject */}
+  <div className="form-group">
+    <label htmlFor="subject">Subject:</label>
+    <select
+      id="subject"
+      value={subject}
+      onChange={handleSubjectChange}
+      disabled={semester === "choose"}
+      className="form-control"
+    >
+      {availableSubjects.length > 0 ? (
+        availableSubjects.map((subj, index) => (
+          <option key={index} value={subj}>
+            {subj}
+          </option>
+        ))
+      ) : (
+        <option value="">No subjects available</option>
+      )}
+    </select>
+  </div>
 
-          <label htmlFor="month">Month:</label>
-          <select id="month" value={month} onChange={handleMonthChange}>
-            <option value="choose">Choose Month</option>
-            {monthOptions.map((option) => (
-              <option key={option.value} value={option.value}>
-                {option.text}
-              </option>
-            ))}
-          </select>
+  {/* Year */}
+  <div className="form-group">
+    <label htmlFor="year">Year:</label>
+    <select id="year" value={year} onChange={handleYearChange} className="form-control">
+      <option value="choose">Choose Year</option>
+      {yearOptions.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.text}
+        </option>
+      ))}
+    </select>
+  </div>
 
-          {error && <p className="error-message">{error}</p>}
+  {/* Month */}
+  <div className="form-group">
+    <label htmlFor="month">Month:</label>
+    <select id="month" value={month} onChange={handleMonthChange} className="form-control">
+      <option value="choose">Choose Month</option>
+      {monthOptions.map((option) => (
+        <option key={option.value} value={option.value}>
+          {option.text}
+        </option>
+      ))}
+    </select>
+  </div>
 
-          <button
-            type="submit"
-            disabled={isSubmitDisabled}
-            className="bg-orange-500 px-4 py-2 rounded-xl"
-            // style={{ backgroundColor: "#4CAF50", color: "white" }}
-          >
-            {loading ? "Submitting..." : "Submit"}
-          </button>
+  {error && <p className="error-message">{error}</p>}
 
-          {isAuthenticated && (
-            <div className="file-input-container">
-              <label htmlFor="file">Upload PYQ File:</label>
-              <input
-                type="file"
-                id="file"
-                name="file"
-                onChange={(e) => setFile(e.target.files[0])}
-              />
-            </div>
-          )}
+  <button
+    type="submit"
+    disabled={isSubmitDisabled}
+    className={`submit-btn ${isSubmitDisabled && "opacity-50"}`}
+  >
+    {loading ? "Submitting..." : "Submit"}
+  </button>
 
-          {/* Conditionally render Update, Delete, and Create buttons */}
-          {isAuthenticated && (
-            <div className="admin-buttons">
-              <button
-                type="button"
-                onClick={handleCreate}
-                className="create-button"
-              >
-                Create
-              </button>
-              <button
-                type="button"
-                onClick={handleUpdate}
-                className="update-button"
-              >
-                Update
-              </button>
-              <button
-                type="button"
-                onClick={handleDelete}
-                className="delete-button"
-              >
-                Delete
-              </button>
-            </div>
-          )}
-        </form>
+  {isAuthenticated && (
+    <div className="file-input-container">
+      <label htmlFor="file">Upload PYQ File:</label>
+      <input type="file" id="file" name="file" onChange={(e) => setFile(e.target.files[0])} />
+    </div>
+  )}
+
+  {isAuthenticated && (
+    <div className="admin-buttons">
+      <button type="button" onClick={handleCreate} className="create-button">
+        Create
+      </button>
+      <button type="button" onClick={handleUpdate} className="update-button">
+        Update
+      </button>
+      <button type="button" onClick={handleDelete} className="delete-button">
+        Delete
+      </button>
+    </div>
+  )}
+</form>
+
+
       </div>
 
       <div className="flex items-center justify-center w-full h-32" />
