@@ -16,12 +16,12 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { Helmet } from 'react-helmet';
 
 const facilities = [
-    { image: ref, title: "Reference Service" },
-    { image: ret, title: "Home Issue/Book Return" },
-    { image: fac, title: "Book Bank Facility" },
+    { image: ref, title: "Circulation Counter" },
+    // { image: ret, title: "Home Issue/Book Return" },
+    // { image: fac, title: "Book Bank Facility" },
     { image: repo, title: "Reprography Service" },
-    { image: opa, title: "Library OPAC" },
-    { image: fac, title: "Newspaper Clipping" },
+    { image: opa, title: "Reference Section" },
+    // { image: fac, title: "Newspaper Clipping" },
 ];
 
 const FacilityCard = ({ image, title }) => (
@@ -51,7 +51,7 @@ const staffMembers = [
     {
         name: "Mr. Indrabahadur Singh",
         position: "Library Attendant",
-        qualifications: "10TH",
+        qualifications: "10Th",
         image: indra,
         alt: "Library Attendant"
     }
@@ -157,13 +157,13 @@ export default function AboutUs() {
                         </div>
                         <div className="text-left space-y-4 ml-">
                             <div className="">
-                                <p className="font-semibold">Monday To Saturday</p>
+                                <p className="font-semibold">Monday To Friday</p>
                                 <p className="text-sm sm:text-base">8:00 AM To 7:00 PM</p>
                                 <p className="text-sm sm:text-base">(Circulation Time 9:00 AM To 5:00 PM)</p>
                             </div>
                             <div className="">
                                 <p className="font-semibold">Saturdays</p>
-                                <p className="text-sm sm:text-base">9:00 AM To 2:00 PM</p>
+                                <p className="text-sm sm:text-base">9:00 AM To 6:00 PM</p>
                             </div>
                             <div className="">
                                 <p className="font-semibold">Closed On Sundays, Public Holidays</p>
