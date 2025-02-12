@@ -11,7 +11,7 @@ const useBranchStore = create((set) => ({
         set({ loading: true, error: null });
         try {
             const response = await axios.get(
-                "http://localhost:8000/api/v1/branch/branches"
+                "https://library-siesgst.onrender.com/api/v1/branch/branches"
             );
             set({ branches: response.data, loading: false });
         } catch (error) {
@@ -24,7 +24,7 @@ const useBranchStore = create((set) => ({
         set({ loading: true, error: null });
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/v1/branch/branches",
+                "https://library-siesgst.onrender.com/api/v1/branch/branches",
                 { name }
             );
             set((state) => ({
@@ -41,7 +41,7 @@ const useBranchStore = create((set) => ({
         set({ loading: true, error: null });
         try {
             await axios.delete(
-                `http://localhost:8000/api/v1/branch/branches/${id}`
+                `https://library-siesgst.onrender.com/api/v1/branch/branches/${id}`
             );
             set((state) => ({
                 branches: state.branches.filter((branch) => branch._id !== id),

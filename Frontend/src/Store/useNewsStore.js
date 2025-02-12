@@ -9,7 +9,7 @@ const useNewsStore = create((set) => ({
     addNews: async (title) => {
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/v1/news",
+                "https://library-siesgst.onrender.com/api/v1/news",
                 {
                     title,
                 }
@@ -30,7 +30,7 @@ const useNewsStore = create((set) => ({
     deleteNews: async (id) => {
         try {
             const response = await axios.delete(
-                `http://localhost:8000/api/v1/news/${id}`
+                `https://library-siesgst.onrender.com/api/v1/news/${id}`
             );
             if (response.status === 200) {
                 set((state) => ({
@@ -50,7 +50,7 @@ const useNewsStore = create((set) => ({
     fetchNews: async () => {
         try {
             const response = await axios.get(
-                "http://localhost:8000/api/v1/news"
+                "https://library-siesgst.onrender.com/api/v1/news"
             );
             if (response.status === 200) {
                 set({ newsItems: response.data });

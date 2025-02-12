@@ -24,7 +24,7 @@ const useAuthStore = create((set) => ({
         set({ loading: true, error: null, success: null });
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/v1/users/register",
+                "https://library-siesgst.onrender.com/api/v1/users/register",
                 formData,
                 {
                     headers: {
@@ -51,7 +51,7 @@ const useAuthStore = create((set) => ({
         set({ loading: true, error: null, success: null });
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/v1/users/login",
+                "https://library-siesgst.onrender.com/api/v1/users/login",
                 credentials
             );
             const userData = response.data.data;

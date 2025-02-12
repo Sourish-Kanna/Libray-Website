@@ -11,7 +11,7 @@ const useSemesterStore = create((set) => ({
         set({ loading: true, error: null });
         try {
             const response = await axios.get(
-                "http://localhost:8000/api/v1/semester/semesters"
+                "https://library-siesgst.onrender.com/api/v1/semester/semesters"
             );
             set({ semesters: response.data, loading: false });
         } catch (error) {
@@ -24,7 +24,7 @@ const useSemesterStore = create((set) => ({
         set({ loading: true, error: null });
         try {
             const response = await axios.post(
-                "http://localhost:8000/api/v1/semester/semesters",
+                "https://library-siesgst.onrender.com/api/v1/semester/semesters",
                 { name }
             );
             set((state) => ({
@@ -41,7 +41,7 @@ const useSemesterStore = create((set) => ({
         set({ loading: true, error: null });
         try {
             await axios.delete(
-                `http://localhost:8000/api/v1/semester/semesters/${id}`
+                `https://library-siesgst.onrender.com/api/v1/semester/semesters/${id}`
             );
             set((state) => ({
                 semesters: state.semesters.filter(
