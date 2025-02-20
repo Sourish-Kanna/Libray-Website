@@ -16,12 +16,12 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { Helmet } from 'react-helmet';
 
 const facilities = [
-    { image: ref, title: "Reference Service" },
-    { image: ret, title: "Home Issue/Book Return" },
-    { image: fac, title: "Book Bank Facility" },
+    { image: ref, title: "Circulation Counter" },
+    // { image: ret, title: "Home Issue/Book Return" },
+    // { image: fac, title: "Book Bank Facility" },
     { image: repo, title: "Reprography Service" },
-    { image: opa, title: "Library OPAC" },
-    { image: fac, title: "Newspaper Clipping" },
+    { image: opa, title: "Reference Section" },
+    // { image: fac, title: "Newspaper Clipping" },
 ];
 
 const FacilityCard = ({ image, title }) => (
@@ -51,7 +51,7 @@ const staffMembers = [
     {
         name: "Mr. Indrabahadur Singh",
         position: "Library Attendant",
-        qualifications: "10TH",
+        qualifications: "10Th",
         image: indra,
         alt: "Library Attendant"
     }
@@ -59,7 +59,7 @@ const staffMembers = [
 
 const StaffCard = ({ name, position, qualifications, image, alt }) => (
     <div className="bg-white rounded-xl overflow-hidden hover:scale-105 duration-700 w-full sm:w-[300px] lg:w-[320px]">
-        <img src={image} className="w-full h-[250px] object-cover" alt={alt} />
+        <img src={image} className="w-full h-[340px] object-cover" alt={alt} />
         <div className="p-6">
             <h3 className="text-2xl font-extrabold text-s_orange">{position}</h3>
             <p className="font-bold text-s_orange mt-2">{name}</p>
@@ -133,7 +133,7 @@ export default function AboutUs() {
             </div>
 
             {/* Library Hours */}
-            <div className="p-5 sm:p-10 mx-4 sm:mx-10 md:mx-20 lg:mx-40 flex flex-col items-center">
+            <div ref={refs['library-hours']} className="p-5 sm:p-10 mx-4 sm:mx-10 md:mx-20 lg:mx-40 flex flex-col items-center">
                 <div>
                     {/* Heading */}
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -157,13 +157,13 @@ export default function AboutUs() {
                         </div>
                         <div className="text-left space-y-4 ml-">
                             <div className="">
-                                <p className="font-semibold">Monday To Saturday</p>
+                                <p className="font-semibold">Monday To Friday</p>
                                 <p className="text-sm sm:text-base">8:00 AM To 7:00 PM</p>
                                 <p className="text-sm sm:text-base">(Circulation Time 9:00 AM To 5:00 PM)</p>
                             </div>
                             <div className="">
                                 <p className="font-semibold">Saturdays</p>
-                                <p className="text-sm sm:text-base">9:00 AM To 2:00 PM</p>
+                                <p className="text-sm sm:text-base">9:00 AM To 6:00 PM</p>
                             </div>
                             <div className="">
                                 <p className="font-semibold">Closed On Sundays, Public Holidays</p>
@@ -175,7 +175,7 @@ export default function AboutUs() {
             </div>
 
             {/* Library Staffs */}
-            <div ref={refs['library-staffs']} id="library-staffs" className="  bg-gray-100 py-10">
+            <div ref={refs['library-staffs']} id="library-staffs" className=" py-10">
                 {/* Heading */}
                 <div>
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -194,13 +194,14 @@ export default function AboutUs() {
                             qualifications={staff.qualifications} 
                             image={staff.image} 
                             alt={staff.alt} 
+                            className="p-3 text-sm"  // Reduced padding & font size for compact layout
                         />
                     ))}
                 </div>
             </div>
 
             {/* Facilities Section */}
-            <div ref={refs['facilities']} id="facilities" className='py-10'>
+            <div ref={refs['facilities']} id="facilities" className="py-10">
                 {/* Heading */}
                 <div>
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -209,15 +210,18 @@ export default function AboutUs() {
                     <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"></div>
                 </div>
 
-                <div className="bg-s_blue_400 shadow-2xl rounded-xl mx-5 sm:mx-10 md:mx-20 lg:mx-40 py-6 sm:py-12 flex flex-wrap justify-center gap-8">
+                {/* Grid Layout for Facilities */}
+                <div className="shadow-2xl rounded-xl bg-s_blue_400 p-5 sm:p-10 sm:mx-10 md:mx-20 lg:mx-40 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {facilities.map((facility, index) => (
-                        <FacilityCard key={index} image={facility.image} title={facility.title} />
+                        <div key={index} className="flex flex-col items-center justify-center h-full bg-white rounded-lg shadow-lg p-4">
+                            <FacilityCard image={facility.image} title={facility.title} />
+                        </div>
                     ))}
                 </div>
             </div>
 
             {/* Infrastructure Section */}
-            <div ref={refs['infrastructure']} id="infrastructure"  className="py-10 bg-gray-100">
+            <div ref={refs['infrastructure']} id="infrastructure" className="py-10">
                 {/* Heading */}
                 <div>
                     <div className="flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold">
@@ -226,18 +230,20 @@ export default function AboutUs() {
                     <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-5 sm:mb-10"></div>
                 </div>
 
-                {/* Infrastructure Details */}
-                <div className="bg-s_blue_400 shadow-2xl rounded-xl mx-5 sm:mx-10 md:mx-20 lg:mx-40 py-6 sm:py-12 flex flex-wrap justify-center gap-8">
+                {/* Infrastructure Section - Matching Library Staffs */}
+                <div className="shadow-2xl rounded-xl flex flex-wrap justify-center items-center gap-6 lg:gap-8 p-5 sm:p-10 sm:mx-10 md:mx-20 lg:mx-40 bg-s_blue_400">
                     {infrastructureData.map((infra, index) => (
                         <InfrastructureCard
                             key={index}
                             image={infra.image}
                             title={infra.title}
                             points={infra.points}
+                            className="p-3 text-sm"
                         />
                     ))}
                 </div>
             </div>
+
 
         </div>
     )
