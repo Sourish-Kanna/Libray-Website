@@ -34,7 +34,7 @@ app.use("/api/v1/syllabus",syllabusRouter)
 app.use("/api/v1/pyqs",pyqRouter)
 
 app.use("/api/v1/users",userRouter)
-
+//
 app.use("/api/v1/news",newsRouter)
 
 app.use('/api/v1/branch', branchRoutes);
