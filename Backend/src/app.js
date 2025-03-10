@@ -11,7 +11,8 @@ app.use(cors({
             'https://libray-website-client.vercel.app',
             'https://libray-website.vercel.app',
             'https://libray-website-71gt.vercel.app',
-            'https://libray-website-tan.vercel.app'
+            'https://libray-website-tan.vercel.app',
+            'https://library-sies-gst.vercel.app'
         ],
     credentials: true
 }))
