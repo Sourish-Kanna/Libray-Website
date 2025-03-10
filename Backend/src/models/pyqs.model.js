@@ -24,11 +24,11 @@ const pyqSchema = new Schema({
         ],
         required: true
     },
-    subject: {
-        type: String,
-        required:true,
-        transform: (val) => val.toLowerCase()
-    },
+    // subject: {
+    //     type: String,
+    //     required:true,
+    //     transform: (val) => val.toLowerCase()
+    // },
     year:{
         type:Number,
         required:true,

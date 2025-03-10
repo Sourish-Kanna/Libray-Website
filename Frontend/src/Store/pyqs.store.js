@@ -7,7 +7,7 @@ const API_BASE_URL = "http://localhost:8000/api/v1";
 const usePyqsStore = create((set) => ({
     branch: "",
     semester: "",
-    subject: "",
+    // subject: "",
     year: "",
     month: "",
     pyq: null,
@@ -17,20 +17,20 @@ const usePyqsStore = create((set) => ({
     // Setters for the form fields
     setBranch: (branch) => set({ branch }),
     setSemester: (semester) => set({ semester }),
-    setSubject: (subject) => set({ subject }),
+    // setSubject: (subject) => set({ subject }),
     setYear: (year) => set({ year }),
     setMonth: (month) => set({ month }),
 
     // Fetch a specific PYQ
     fetchPYQ: async () => {
-        const { branch, semester, subject, year, month } =
+        const { branch, semester, year, month } =
             usePyqsStore.getState();
 
         set({ loading: true, error: null });
 
         try {
             const response = await axios.get(`${API_BASE_URL}/pyqs`, {
-                params: { branch, semester, subject, year, month },
+                params: { branch, semester, year, month },
             });
             set({ pyq: response.data.data, loading: false });
             return response.data.data;
