@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import axios from "axios";
 
-const API_BASE_URL = "https://library-siesgst.onrender.com/api/v1";
+const API_BASE_URL = "https://library-siesgst.onrender.com";
 
 const useSyllabusStore = create((set) => ({
     branch: "",
@@ -65,24 +65,24 @@ const useSyllabusStore = create((set) => ({
     createSyllabus: async (formData) => {
         set({ loading: true, error: null });
 
-        try {
-            const response = await axios.post(
-                `${API_BASE_URL}/syllabus/create`,
-                formData,
-                {
-                    headers: { "Content-Type": "multipart/form-data" },
-                }
-            );
-            set({ syllabus: response.data.data, loading: false });
-        } catch (err) {
-            set({
-                error:
-                    err.response?.data?.message ||
-                    "Failed to create syllabus. Please try again.",
-                loading: false,
-            });
+    try {
+      const response = await axios.post(
+        `${API_BASE_URL}/syllabus/create`,
+        formData,
+        {
+          headers: { "Content-Type": "multipart/form-data" },
         }
-    },
+      );
+      set({ syllabus: response.data.data, loading: false });
+    } catch (err) {
+      set({
+        error:
+          err.response?.data?.message ||
+          "Failed to create syllabus. Please try again.",
+        loading: false,
+      });
+    }
+  },
 
     // Update syllabus
     updateSyllabus: async (syllabusId, formData) => {
