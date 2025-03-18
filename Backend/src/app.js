@@ -13,7 +13,7 @@ app.use(
       "https://libray-website-71gt.vercel.app",
       "https://libray-website-tan.vercel.app",
       "https://library-sies-gst.vercel.app",
-      "https://library-siesgst.vercel.app/",
+      "https://library-siesgst.vercel.app",
     ],
     credentials: true,
   })
