@@ -14,6 +14,7 @@ app.use(
       "https://libray-website-tan.vercel.app",
       "https://library-sies-gst.vercel.app",
       "https://library-siesgst.vercel.app",
+      "https://siesgstlibrary.vercel.app/",
     ],
     credentials: true,
   })
