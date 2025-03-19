@@ -8,13 +8,13 @@ app.use(
   cors({
     origin: [
       "http://localhost:5173",
+      "https://siesgstlibrary.vercel.app/",
       "https://libray-website-client.vercel.app",
       "https://libray-website.vercel.app",
       "https://libray-website-71gt.vercel.app",
       "https://libray-website-tan.vercel.app",
       "https://library-sies-gst.vercel.app",
       "https://library-siesgst.vercel.app",
-      "https://siesgstlibrary.vercel.app/",
     ],
     credentials: true,
   })
