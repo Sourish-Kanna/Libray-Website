@@ -13,8 +13,8 @@ const navLinks = [
   {
     to: "/E-Resources",
     text: "E-Resources",
-    drop_link: ["/quicklinks#pyq","/E-Resources#university-syllabus", "/others#More", "https://ieeexplore.ieee.org/Xplore/home.jsp", "https://siesgstlibrary.ourlib.in"],
-    drop_name: ["Question Papers", "University Syllabus", "OER", "IEEE", "OPAC"],
+    drop_link: ["/quicklinks#pyq","/E-Resources#university-syllabus", "/others#More", "https://ieeexplore.ieee.org/Xplore/home.jsp", "https://siesgstlibrary.ourlib.in", "https://delnet.in"],
+    drop_name: ["Question Papers", "University Syllabus", "OER", "IEEE", "OPAC", "DELNET"],
   },
   {
     to: "/about",
