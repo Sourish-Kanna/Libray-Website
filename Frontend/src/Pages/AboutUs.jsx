@@ -161,10 +161,10 @@ export default function AboutUs() {
                                 <p className="text-sm sm:text-base">8:00 AM To 7:00 PM</p>
                                 <p className="text-sm sm:text-base">(Circulation Time 9:00 AM To 5:00 PM)</p>
                             </div>
-                            <div className="">
+                            {/* <div className="">
                                 <p className="font-semibold">Saturdays</p>
                                 <p className="text-sm sm:text-base">9:00 AM To 2:00 PM</p>
-                            </div>
+                            </div> */}
                             <div className="">
                                 <p className="font-semibold">Closed On Sundays, Public Holidays</p>
                                 <p className="font-semibold">2nd and 4th Saturdays Closed</p>

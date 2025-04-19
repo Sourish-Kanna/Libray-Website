@@ -13,9 +13,9 @@ const sections = [
     links: [
       { name: 'Question Papers', path: '/quicklinks#pyq' },
       { name: 'University Syllabus', path: '/E-Resources#university-syllabus' },
-      { name: 'OER', path: '/E-Resources' },
-      { name: 'DELNET', path: '/E-Resources' },
-      { name: 'IEEE', path: '/E-Resources' },
+      { name: 'OER', path: '/others#More' },
+      { name: 'DELNET', path: '/others#More' },
+      { name: 'IEEE', path: 'https://ieeexplore.ieee.org/Xplore/home.jsp' },
       { name: 'OPAC', path: 'https://siesgstlibrary.ourlib.in' }
     ]
   },
@@ -35,7 +35,7 @@ const sections = [
     links: [
       { name: 'Donate Books', path: '/donate-books' },
       { name: 'Suggest Books', path: '/suggest-books' },
-      { name: 'Book Bank', path: '/others' }, // Updated link
+      // { name: 'Book Bank', path: '/others' },
       { name: 'Feedback', path: '/contactus' }, // Updated link
       { name: 'Facilities', path: '/about#facilities' },
       { name: 'Infrastructure', path: '/about#infrastructure' }

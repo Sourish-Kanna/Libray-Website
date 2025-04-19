@@ -76,7 +76,6 @@ const events = [
     },
 ];
 
-
 const faqs = [
     {
         title: "Who can access the library?",
@@ -87,21 +86,23 @@ const faqs = [
     {
         title: "What are the library timings?",
         details: [
-            "Monday to Friday: 9 AM to 5 PM.",
-            "Saturday: 9 AM to 1 PM."
+            "Monday To Saturday: 8:00 AM To 7:00 PM.",
+            "Circulation Time 9:00 AM To 5:00 PM",
+            "Closed On Sundays, Public Holidays",
+            "2nd and 4th Saturdays Closed"
         ]
     },
     {
         title: "How many books can I borrow?",
         details: [
-            "Students can borrow up to 3 books for 15 days.",
+            "Students can borrow up to 3 books for 7 days.",
             "Faculty can borrow up to 5 books."
         ]
     },
     {
         title: "How can I renew a book?",
         details: [
-            "Books can be renewed online or in-person before the due date.",
+            "Books can be renewed in-person before the due date.",
             "Renewals are subject to availability."
         ]
     },
@@ -145,9 +146,14 @@ const faqs = [
 
 const sections = [
     {
+        title: "Pearson My I Library",
+        content: "Pearson My I Library offers library users access to some of the most topical and current e-books available today. One can access a wide range of research, reference and reading materials.  (perpetual subscription)",
+        link: { text: 'Click here for more information', url: 'https://ebookcentral.proquest.com/lib/siesmumbai/home.action' }
+    },
+    {
         title: "IEEE",
-        content: "The GRE assesses readiness for graduate programs through verbal, quantitative, and analytical writing tests.",
-        link: { text: 'Click here for more information', url: 'https://www.ets.org/gre.html' }
+        content: "IEEE provides access to a wide range of technical literature in engineering and technology.",
+        link: { text: 'Click here for more information', url: 'https://ieeexplore.ieee.org/Xplore/home.jsp' }
     },
     {
         title: "GATE",
