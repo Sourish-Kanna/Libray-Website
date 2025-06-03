@@ -8,39 +8,43 @@ const inactiveClassName = "text-white hover:text-s_orange_400";
 
 const sections = [
   {
-    title: 'E-Resources',
+    title: "E-Resources",
     to: "/E-Resources",
     links: [
-      { name: 'Question Papers', path: '/quicklinks#pyq' },
-      { name: 'University Syllabus', path: '/E-Resources#university-syllabus' },
-      { name: 'OER', path: '/others#More' },
-      { name: 'DELNET', path: 'https://delnet.in' },
-      { name: 'IEEE', path: 'https://ieeexplore.ieee.org/Xplore/home.jsp' },
-      { name: 'OPAC', path: 'https://siesgstlibrary.ourlib.in' }
-    ]
+      { name: "Question Papers", path: "/quicklinks#pyq" },
+      { name: "University Syllabus", path: "/E-Resources#university-syllabus" },
+      { name: "OER", path: "/others#More" },
+      { name: "DELNET", path: "https://delnet.in" },
+      { name: "IEEE", path: "https://ieeexplore.ieee.org/Xplore/home.jsp" },
+      { name: "OPAC", path: "https://siesgstlibrary.ourlib.in" },
+      {
+        name: "E-BOOKS",
+        path: "https://ebookcentral.proquest.com/auth/lib/siesmumbai/login.action?returnURL=https%3A%2F%2Febookcentral.proquest.com%2Flib%2Fsiesmumbai%2Fhome.action",
+      },
+    ],
   },
   {
-    title: 'About Us',
+    title: "About Us",
     to: "/about",
     links: [
-      { name: 'Library Hours', path: '/about#library-hours' },
-      { name: 'Library Rules', path: '/others#FAQs' }, // Updated link
-      { name: 'Library Staffs', path: '/about#library-staffs' },
-      { name: 'FAQs', path: '/others#FAQs' }
-    ]
+      { name: "Library Hours", path: "/about#library-hours" },
+      { name: "Library Rules", path: "/others#FAQs" }, // Updated link
+      { name: "Library Staffs", path: "/about#library-staffs" },
+      { name: "FAQs", path: "/others#FAQs" },
+    ],
   },
   {
-    title: 'Others',
+    title: "Others",
     to: "/others",
     links: [
-      { name: 'Donate Books', path: '/donate-books' },
-      { name: 'Suggest Books', path: '/suggest-books' },
+      { name: "Donate Books", path: "/donate-books" },
+      { name: "Suggest Books", path: "/suggest-books" },
       // { name: 'Book Bank', path: '/others' },
-      { name: 'Feedback', path: '/contactus' }, // Updated link
-      { name: 'Facilities', path: '/about#facilities' },
-      { name: 'Infrastructure', path: '/about#infrastructure' }
-    ]
-  }
+      { name: "Feedback", path: "/contactus" }, // Updated link
+      { name: "Facilities", path: "/about#facilities" },
+      { name: "Infrastructure", path: "/about#infrastructure" },
+    ],
+  },
 ];
 
 const socialIcons = [
@@ -53,17 +57,17 @@ const socialIcons = [
 function Footer() {
 
   return (
-    <div className="py-12 bg-s_blue overflow-x-hidden">
+    <div className="py-12 overflow-x-hidden bg-s_blue">
       <div className="px-6 lg:mx-44">
-        <div className="flex flex-wrap justify-between items-start lg:items-center w-full">
+        <div className="flex flex-wrap items-start justify-between w-full lg:items-center">
 
-          <div className="flex flex-col items-center lg:items-start mb-8 lg:mb-0">
+          <div className="flex flex-col items-center mb-8 lg:items-start lg:mb-0">
             <img src={Sies_logo} alt="SIES Logo" className="h-full" />
             <div className="flex space-x-6">
               {socialIcons.map((social) => (
                 <a key={social.link} href={social.link} target="_blank" rel="noopener noreferrer" aria-label={`Visit ${social.link}`}>
                   <FontAwesomeIcon 
-                    className="text-3xl p-3 lg:text-4xl text-white hover:text-s_orange duration-700" 
+                    className="p-3 text-3xl text-white duration-700 lg:text-4xl hover:text-s_orange" 
                     icon={social.icon} 
                   />
                 </a>
@@ -72,7 +76,7 @@ function Footer() {
           </div>
 
           {/* Render sections dynamically */}
-          <div className="flex flex-cols-1 gap-8 lg:gap-16 lg:flex lg:space-x-16">
+          <div className="flex gap-8 flex-cols-1 lg:gap-16 lg:flex lg:space-x-16">
             {sections.map((section) => (
               <div key={section.title} className="py-6">
                 <NavLink 
@@ -82,7 +86,7 @@ function Footer() {
                 >
                   <p className="mb-4 font-serif font-bold text-center hover:text-s_orange_400 lg:text-left">{section.title}</p>
                 </NavLink>
-                <ul className="font-serif space-y-2">
+                <ul className="space-y-2 font-serif">
                   {section.links.map((link) => (
                     <Link key={link.name} to={link.path} aria-label={`Go to ${link.name}`}>
                       <li>

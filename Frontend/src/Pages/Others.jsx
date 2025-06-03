@@ -145,44 +145,73 @@ const faqs = [
 ];
 
 const sections = [
-    {
-        title: "Pearson My I Library",
-        content: "Pearson My I Library offers library users access to some of the most topical and current e-books available today. One can access a wide range of research, reference and reading materials.  (perpetual subscription)",
-        link: { text: 'Click here for more information', url: 'https://ebookcentral.proquest.com/lib/siesmumbai/home.action' }
+  {
+    title: "Pearson My I Library",
+    content:
+      "Pearson My I Library offers library users access to some of the most topical and current e-books available today. One can access a wide range of research, reference and reading materials.  (perpetual subscription)",
+    link: {
+      text: "Click for More Books",
+      url: "https://ebookcentral.proquest.com/lib/siesmumbai/home.action",
     },
-    {
-        title: "IEEE",
-        content: "IEEE provides access to a wide range of technical literature in engineering and technology.",
-        link: { text: 'Click here for more information', url: 'https://ieeexplore.ieee.org/Xplore/home.jsp' }
+  },
+  {
+    title: "IEEE",
+    content:
+      "IEEE provides access to a wide range of technical literature in engineering and technology.",
+    link: {
+      text: "Click here for more information",
+      url: "https://ieeexplore.ieee.org/Xplore/home.jsp",
     },
-    {
-        title: "GATE",
-        content: "GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.",
-        link: { text: 'Click here for more information', url: 'http://gate.iitd.ac.in/' }
+  },
+  {
+    title: "GATE",
+    content:
+      "GATE evaluates knowledge in engineering and science subjects for admissions to postgraduate programs and for various public sector job roles in India.",
+    link: {
+      text: "Click here for more information",
+      url: "http://gate.iitd.ac.in/",
     },
-    {
-        title: "SAT",
-        content: "The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.",
-        link: { text: 'Click here for more information', url: 'https://satsuite.collegeboard.org/sat' }
+  },
+  {
+    title: "SAT",
+    content:
+      "The SAT is a college admission test that assesses a student's readiness for higher education through math, reading, and writing sections.",
+    link: {
+      text: "Click here for more information",
+      url: "https://satsuite.collegeboard.org/sat",
     },
-    {
-        title: "TOEFL",
-        content: "TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.",
-        link: { text: 'Click here for more information', url: 'https://www.ets.org/toefl.html' }
-    }
+  },
+  {
+    title: "TOEFL",
+    content:
+      "TOEFL measures English language proficiency for non-native speakers, assessing reading, writing, listening, and speaking skills for academic purposes.",
+    link: {
+      text: "Click here for more information",
+      url: "https://www.ets.org/toefl.html",
+    },
+  },
+  {
+    title: "MORE LINKS",
+    content:
+      "Access a wide collection of academic eBooks, journals, and research materials across various subjects.",
+    link: {
+      text: "Click here for more information",
+      url: "https://librarygst.wixsite.com/library/e-books-a-to-z",
+    },
+  },
 ];
 
 const FaqItem = ({ title, details }) => (
     <div className="relative group">
-        <div className="bg-header-color text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
+        <div className="flex justify-between px-6 py-5 my-5 text-xl duration-700 shadow-xl bg-header-color sm:text-2xl sm:px-10 rounded-xl">
             <p>{title}</p>
             <FontAwesomeIcon
-                className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700"
+                className="text-2xl transition-transform duration-700 text-s_orange group-hover:rotate-180"
                 icon={faChevronDown}
             />
         </div>
         <div className="max-h-0 group-hover:max-h-[500px] shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-            <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-sm sm:text-xl flex-col content-center mx-10 my-3">
+            <div className="flex-col content-center mx-10 my-3 text-sm transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0 sm:text-xl">
                 {details.map((detail, index) => (
                     <p key={index} className="py-2">{detail}</p>
                 ))}
@@ -193,9 +222,9 @@ const FaqItem = ({ title, details }) => (
 
 const CollapsibleSection = ({ title, content, link }) => (
     <div className="relative group">
-        <div className="bg-blue-700 text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
+        <div className="flex justify-between px-6 py-5 my-5 text-xl duration-700 bg-blue-700 shadow-xl sm:text-2xl sm:px-10 rounded-xl">
             <p className='text-white'>{title}</p>
-            <FontAwesomeIcon className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700" 
+            <FontAwesomeIcon className="text-2xl transition-transform duration-700 text-s_orange group-hover:rotate-180" 
             icon={faChevronDown} />
         </div>
         <div className="max-h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:max-h-[500px] rounded-xl">
@@ -214,13 +243,13 @@ const CollapsibleSection = ({ title, content, link }) => (
 const MoreLinksSection = ({ moreLinks }) => {
     return (
         <div className="relative group">
-            <div className="bg-blue-700 text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-700">
-                <p className='text-white'>More Links</p>
-                <FontAwesomeIcon className="text-2xl text-s_orange transition-transform group-hover:rotate-180 duration-700" 
+            <div className="flex justify-between px-6 py-5 my-5 text-xl duration-700 bg-blue-700 shadow-xl sm:text-2xl sm:px-10 rounded-xl">
+                <p className='text-white'>Open Educational Resources</p>
+                <FontAwesomeIcon className="text-2xl transition-transform duration-700 text-s_orange group-hover:rotate-180" 
                 icon={faChevronDown} />
             </div>
             <div className="more-links max-h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:max-h-[500px] rounded-xl">
-                <div className="grid grid-cols-3 gap-0 auto-rows-min content-center mx-10 my-3 text-base transition-all transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
+                <div className="grid content-center grid-cols-3 gap-0 mx-10 my-3 text-base transition-all transform opacity-0 auto-rows-min group-hover:opacity-100 group-hover:translate-y-0">
                     {moreLinks.map((link, index) => (
                         <div key={index} className='grid my-2'>
                             <a href={link.url} target="_blank" rel="noopener noreferrer" className="underline hover:text-s_orange">
@@ -243,19 +272,19 @@ export default function Journals(){
     const refs = useScrollToHash(['Others','Events','More','FAQs']);
 
     return (
-        <div className='overflow-x-hidden w-full h-full'>
+        <div className='w-full h-full overflow-x-hidden'>
 
             <Helmet>
                 <title>Others | Library | SIESGST</title>
             </Helmet>
 
             {/* Others */}
-            <div ref={refs['Others']} className='bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16'>
+            <div ref={refs['Others']} className='flex items-center justify-center py-8 bg-gray-100 sm:py-12 md:py-16'>
             <div>
-                <div className='flex justify-center text-4xl sm:text-5xl md:text-6xl font-bold text-s_blue'>
+                <div className='flex justify-center text-4xl font-bold sm:text-5xl md:text-6xl text-s_blue'>
                 <p>Others</p>
                 </div>
-                <div className="border-b-4 mx-auto w-32 sm:w-44 mt-2 border-s_orange"/>
+                <div className="w-32 mx-auto mt-2 border-b-4 sm:w-44 border-s_orange"/>
             </div>
             </div>
 
@@ -263,15 +292,15 @@ export default function Journals(){
             <div ref={refs['Events']} className='mx-5 sm:mx-10 md:mx-40'>
                 <div className='pt-8'>
                     {/* Heading */}
-                    <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
+                    <div className='flex justify-center text-2xl font-bold sm:text-3xl md:text-4xl'>
                         <p>Events</p>
                     </div>
-                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
+                    <div className="w-24 mx-auto mt-2 mb-10 border-b-4 border-blue-700 sm:w-28 md:w-36"></div>
                 </div>
                 
-                <div className="flex flex-col md:flex-row items-center md:items-start md:justify-between md:space-x-10">
+                <div className="flex flex-col items-center md:flex-row md:items-start md:justify-between md:space-x-10">
                     {/* Event Names (on the left side) */}
-                    <div className="flex flex-col items-center md:items-start my-5">
+                    <div className="flex flex-col items-center my-5 md:items-start">
                         {events.map((event, index) => (
                             <button
                                 key={index}
@@ -286,15 +315,15 @@ export default function Journals(){
                     </div>
 
                     {/* Event Details (on the right side) */}
-                    <div className="flex-grow w-full mt-5 md:mt-0 py-6">
+                    <div className="flex-grow w-full py-6 mt-5 md:mt-0">
                         {activeIndex !== null && (
-                            <div className="flex flex-col sm:flex-row bg-gray-100 p-5 rounded-md shadow-md transition-transform duration-500 transform hover:scale-105">
+                            <div className="flex flex-col p-5 transition-transform duration-500 transform bg-gray-100 rounded-md shadow-md sm:flex-row hover:scale-105">
                                 <img
                                     src={events[activeIndex].img}
                                     alt={events[activeIndex].text}
-                                    className="w-full sm:w-60 sm:h-60 object-cover mr-0 sm:mr-5 mb-4 sm:mb-0"
+                                    className="object-cover w-full mb-4 mr-0 sm:w-60 sm:h-60 sm:mr-5 sm:mb-0"
                                 />
-                                <p className="text-gray-700 text-lg sm:text-xl md:text-2xl">{events[activeIndex].content}</p>
+                                <p className="text-lg text-gray-700 sm:text-xl md:text-2xl">{events[activeIndex].content}</p>
                             </div>
                         )}
                     </div>
@@ -305,10 +334,10 @@ export default function Journals(){
             <div ref={refs['More']} className='px-5 sm:px-10 md:px-40'>
                 <div className='pt-8'>
                     {/* Heading */}
-                    <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
+                    <div className='flex justify-center text-2xl font-bold sm:text-3xl md:text-4xl'>
                         <p>More</p>
                     </div>
-                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
+                    <div className="w-24 mx-auto mt-2 mb-10 border-b-4 border-blue-700 sm:w-28 md:w-36"></div>
                 </div>
                 <div className='w-full'>
                     <MoreLinksSection moreLinks={moreLinks} />
@@ -327,10 +356,10 @@ export default function Journals(){
             <div ref={refs['FAQs']} className='mx-5 sm:mx-10 md:mx-40'>
                 <div className='pt-8'>
                     {/* Heading */}
-                    <div className='flex justify-center text-2xl sm:text-3xl md:text-4xl font-bold'>
+                    <div className='flex justify-center text-2xl font-bold sm:text-3xl md:text-4xl'>
                         <p>FAQs</p>
                     </div>
-                    <div className="border-b-4 mx-auto w-24 sm:w-28 md:w-36 mt-2 border-blue-700 mb-10"></div>
+                    <div className="w-24 mx-auto mt-2 mb-10 border-b-4 border-blue-700 sm:w-28 md:w-36"></div>
                 </div>
                 <div className='w-full'>
                     {faqs.map((faqs, index) => (
