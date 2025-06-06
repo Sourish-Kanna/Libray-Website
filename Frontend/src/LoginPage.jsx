@@ -100,7 +100,7 @@ const Login = () => {
                     >
                         {loading ? "Logging in..." : "Login"}
                   </button>
-                  <div className="mt-4">
+                  {/* <div className="mt-4">
                       <NavLink
                           to="/register"
                           className={({ isActive }) =>
@@ -113,7 +113,7 @@ const Login = () => {
                       >
                           Don't have an account?
                       </NavLink>
-                  </div>
+                  </div> */}
               </form>
           </div>
         </div>

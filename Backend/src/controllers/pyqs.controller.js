@@ -7,10 +7,10 @@ import axios from 'axios';
 
 // Create a new PYQ
 const createPYQ = asyncHandler(async (req, res) => {
-    const { branch, semester, subject, year, month } = req.body;
+    const { branch, semester, year, month } = req.body;
 
     // Check if all required fields are provided
-    if (!branch || !semester || !subject || !year || !month) {
+    if (!branch || !semester || !year || !month) {
         throw new ApiError(400, "Please provide all required fields: branch, semester, subject, year, and month");
     }
 
@@ -18,7 +18,7 @@ const createPYQ = asyncHandler(async (req, res) => {
     const existingPYQ = await PYQ.findOne({
         branch: { $eq: branch },
         semester: { $eq: semester },
-        subject: { $eq: subject.toLowerCase() }, // Ensure subject comparison is case-insensitive
+        // subject: { $eq: subject.toLowerCase() }, // Ensure subject comparison is case-insensitive
         year: { $eq: year },
         month: { $eq: month }
     });
@@ -40,7 +40,7 @@ const createPYQ = asyncHandler(async (req, res) => {
     const pyq = await PYQ.create({
         branch,
         semester,
-        subject: subject.toLowerCase(),
+        // subject: subject.toLowerCase(),
         year,
         month,
         questionPaperUrl: questionPaperUrl.url
@@ -52,7 +52,7 @@ const createPYQ = asyncHandler(async (req, res) => {
 
 const updatePYQ = asyncHandler(async (req, res) => {
     const { pyqId } = req.params;
-    const { branch, semester, subject, year, month } = req.body;
+    const { branch, semester, year, month } = req.body;
 
     if (!pyqId) {
         throw new ApiError(400, "PYQ ID is missing");
@@ -75,7 +75,7 @@ const updatePYQ = asyncHandler(async (req, res) => {
     // Update fields if provided
     if (branch) pyq.branch = branch;
     if (semester) pyq.semester = semester;
-    if (subject) pyq.subject = subject.toLowerCase();
+    // if (subject) pyq.subject = subject.toLowerCase();
     if (year) pyq.year = year;
     if (month) pyq.month = month;
     if (questionPaperUrl) pyq.questionPaperUrl = questionPaperUrl.url;
@@ -88,20 +88,20 @@ const updatePYQ = asyncHandler(async (req, res) => {
 // controllers/pyqs.controller.js
 
 const getPYQ = asyncHandler(async (req, res) => {
-    const { branch, semester, subject, year, month } = req.query;
+    const { branch, semester, year, month } = req.query;
 
-    if (!branch || !semester || !subject || !year || !month) {
+    if (!branch || !semester || !year || !month) {
         throw new ApiError(400, "Please provide branch, semester, subject, year, and month");
     }
 
     // Convert 'subject' and 'month' to lowercase to match the stored format
-    const normalizedSubject = subject.toLowerCase();
+    // const normalizedSubject = subject.toLowerCase();
     const normalizedMonth = month.toLowerCase();
 
     const pyq = await PYQ.findOne({ 
         branch, 
         semester, 
-        subject: normalizedSubject, 
+        // subject: normalizedSubject, 
         year, 
         month: normalizedMonth 
     });

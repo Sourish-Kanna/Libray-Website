@@ -13,8 +13,8 @@ const navLinks = [
   {
     to: "/E-Resources",
     text: "E-Resources",
-    drop_link: ["/quicklinks#pyq","/E-Resources#university-syllabus", "/others#More", "https://delnet.in/", "https://ieeexplore.ieee.org/Xplore/home.jsp", "https://siesgstlibrary.ourlib.in"],
-    drop_name: ["Question Papers", "University Syllabus", "OER", "DELNET", "IEEE", "OPAC"],
+    drop_link: ["/quicklinks#pyq","/E-Resources#university-syllabus", "/others#More", "https://ieeexplore.ieee.org/Xplore/home.jsp", "https://siesgstlibrary.ourlib.in", "https://delnet.in"],
+    drop_name: ["Question Papers", "University Syllabus", "OER", "IEEE", "OPAC", "DELNET"],
   },
   {
     to: "/about",
@@ -25,8 +25,8 @@ const navLinks = [
   {
     to: "/others",
     text: "Others",
-    drop_link: ["/donate-books", "/suggest-books", "/others", "/contactus", "/about#facilities", "/about#infrastructure"],
-    drop_name: ["Donate Books", "Suggest Books", "Book Bank", "Feedback", "Facilities", "Infrastructure"],
+    drop_link: ["/donate-books", "/suggest-books", "/contactus", "/about#facilities", "/about#infrastructure"],
+    drop_name: ["Donate Books", "Suggest Books", "Feedback", "Facilities", "Infrastructure"],
   },
 ];
 

@@ -434,14 +434,14 @@ function Quicklinks() {
   const {
     branch,
     semester,
-    subject,
+    // subject,
     year,
     month,
     loading,
     error,
     setBranch,
     setSemester,
-    setSubject,
+    // setSubject,
     setYear,
     setMonth,
     fetchPYQ,
@@ -468,11 +468,11 @@ function Quicklinks() {
     setSubject("choose");
   };
 
-  const handleSubjectChange = (e) => {
-    const selectedSubject = e.target.value;
-    console.log("Subject changed to:", selectedSubject); // Debug
-    setSubject(e.target.value);
-  };
+  // const handleSubjectChange = (e) => {
+  //   const selectedSubject = e.target.value;
+  //   console.log("Subject changed to:", selectedSubject); // Debug
+  //   setSubject(e.target.value);
+  // };
 
   const handleYearChange = (e) => {
     const selectedYear = e.target.value;
@@ -486,12 +486,12 @@ function Quicklinks() {
     setMonth(selectedMonth); // Set the lowercase value
 };
 
-  const availableSubjects = subjectOptions[branch]?.[semester] || [];
+  // const availableSubjects = subjectOptions[branch]?.[semester] || [];
 
   const isSubmitDisabled =
     branch === "choose" ||
     semester === "choose" ||
-    subject === "choose" ||
+    // subject === "choose" ||
     year === "choose" ||
     month === "choose" ||
     loading;
@@ -518,7 +518,7 @@ function Quicklinks() {
       const formData = new FormData();
       formData.append("branch", branch);
       formData.append("semester", semester);
-      formData.append("subject", subject);
+      // formData.append("subject", subject);
       formData.append("year", year);
       formData.append("month", month);
       if (file) {
@@ -537,7 +537,7 @@ function Quicklinks() {
       const formData = new FormData();
       formData.append("branch", branch);
       formData.append("semester", semester);
-      formData.append("subject", subject);
+      // formData.append("subject", subject);
       formData.append("year", year);
       formData.append("month", month);
       if (file) {
@@ -575,57 +575,60 @@ function Quicklinks() {
       <Helmet>
         <title>others | Library | SIESGST</title>
       </Helmet>
-      <ToastContainer/>
+      <ToastContainer />
 
       <div className="mx-4 sm:mx-16 lg:mx-40" id="Select-PYQs">
-
         <div className="flex items-center justify-center w-full h-auto py-8">
           <div>
             <div className="flex justify-center text-4xl font-bold lg:text-4xl">
               {/* <p>Question Papers</p> */}
               <p>Download Question Paper</p>
             </div>
-            <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 lg:w-44"/>
+            <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 lg:w-44" />
           </div>
         </div>
 
-        <form id="select-pyqs-form" className="form-container" onSubmit={handleSubmit}>
-  {/* Branch */}
-  <div className="form-group">
-    <label htmlFor="branch">Branch:</label>
-    <select
-      id="branch"
-      value={branch}
-      onChange={handleBranchChange}
-      className="form-control"
-    >
-      {branchOptions.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.text}
-        </option>
-      ))}
-    </select>
-  </div>
+        <form
+          id="select-pyqs-form"
+          className="form-container"
+          onSubmit={handleSubmit}
+        >
+          {/* Branch */}
+          <div className="form-group">
+            <label htmlFor="branch">Branch:</label>
+            <select
+              id="branch"
+              value={branch}
+              onChange={handleBranchChange}
+              className="form-control"
+            >
+              {branchOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.text}
+                </option>
+              ))}
+            </select>
+          </div>
 
-  {/* Semester */}
-  <div className="form-group">
-    <label htmlFor="semester">Semester:</label>
-    <select
-      id="semester"
-      value={semester}
-      onChange={handleSemesterChange}
-      disabled={branch === "choose"}
-      className="form-control"
-    >
-      {semesterOptions.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.text}
-        </option>
-      ))}
-    </select>
-  </div>
+          {/* Semester */}
+          <div className="form-group">
+            <label htmlFor="semester">Semester:</label>
+            <select
+              id="semester"
+              value={semester}
+              onChange={handleSemesterChange}
+              disabled={branch === "choose"}
+              className="form-control"
+            >
+              {semesterOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.text}
+                </option>
+              ))}
+            </select>
+          </div>
 
-  {/* Subject */}
+          {/* Subject 
   <div className="form-group">
     <label htmlFor="subject">Subject:</label>
     <select
@@ -646,42 +649,52 @@ function Quicklinks() {
       )}
     </select>
   </div>
+*/}
+          {/* Year */}
+          <div className="form-group">
+            <label htmlFor="year">Year:</label>
+            <select
+              id="year"
+              value={year}
+              onChange={handleYearChange}
+              className="form-control"
+            >
+              <option value="choose">Choose Year</option>
+              {yearOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.text}
+                </option>
+              ))}
+            </select>
+          </div>
 
-  {/* Year */}
-  <div className="form-group">
-    <label htmlFor="year">Year:</label>
-    <select id="year" value={year} onChange={handleYearChange} className="form-control">
-      <option value="choose">Choose Year</option>
-      {yearOptions.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.text}
-        </option>
-      ))}
-    </select>
-  </div>
-
-  {/* Month */}
-  <div className="form-group">
-    <label htmlFor="month">Month:</label>
-    <select id="month" value={month} onChange={handleMonthChange} className="form-control">
-      <option value="choose">Choose Month</option>
-      {monthOptions.map((option) => (
-        <option key={option.value} value={option.value}>
-          {option.text}
-        </option>
-      ))}
-    </select>
-  </div>
+          {/* Month */}
+          <div className="form-group">
+            <label htmlFor="month">Month:</label>
+            <select
+              id="month"
+              value={month}
+              onChange={handleMonthChange}
+              className="form-control"
+            >
+              <option value="choose">Choose Month</option>
+              {monthOptions.map((option) => (
+                <option key={option.value} value={option.value}>
+                  {option.text}
+                </option>
+              ))}
+            </select>
+          </div>
 
   {error && <p className="error-message">{error}</p>}
 
-  <button
-    type="submit"
-    disabled={isSubmitDisabled}
-    className={`submit-btn ${isSubmitDisabled && "opacity-50"}`}
-  >
-    {loading ? "Submitting..." : "Submit"}
-  </button>
+          <button
+            type="submit"
+            disabled={isSubmitDisabled}
+            className={`submit-btn ${isSubmitDisabled && "opacity-50"}`}
+          >
+            {loading ? "Submitting..." : "Submit"}
+          </button>
 
   {isAuthenticated && (
     <div className="file-input-container">
@@ -690,22 +703,32 @@ function Quicklinks() {
     </div>
   )}
 
-  {isAuthenticated && (
-    <div className="admin-buttons">
-      <button type="button" onClick={handleCreate} className="create-button">
-        Create
-      </button>
-      <button type="button" onClick={handleUpdate} className="update-button">
-        Update
-      </button>
-      <button type="button" onClick={handleDelete} className="delete-button">
-        Delete
-      </button>
-    </div>
-  )}
-</form>
-
-
+          {isAuthenticated && (
+            <div className="admin-buttons">
+              <button
+                type="button"
+                onClick={handleCreate}
+                className="create-button"
+              >
+                Create
+              </button>
+              <button
+                type="button"
+                onClick={handleUpdate}
+                className="update-button"
+              >
+                Update
+              </button>
+              <button
+                type="button"
+                onClick={handleDelete}
+                className="delete-button"
+              >
+                Delete
+              </button>
+            </div>
+          )}
+        </form>
       </div>
 
       <div className="flex items-center justify-center w-full h-32" />

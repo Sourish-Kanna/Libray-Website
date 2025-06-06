@@ -28,7 +28,7 @@ import LoginPage from './LoginPage'
         <Route path='donate-books' element={<DonateBooks/>}/>
         <Route path='suggest-books' element={<SuggestBooks/>}/>
       </Route>
-      <Route path='register' element={<RegistrationPage/>} />
+      {/* <Route path='register' element={<RegistrationPage/>} /> */}
       <Route path='login' element={<LoginPage/>} />
       
     </>
