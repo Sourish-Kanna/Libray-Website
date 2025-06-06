@@ -155,6 +155,15 @@ const sections = [
     },
   },
   {
+    title: "E-Books",
+    content:
+      "Access a wide collection of academic eBooks, journals, and research materials across various subjects.",
+    link: {
+      text: "Click here for more information",
+      url: "https://librarygst.wixsite.com/library/e-books-a-to-z",
+    },
+  },
+  {
     title: "IEEE",
     content:
       "IEEE provides access to a wide range of technical literature in engineering and technology.",
@@ -188,15 +197,6 @@ const sections = [
     link: {
       text: "Click here for more information",
       url: "https://www.ets.org/toefl.html",
-    },
-  },
-  {
-    title: "MORE LINKS",
-    content:
-      "Access a wide collection of academic eBooks, journals, and research materials across various subjects.",
-    link: {
-      text: "Click here for more information",
-      url: "https://librarygst.wixsite.com/library/e-books-a-to-z",
     },
   },
 ];
