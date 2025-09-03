@@ -11,13 +11,20 @@ import { Helmet } from 'react-helmet';
 const branchOptions = [
   { value: "choose", text: "Choose Branch" },
   { value: "Computer Engineering", text: "Computer Engineering" },
-  { value: "Electronics and Telecommunication", text: "Electronics and Telecommunication"},
-  { value: "Electronics and Computer Science", text: "Electronics and Computer Science"},
+  {
+    value: "Electronics and Telecommunication",
+    text: "Electronics and Telecommunication",
+  },
+  {
+    value: "Electronics and Computer Science",
+    text: "Electronics and Computer Science",
+  },
   { value: "Information Technology", text: "Information Technology" },
   { value: "CS IOT", text: "CS IOT" },
   { value: "First Year Engineering", text: "First Year Engineering" },
   { value: "AIML", text: "AIML" },
   { value: "AIDS", text: "AIDS" },
+  { value: "ME", text: "Mechanical Engineering" },
 ];
 
 const semesterOptions = [
@@ -455,7 +462,7 @@ function Quicklinks() {
 
   const handleBranchChange = (e) => {
     const selectedBranch = e.target.value;
-    console.log("Branch changed to:", selectedBranch); // Debug
+    // console.log("Branch changed to:", selectedBranch); // Debug
     setBranch(e.target.value);
     setSemester("choose");
     setSubject("choose");
@@ -463,7 +470,7 @@ function Quicklinks() {
 
   const handleSemesterChange = (e) => {
     const selectedSemester = e.target.value;
-    console.log("Semester changed to:", selectedSemester); // Debug
+    // console.log("Semester changed to:", selectedSemester); // Debug
     setSemester(e.target.value);
     setSubject("choose");
   };
