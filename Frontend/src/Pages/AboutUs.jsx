@@ -10,6 +10,8 @@ import opa from '../assets/HomePage/img11.webp'
 import idi from '../assets/HomePage/img6.webp'
 import comp from '../assets/HomePage/img12.webp'
 import dig from '../assets/HomePage/image1.webp'
+import opac from '../assets/HomePage/OPAC.jpg'
+import news from '../assets/HomePage/News.jpg'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {useScrollToHash, useSmoothScroll} from '../Navigation'
 import { faClock } from '@fortawesome/free-regular-svg-icons';
@@ -21,7 +23,8 @@ const facilities = [
   { image: fac, title: "Book Bank Facility" },
   { image: repo, title: "Reprography Service" },
   { image: opa, title: "Reference Service" },
-  { image: fac, title: "Newspaper Clipping" },
+  { image: news, title: "Newspaper Clipping" },
+  { image: opac, title: "Library OPAC" },
 ];
 
 const FacilityCard = ({ image, title }) => (
