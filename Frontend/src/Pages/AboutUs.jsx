@@ -16,12 +16,12 @@ import { faClock } from '@fortawesome/free-regular-svg-icons';
 import { Helmet } from 'react-helmet';
 
 const facilities = [
-    { image: ref, title: "Reference Service" },
-    { image: ret, title: "Home Issue/Book Return" },
-    { image: fac, title: "Book Bank Facility" },
-    { image: repo, title: "Reprography Service" },
-    { image: opa, title: "Library OPAC" },
-    { image: fac, title: "Newspaper Clipping" },
+  { image: ref, title: "Circulation Counter" },
+  { image: ret, title: "Home Issue/Book Return" },
+  { image: fac, title: "Book Bank Facility" },
+  { image: repo, title: "Reprography Service" },
+  { image: opa, title: "Reference Service" },
+  { image: fac, title: "Newspaper Clipping" },
 ];
 
 const FacilityCard = ({ image, title }) => (
