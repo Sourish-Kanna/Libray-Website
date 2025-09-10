@@ -87,7 +87,7 @@ export default function EResources() {
 
   // Zustand stores for branches and semesters
   const {
-    branches,
+    // branches,
     loading: branchLoading,
     error: branchError,
     fetchBranches,
@@ -97,7 +97,7 @@ export default function EResources() {
   } = useBranchStore();
 
   const {
-    semesters,
+    // semesters,
     loading: semesterLoading,
     error: semesterError,
     fetchSemesters,
@@ -120,6 +120,37 @@ export default function EResources() {
     loading: syllabusLoading,
     error: syllabusError,
   } = useSyllabusStore();
+
+  const branches = [
+    { value: "choose", text: "Choose Branch" },
+    { value: "Computer Engineering", text: "Computer Engineering" },
+    {
+      value: "Electronics and Telecommunication",
+      text: "Electronics and Telecommunication",
+    },
+    {
+      value: "Electronics and Computer Science",
+      text: "Electronics and Computer Science",
+    },
+    { value: "Information Technology", text: "Information Technology" },
+    { value: "CS IOT", text: "CS IOT" },
+    { value: "First Year Engineering", text: "First Year Engineering" },
+    { value: "AIML", text: "AIML" },
+    { value: "AIDS", text: "AIDS" },
+    { value: "ME", text: "Mechanical Engineering" },
+  ];
+
+  const semesters = [
+    { value: "choose", text: "Choose Semester" },
+    { value: "SEM 1", text: "SEM 1" },
+    { value: "SEM 2", text: "SEM 2" },
+    { value: "SEM 3", text: "SEM 3" },
+    { value: "SEM 4", text: "SEM 4" },
+    { value: "SEM 5", text: "SEM 5" },
+    { value: "SEM 6", text: "SEM 6" },
+    { value: "SEM 7", text: "SEM 7" },
+    { value: "SEM 8", text: "SEM 8" },
+  ];
 
   useSmoothScroll();
   const refs = useScrollToHash([
@@ -337,12 +368,12 @@ export default function EResources() {
             >
               <option value="">Select Branch</option>
               {branches.map((branchOption) => (
-                <option key={branchOption._id} value={branchOption.name}>
-                  {branchOption.name}
+                <option key={branchOption.value} value={branchOption.value}>
+                  {branchOption.text}
                 </option>
               ))}
             </select>
-            {isAuthenticated && (
+            {/* {isAuthenticated && (
               <div className="flex gap-2 mt-2">
                 <button
                   type="button"
@@ -359,7 +390,7 @@ export default function EResources() {
                   Delete Selected Branch
                 </button>
               </div>
-            )}
+            )} */}
           </div>
           <div className="px-4 mb-4">
             <label
@@ -377,12 +408,12 @@ export default function EResources() {
             >
               <option value="">Select Semester</option>
               {semesters.map((semesterOption) => (
-                <option key={semesterOption._id} value={semesterOption.name}>
-                  {semesterOption.name}
+                <option key={semesterOption.value} value={semesterOption.value}>
+                  {semesterOption.text}
                 </option>
               ))}
             </select>
-            {isAuthenticated && (
+            {/* {isAuthenticated && (
               <div className="flex gap-2 mt-2">
                 <button
                   type="button"
@@ -401,7 +432,7 @@ export default function EResources() {
                   Delete Selected Semester
                 </button>
               </div>
-            )}
+            )} */}
           </div>
           {syllabusError && (
             <div className="px-10 mb-4 text-red-500">{syllabusError}</div>
