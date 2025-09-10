@@ -14,7 +14,7 @@ const sections = [
       { name: "Question Papers", path: "/quicklinks#pyq" },
       { name: "University Syllabus", path: "/E-Resources#university-syllabus" },
       { name: "OER", path: "/others#More" },
-      { name: "DELNET", path: "https://delnet.in" },
+      { name: "DELNET", path: "https://discovery.delnet.in" },
       { name: "IEEE", path: "https://ieeexplore.ieee.org/Xplore/home.jsp" },
       { name: "OPAC", path: "https://siesgstlibrary.ourlib.in" },
       {
