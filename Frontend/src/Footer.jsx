@@ -21,6 +21,10 @@ const sections = [
         name: "E-BOOKS",
         path: "https://ebookcentral.proquest.com/auth/lib/siesmumbai/login.action?returnURL=https%3A%2F%2Febookcentral.proquest.com%2Flib%2Fsiesmumbai%2Fhome.action",
       },
+      {
+        name: "Rashtriya e Pustakalaya",
+        path: "https://ndl.education.gov.in/home",
+      },
     ],
   },
   {

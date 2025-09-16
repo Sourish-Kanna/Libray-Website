@@ -21,6 +21,7 @@ const navLinks = [
       "https://siesgstlibrary.ourlib.in",
       "https://discovery.delnet.in",
       "https://ebook  central.proquest.com/auth/lib/siesmumbai/login.action?returnURL=https%3A%2F%2Febookcentral.proquest.com%2Flib%2Fsiesmumbai%2Fhome.action",
+      "https://ndl.education.gov.in/home",
     ],
     drop_name: [
       "Question Papers",
@@ -30,6 +31,7 @@ const navLinks = [
       "OPAC",
       "DELNET",
       "E-Books",
+      "Rashtriya e Pustakalaya",
     ],
   },
   {
