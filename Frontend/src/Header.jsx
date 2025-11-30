@@ -13,27 +13,60 @@ const navLinks = [
   {
     to: "/E-Resources",
     text: "E-Resources",
-    drop_link: ["/quicklinks#pyq","/E-Resources#university-syllabus", "/others#More", "https://ieeexplore.ieee.org/Xplore/home.jsp", "https://siesgstlibrary.ourlib.in", "https://delnet.in"],
-    drop_name: ["Question Papers", "University Syllabus", "OER", "IEEE", "OPAC", "DELNET"],
+    drop_link: [
+      "/quicklinks#pyq",
+      "/E-Resources#university-syllabus",
+      "/others#More",
+      "https://ieeexplore.ieee.org/Xplore/home.jsp",
+      "https://siesgstlibrary.ourlib.in",
+      "https://delnet.in",
+      "/others#More",
+    ],
+    drop_name: [
+      "Question Papers",
+      "University Syllabus",
+      "OER",
+      "IEEE",
+      "OPAC",
+      "DELNET",
+      "E-Books",
+    ],
   },
   {
     to: "/about",
     text: "About Us",
-    drop_link: ["/about#library-hours", "/others#FAQs", "/about#library-staffs", "/others#FAQs"],
+    drop_link: [
+      "/about#library-hours",
+      "/others#FAQs",
+      "/about#library-staffs",
+      "/others#FAQs",
+    ],
     drop_name: ["Library Hours", "Library Rules", "Library Staffs", "FAQs"],
   },
   {
     to: "/others",
     text: "Others",
-    drop_link: ["/donate-books", "/suggest-books", "/contactus", "/about#facilities", "/about#infrastructure"],
-    drop_name: ["Donate Books", "Suggest Books", "Feedback", "Facilities", "Infrastructure"],
+    drop_link: [
+      "/donate-books",
+      "/suggest-books",
+      "/contactus",
+      "/about#facilities",
+      "/about#infrastructure",
+    ],
+    drop_name: [
+      "Donate Books",
+      "Suggest Books",
+      "Feedback",
+      "Facilities",
+      "Infrastructure",
+    ],
   },
 ];
 
 const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile }) => {
   if (isMobile) {
     return (
-      <li className="text-s_blue group cursor-pointer font-medium text-2-Primary mt-8 flex items-center relative">
+      <li className="relative flex items-center mt-8 font-medium cursor-pointer text-s_blue group text-2-Primary">
         <NavLink
           to={to}
           className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
@@ -48,7 +81,7 @@ const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile }) => {
     );
   }
   return (
-    <li className="text-s_blue group relative cursor-pointer font-medium text-Primary m-8 flex items-center">
+    <li className="relative flex items-center m-8 font-medium cursor-pointer text-s_blue group text-Primary">
       <NavLink
         to={to}
         className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
@@ -62,10 +95,9 @@ const StyledNavLink = ({ to, text, drop_link, drop_name, isMobile }) => {
 
 const StyledDropdown = ({ to, text }) => {
   return (
-    <div className="absolute hidden bg-transparent z-10 group-hover:block w-52 top-8 -left-14">
-      <div className="absolute left-1/2 transform -translate-x-1/2 -top-2 w-0 h-0 border-l-8 
-        border-r-8 border-b-8 border-transparent border-b-s_orange"/>
-      <ul className="bg-gray-300 text-center">
+    <div className="absolute z-10 hidden bg-transparent group-hover:block w-52 top-8 -left-14">
+      <div className="absolute w-0 h-0 transform -translate-x-1/2 border-b-8 border-l-8 border-r-8 border-transparent left-1/2 -top-2 border-b-s_orange"/>
+      <ul className="text-center bg-gray-300">
         {text.map((item, index) => (
           <li key={index} className="py-3 pl-2 border-b-2 hover:bg-gray-200">
             <CustomLink link={to[index]} name={item} />
@@ -78,7 +110,7 @@ const StyledDropdown = ({ to, text }) => {
 
 const MobStyledDropdown = ({ to, text }) => {
   return (
-    <div className="ml-4 hidden group-hover:block fixed left-3/4 transform -translate-x-1/2 top-14 w-2/4 bg-header-color z-50 shadow-lg rounded-lg">
+    <div className="fixed z-50 hidden w-2/4 ml-4 transform -translate-x-1/2 rounded-lg shadow-lg group-hover:block left-3/4 top-14 bg-header-color">
       <ul className="text-center">
         {text.map((item, index) => (
           <li key={index} className="py-3 pl-2 border-b-2 hover:bg-gray-200">
@@ -127,9 +159,9 @@ function NavBar() {
         </div>
 
         {/* Desktop Menu (hidden on small screens) */}
-        <div className="hidden lg:flex-grow lg:flex items-center justify-between w-full mt-2 pl-48">
+        <div className="items-center justify-between hidden w-full pl-48 mt-2 lg:flex-grow lg:flex">
           <ul className="flex items-center justify-between w-full font-serif flex-nowrap">
-            <li className="text-s_blue cursor-pointer font-medium text-Primary mr-4">
+            <li className="mr-4 font-medium cursor-pointer text-s_blue text-Primary">
               <NavLink to="" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
                 Home
               </NavLink>
@@ -145,7 +177,7 @@ function NavBar() {
                 isMobile={false} />
             ))}
 
-            <li className="text-s_blue cursor-pointer font-medium text-Primary mr-4">
+            <li className="mr-4 font-medium cursor-pointer text-s_blue text-Primary">
               <NavLink to="contactus" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
                 Contact Us
               </NavLink>
@@ -159,14 +191,14 @@ function NavBar() {
                   `${isActive ? activeClassName : inactiveClassName}`
                 }
               >
-                <div className="flex items-center w-full cursor-pointer bg-header-color rounded-full px-4 py-2 shadow-md  border-2 border-s_blue hover:border-s_orange transform transition duration-500 ease-in-out">
+                <div className="flex items-center w-full px-4 py-2 transition duration-500 ease-in-out transform border-2 rounded-full shadow-md cursor-pointer bg-header-color border-s_blue hover:border-s_orange">
                   <span className={`${isAuthenticated ? "text-s_blue" : "text-orange-500"} font-medium mr-4 text-xl hover:active:text-[#f26d21] text-s_blue hover:text-s_orange active:text-s_orange_400" `}>
                     {isAuthenticated ? "Logout" : "Login"}
                   </span>
-                  <div className="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center overflow-hidden hover:cursor-pointer text-white text-lg">
+                  <div className="flex items-center justify-center w-12 h-12 overflow-hidden text-lg text-white bg-gray-400 rounded-full hover:cursor-pointer">
                     <img
                       src={isAuthenticated && user?.avatar ? user.avatar : image1}
-                      className="profile-image w-full h-full object-cover"
+                      className="object-cover w-full h-full profile-image"
                       alt=""
                     />
                   </div>
@@ -179,7 +211,7 @@ function NavBar() {
 
       {/* Mobile Menu (only visible when the hamburger is open) */}
       {isOpen && (
-  <div className="lg:hidden fixed inset-0 z-30 flex">
+  <div className="fixed inset-0 z-30 flex lg:hidden">
     {/* Semi-transparent overlay */}
     <div
       className="fixed inset-0 bg-black bg-opacity-50"
@@ -187,9 +219,9 @@ function NavBar() {
     ></div>
 
     {/* Mobile Menu */}
-    <div className="fixed left-0 top-0 h-full w-1/2 bg-header-color z-40 overflow-y-auto">
+    <div className="fixed top-0 left-0 z-40 w-1/2 h-full overflow-y-auto bg-header-color">
       <ul className="flex flex-col items-center px-4 py-2 space-y-2">
-        <li className="text-s_blue cursor-pointer font-medium text-2-Primary mt-8">
+        <li className="mt-8 font-medium cursor-pointer text-s_blue text-2-Primary">
           <NavLink to="" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
             Home
           </NavLink>
@@ -205,7 +237,7 @@ function NavBar() {
             isMobile={true} />
         ))}
 
-        <li className="text-s_blue cursor-pointer font-medium text-2-Primary mx-8">
+        <li className="mx-8 font-medium cursor-pointer text-s_blue text-2-Primary">
           <NavLink to="contactus" className={({ isActive }) => `${isActive ? activeClassName : inactiveClassName}`}>
             Contact Us
           </NavLink>
@@ -219,14 +251,14 @@ function NavBar() {
               `${isActive ? activeClassName : inactiveClassName}`
             }
           >
-            <div className="flex items-center w-full cursor-pointer bg-header-color rounded-full px-4 py-2 shadow-md  border-2 border-s_blue hover:border-s_orange transform transition duration-500 ease-in-out">
+            <div className="flex items-center w-full px-4 py-2 transition duration-500 ease-in-out transform border-2 rounded-full shadow-md cursor-pointer bg-header-color border-s_blue hover:border-s_orange">
               <span className={`${isAuthenticated ? "text-s_blue" : "text-orange-500"} font-medium mr-4 text-xl hover:active:text-[#f26d21] text-s_blue hover:text-s_orange active:text-s_orange_400" `}>
                 {isAuthenticated ? "Logout" : "Login"}
               </span>
-              <div className="w-12 h-12 bg-gray-400 rounded-full flex items-center justify-center overflow-hidden hover:cursor-pointer text-white text-lg">
+              <div className="flex items-center justify-center w-12 h-12 overflow-hidden text-lg text-white bg-gray-400 rounded-full hover:cursor-pointer">
                 <img
                   src={isAuthenticated && user?.avatar ? user.avatar : image1}
-                  className="profile-image w-full h-full object-cover"
+                  className="object-cover w-full h-full profile-image"
                   alt=""
                 />
               </div>

@@ -8,39 +8,43 @@ const inactiveClassName = "text-white hover:text-s_orange_400";
 
 const sections = [
   {
-    title: 'E-Resources',
+    title: "E-Resources",
     to: "/E-Resources",
     links: [
-      { name: 'Question Papers', path: '/quicklinks#pyq' },
-      { name: 'University Syllabus', path: '/E-Resources#university-syllabus' },
-      { name: 'OER', path: '/others#More' },
-      { name: 'DELNET', path: 'https://delnet.in' },
-      { name: 'IEEE', path: 'https://ieeexplore.ieee.org/Xplore/home.jsp' },
-      { name: 'OPAC', path: 'https://siesgstlibrary.ourlib.in' }
-    ]
+      { name: "Question Papers", path: "/quicklinks#pyq" },
+      { name: "University Syllabus", path: "/E-Resources#university-syllabus" },
+      { name: "OER", path: "/others#More" },
+      { name: "DELNET", path: "https://delnet.in" },
+      { name: "IEEE", path: "https://ieeexplore.ieee.org/Xplore/home.jsp" },
+      { name: "OPAC", path: "https://siesgstlibrary.ourlib.in" },
+      {
+        name: "E-BOOKS",
+        path: "https://ebookcentral.proquest.com/auth/lib/siesmumbai/login.action?returnURL=https%3A%2F%2Febookcentral.proquest.com%2Flib%2Fsiesmumbai%2Fhome.action",
+      },
+    ],
   },
   {
-    title: 'About Us',
+    title: "About Us",
     to: "/about",
     links: [
-      { name: 'Library Hours', path: '/about#library-hours' },
-      { name: 'Library Rules', path: '/others#FAQs' }, // Updated link
-      { name: 'Library Staffs', path: '/about#library-staffs' },
-      { name: 'FAQs', path: '/others#FAQs' }
-    ]
+      { name: "Library Hours", path: "/about#library-hours" },
+      { name: "Library Rules", path: "/others#FAQs" }, // Updated link
+      { name: "Library Staffs", path: "/about#library-staffs" },
+      { name: "FAQs", path: "/others#FAQs" },
+    ],
   },
   {
-    title: 'Others',
+    title: "Others",
     to: "/others",
     links: [
-      { name: 'Donate Books', path: '/donate-books' },
-      { name: 'Suggest Books', path: '/suggest-books' },
+      { name: "Donate Books", path: "/donate-books" },
+      { name: "Suggest Books", path: "/suggest-books" },
       // { name: 'Book Bank', path: '/others' },
-      { name: 'Feedback', path: '/contactus' }, // Updated link
-      { name: 'Facilities', path: '/about#facilities' },
-      { name: 'Infrastructure', path: '/about#infrastructure' }
-    ]
-  }
+      { name: "Feedback", path: "/contactus" }, // Updated link
+      { name: "Facilities", path: "/about#facilities" },
+      { name: "Infrastructure", path: "/about#infrastructure" },
+    ],
+  },
 ];
 
 const socialIcons = [
