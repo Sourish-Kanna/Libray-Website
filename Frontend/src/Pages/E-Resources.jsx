@@ -87,7 +87,7 @@ export default function EResources() {
 
   // Zustand stores for branches and semesters
   const {
-    branches,
+    // branches,
     loading: branchLoading,
     error: branchError,
     fetchBranches,
@@ -97,7 +97,7 @@ export default function EResources() {
   } = useBranchStore();
 
   const {
-    semesters,
+    // semesters,
     loading: semesterLoading,
     error: semesterError,
     fetchSemesters,
@@ -120,6 +120,39 @@ export default function EResources() {
     loading: syllabusLoading,
     error: syllabusError,
   } = useSyllabusStore();
+
+  const branches = [
+    { value: "choose", text: "Choose Branch" },
+    // { value: "test1", text: "test1" },
+    // { value: "test", text: "test" },
+    { value: "Computer Engineering", text: "Computer Engineering" },
+    {
+      value: "Electronics and Telecommunication",
+      text: "Electronics and Telecommunication",
+    },
+    {
+      value: "Electronics and Computer Science",
+      text: "Electronics and Computer Science",
+    },
+    { value: "Information Technology", text: "Information Technology" },
+    { value: "CS IOT", text: "CS IOT" },
+    { value: "First Year Engineering", text: "First Year Engineering" },
+    { value: "AIML", text: "AIML" },
+    { value: "AIDS", text: "AIDS" },
+    { value: "ME", text: "Mechanical Engineering" },
+  ];
+
+  const semesters = [
+    { value: "choose", text: "Choose Semester" },
+    { value: "SEM 2", text: "SEM 1 - 2" },
+    // { value: "SEM 1", text: "SEM 2" },
+    { value: "SEM 3", text: "SEM 3 - 8" },
+    // { value: "SEM 4", text: "SEM 4" },
+    // { value: "SEM 5", text: "SEM 5" },
+    // { value: "SEM 6", text: "SEM 6" },
+    // { value: "SEM 7", text: "SEM 7" },
+    // { value: "SEM 8", text: "SEM 8" },
+  ];
 
   useSmoothScroll();
   const refs = useScrollToHash([
@@ -311,7 +344,7 @@ export default function EResources() {
         <div className="flex items-center justify-center w-full py-6">
           <div>
             <div className="flex justify-center text-2xl sm:text-3xl font-bold">
-              <p>University Syllabus</p>
+              <p>Syllabus</p>
             </div>
             <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 sm:w-32"></div>
           </div>
@@ -335,14 +368,14 @@ export default function EResources() {
               onChange={(e) => setBranch(e.target.value)}
               className="w-full p-3 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600"
             >
-              <option value="">Select Branch</option>
+              {/* <option value="">Select Branch</option> */}
               {branches.map((branchOption) => (
-                <option key={branchOption._id} value={branchOption.name}>
-                  {branchOption.name}
+                <option key={branchOption.value} value={branchOption.value}>
+                  {branchOption.text}
                 </option>
               ))}
             </select>
-            {isAuthenticated && (
+            {/* {isAuthenticated && (
               <div className="flex gap-2 mt-2">
                 <button
                   type="button"
@@ -359,7 +392,7 @@ export default function EResources() {
                   Delete Selected Branch
                 </button>
               </div>
-            )}
+            )} */}
           </div>
           <div className="px-4 mb-4">
             <label
@@ -375,14 +408,14 @@ export default function EResources() {
               onChange={(e) => setSemester(e.target.value)}
               className="w-full p-3 border border-gray-400 rounded-md focus:border-s_orange focus:ring-s_orange"
             >
-              <option value="">Select Semester</option>
+              {/* <option value="">Select Semester</option> */}
               {semesters.map((semesterOption) => (
-                <option key={semesterOption._id} value={semesterOption.name}>
-                  {semesterOption.name}
+                <option key={semesterOption.value} value={semesterOption.value}>
+                  {semesterOption.text}
                 </option>
               ))}
             </select>
-            {isAuthenticated && (
+            {/* {isAuthenticated && (
               <div className="flex gap-2 mt-2">
                 <button
                   type="button"
@@ -401,7 +434,7 @@ export default function EResources() {
                   Delete Selected Semester
                 </button>
               </div>
-            )}
+            )} */}
           </div>
           {syllabusError && (
             <div className="px-10 mb-4 text-red-500">{syllabusError}</div>
@@ -471,149 +504,6 @@ export default function EResources() {
           </div>
         </div>
         <div>
-          {/* <div className="relative group">
-            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
-              <p className="text-white">UPSE</p>
-              <FontAwesomeIcon
-                className="text-2xl text-[#f26d21]"
-                icon="fa-solid fa-chevron-down"
-              />
-            </div>
-            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-              <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                <p className="py-2 text-lg">
-                  UPSC conducts the Civil Services Examination for recruitment
-                  to various Indian Administrative Service (IAS) and other top
-                  civil services.
-                </p>
-                <p className="py-2 text-lg">
-                  <a
-                    href="https://upsc.gov.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-[#f26d21] underline "
-                  >
-                    {" "}
-                    Click here for more information
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative group">
-            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
-              <p className="text-white">GRE</p>
-              <FontAwesomeIcon
-                className="text-2xl text-[#f26d21]"
-                icon="fa-solid fa-chevron-down"
-              />
-            </div>
-            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-              <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                <p className="py-2 text-lg">
-                  The GRE assesses readiness for graduate programs through
-                  verbal, quantitative, and analytical writing tests.
-                </p>
-                <p className="py-2 text-lg">
-                  <a
-                    href="https://www.ets.org/gre.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-[#f26d21]"
-                  >
-                    {" "}
-                    Click here for more information
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative group">
-            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
-              <p className="text-white">GATE</p>
-              <FontAwesomeIcon
-                className="text-2xl text-[#f26d21]"
-                icon="fa-solid fa-chevron-down"
-              />
-            </div>
-            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-              <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                <p className="py-2 text-lg">
-                  GATE evaluates knowledge in engineering and science subjects
-                  for admissions to postgraduate programs and for various public
-                  sector job roles in India.
-                </p>
-                <p className="py-2 text-lg">
-                  <a
-                    href="http://gate.iitd.ac.in/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-[#f26d21]"
-                  >
-                    {" "}
-                    Click here for more information
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative group">
-            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
-              <p className="text-white">SAT</p>
-              <FontAwesomeIcon
-                className="text-2xl text-[#f26d21]"
-                icon="fa-solid fa-chevron-down"
-              />
-            </div>
-            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-              <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                <p className="py-2 text-lg">
-                  The SAT is a college admission test that assesses a student's
-                  readiness for higher education through math, reading, and
-                  writing sections.
-                </p>
-                <p className="py-2 text-lg">
-                  <a
-                    href="https://satsuite.collegeboard.org/sat"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-[#f26d21]"
-                  >
-                    {" "}
-                    Click here for more information
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div>
-          <div className="relative group">
-            <div className="flex justify-between px-10 py-5 my-5 text-2xl duration-700 bg-blue-500 shadow-xl rounded-xl">
-              <p className="text-white">TOFEL</p>
-              <FontAwesomeIcon
-                className="text-2xl text-[#f26d21]"
-                icon="fa-solid fa-chevron-down"
-              />
-            </div>
-            <div className="h-0 mb-5 overflow-hidden duration-700 shadow-xl group-hover:h-28 rounded-xl">
-              <div className="flex-col content-center mx-10 my-3 text-xl transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0">
-                <p className="py-2 text-lg">
-                  TOEFL measures English language proficiency for non-native
-                  speakers, assessing reading, writing, listening, and speaking
-                  skills for academic purposes.
-                </p>
-                <p className="py-2 text-lg">
-                  <a
-                    href="https://www.ets.org/toefl.html"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="underline text-[#f26d21]"
-                  >
-                    Click here for more information
-                  </a>
-                </p>
-              </div>
-            </div>
-          </div> */}
           {exams.map((exam, index) => examComponent(exam, index))}
         </div>
       </div>

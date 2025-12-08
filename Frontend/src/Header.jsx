@@ -19,8 +19,9 @@ const navLinks = [
       "/others#More",
       "https://ieeexplore.ieee.org/Xplore/home.jsp",
       "https://siesgstlibrary.ourlib.in",
-      "https://delnet.in",
-      "/others#More",
+      "https://discovery.delnet.in",
+      "https://ebookcentral.proquest.com/auth/lib/siesmumbai/login.action?returnURL=https%3A%2F%2Febookcentral.proquest.com%2Flib%2Fsiesmumbai%2Fbookshelf.action",
+      "https://ndl.education.gov.in/home",
     ],
     drop_name: [
       "Question Papers",
@@ -30,6 +31,7 @@ const navLinks = [
       "OPAC",
       "DELNET",
       "E-Books",
+      "Rashtriya e Pustakalaya",
     ],
   },
   {
