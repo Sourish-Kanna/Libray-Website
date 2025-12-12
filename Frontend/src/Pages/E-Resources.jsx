@@ -63,15 +63,15 @@ const exams = [
 const examComponent = (exam, index) => {
   return (
     <div key={index} className="relative group">
-      <div className="bg-blue-500 text-xl sm:text-2xl py-5 px-6 sm:px-10 flex justify-between my-5 shadow-xl rounded-xl duration-1000">
+      <div className="flex justify-between px-6 py-5 my-5 text-xl duration-1000 bg-blue-500 shadow-xl sm:text-2xl sm:px-10 rounded-xl">
         <p className="text-white">{exam.title}</p>
-        <FontAwesomeIcon className="text-2xl text-white transition-transform group-hover:rotate-180 duration-700" icon={faChevronDown} />
+        <FontAwesomeIcon className="text-2xl text-white transition-transform duration-700 group-hover:rotate-180" icon={faChevronDown} />
       </div>
       <div className="max-h-0 group-hover:max-h-[500px] shadow-xl mb-5 duration-700 rounded-xl overflow-hidden">
-        <div className="opacity-0 group-hover:opacity-100 transform group-hover:translate-y-0 duration-700 transition-all text-sm sm:text-xl flex-col content-center mx-10 my-3">
+        <div className="flex-col content-center mx-10 my-3 text-sm transition-all duration-700 transform opacity-0 group-hover:opacity-100 group-hover:translate-y-0 sm:text-xl">
           <p className="py-2">{exam.description}</p>
           <p className="py-2">
-            <a href={exam.link} target="_blank" rel="noopener noreferrer" className="text-s_orange underline">
+            <a href={exam.link} target="_blank" rel="noopener noreferrer" className="underline text-s_orange">
               Click here for more information
             </a>
           </p>
@@ -140,6 +140,8 @@ export default function EResources() {
     { value: "AIML", text: "AIML" },
     { value: "AIDS", text: "AIDS" },
     { value: "ME", text: "Mechanical Engineering" },
+    { value: "ME-AIDS", text: "ME AIDS" },
+    { value: "ME-AIML", text: "ME AIML" },
   ];
 
   const semesters = [
@@ -318,7 +320,7 @@ export default function EResources() {
   };
 
   return (
-    <div className="overflow-x-hidden w-full h-full">
+    <div className="w-full h-full overflow-x-hidden">
       {/* <Link to="/academics"></Link> */}
       <Helmet>
         <title>E-Resources | Library | SIESGST</title>
@@ -326,38 +328,38 @@ export default function EResources() {
       <ToastContainer />
 
       {/* E-Resources */}
-      <div className="bg-gray-100 flex items-center justify-center py-8 sm:py-12 md:py-16">
+      <div className="flex items-center justify-center py-8 bg-gray-100 sm:py-12 md:py-16">
         <div>
-          <div className="flex justify-center text-3xl sm:text-4xl md:text-5xl font-bold text-s_blue">
+          <div className="flex justify-center text-3xl font-bold sm:text-4xl md:text-5xl text-s_blue">
             <p>E-Resources</p>
           </div>
-          <div className="border-b-4 mx-auto w-20 sm:w-32 mt-2 border-s_orange" />
+          <div className="w-20 mx-auto mt-2 border-b-4 sm:w-32 border-s_orange" />
         </div>
       </div>
 
       {/* University Syllabus */}
       <div
-        className="mx-4 sm:mx-16 md:mx-40 py-10"
+        className="py-10 mx-4 sm:mx-16 md:mx-40"
         ref={refs["university-syllabus"]}
         id="university-syllabus"
       >
         <div className="flex items-center justify-center w-full py-6">
           <div>
-            <div className="flex justify-center text-2xl sm:text-3xl font-bold">
+            <div className="flex justify-center text-2xl font-bold sm:text-3xl">
               <p>Syllabus</p>
             </div>
-            <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 sm:w-32"></div>
+            <div className="w-24 mx-auto mt-2 mb-6 border-b-4 border-blue-700 sm:w-32"></div>
           </div>
         </div>
         <form
           id="question-paper-form"
-          className="p-4 border bg-header-color rounded-2xl shadow-2xl w-full max-w-2xl mx-auto"
+          className="w-full max-w-2xl p-4 mx-auto border shadow-2xl bg-header-color rounded-2xl"
           onSubmit={handleSubmit}
         >
           <div className="px-4 mb-4">
             <label
               htmlFor="branch"
-              className="block mb-2 text-base sm:text-lg font-bold text-gray-700"
+              className="block mb-2 text-base font-bold text-gray-700 sm:text-lg"
             >
               Select Branch:
             </label>
@@ -460,21 +462,21 @@ export default function EResources() {
                 <button
                   type="button"
                   onClick={handleAdd}
-                  className="px-4 py-2 text-white rounded-md bg-green-500 active:bg-green-700"
+                  className="px-4 py-2 text-white bg-green-500 rounded-md active:bg-green-700"
                 >
                   Add
                 </button>
                 <button
                   type="button"
                   onClick={handleUpdate}
-                  className="px-4 py-2 text-white rounded-md bg-blue-500 active:bg-blue-700"
+                  className="px-4 py-2 text-white bg-blue-500 rounded-md active:bg-blue-700"
                 >
                   Update
                 </button>
                 <button
                   type="button"
                   onClick={handleDelete}
-                  className="px-4 py-2 text-white rounded-md bg-red-500 active:bg-red-700"
+                  className="px-4 py-2 text-white bg-red-500 rounded-md active:bg-red-700"
                 >
                   Delete
                 </button>
@@ -495,10 +497,10 @@ export default function EResources() {
       </div>
 
       {/* Competitive Exam */}
-      <div ref={refs["competitive-exams"]} id="competitive-exams" className="mx-4 sm:mx-16 md:mx-40 py-10">
+      <div ref={refs["competitive-exams"]} id="competitive-exams" className="py-10 mx-4 sm:mx-16 md:mx-40">
         <div className="flex items-center justify-center w-full py-6">
           <div>
-            <div className="flex justify-center text-2xl sm:text-3xl font-bold">
+            <div className="flex justify-center text-2xl font-bold sm:text-3xl">
               <p>Competitive Exams</p>
             </div>
           </div>
