@@ -25,6 +25,8 @@ const branchOptions = [
   { value: "AIML", text: "AIML" },
   { value: "AIDS", text: "AIDS" },
   { value: "ME", text: "Mechanical Engineering" },
+  { value: "ME-IS", text: "ME Information Security" },
+  { value: "ME-IT", text: "ME Information Technology" },
 ];
 
 const semesterOptions = [
@@ -578,7 +580,7 @@ function Quicklinks() {
   };
 
   return (
-    <div className="overflow-x-hidden w-full h-full">
+    <div className="w-full h-full overflow-x-hidden">
       <Helmet>
         <title>others | Library | SIESGST</title>
       </Helmet>
@@ -591,7 +593,7 @@ function Quicklinks() {
               {/* <p>Question Papers</p> */}
               <p>Download Question Paper</p>
             </div>
-            <div className="mx-auto mt-2 mb-6 border-b-4 border-blue-700 w-24 lg:w-44" />
+            <div className="w-24 mx-auto mt-2 mb-6 border-b-4 border-blue-700 lg:w-44" />
           </div>
         </div>
 

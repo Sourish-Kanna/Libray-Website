@@ -140,8 +140,8 @@ export default function EResources() {
     { value: "AIML", text: "AIML" },
     { value: "AIDS", text: "AIDS" },
     { value: "ME", text: "Mechanical Engineering" },
-    { value: "ME-AIDS", text: "ME AIDS" },
-    { value: "ME-AIML", text: "ME AIML" },
+    { value: "ME-Information Security", text: "ME Information Security" },
+    { value: "ME-Information Technology", text: "ME Information Technology" },
   ];
 
   const semesters = [
