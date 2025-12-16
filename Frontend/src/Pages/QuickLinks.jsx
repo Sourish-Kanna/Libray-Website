@@ -26,7 +26,7 @@ const branchOptions = [
   { value: "AIDS", text: "AIDS" },
   { value: "ME", text: "Mechanical Engineering" },
   { value: "ME-IS", text: "ME Information Security" },
-  { value: "ME-IT", text: "ME Information Technology" },
+  { value: "ME-AIDS", text: "ME AIDS" },
 ];
 
 const semesterOptions = [

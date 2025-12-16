@@ -141,7 +141,7 @@ export default function EResources() {
     { value: "AIDS", text: "AIDS" },
     { value: "ME", text: "Mechanical Engineering" },
     { value: "ME-Information Security", text: "ME Information Security" },
-    { value: "ME-Information Technology", text: "ME Information Technology" },
+    { value: "ME-AIDS", text: "ME AIDS" },
   ];
 
   const semesters = [
