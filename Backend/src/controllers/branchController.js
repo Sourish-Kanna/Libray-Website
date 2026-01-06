@@ -23,7 +23,7 @@ export const addBranch = async (req, res) => {
 
         const existingBranch = await Branch.findOne({ name });
         if (existingBranch) {
-            return res.status(400).json({ message: 'Branch already exists.' });
+            return res.status(409).json({ message: 'Branch already exists.' });
         }
 
         const newBranch = new Branch({ name });

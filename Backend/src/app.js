@@ -9,12 +9,12 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://siesgstlibrary.vercel.app",
-      "https://libray-website-client.vercel.app",
-      "https://libray-website.vercel.app",
-      "https://libray-website-71gt.vercel.app",
-      "https://libray-website-tan.vercel.app",
-      "https://library-sies-gst.vercel.app",
-      "https://library-siesgst.vercel.app",
+      // "https://libray-website-client.vercel.app",
+      // "https://libray-website.vercel.app",
+      // "https://libray-website-71gt.vercel.app",
+      // "https://libray-website-tan.vercel.app",
+      // "https://library-sies-gst.vercel.app",
+      // "https://library-siesgst.vercel.app",
     ],
     credentials: true,
   })
@@ -34,13 +34,13 @@ import semesterRoutes from "./routes/semesterRoutes.js";
 
 app.use("/api/v1/syllabus", syllabusRouter);
 app.use("/api/v1/pyqs", pyqRouter);
-
 app.use("/api/v1/users", userRouter);
-
 app.use("/api/v1/news", newsRouter);
-
 app.use("/api/v1/branch", branchRoutes);
-
 app.use("/api/v1/semester", semesterRoutes);
+
+app.get("/", (req, res) => {
+  res.status(200).json({ message: "Library Management System Backend is running..." });
+});
 
 export { app };
