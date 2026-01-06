@@ -164,15 +164,15 @@ export default function EResources() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetchSyllabus();
-      if (syllabus) {
-        await downloadSyllabus();
+      const syllabusData = await fetchSyllabus();
+      if (syllabusData && syllabusData._id) {
+        await downloadSyllabus(syllabusData._id);
         toast.success("Syllabus downloaded successfully!");
       } else {
-        toast.error("No syllabus found for the selected branch and semester.");
+        toast.error("Syllabus not found!");
       }
     } catch (err) {
-      toast.error("Failed to fetch and download syllabus.");
+      toast.error("Failed to download syllabus. Please try again.");
     }
   };
 
