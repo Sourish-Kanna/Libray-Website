@@ -1,7 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
-
-const API_BASE_URL = "https://library-siesgst.onrender.com/api/v1";
+import { API_BASE_URL } from "./baseapi.js";
 
 const useSyllabusStore = create((set) => ({
     branch: "",

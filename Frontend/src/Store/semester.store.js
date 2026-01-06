@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { API_BASE_URL } from "./baseapi.js";
 
 const useSemesterStore = create((set) => ({
   semesters: [], // State to store semesters
@@ -11,7 +12,7 @@ const useSemesterStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get(
-        "https://library-siesgst.onrender.com/api/v1/semester/semesters"
+        `${API_BASE_URL}/semester/semesters`
       );
       set({ semesters: response.data, loading: false });
     } catch (error) {
@@ -24,7 +25,7 @@ const useSemesterStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.post(
-        "https://library-siesgst.onrender.com/api/v1/semester/semesters",
+        `${API_BASE_URL}/semester/semesters`,
         { name }
       );
       set((state) => ({
@@ -41,7 +42,7 @@ const useSemesterStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       await axios.delete(
-        `https://library-siesgst.onrender.com/api/v1/semester/semesters/${id}`
+        `${API_BASE_URL}/semester/semesters/${id}`
       );
       set((state) => ({
         semesters: state.semesters.filter((semester) => semester._id !== id),

@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { API_BASE_URL } from "./baseapi.js";
 
 const useBranchStore = create((set) => ({
   branches: [], // State to store branches
@@ -11,7 +12,7 @@ const useBranchStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.get(
-        "https://library-siesgst.onrender.com/api/v1/branch/branches"
+        `${API_BASE_URL}/branch/branches`
       );
       set({ branches: response.data, loading: false });
     } catch (error) {
@@ -24,7 +25,7 @@ const useBranchStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       const response = await axios.post(
-        "https://library-siesgst.onrender.com/api/v1/branch/branches",
+        `${API_BASE_URL}/branch/branches`,
         { name }
       );
       set((state) => ({
@@ -41,7 +42,7 @@ const useBranchStore = create((set) => ({
     set({ loading: true, error: null });
     try {
       await axios.delete(
-        `https://library-siesgst.onrender.com/api/v1/branch/branches/${id}`
+        `${API_BASE_URL}/branch/branches/${id}`
       );
       set((state) => ({
         branches: state.branches.filter((branch) => branch._id !== id),

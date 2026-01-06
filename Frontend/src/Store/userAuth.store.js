@@ -1,5 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
+import { API_BASE_URL } from "./baseapi.js";
 
 const getStoredUser = () => {
   const storedUser = localStorage.getItem("user");
@@ -24,7 +25,7 @@ const useAuthStore = create((set) => ({
     set({ loading: true, error: null, success: null });
     try {
       const response = await axios.post(
-        "https://library-siesgst.onrender.com/api/v1/users/register",
+        `${API_BASE_URL}/users/register`,
         formData,
         {
           headers: {
@@ -51,7 +52,7 @@ const useAuthStore = create((set) => ({
     set({ loading: true, error: null, success: null });
     try {
       const response = await axios.post(
-        "https://library-siesgst.onrender.com/api/v1/users/login",
+        `${API_BASE_URL}/users/login`,
         credentials
       );
       const userData = response.data.data;
