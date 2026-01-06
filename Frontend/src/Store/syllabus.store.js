@@ -30,6 +30,7 @@ const useSyllabusStore = create((set) => ({
                 params: { branch, semester },
             });
             set({ syllabus: response.data.data, loading: false });
+            return response.data.data;
         } catch (err) {
             set({
                 error:
