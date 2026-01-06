@@ -116,32 +116,16 @@ const usePyqsStore = create((set) => ({
 
   // Download a PYQ
   downloadPYQ: async (pyqId) => {
+    const { pyq } = usePyqsStore.getState();
+    if (!pyq) {
+      set({ error: "No PYQ available to download." });
+      return;
+    }
+
     try {
-      const response = await axios.get(
-        `${API_BASE_URL}/pyqs/${pyqId}/download`,
-        {
-          responseType: "blob",
-        }
-      );
-
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-
-      const contentDisposition = response.headers["content-disposition"];
-      let fileName = "pyq.pdf";
-      if (contentDisposition) {
-        const fileNameMatch = contentDisposition.match(/filename="?([^"]+)"?/);
-        if (fileNameMatch && fileNameMatch.length === 2) {
-          fileName = fileNameMatch[1];
-        }
-      }
-
-      link.setAttribute("download", fileName);
-      document.body.appendChild(link);
-      link.click();
-      link.parentNode.removeChild(link);
-      window.URL.revokeObjectURL(url);
+      const { branch, semester, year, month } = usePyqsStore.getState();
+      const filename = `PYQ_${branch}_${semester}_${year}_${month}.pdf`;
+      window.location.href = `${API_BASE_URL}/pyqs/${pyqId}/download?filename=${filename}`;
     } catch (err) {
       set({
         error:

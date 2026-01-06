@@ -31,7 +31,7 @@ import syllabusRouter from "./routes/syllabus.route.js";
 import newsRouter from "./routes/newsRoute.js";
 import branchRoutes from "./routes/branchRoutes.js";
 import semesterRoutes from "./routes/semesterRoutes.js";
-import yearRoutes from "./routes/year.routes.js"; // Use a named import
+import yearRoutes from "./routes/year.routes.js";
 
 app.use("/api/v1/syllabus", syllabusRouter);
 app.use("/api/v1/pyqs", pyqRouter);

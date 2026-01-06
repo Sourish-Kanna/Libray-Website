@@ -1,11 +1,10 @@
-import express from 'express'; 
-const yearRoutes = express.Router();
+import express from 'express';
+import { years, addYear, deleteYear } from '../controllers/yearsController.js';
 
-// Controller to fetch years dynamically
-yearRoutes.get("/years", (req, res) => {
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 10 }, (_, i) => currentYear - i); // Last 10 years
-  res.json(years);
-});
+const router = express.Router();
 
-export default yearRoutes; 
+router.get('/years', years);
+router.post('/years', addYear);
+router.delete('/years/:id', deleteYear);
+
+export default router;

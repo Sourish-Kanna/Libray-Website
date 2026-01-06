@@ -1,33 +1,35 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/admin.css";
 import { useScrollToHash, useSmoothScroll } from "../Navigation";
 import usePyqsStore from "../Store/pyqs.store";
 import useAuthStore from "../Store/userAuth.store";
+import useYearStore from "../Store/year.store.js";
+import useBranchStore from "../Store/branch.store";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from 'react-helmet';
+import axios from "axios";
 
-
-const branchOptions = [
-  { value: "choose", text: "Choose Branch" },
-  { value: "Computer Engineering", text: "Computer Engineering" },
-  {
-    value: "Electronics and Telecommunication",
-    text: "Electronics and Telecommunication",
-  },
-  {
-    value: "Electronics and Computer Science",
-    text: "Electronics and Computer Science",
-  },
-  { value: "Information Technology", text: "Information Technology" },
-  { value: "CS IOT", text: "CS IOT" },
-  { value: "First Year Engineering", text: "First Year Engineering" },
-  { value: "AIML", text: "AIML" },
-  { value: "AIDS", text: "AIDS" },
-  { value: "ME", text: "Mechanical Engineering" },
-  { value: "ME-IS", text: "ME Information Security" },
-  { value: "ME-AIDS", text: "ME AIDS" },
-];
+// const branchOptions = [
+//   { value: "choose", text: "Choose Branch" },
+//   { value: "Computer Engineering", text: "Computer Engineering" },
+//   {
+//     value: "Electronics and Telecommunication",
+//     text: "Electronics and Telecommunication",
+//   },
+//   {
+//     value: "Electronics and Computer Science",
+//     text: "Electronics and Computer Science",
+//   },
+//   { value: "Information Technology", text: "Information Technology" },
+//   { value: "CS IOT", text: "CS IOT" },
+//   { value: "First Year Engineering", text: "First Year Engineering" },
+//   { value: "AIML", text: "AIML" },
+//   { value: "AIDS", text: "AIDS" },
+//   { value: "ME", text: "Mechanical Engineering" },
+//   { value: "ME-IS", text: "ME Information Security" },
+//   { value: "ME-AIDS", text: "ME AIDS" },
+// ];
 
 const semesterOptions = [
   { value: "choose", text: "Choose Semester" },
@@ -420,21 +422,21 @@ const semesterOptions = [
 //   },
 // };
 
-const yearOptions = [
-  { value: "2019", text: "2019" },
-  { value: "2020", text: "2020" },
-  { value: "2021", text: "2021" },
-  { value: "2022", text: "2022" },
-  { value: "2023", text: "2023" },
-  { value: "2024", text: "2024" },
-  { value: "2025", text: "2025" },
-  { value: "2026", text: "2026" },
-];
-
 const monthOptions = [
   { value: "may", text: "May" },
   { value: "november", text: "November" },
 ];
+
+// const yearOptions = [
+//   { value: "2019", text: "2019" },
+//   { value: "2020", text: "2020" },
+//   { value: "2021", text: "2021" },
+//   { value: "2022", text: "2022" },
+//   { value: "2023", text: "2023" },
+//   { value: "2024", text: "2024" },
+//   { value: "2025", text: "2025" },
+//   { value: "2026", text: "2026" },
+// ];
 
 function Quicklinks() {
   useSmoothScroll();
@@ -462,6 +464,24 @@ function Quicklinks() {
   } = usePyqsStore();
 
   const { isAuthenticated } = useAuthStore();
+
+  // Zustand store for branches
+  const {
+    branches,
+    loading: branchLoading,
+    error: branchError,
+    fetchBranches,
+    addBranch,
+    updateBranch,
+    deleteBranch,
+  } = useBranchStore();
+
+  const { fetchYears, yearOptions, addYear, deleteYear } = useYearStore();
+
+  useEffect(() => {
+    fetchBranches(); // Fetch branches on component mount
+    fetchYears();
+  }, [fetchBranches]);
 
   const handleBranchChange = (e) => {
     const selectedBranch = e.target.value;
@@ -583,6 +603,79 @@ function Quicklinks() {
     }
   };
 
+    // Add, edit, and delete branches
+    const handleAddBranch = async (name) => {
+      try {
+        await addBranch(name);
+        toast.success("Branch added successfully!");
+      } catch (err) {
+        toast.error("Failed to add branch.");
+      }
+    };
+  
+    const handleEditBranch = async (id, newName) => {
+      try {
+        await updateBranch(id, newName);
+        toast.success("Branch updated successfully!");
+      } catch (err) {
+        console.error(err);
+        toast.error("Failed to update branch.");
+      }
+    };
+  
+    const handleDeleteBranch = async () => {
+      if (!branch) {
+        toast.error("Please select a branch to delete.");
+        return;
+      }
+  
+      try {
+        // Find the branch object from the branches array
+        const branchToDelete = branches.find((b) => b.name === branch);
+        if (!branchToDelete) {
+          toast.error("Selected branch not found.");
+          return;
+        }
+  
+        // Call the deleteBranch function from the store
+        await deleteBranch(branchToDelete._id);
+        toast.success("Branch deleted successfully!");
+  
+        // Clear the selected branch after deletion
+        setBranch("");
+      } catch (err) {
+        toast.error("Failed to delete branch.");
+      }
+    };
+
+  // Add and delete years
+  const handleDeleteYear = async () => {
+    if (!year) {
+      toast.error("Please select a year to delete.");
+      return;
+    }
+    try {
+      await deleteYear(year);
+      toast.success("Year deleted successfully!");
+      setYear("choose");
+    } catch (err) {
+      toast.error("Failed to delete year.");
+    }
+  };
+
+  const handleAddyear = async (yearName) => {
+    if (!yearName) {
+      toast.error("Please enter a year name.");
+      return;
+    }
+    try {
+      await addYear(yearName);
+      toast.success("Year added successfully!");
+    } catch (err) {
+      toast.error("Failed to add year.");
+    }
+  };
+
   return (
     <div className="w-full h-full overflow-x-hidden">
       <Helmet>
@@ -615,12 +708,49 @@ function Quicklinks() {
               onChange={handleBranchChange}
               className="form-control"
             >
-              {branchOptions.map((option) => (
-                <option key={option.value} value={option.value}>
-                  {option.text}
+              <option value="choose">Choose Branch</option>
+              {branches.map((branchOption) => (
+                <option key={branchOption._id} value={branchOption.name}>
+                  {branchOption.name}
                 </option>
               ))}
             </select>
+            {isAuthenticated && (
+              <div className="flex gap-2 mt-2">
+                <button
+                  type="button"
+                  onClick={() => handleAddBranch(prompt("Enter branch name:"))}
+                  className="px-2 py-1 text-white bg-green-500 rounded-md"
+                >
+                  Add Branch
+                </button>
+                <button
+                  type="button"
+                  onClick={() => {
+                    const newName = prompt("Enter new branch name:");
+                    if (newName && branch) {
+                      const branchToEdit = branches.find((b) => b.name === branch);
+                      if (branchToEdit) {
+                        handleEditBranch(branchToEdit._id, newName);
+                      }
+                    }
+                    else {
+                      alert("Please select a branch to edit.");
+                    }
+                  }}
+                  className="px-2 py-1 text-white bg-yellow-500 rounded-md"
+                >
+                  Edit Branch
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteBranch}
+                  className="px-2 py-1 text-white bg-red-500 rounded-md"
+                >
+                  Delete Selected Branch
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Semester */}
@@ -663,6 +793,7 @@ function Quicklinks() {
             </select>
           </div>
           */}
+
           {/* Year */}
           <div className="form-group">
             <label htmlFor="year">Year:</label>
@@ -674,11 +805,31 @@ function Quicklinks() {
             >
               <option value="choose">Choose Year</option>
               {yearOptions.map((option) => (
-                <option key={option.value} value={option.value}>
+                <option key={option.value} value={option.text}>
                   {option.text}
                 </option>
               ))}
             </select>
+            {isAuthenticated && (
+              <div className="flex gap-2 mt-2">
+                <button
+                  type="button"
+                  onClick={() =>
+                    handleAddyear(prompt("Enter year name:"))
+                  }
+                  className="px-2 py-1 text-white bg-green-500 rounded-md"
+                >
+                  Add Year
+                </button>
+                <button
+                  type="button"
+                  onClick={handleDeleteYear}
+                  className="px-2 py-1 text-white bg-red-500 rounded-md"
+                >
+                  Delete Selected Year
+                </button>
+              </div>
+            )}
           </div>
 
           {/* Month */}

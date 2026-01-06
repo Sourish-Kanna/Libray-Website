@@ -365,7 +365,7 @@ export default function EResources() {
               onChange={(e) => setBranch(e.target.value)}
               className="w-full p-3 border border-gray-400 rounded-md focus:border-blue-600 focus:ring-blue-600"
             >
-              {/* <option value="">Select Branch</option> */}
+              <option value="">Select Branch</option>
               {branches.map((branchOption) => (
                 // manual option rendering removed
                 // <option key={branchOption.value} value={branchOption.value}>

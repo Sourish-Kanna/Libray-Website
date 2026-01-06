@@ -134,8 +134,9 @@ const downloadPYQ = asyncHandler(async (req, res) => {
         responseType: 'stream',
     });
 
+    const filename = req.query.filename || `PYQ_${pyq.branch}_${pyq.semester}_${pyq.year}_${pyq.month}.pdf`;
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="PYQ_${pyq.subject}_${pyq.year}_${pyq.month}.pdf"`);
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
 
     fileStream.data.pipe(res);
 });
