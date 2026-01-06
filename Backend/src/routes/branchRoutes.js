@@ -1,5 +1,5 @@
 import express from 'express';
-import { getBranches, addBranch, deleteBranch } from '../controllers/branchController.js';
+import { getBranches, addBranch, deleteBranch, updateBranch } from '../controllers/branchController.js';
 
 const router = express.Router();
 
@@ -11,5 +11,8 @@ router.post('/branches', addBranch);
 
 // Route to delete a branch
 router.delete('/branches/:id', deleteBranch);
+
+// Route to update a branch
+router.put('/branches/:id', updateBranch);
 
 export default router;

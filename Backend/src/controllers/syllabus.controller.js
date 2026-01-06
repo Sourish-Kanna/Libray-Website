@@ -46,7 +46,6 @@ const updateSyllabus = asyncHandler(async (req, res) => {
 
 const createSyllabus = asyncHandler(async (req, res) => {
     const { branch, semester } = req.body;
-    console.log('hello')
     if (!branch || !semester) {
         throw new ApiError(400, "Please provide branch, semester, and syllabus URL");
     }
@@ -107,8 +106,10 @@ const downloadSyllabus = asyncHandler(async (req, res) => {
         responseType: 'stream',
     });
 
+    const filename = req.query.filename || `${syllabus.branch}_${syllabus.semester}_syllabus.pdf`;
+    
     res.setHeader('Content-Type', 'application/pdf');
-    res.setHeader('Content-Disposition', `attachment; filename="${syllabus.title}.pdf"`);
+    res.setHeader('Content-Disposition', `attachment; filename="${filename}"`);
 
     fileStream.data.pipe(res);
 });

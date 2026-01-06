@@ -52,6 +52,27 @@ const useBranchStore = create((set) => ({
       set({ error: error.message, loading: false });
     }
   },
+
+  // Update a branch
+  updateBranch: async (id, name) => {
+    set({ loading: true, error: null }); 
+    try {
+      const response = await axios.put(
+        `${API_BASE_URL}/branch/branches/${id}`,
+        { name }
+      );
+      set((state) => ({
+        branches: state.branches.map((branch) =>
+          branch._id === id ? response.data : branch
+        ),
+        loading: false,
+      }));
+      fetchBranches();
+    } catch (error) {
+      set({ error: error.message, loading: false });
+    }
+  },
+
 }));
 
 export default useBranchStore;

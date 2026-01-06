@@ -50,7 +50,13 @@ const useSyllabusStore = create((set) => ({
 
         try {
             // Direct download from the backend route
-            window.location.href = `${API_BASE_URL}/syllabus/${syllabus._id}/download`;
+            const { branch, semester } = useSyllabusStore.getState();
+            const semesterMap = {
+                "SEM 2": `${branch}_SEM_1_2_syllabus.pdf`,
+                "SEM 3": `${branch}_SEM_3_8_syllabus.pdf`,
+            };
+            const filename = semesterMap[semester] || `${branch}_${semester}_syllabus.pdf`;
+            window.location.href = `${API_BASE_URL}/syllabus/${syllabus._id}/download?filename=${filename}`;
         } catch (err) {
             set({
                 error:

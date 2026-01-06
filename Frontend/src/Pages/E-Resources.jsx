@@ -87,7 +87,7 @@ export default function EResources() {
 
   // Zustand stores for branches and semesters
   const {
-    // branches,
+    branches,
     loading: branchLoading,
     error: branchError,
     fetchBranches,
@@ -121,39 +121,31 @@ export default function EResources() {
     error: syllabusError,
   } = useSyllabusStore();
 
-  const branches = [
-    { value: "choose", text: "Choose Branch" },
-    // { value: "test1", text: "test1" },
-    // { value: "test", text: "test" },
-    { value: "Computer Engineering", text: "Computer Engineering" },
-    {
-      value: "Electronics and Telecommunication",
-      text: "Electronics and Telecommunication",
-    },
-    {
-      value: "Electronics and Computer Science",
-      text: "Electronics and Computer Science",
-    },
-    { value: "Information Technology", text: "Information Technology" },
-    { value: "CS IOT", text: "CS IOT" },
-    { value: "First Year Engineering", text: "First Year Engineering" },
-    { value: "AIML", text: "AIML" },
-    { value: "AIDS", text: "AIDS" },
-    { value: "ME", text: "Mechanical Engineering" },
-    { value: "ME-Information Security", text: "ME Information Security" },
-    { value: "ME-AIDS", text: "ME AIDS" },
-  ];
+  // const branches = [
+  //   { value: "choose", text: "Choose Branch" },
+  //   { value: "Computer Engineering", text: "Computer Engineering" },
+  //   {
+  //     value: "Electronics and Telecommunication",
+  //     text: "Electronics and Telecommunication",
+  //   },
+  //   {
+  //     value: "Electronics and Computer Science",
+  //     text: "Electronics and Computer Science",
+  //   },
+  //   { value: "Information Technology", text: "Information Technology" },
+  //   { value: "CS IOT", text: "CS IOT" },
+  //   { value: "First Year Engineering", text: "First Year Engineering" },
+  //   { value: "AIML", text: "AIML" },
+  //   { value: "AIDS", text: "AIDS" },
+  //   { value: "ME", text: "Mechanical Engineering" },
+  //   { value: "ME-Information Security", text: "ME Information Security" },
+  //   { value: "ME-AIDS", text: "ME AIDS" },
+  // ];
 
   const semesters = [
     { value: "choose", text: "Choose Semester" },
     { value: "SEM 2", text: "SEM 1 - 2" },
-    // { value: "SEM 1", text: "SEM 2" },
     { value: "SEM 3", text: "SEM 3 - 8" },
-    // { value: "SEM 4", text: "SEM 4" },
-    // { value: "SEM 5", text: "SEM 5" },
-    // { value: "SEM 6", text: "SEM 6" },
-    // { value: "SEM 7", text: "SEM 7" },
-    // { value: "SEM 8", text: "SEM 8" },
   ];
 
   useSmoothScroll();
@@ -246,6 +238,7 @@ export default function EResources() {
       await updateBranch(id, newName);
       toast.success("Branch updated successfully!");
     } catch (err) {
+      console.error(err);
       toast.error("Failed to update branch.");
     }
   };
@@ -275,49 +268,49 @@ export default function EResources() {
     }
   };
 
-  // Add, edit, and delete semesters
-  const handleAddSemester = async (name) => {
-    try {
-      await addSemester(name);
-      toast.success("Semester added successfully!");
-    } catch (err) {
-      toast.error("Failed to add semester.");
-    }
-  };
-
-  const handleEditSemester = async (id, newName) => {
-    try {
-      await updateSemester(id, newName);
-      toast.success("Semester updated successfully!");
-    } catch (err) {
-      toast.error("Failed to update semester.");
-    }
-  };
-
-  const handleDeleteSemester = async () => {
-    if (!semester) {
-      toast.error("Please select a semester to delete.");
-      return;
-    }
-
-    try {
-      // Find the semester object from the semesters array
-      const semesterToDelete = semesters.find((s) => s.name === semester);
-      if (!semesterToDelete) {
-        toast.error("Selected semester not found.");
-        return;
-      }
-
-      // Call the deleteSemester function from the store
-      await deleteSemester(semesterToDelete._id);
-      toast.success("Semester deleted successfully!");
-
-      // Clear the selected semester after deletion
-      setSemester("");
-    } catch (err) {
-      toast.error("Failed to delete semester.");
-    }
-  };
+  // // Add, edit, and delete semesters
+  // const handleAddSemester = async (name) => {
+  //   try {
+  //     await addSemester(name);
+  //     toast.success("Semester added successfully!");
+  //   } catch (err) {
+  //     toast.error("Failed to add semester.");
+  //   }
+  // };
+  // 
+  // const handleEditSemester = async (id, newName) => {
+  //   try {
+  //     await updateSemester(id, newName);
+  //     toast.success("Semester updated successfully!");
+  //   } catch (err) {
+  //     toast.error("Failed to update semester.");
+  //   }
+  // };
+  // 
+  // const handleDeleteSemester = async () => {
+  //   if (!semester) {
+  //     toast.error("Please select a semester to delete.");
+  //     return;
+  //   }
+  // 
+  //   try {
+  //     // Find the semester object from the semesters array
+  //     const semesterToDelete = semesters.find((s) => s.name === semester);
+  //     if (!semesterToDelete) {
+  //       toast.error("Selected semester not found.");
+  //       return;
+  //     }
+  // 
+  //     // Call the deleteSemester function from the store
+  //     await deleteSemester(semesterToDelete._id);
+  //     toast.success("Semester deleted successfully!");
+  // 
+  //     // Clear the selected semester after deletion
+  //     setSemester("");
+  //   } catch (err) {
+  //     toast.error("Failed to delete semester.");
+  //   }
+  // };
 
   return (
     <div className="w-full h-full overflow-x-hidden">
@@ -351,11 +344,13 @@ export default function EResources() {
             <div className="w-24 mx-auto mt-2 mb-6 border-b-4 border-blue-700 sm:w-32"></div>
           </div>
         </div>
+        {/* Form Start */}
         <form
           id="question-paper-form"
           className="w-full max-w-2xl p-4 mx-auto border shadow-2xl bg-header-color rounded-2xl"
           onSubmit={handleSubmit}
         >
+          {/* select branch */}
           <div className="px-4 mb-4">
             <label
               htmlFor="branch"
@@ -372,12 +367,16 @@ export default function EResources() {
             >
               {/* <option value="">Select Branch</option> */}
               {branches.map((branchOption) => (
-                <option key={branchOption.value} value={branchOption.value}>
-                  {branchOption.text}
+                // manual option rendering removed
+                // <option key={branchOption.value} value={branchOption.value}>
+                //   {branchOption.text}
+                // </option>
+                <option key={branchOption._id} value={branchOption.name}>
+                  {branchOption.name}
                 </option>
               ))}
             </select>
-            {/* {isAuthenticated && (
+            {isAuthenticated && (
               <div className="flex gap-2 mt-2">
                 <button
                   type="button"
@@ -388,14 +387,33 @@ export default function EResources() {
                 </button>
                 <button
                   type="button"
+                  onClick={() => {
+                    const newName = prompt("Enter new branch name:");
+                    if (newName && branch) {
+                      const branchToEdit = branches.find((b) => b.name === branch);
+                      if (branchToEdit) {
+                        handleEditBranch(branchToEdit._id, newName);
+                      }
+                    }
+                    else {
+                      alert("Please select a branch to edit.");
+                    }
+                  }}
+                  className="px-2 py-1 text-white bg-yellow-500 rounded-md"
+                >
+                  Edit Branch
+                </button>
+                <button
+                  type="button"
                   onClick={handleDeleteBranch}
                   className="px-2 py-1 text-white bg-red-500 rounded-md"
                 >
                   Delete Selected Branch
                 </button>
               </div>
-            )} */}
+            )}
           </div>
+          {/* select semester */}
           <div className="px-4 mb-4">
             <label
               htmlFor="semester"
@@ -464,21 +482,21 @@ export default function EResources() {
                   onClick={handleAdd}
                   className="px-4 py-2 text-white bg-green-500 rounded-md active:bg-green-700"
                 >
-                  Add
+                  Add File
                 </button>
                 <button
                   type="button"
                   onClick={handleUpdate}
                   className="px-4 py-2 text-white bg-blue-500 rounded-md active:bg-blue-700"
                 >
-                  Update
+                  Update File
                 </button>
                 <button
                   type="button"
                   onClick={handleDelete}
                   className="px-4 py-2 text-white bg-red-500 rounded-md active:bg-red-700"
                 >
-                  Delete
+                  Delete File
                 </button>
               </div>
             </>

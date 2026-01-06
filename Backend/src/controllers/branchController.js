@@ -47,3 +47,25 @@ export const deleteBranch = async (req, res) => {
         res.status(500).json({ message: 'Error deleting branch', error: error.message });
     }
 };
+
+// Update a branch
+export const updateBranch = async (req, res) => {
+    try {
+        const { id } = req.params;
+        const { name } = req.body;
+        if (!name) {
+            return res.status(400).json({ message: 'Branch name is required.' });
+        }
+        const updatedBranch = await Branch.findByIdAndUpdate(
+            id,
+            { name },
+            { new: true }
+        );
+        if (!updatedBranch) {
+            return res.status(404).json({ message: 'Branch not found.' });
+        }
+        res.status(200).json({ message: 'Branch updated successfully.', branch: updatedBranch });
+    } catch (error) {
+        res.status(500).json({ message: 'Error updating branch', error: error.message });
+    }
+};
