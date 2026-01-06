@@ -199,7 +199,7 @@ function NavBar() {
                   </span>
                   <div className="flex items-center justify-center w-12 h-12 overflow-hidden text-lg text-white bg-gray-400 rounded-full hover:cursor-pointer">
                     <img
-                      src={isAuthenticated && user?.avatar ? user.avatar : image1}
+                      src={image1}
                       className="object-cover w-full h-full profile-image"
                       alt=""
                     />
