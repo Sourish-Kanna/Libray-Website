@@ -6,6 +6,11 @@ const branchSchema = new mongoose.Schema({
         required: true,
         unique: true,
     },
+    value: {
+        type: String,
+        required: true,
+        unique: true,
+    },
 });
 
 export const Branch = mongoose.model('Branch', branchSchema);

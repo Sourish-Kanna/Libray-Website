@@ -16,17 +16,17 @@ export const getBranches = async (req, res) => {
 // Add a new branch
 export const addBranch = async (req, res) => {
     try {
-        const { name } = req.body;
-        if (!name) {
-            return res.status(400).json({ message: 'Branch name is required.' });
+        const { name, value } = req.body;
+        if (!name || !value) {
+            return res.status(400).json({ message: 'Branch name and value are required.' });
         }
 
-        const existingBranch = await Branch.findOne({ name });
+        const existingBranch = await Branch.findOne({ $or: [{ name }, { value }] });
         if (existingBranch) {
             return res.status(409).json({ message: 'Branch already exists.' });
         }
 
-        const newBranch = new Branch({ name });
+        const newBranch = new Branch({ name, value });
         await newBranch.save();
         res.status(201).json({ message: 'Branch added successfully.', branch: newBranch });
     } catch (error) {
@@ -52,13 +52,17 @@ export const deleteBranch = async (req, res) => {
 export const updateBranch = async (req, res) => {
     try {
         const { id } = req.params;
-        const { name } = req.body;
-        if (!name) {
-            return res.status(400).json({ message: 'Branch name is required.' });
+        const { name, value } = req.body;
+        if (!name && !value) {
+            return res.status(400).json({ message: 'Branch name or value is required.' });
         }
+        const updateData = {};
+        if (name) updateData.name = name;
+        if (value) updateData.value = value;
+        
         const updatedBranch = await Branch.findByIdAndUpdate(
             id,
-            { name },
+            updateData,
             { new: true }
         );
         if (!updatedBranch) {

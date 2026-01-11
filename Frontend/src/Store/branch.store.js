@@ -21,15 +21,15 @@ const useBranchStore = create((set) => ({
   },
 
   // Add a new branch
-  addBranch: async (name) => {
+  addBranch: async (name, value) => {
     set({ loading: true, error: null });
     try {
       const response = await axios.post(
         `${API_BASE_URL}/branch/branches`,
-        { name }
+        { name, value }
       );
       set((state) => ({
-        branches: [...state.branches, response.data],
+        branches: [...state.branches, response.data.branch],
         loading: false,
       }));
     } catch (error) {
@@ -54,12 +54,12 @@ const useBranchStore = create((set) => ({
   },
 
   // Update a branch
-  updateBranch: async (id, name) => {
+  updateBranch: async (id, name, value) => {
     set({ loading: true, error: null }); 
     try {
       const response = await axios.put(
         `${API_BASE_URL}/branch/branches/${id}`,
-        { name }
+        { name, value }
       );
       set((state) => ({
         branches: state.branches.map((branch) =>
@@ -67,7 +67,6 @@ const useBranchStore = create((set) => ({
         ),
         loading: false,
       }));
-      fetchBranches();
     } catch (error) {
       set({ error: error.message, loading: false });
     }

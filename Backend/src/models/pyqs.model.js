@@ -3,17 +3,17 @@ import mongoose, { Schema } from "mongoose";
 const pyqSchema = new Schema({
     branch: {
         type: String,
-        enum: [
-            'Computer Engineering',
-            'Electronics and Telecommunication',
-            'Electronics and Computer Science',
-            'Information Technology',
-            'Mechanical Engineering',
-            'AIDS',
-            'AIML',
-            'CS IOT',
-            'First Year Engineering'
-        ],
+        // enum: [
+        //     'Computer Engineering',
+        //     'Electronics and Telecommunication',
+        //     'Electronics and Computer Science',
+        //     'Information Technology',
+        //     'Mechanical Engineering',
+        //     'AIDS',
+        //     'AIML',
+        //     'CS IOT',
+        //     'First Year Engineering'
+        // ],
         required: true
     },
     semester: {

@@ -224,21 +224,20 @@ export default function EResources() {
   };
 
   // Add, edit, and delete branches
-  const handleAddBranch = async (name) => {
+  const handleAddBranch = async (name, value) => {
     try {
-      await addBranch(name);
+      await addBranch(name, value);
       toast.success("Branch added successfully!");
     } catch (err) {
       toast.error("Failed to add branch.");
     }
   };
 
-  const handleEditBranch = async (id, newName) => {
+  const handleEditBranch = async (id, newName, newValue) => {
     try {
-      await updateBranch(id, newName);
+      await updateBranch(id, newName, newValue);
       toast.success("Branch updated successfully!");
     } catch (err) {
-      console.error(err);
       toast.error("Failed to update branch.");
     }
   };
@@ -248,20 +247,14 @@ export default function EResources() {
       toast.error("Please select a branch to delete.");
       return;
     }
-
     try {
-      // Find the branch object from the branches array
-      const branchToDelete = branches.find((b) => b.name === branch);
+      const branchToDelete = branches.find((b) => b.value === branch);
       if (!branchToDelete) {
         toast.error("Selected branch not found.");
         return;
       }
-
-      // Call the deleteBranch function from the store
       await deleteBranch(branchToDelete._id);
       toast.success("Branch deleted successfully!");
-
-      // Clear the selected branch after deletion
       setBranch("");
     } catch (err) {
       toast.error("Failed to delete branch.");
@@ -371,7 +364,7 @@ export default function EResources() {
                 // <option key={branchOption.value} value={branchOption.value}>
                 //   {branchOption.text}
                 // </option>
-                <option key={branchOption._id} value={branchOption.name}>
+                <option key={branchOption._id} value={branchOption.value}>
                   {branchOption.name}
                 </option>
               ))}
@@ -380,7 +373,11 @@ export default function EResources() {
               <div className="flex gap-2 mt-2">
                 <button
                   type="button"
-                  onClick={() => handleAddBranch(prompt("Enter branch name:"))}
+                  onClick={() => {
+                    const name = prompt("Enter branch name:");
+                    const value = prompt("Enter branch value:");
+                    if (name && value) handleAddBranch(name, value);
+                  }}
                   className="px-2 py-1 text-white bg-green-500 rounded-md"
                 >
                   Add Branch
@@ -389,10 +386,11 @@ export default function EResources() {
                   type="button"
                   onClick={() => {
                     const newName = prompt("Enter new branch name:");
-                    if (newName && branch) {
-                      const branchToEdit = branches.find((b) => b.name === branch);
+                    const newValue = prompt("Enter new branch value:");
+                    if ((newName || newValue) && branch) {
+                      const branchToEdit = branches.find((b) => b.value === branch);
                       if (branchToEdit) {
-                        handleEditBranch(branchToEdit._id, newName);
+                        handleEditBranch(branchToEdit._id, newName, newValue);
                       }
                     }
                     else {

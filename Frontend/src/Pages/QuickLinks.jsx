@@ -10,8 +10,7 @@ import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from 'react-helmet';
 import axios from "axios";
 
-// const branchOptions = [
-//   { value: "choose", text: "Choose Branch" },
+// const branches = [
 //   { value: "Computer Engineering", text: "Computer Engineering" },
 //   {
 //     value: "Electronics and Telecommunication",
@@ -487,15 +486,15 @@ function Quicklinks() {
     const selectedBranch = e.target.value;
     // console.log("Branch changed to:", selectedBranch); // Debug
     setBranch(e.target.value);
-    setSemester("choose");
-    setSubject("choose");
+    // setSemester("choose");
+    // setSubject("choose");
   };
 
   const handleSemesterChange = (e) => {
     const selectedSemester = e.target.value;
     // console.log("Semester changed to:", selectedSemester); // Debug
     setSemester(e.target.value);
-    setSubject("choose");
+    // setSubject("choose");
   };
 
   // const handleSubjectChange = (e) => {
@@ -604,44 +603,38 @@ function Quicklinks() {
   };
 
     // Add, edit, and delete branches
-    const handleAddBranch = async (name) => {
+    const handleAddBranch = async (name, value) => {
       try {
-        await addBranch(name);
+        await addBranch(name, value);
         toast.success("Branch added successfully!");
       } catch (err) {
         toast.error("Failed to add branch.");
       }
     };
-  
-    const handleEditBranch = async (id, newName) => {
+
+    const handleEditBranch = async (id, newName, newValue) => {
       try {
-        await updateBranch(id, newName);
+        await updateBranch(id, newName, newValue);
         toast.success("Branch updated successfully!");
       } catch (err) {
-        console.error(err);
         toast.error("Failed to update branch.");
       }
     };
-  
+
     const handleDeleteBranch = async () => {
       if (!branch) {
         toast.error("Please select a branch to delete.");
         return;
       }
-  
       try {
         // Find the branch object from the branches array
-        const branchToDelete = branches.find((b) => b.name === branch);
+        const branchToDelete = branches.find((b) => b.value === branch);
         if (!branchToDelete) {
           toast.error("Selected branch not found.");
           return;
         }
-  
-        // Call the deleteBranch function from the store
         await deleteBranch(branchToDelete._id);
         toast.success("Branch deleted successfully!");
-  
-        // Clear the selected branch after deletion
         setBranch("");
       } catch (err) {
         toast.error("Failed to delete branch.");
@@ -710,7 +703,7 @@ function Quicklinks() {
             >
               <option value="choose">Choose Branch</option>
               {branches.map((branchOption) => (
-                <option key={branchOption._id} value={branchOption.name}>
+                <option key={branchOption._id} value={branchOption.value}>
                   {branchOption.name}
                 </option>
               ))}
@@ -719,7 +712,11 @@ function Quicklinks() {
               <div className="flex gap-2 mt-2">
                 <button
                   type="button"
-                  onClick={() => handleAddBranch(prompt("Enter branch name:"))}
+                  onClick={() => {
+                    const name = prompt("Enter branch name:");
+                    const value = prompt("Enter branch value (identifier):");
+                    if (name && value) handleAddBranch(name, value);
+                  }}
                   className="px-2 py-1 text-white bg-green-500 rounded-md"
                 >
                   Add Branch
@@ -727,11 +724,12 @@ function Quicklinks() {
                 <button
                   type="button"
                   onClick={() => {
-                    const newName = prompt("Enter new branch name:");
-                    if (newName && branch) {
-                      const branchToEdit = branches.find((b) => b.name === branch);
+                    const newName = prompt("Enter new branch name (leave empty to keep current):");
+                    const newValue = prompt("Enter new branch value (leave empty to keep current):");
+                    if ((newName || newValue) && branch) {
+                      const branchToEdit = branches.find((b) => b.value === branch);
                       if (branchToEdit) {
-                        handleEditBranch(branchToEdit._id, newName);
+                        handleEditBranch(branchToEdit._id, newName, newValue);
                       }
                     }
                     else {
