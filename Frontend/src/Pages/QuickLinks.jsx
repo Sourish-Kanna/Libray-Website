@@ -483,15 +483,14 @@ function Quicklinks() {
   }, [fetchBranches]);
 
   const handleBranchChange = (e) => {
-    const selectedBranch = e.target.value;
     // console.log("Branch changed to:", selectedBranch); // Debug
     setBranch(e.target.value);
+    console.log("Branch set to:", e.target.value); // Debug
     // setSemester("choose");
     // setSubject("choose");
   };
 
   const handleSemesterChange = (e) => {
-    const selectedSemester = e.target.value;
     // console.log("Semester changed to:", selectedSemester); // Debug
     setSemester(e.target.value);
     // setSubject("choose");
@@ -505,13 +504,13 @@ function Quicklinks() {
 
   const handleYearChange = (e) => {
     const selectedYear = e.target.value;
-    console.log("Year changed to:", selectedYear); // Debug
+    // console.log("Year changed to:", selectedYear); // Debug
     setYear(e.target.value);
   };
 
   const handleMonthChange = (e) => {
     const selectedMonth = e.target.value.toLowerCase(); // Convert to lowercase
-    console.log("Month changed to:", selectedMonth); // Debug
+    // console.log("Month changed to:", selectedMonth); // Debug
     setMonth(selectedMonth); // Set the lowercase value
 };
 
@@ -528,11 +527,12 @@ function Quicklinks() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const pyqData = await fetchPYQ();
+      await fetchPYQ();
       if (pyqData && pyqData._id) {
         await downloadPYQ(pyqData._id);
         toast.success("PYQ downloaded successfully!");
       } else {
+        console.log("PYQ data not found:", pyqData); // Debug log 
         toast.error("PYQ not found!");
       }
     } catch (err) {
@@ -727,13 +727,16 @@ function Quicklinks() {
                     const newName = prompt("Enter new branch name (leave empty to keep current):");
                     const newValue = prompt("Enter new branch value (leave empty to keep current):");
                     if ((newName || newValue) && branch) {
-                      const branchToEdit = branches.find((b) => b.value === branch);
+                      const branchToEdit = branches.find((b) => b.name === branch);
                       if (branchToEdit) {
                         handleEditBranch(branchToEdit._id, newName, newValue);
                       }
+                      else {
+                        alert("Selected branch not found.");
+                      }
                     }
                     else {
-                      alert("Please select a branch to edit.");
+                      alert("Please add a new branch name or value to edit.");
                     }
                   }}
                   className="px-2 py-1 text-white bg-yellow-500 rounded-md"

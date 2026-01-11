@@ -385,16 +385,19 @@ export default function EResources() {
                 <button
                   type="button"
                   onClick={() => {
-                    const newName = prompt("Enter new branch name:");
-                    const newValue = prompt("Enter new branch value:");
+                    const newName = prompt("Enter new branch name (leave empty to keep current):");
+                    const newValue = prompt("Enter new branch value (leave empty to keep current):");
                     if ((newName || newValue) && branch) {
-                      const branchToEdit = branches.find((b) => b.value === branch);
+                      const branchToEdit = branches.find((b) => b.name === branch);
                       if (branchToEdit) {
                         handleEditBranch(branchToEdit._id, newName, newValue);
                       }
+                      else {
+                        alert("Selected branch not found.");
+                      }
                     }
                     else {
-                      alert("Please select a branch to edit.");
+                      alert("Please add a new branch name or value to edit.");
                     }
                   }}
                   className="px-2 py-1 text-white bg-yellow-500 rounded-md"
