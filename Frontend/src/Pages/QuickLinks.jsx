@@ -483,16 +483,15 @@ function Quicklinks() {
   }, [fetchBranches]);
 
   const handleBranchChange = (e) => {
-    // console.log("Branch changed to:", selectedBranch); // Debug
     setBranch(e.target.value);
-    console.log("Branch set to:", e.target.value); // Debug
+    // console.log("Branch set to:", e.target.value); // Debug
     // setSemester("choose");
     // setSubject("choose");
   };
 
   const handleSemesterChange = (e) => {
-    // console.log("Semester changed to:", selectedSemester); // Debug
     setSemester(e.target.value);
+    // console.log("Semester changed to:", e.target.value); // Debug
     // setSubject("choose");
   };
 
@@ -503,15 +502,14 @@ function Quicklinks() {
   // };
 
   const handleYearChange = (e) => {
-    const selectedYear = e.target.value;
-    // console.log("Year changed to:", selectedYear); // Debug
     setYear(e.target.value);
+    // console.log("Year changed to:", e.target.value); // Debug
   };
 
   const handleMonthChange = (e) => {
-    const selectedMonth = e.target.value.toLowerCase(); // Convert to lowercase
-    // console.log("Month changed to:", selectedMonth); // Debug
-    setMonth(selectedMonth); // Set the lowercase value
+    // const selectedMonth = e.target.value.toLowerCase(); // Convert to lowercase
+    // console.log("Month changed to:", e.target.value.toLowerCase()); // Debug
+    setMonth(e.target.value.toLowerCase()); // Set the lowercase value
 };
 
   // const availableSubjects = subjectOptions[branch]?.[semester] || [];
@@ -527,16 +525,18 @@ function Quicklinks() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await fetchPYQ();
+      const pyqData = await fetchPYQ();
+      // console.log("PYQ Data on Submit:", pyqData); // Debug log
       if (pyqData && pyqData._id) {
         await downloadPYQ(pyqData._id);
         toast.success("PYQ downloaded successfully!");
       } else {
-        console.log("PYQ data not found:", pyqData); // Debug log 
+        // console.log("PYQ data not found:", pyqData); // Debug log 
         toast.error("PYQ not found!");
       }
     } catch (err) {
-      toast.error("Failed to download PYQ. Please try again.");
+      console.error(err); // Debug log
+      toast.error("Failed to download PYQ. Please try again later.");
     }
   };
 
