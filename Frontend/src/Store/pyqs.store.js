@@ -115,25 +115,49 @@ const usePyqsStore = create((set) => ({
   },
 
   // Download a PYQ
-  downloadPYQ: async (pyqId) => {
-    const { pyq } = usePyqsStore.getState();
-    if (!pyq) {
-      set({ error: "No PYQ available to download." });
+  downloadPYQ: async (pyqId, metadata = null) => {
+    // 1. Determine where to get the file details from
+    let branch, semester, year, month;
+
+    if (metadata) {
+      // Admin Mode: Use the details passed from the row
+      ({ branch, semester, year, month } = metadata);
+    } else {
+      // Student Mode: Use the current selected dropdown state
+      ({ branch, semester, year, month } = usePyqsStore.getState());
+    }
+
+    // 2. Validate
+    if (!pyqId) {
+      set({ error: "No PYQ ID provided for download." });
       return;
     }
 
     try {
-      const { branch, semester, year, month } = usePyqsStore.getState();
+      // 3. Construct Filename and Download
       const filename = `PYQ_${branch}_${semester}_${year}_${month}.pdf`;
       window.location.href = `${API_BASE_URL}/pyqs/${pyqId}/download?filename=${filename}`;
     } catch (err) {
       set({
-        error:
-          err.response?.data?.message ||
-          "Failed to download PYQ. Please try again.",
+        error: "Failed to download PYQ.",
       });
     }
   },
+
+  fetchAllPYQs: async () => {
+    set({ loading: true, error: null });
+    try {
+      // Calling GET /pyqs without parameters usually returns all docs
+      const response = await axios.get(`${API_BASE_URL}/pyqs`);
+      set({ pyq: response.data.data, loading: false });
+    } catch (err) {
+      set({
+        error: err.response?.data?.message || "Failed to fetch all PYQs.",
+        loading: false,
+      });
+    }
+  },
+
 }));
 
 export default usePyqsStore;

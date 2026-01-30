@@ -42,27 +42,41 @@ const useSyllabusStore = create((set) => ({
     },
 
     // Download syllabus
-    downloadSyllabus: async () => {
-        const { syllabus } = useSyllabusStore.getState();
-        if (!syllabus) {
-            set({ error: "No syllabus available to download." });
+    downloadSyllabus: async (inputSyllabusId = null, metadata = null) => {
+        let syllabusId = inputSyllabusId;
+        let branch, semester;
+
+        // 1. Determine details based on mode (Admin vs Student)
+        if (metadata && syllabusId) {
+            // Admin Mode: Use passed arguments
+            ({ branch, semester } = metadata);
+        } else {
+            // Student Mode: Use store state
+            const state = useSyllabusStore.getState();
+            // If ID wasn't passed, try to get it from the currently fetched syllabus
+            if (!syllabusId) syllabusId = state.syllabus?._id;
+            ({ branch, semester } = state);
+        }
+
+        // 2. Validate
+        if (!syllabusId) {
+            set({ error: "No Syllabus available to download." });
             return;
         }
 
         try {
-            // Direct download from the backend route
-            const { branch, semester } = useSyllabusStore.getState();
+            // 3. Construct Filename
             const semesterMap = {
                 "SEM 2": `${branch}_SEM_1_2_syllabus.pdf`,
                 "SEM 3": `${branch}_SEM_3_8_syllabus.pdf`,
             };
             const filename = semesterMap[semester] || `${branch}_${semester}_syllabus.pdf`;
-            window.location.href = `${API_BASE_URL}/syllabus/${syllabus._id}/download?filename=${filename}`;
+
+            // 4. Trigger Download
+            window.location.href = `${API_BASE_URL}/syllabus/${syllabusId}/download?filename=${filename}`;
         } catch (err) {
             set({
-                error:
-                    err.response?.data?.message ||
-                    "Failed to download syllabus. Please try again.",
+                error: "Failed to download syllabus.",
             });
         }
     },
@@ -129,6 +143,20 @@ const useSyllabusStore = create((set) => ({
             });
         }
     },
+
+    fetchAllSyllabus: async () => {
+        set({ loading: true, error: null });
+        try {
+            const response = await axios.get(`${API_BASE_URL}/syllabus`);
+            set({ syllabus: response.data.data, loading: false });
+        } catch (err) {
+            set({
+                error: err.response?.data?.message || "Failed to fetch all Syllabuses.",
+                loading: false,
+            });
+        }
+    },
+
 }));
 
 export default useSyllabusStore;

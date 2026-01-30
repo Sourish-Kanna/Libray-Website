@@ -74,16 +74,18 @@ const createSyllabus = asyncHandler(async (req, res) => {
 const getSyllabus = asyncHandler(async (req, res) => {
     const { branch, semester } = req.query;
 
-    if (!branch || !semester) {
-        throw new ApiError(400, "Please provide branch and semester");
+    const filter = {};
+
+    if (branch) filter.branch = branch;
+    if (semester) filter.semester = semester;
+
+    const syllabus = await Syllabus.find(filter);
+
+    if (!syllabus || syllabus.length === 0) {
+        return res.status(200).json(new ApiResponse(200, [], "No Syllabuses found"));
     }
 
-    const syllabus = await Syllabus.findOne({ branch: { $eq: branch }, semester: { $eq: semester } });
-    if (!syllabus) {
-        throw new ApiError(404, "Syllabus not found");
-    }
-
-    res.status(200).json(new ApiResponse(200,syllabus,"Syllabus fetched successfully !!"));
+    res.status(200).json(new ApiResponse(200, syllabus, "Syllabus fetched successfully !!"));
 });
 
 const downloadSyllabus = asyncHandler(async (req, res) => {
@@ -113,7 +115,6 @@ const downloadSyllabus = asyncHandler(async (req, res) => {
 
     fileStream.data.pipe(res);
 });
-
 
 const deleteSyllabus = asyncHandler(async (req, res) => {
     const { syllabusId } = req.params;

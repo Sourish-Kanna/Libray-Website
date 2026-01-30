@@ -10,7 +10,7 @@ import useSemesterStore from "../Store/semester.store.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from 'react-helmet';
-import axios from "axios";
+// import axios from "axios";
 
 const exams = [
   {
@@ -498,6 +498,11 @@ export default function EResources() {
                 >
                   Delete File
                 </button>
+                <Link to="/admin/db-viewer">
+                  <button className="px-4 py-2 ml-4 font-bold text-white bg-green-600 rounded-lg hover:bg-green-700 active:scale-95">
+                    View Database Entries
+                  </button>
+                </Link>
               </div>
             </>
           )}

@@ -49,7 +49,6 @@ const createPYQ = asyncHandler(async (req, res) => {
     res.status(201).json(new ApiResponse(201, pyq, "PYQ created successfully"));
 });
 
-
 const updatePYQ = asyncHandler(async (req, res) => {
     const { pyqId } = req.params;
     const { branch, semester, year, month } = req.body;
@@ -85,34 +84,29 @@ const updatePYQ = asyncHandler(async (req, res) => {
     res.status(200).json(new ApiResponse(200, pyq, "PYQ updated successfully"));
 });
 
-// controllers/pyqs.controller.js
-
 const getPYQ = asyncHandler(async (req, res) => {
     const { branch, semester, year, month } = req.query;
 
-    if (!branch || !semester || !year || !month) {
-        throw new ApiError(400, "Please provide branch, semester, subject, year, and month");
+    // 1. Create a dynamic filter
+    const filter = {};
+
+    // 2. Only add conditions if the user actually sent them
+    if (branch) filter.branch = branch;
+    if (semester) filter.semester = semester;
+    if (year) filter.year = year;
+    if (month) filter.month = month.toLowerCase(); // Ensure lowercase matching if needed
+
+    // 3. Find with the filter (if filter is empty {}, it returns ALL documents)
+    const pyq = await PYQ.find(filter);
+
+    if (!pyq || pyq.length === 0) {
+        // Optional: You can choose to return an empty list instead of an error 
+        // to prevent the frontend from crashing if DB is empty.
+        return res.status(200).json(new ApiResponse(200, [], "No PYQs found"));
     }
 
-    // Convert 'subject' and 'month' to lowercase to match the stored format
-    // const normalizedSubject = subject.toLowerCase();
-    const normalizedMonth = month.toLowerCase();
-
-    const pyq = await PYQ.findOne({ 
-        branch, 
-        semester, 
-        // subject: normalizedSubject, 
-        year, 
-        month: normalizedMonth 
-    });
-
-    if (!pyq) {
-        throw new ApiError(404, "PYQ not found");
-    }
-
-    res.status(200).json(new ApiResponse(200, pyq, "PYQ fetched successfully"));
+    res.status(200).json(new ApiResponse(200, pyq, "PYQs fetched successfully"));
 });
-
 
 const downloadPYQ = asyncHandler(async (req, res) => {
     const { pyqId } = req.params;

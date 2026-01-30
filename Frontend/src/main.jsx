@@ -11,8 +11,10 @@ import Others from './Pages/Others'
 import Services from './Pages/QuickLinks'
 import DonateBooks from './Pages/Books-Donate'
 import SuggestBooks from './Pages/Books-Suggest'
-import RegistrationPage from './RegistrationPage'
+// import RegistrationPage from './RegistrationPage'
 import LoginPage from './LoginPage'
+import DatabaseViewer from './Pages/DatabaseViewer.jsx'
+import ProtectedRoute from './ProtectedRoute.jsx';
 
   const router = createBrowserRouter(
     createRoutesFromElements(
@@ -30,6 +32,14 @@ import LoginPage from './LoginPage'
       </Route>
       {/* <Route path='register' element={<RegistrationPage/>} /> */}
       <Route path='login' element={<LoginPage/>} />
+        <Route
+          path='admin/db-viewer'
+          element={
+            <ProtectedRoute>
+              <DatabaseViewer />
+            </ProtectedRoute>
+          }
+        />
       
     </>
     )

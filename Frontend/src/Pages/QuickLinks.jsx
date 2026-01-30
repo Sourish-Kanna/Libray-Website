@@ -8,7 +8,8 @@ import useBranchStore from "../Store/branch.store";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from 'react-helmet';
-import axios from "axios";
+import { Link } from 'react-router-dom';
+// import axios from "axios";
 
 // const branches = [
 //   { value: "Computer Engineering", text: "Computer Engineering" },
@@ -890,6 +891,11 @@ function Quicklinks() {
               >
                 Delete
               </button>
+              <Link to="/admin/db-viewer">
+                <button className="px-4 py-2 ml-4 font-bold text-white bg-green-600 rounded-lg hover:bg-green-700 active:scale-95">
+                  View Database Entries
+                </button>
+              </Link>
             </div>
           )}
         </form>
