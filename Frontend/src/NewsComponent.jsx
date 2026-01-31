@@ -3,20 +3,34 @@ import useNewsStore from './Store/useNewsStore.js';
 import useAuthStore from './Store/userAuth.store.js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import './css/HomePage.css';
 
 const NewsComponent = () => {
     const [newNewsTitle, setNewNewsTitle] = useState('');
     const { isAuthenticated } = useAuthStore();
     const { newsItems, addNews, deleteNews, fetchNews } = useNewsStore();
 
-    // Fetch news items on component mount
     useEffect(() => {
         fetchNews();
     }, [fetchNews]);
 
+    const renderContent = (text) => {
+        const urlRegex = /(https?:\/\/[^\s]+)/g;
+        return text.split(urlRegex).map((part, index) => {
+            if (part.match(urlRegex)) {
+                return (
+                    <a key={index} href={part} target="_blank" rel="noopener noreferrer" className="font-bold text-blue-700 underline hover:text-blue-900" onClick={(e) => e.stopPropagation()}>
+                        {part}
+                    </a>
+                );
+            }
+            return part;
+        });
+    };
+
     const handleAddNews = async () => {
         if (newNewsTitle.trim()) {
-            if (newNewsTitle.length < 100) {
+            if (newNewsTitle.length < 500) {
                 try {
                     await addNews(newNewsTitle.trim());
                     setNewNewsTitle('');
@@ -39,7 +53,7 @@ const NewsComponent = () => {
                     });
                 }
             } else {
-                toast.error('News title must be less than 100 characters.', {
+                toast.error('News title must be less than 500 characters.', {
                     position: 'top-right',
                     autoClose: 3000,
                     hideProgressBar: false,
@@ -53,7 +67,7 @@ const NewsComponent = () => {
 
     const handleDeleteNews = async (id) => {
         try {
-        await deleteNews(id);
+            await deleteNews(id);
         toast.success('News deleted successfully!', {
             position: 'top-right',
             autoClose: 3000,
@@ -75,47 +89,74 @@ const NewsComponent = () => {
     };
 
     return (
-        <div className='relative flex flex-nowrap bg-yellow-100 text-base sm:text-lg md:text-xl'>
-            {/* Toast Container */}
+        // 🔴 CHANGED LINE BELOW: Removed 'overflow-hidden' and added 'z-40'
+        <div className='relative z-5 flex items-center w-full h-16 text-lg bg-yellow-100 shadow-md sm:text-xl'>
             <ToastContainer />
 
-            <div className="relative w-full flex flex-nowrap">
-                <p className="absolute left-0 top-1/2 transform -translate-y-1/2 text-lg sm:text-xl md:text-2xl font-bold text-red-600 bg-yellow-100 p-2 z-10">
-                    News
-                </p>
-                <div className="flex flex-nowrap overflow-hidden justify-center w-full p-2 bg-news-back whitespace-nowrap">
-                    {newsItems.map((newsItem, index) => (
-                        <div key={newsItem._id} className="bg-news text-sm sm:text-base p-2 inline-block">
-                            <p>{newsItem.title}</p>
+            {/* --- Fixed Label on the Left --- */}
+            <div className="absolute left-0 z-20 flex items-center h-full px-6 font-bold text-white bg-red-600 shadow-lg">
+                NEWS
+            </div>
+
+            {/* --- Scrolling Content --- */}
+            {/* Kept overflow hidden HERE so text stays neat */}
+            <div className="w-full news-ticker-container pl-28">
+                <div className="items-center py-2 news-ticker-content">
+
+                    {/* ORIGINAL LIST */}
+                    {newsItems.map((newsItem) => (
+                        <div key={newsItem._id} className="flex items-center gap-2 px-4 border-r-2 border-red-200 shrink-0">
+                            <span className="font-medium text-gray-800">
+                                {renderContent(newsItem.title)}
+                            </span>
                             {isAuthenticated && (
                                 <button
                                     onClick={() => handleDeleteNews(newsItem._id)}
-                                    className="ml-2 text-red-600 hover:text-red-800"
+                                    className="px-2 py-0.5 ml-2 text-xs text-white bg-red-500 rounded hover:bg-red-700"
                                 >
-                                    Delete
+                                    ✕
                                 </button>
                             )}
                         </div>
                     ))}
+
+                    {/* DUPLICATE LIST (For Infinite Loop) */}
+                    {newsItems.map((newsItem) => (
+                        <div key={`dup-${newsItem._id}`} className="flex items-center gap-2 px-4 border-r-2 border-red-200 shrink-0">
+                            <span className="font-medium text-gray-800">
+                                {renderContent(newsItem.title)}
+                            </span>
+                        </div>
+                    ))}
+
+                    {newsItems.length === 0 && (
+                        <div className="px-4 text-gray-500">No recent updates...</div>
+                    )}
                 </div>
             </div>
+
+            {/* --- Admin Input Section --- */}
+            {/* Now this will be visible because parent overflow is not hidden */}
             {isAuthenticated && (
-                <div className="absolute top-full left-0 right-0 mt-2 p-2 bg-white shadow-md w-fit max-w-md mx-auto md:max-w-lg lg:max-w-xl rounded-xl">
-                    <div className="flex flex-row items-center gap-6">
+                <div className="absolute left-0 right-0 z-5 w-full p-2 mx-auto transition-opacity bg-white border border-gray-200 rounded-lg shadow-xl top-16 md:w-1/2 opacity-90 hover:opacity-100">
+                    <div className="flex gap-2">
                         <input
                             type="text"
                             value={newNewsTitle}
-                            onChange={(e) => {
-                                setNewNewsTitle(e.target.value);
-                            }} 
-                            placeholder="Enter news title"
-                            className="w-full border rounded-md p-2 text-sm sm:text-base"
+                            onChange={(e) => setNewNewsTitle(e.target.value)}
+                            placeholder="Type news or paste a link (https://...)"
+                            className="flex-1 p-2 text-base border border-gray-300 rounded focus:outline-none focus:border-blue-500"
                         />
-                        <button onClick={handleAddNews} 
-                        className="bg-green-600 text-white p-2 rounded-md hover:bg-green-700 w-full md:w-auto text-sm sm:text-base">
-                            Add News
+                        <button
+                            onClick={handleAddNews}
+                            className="px-4 py-2 text-white bg-green-600 rounded hover:bg-green-700"
+                        >
+                            Add
                         </button>
                     </div>
+                    <p className="mt-1 text-xs text-gray-500">
+                        *URLs starting with http:// or https:// will automatically become clickable links.
+                    </p>
                 </div>
             )}
         </div>

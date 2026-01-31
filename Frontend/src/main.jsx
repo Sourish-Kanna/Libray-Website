@@ -29,17 +29,10 @@ import ProtectedRoute from './ProtectedRoute.jsx';
         <Route path='quicklinks' element={<Services/>}/>
         <Route path='donate-books' element={<DonateBooks/>}/>
         <Route path='suggest-books' element={<SuggestBooks/>}/>
+        <Route path='admin/db-viewer' element={ <ProtectedRoute> <DatabaseViewer /> </ProtectedRoute> }/>
       </Route>
       {/* <Route path='register' element={<RegistrationPage/>} /> */}
       <Route path='login' element={<LoginPage/>} />
-        <Route
-          path='admin/db-viewer'
-          element={
-            <ProtectedRoute>
-              <DatabaseViewer />
-            </ProtectedRoute>
-          }
-        />
       
     </>
     )

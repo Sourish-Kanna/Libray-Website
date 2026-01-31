@@ -144,3 +144,34 @@
     background: linear-gradient(rgba(108, 150, 245, 0.6),
      rgba(108, 150, 245, 0.6)),url('../assets/HomePage/library-view.png');
 }
+
+/* --- News Ticker Animation --- */
+.news-ticker-container {
+  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  overflow: hidden;
+  width: 100%;
+}
+
+.news-ticker-content {
+  display: flex;
+  gap: 3rem;
+  /* Space between news items */
+  width: max-content;
+  /* Move -50% because we will duplicate the items to create the loop */
+  animation: ticker-scroll 40s linear infinite;
+}
+
+.news-ticker-content:hover {
+  animation-play-state: paused;
+  /* Pause when reading/hovering */
+}
+
+@keyframes ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}

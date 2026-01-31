@@ -1,8 +1,17 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowLeft, faFilePdf, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+
+// Imports from your project structure
 import usePyqsStore from '../Store/pyqs.store.js';
 import useSyllabusStore from '../Store/syllabus.store.js';
+import '../css/admin.css';
 
 const DatabaseViewer = () => {
+    const navigate = useNavigate();
+
     const {
         pyq: pyqs,
         fetchAllPYQs,
@@ -24,7 +33,11 @@ const DatabaseViewer = () => {
         fetchAllSyllabus();
     }, [fetchAllPYQs, fetchAllSyllabus]);
 
-    // --- Scroll Functions ---
+    // --- Actions ---
+    const handleBack = () => {
+        navigate(-1);
+    };
+
     const scrollToSyllabus = () => {
         const section = document.getElementById('syllabus-section');
         if (section) section.scrollIntoView({ behavior: 'smooth' });
@@ -34,144 +47,181 @@ const DatabaseViewer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    if (pyqLoading || sylLoading) return <div style={styles.center}>Loading Data...</div>;
-    if (pyqError || sylError) return <div style={styles.error}>{pyqError || sylError}</div>;
-
+    // Safe Data Handling
     const pyqList = Array.isArray(pyqs) ? pyqs : [];
     const sylList = Array.isArray(syllabuses) ? syllabuses : [];
 
+    // Loading / Error States
+    if (pyqLoading || sylLoading) {
+        return (
+            <div className="flex items-center justify-center h-screen text-xl text-blue-700">
+                <div className="mt-10">Loading Database Entries...</div>
+            </div>
+        );
+    }
+
+    if (pyqError || sylError) {
+        return (
+            <div className="flex items-center justify-center h-screen text-xl text-red-600">
+                <div className="mt-10">Error: {pyqError || sylError}</div>
+            </div>
+        );
+    }
+
     return (
-        <div style={styles.container}>
-            <h1 style={styles.header}>📚 Database Admin Viewer</h1>
+        <div className="w-full h-full overflow-x-hidden">
+            <Helmet>
+                <title>Database Viewer | Library | SIESGST</title>
+            </Helmet>
 
-            {/* --- Navigation Button --- */}
-            <div style={{ textAlign: 'center', marginBottom: '20px' }}>
-                <button onClick={scrollToSyllabus} style={styles.navBtn}>
-                    ⬇ Jump to Syllabuses
-                </button>
-            </div>
+            {/* --- Main Content Container --- */}
+            <div className="mx-4 sm:mx-16 lg:mx-40 min-h-screen">
 
-            {/* --- PYQ Table --- */}
-            <h2 style={styles.subHeader}>PYQs ({pyqList.length})</h2>
-            <div style={styles.tableWrapper}>
-                <table style={styles.table}>
-                    <thead>
-                        <tr>
-                            <th style={styles.th}>Branch</th>
-                            <th style={styles.th}>Sem</th>
-                            <th style={styles.th}>Month</th>
-                            <th style={styles.th}>Year</th>
-                            <th style={styles.th}>Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {pyqList.map((item) => (
-                            <tr key={item._id} style={styles.tr}>
-                                <td style={styles.td}>{item.branch}</td>
-                                <td style={styles.td}>{item.semester}</td>
-                                <td style={styles.td}>{item.month}</td>
-                                <td style={styles.td}>{item.year}</td>
-                                <td style={styles.td}>
-                                    <button
-                                        onClick={() => downloadPYQ(item._id, item)}
-                                        style={styles.btn}
+                {/* --- EXACT HEADER STYLE FROM PYQ PAGE --- */}
+                <div className="flex items-center justify-center w-full h-auto py-8">
+                    <div className="flex flex-col items-center">
+                        {/* Back Button (Added nicely above title)
+                        <button
+                            onClick={handleBack}
+                            className="self-start mb-4 flex items-center gap-2 px-3 py-1 text-sm font-semibold text-white transition-colors bg-gray-600 rounded-md hover:bg-gray-700"
+                        >
+                            <FontAwesomeIcon icon={faArrowLeft} /> Back
+                        </button> */}
+
+                        <div className="flex justify-center text-4xl font-bold lg:text-4xl text-center">
+                            <p>Database Viewer</p>
+                        </div>
+                        <div className="w-24 mx-auto mt-2 mb-6 border-b-4 border-blue-700 lg:w-44" />
+
+                        {/* Jump to Syllabus Button */}
+                        <button
+                            onClick={scrollToSyllabus}
+                            className="px-6 py-2 text-blue-700 transition-colors bg-white border-2 border-blue-700 rounded-full hover:bg-blue-50"
+                        >
+                            ⬇ Jump to Syllabuses
+                        </button>
+                    </div>
+                </div>
+
+
+                {/* --- PYQ TABLE SECTION --- */}
+                <div className="mb-12">
+                    <h2 className="mb-4 text-2xl font-bold text-gray-700 border-l-4 border-blue-500 pl-3">
+                        Question Papers ({pyqList.length})
+                    </h2>
+
+                    <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+                        <table className="w-full text-left border-collapse">
+                            <thead>
+                                <tr className="text-white bg-blue-600">
+                                    <th className="p-4 font-semibold border-b">Branch</th>
+                                    <th className="p-4 font-semibold border-b">Sem</th>
+                                    <th className="p-4 font-semibold border-b">Month</th>
+                                    <th className="p-4 font-semibold border-b">Year</th>
+                                    <th className="p-4 font-semibold border-b text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-gray-700">
+                                {pyqList.map((item, index) => (
+                                    <tr
+                                        key={item._id}
+                                        className={`hover:bg-blue-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
                                     >
-                                        ⬇ Download PDF
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                                        <td className="p-4 border-b border-gray-100">{item.branch}</td>
+                                        <td className="p-4 border-b border-gray-100">{item.semester}</td>
+                                        <td className="p-4 border-b border-gray-100 capitalize">{item.month}</td>
+                                        <td className="p-4 border-b border-gray-100">{item.year}</td>
+                                        <td className="p-4 text-center border-b border-gray-100">
+                                            <button
+                                                onClick={() => downloadPYQ(item._id, item)}
+                                                className="px-3 py-1 text-sm text-white transition-opacity bg-green-500 rounded hover:opacity-80"
+                                                title="Download PDF"
+                                            >
+                                                <FontAwesomeIcon icon={faFilePdf} /> Download
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                                {pyqList.length === 0 && (
+                                    <tr>
+                                        <td colSpan="5" className="p-8 text-center text-gray-500">
+                                            No Question Papers found in database.
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-            {/* --- Syllabus Table --- */}
-            {/* ✅ Added ID for scrolling */}
-            <h2 id="syllabus-section" style={styles.subHeader}>
-                Syllabuses ({sylList.length})
-            </h2>
+                {/* --- Scroll to Top --- */}
+                <div className="flex justify-center mt-10 mb-10">
+                    <button
+                        onClick={scrollToTop}
+                        className="flex items-center gap-2 px-6 py-2 text-gray-600 transition-colors border border-gray-300 rounded-full hover:bg-gray-100"
+                    >
+                        <FontAwesomeIcon icon={faArrowUp} /> Back to Top
+                    </button>
+                </div>
 
-            <div style={styles.tableWrapper}>
-                <table style={styles.table}>
-                    <thead>
-                        <tr>
-                            <th style={styles.th}>Branch</th>
-                            <th style={styles.th}>Sem</th>
-                            <th style={styles.th}>Download</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {sylList.map((item) => (
-                            <tr key={item._id} style={styles.tr}>
-                                <td style={styles.td}>{item.branch}</td>
-                                <td style={styles.td}>{item.semester}</td>
-                                <td style={styles.td}>
-                                    <button
-                                        onClick={() => downloadSyllabus(item._id, item)}
-                                        style={styles.btn}
+                {/* --- SYLLABUS TABLE SECTION --- */}
+                <div id="syllabus-section" className="mb-12 pt-8">
+                    <h2 className="mb-4 text-2xl font-bold text-gray-700 border-l-4 border-blue-500 pl-3">
+                        Syllabuses ({sylList.length})
+                    </h2>
+
+                    <div className="overflow-x-auto bg-white rounded-lg shadow-md">
+                        <table className="w-full text-left border-collapse">
+                            <thead>
+                                <tr className="text-white bg-blue-600">
+                                    <th className="p-4 font-semibold border-b">Branch</th>
+                                    <th className="p-4 font-semibold border-b">Sem</th>
+                                    <th className="p-4 font-semibold border-b text-center">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody className="text-gray-700">
+                                {sylList.map((item, index) => (
+                                    <tr
+                                        key={item._id}
+                                        className={`hover:bg-blue-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
                                     >
-                                        ⬇ Download PDF
-                                    </button>
-                                </td>
-                            </tr>
-                        ))}
-                    </tbody>
-                </table>
-            </div>
+                                        <td className="p-4 border-b border-gray-100">{item.branch}</td>
+                                        <td className="p-4 border-b border-gray-100">{item.semester}</td>
+                                        <td className="p-4 text-center border-b border-gray-100">
+                                            <button
+                                                onClick={() => downloadSyllabus(item._id, item)}
+                                                className="px-3 py-1 text-sm text-white transition-opacity bg-green-500 rounded hover:opacity-80"
+                                            >
+                                                <FontAwesomeIcon icon={faFilePdf} /> Download
+                                            </button>
+                                        </td>
+                                    </tr>
+                                ))}
+                                {sylList.length === 0 && (
+                                    <tr>
+                                        <td colSpan="3" className="p-8 text-center text-gray-500">
+                                            No Syllabuses found in database.
+                                        </td>
+                                    </tr>
+                                )}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
 
-            {/* --- Scroll to Top Button --- */}
-            <div style={{ textAlign: 'center', marginTop: '40px', marginBottom: '20px' }}>
-                <button onClick={scrollToTop} style={styles.navBtnOutline}>
-                    ⬆ Back to Top
-                </button>
+                {/* --- Scroll to Top --- */}
+                <div className="flex justify-center mt-10 mb-10">
+                    <button
+                        onClick={scrollToTop}
+                        className="flex items-center gap-2 px-6 py-2 text-gray-600 transition-colors border border-gray-300 rounded-full hover:bg-gray-100"
+                    >
+                        <FontAwesomeIcon icon={faArrowUp} /> Back to Top
+                    </button>
+                </div>
+
             </div>
         </div>
     );
-};
-
-const styles = {
-    container: { padding: '20px', maxWidth: '1200px', margin: '0 auto', fontFamily: 'sans-serif' },
-    header: { textAlign: 'center', color: '#2c3e50', marginBottom: '20px' },
-    subHeader: { marginTop: '40px', borderBottom: '2px solid #ddd', paddingBottom: '10px', color: '#34495e' },
-    tableWrapper: { overflowX: 'auto', boxShadow: '0 4px 6px rgba(0,0,0,0.1)', borderRadius: '8px' },
-    table: { width: '100%', borderCollapse: 'collapse', minWidth: '600px' },
-    th: { backgroundColor: '#3498db', color: 'white', padding: '12px', textAlign: 'left' },
-    td: { padding: '12px', borderBottom: '1px solid #eee', color: '#555' },
-    tr: { backgroundColor: 'white' },
-    center: { textAlign: 'center', padding: '50px', fontSize: '1.2rem', color: '#666' },
-    error: { textAlign: 'center', padding: '50px', color: 'red', fontWeight: 'bold' },
-    btn: {
-        backgroundColor: '#2ecc71',
-        color: 'white',
-        border: 'none',
-        padding: '8px 12px',
-        borderRadius: '4px',
-        cursor: 'pointer',
-        fontWeight: 'bold',
-        fontSize: '0.9rem',
-    },
-    // New Styles for Scroll Buttons
-    navBtn: {
-        backgroundColor: '#34495e',
-        color: 'white',
-        border: 'none',
-        padding: '10px 20px',
-        borderRadius: '20px',
-        cursor: 'pointer',
-        fontWeight: 'bold',
-        fontSize: '1rem',
-        boxShadow: '0 2px 5px rgba(0,0,0,0.2)',
-    },
-    navBtnOutline: {
-        backgroundColor: 'transparent',
-        color: '#34495e',
-        border: '2px solid #34495e',
-        padding: '10px 20px',
-        borderRadius: '20px',
-        cursor: 'pointer',
-        fontWeight: 'bold',
-        fontSize: '1rem',
-    }
 };
 
 export default DatabaseViewer;

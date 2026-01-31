@@ -269,7 +269,7 @@ export default function HomePage() {
           <div className="w-24 mx-auto mt-2 mb-5 border-b-4 border-blue-700 sm:w-28 md:w-36 sm:mb-10" />
         </div>
         <div className="w-full slider h-fit">
-          <div className="slide-track">{generateSlides(images)}</div>
+          <div className="slide-track">{generateSlides(images)}{generateSlides(images)}</div>
         </div>
       </div>
 
