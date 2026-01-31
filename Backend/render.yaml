@@ -1,0 +1,38 @@
+# Exported from Render on 2026-01-31T11:47:30Z
+version: "1"
+projects:
+- name: My project
+  environments:
+  - name: Production
+    services:
+    - type: web
+      name: Libray-Website
+      runtime: node
+      repo: https://github.com/GST-Library/Libray-Website
+      plan: free
+      envVars:
+      - key: CLOUDINARY_API_SECRET
+        sync: false
+      - key: CLOUDINARY_API_KEY
+        sync: false
+      - key: CLOUDINARY_CLOUD_NAME
+        sync: false
+      - key: REFRESH_TOKEN_EXPIRY
+        sync: false
+      - key: REFRESH_TOKEN_SECRET
+        sync: false
+      - key: ACCESS_TOKEN_EXPIRY
+        sync: false
+      - key: ACCESS_TOKEN_SECRET
+        sync: false
+      - key: CORS_ORIGIN
+        sync: false
+      - key: MONGODB_URL
+        sync: false
+      - key: PORT
+        sync: false
+      region: oregon
+      buildCommand: npm install
+      startCommand: npm start
+      autoDeployTrigger: commit
+      rootDir: Backend
