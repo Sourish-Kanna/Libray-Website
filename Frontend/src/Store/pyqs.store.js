@@ -25,13 +25,26 @@ const usePyqsStore = create((set) => ({
     const { branch, semester, year, month } = usePyqsStore.getState();
 
     set({ loading: true, error: null });
+    
+    // console.log("Fetching PYQ with:", {
+    //   branch,
+    //   semester,
+    //   year,
+    //   month,
+    // }); // Debug log
+    
+    if (!branch || !semester || !year || !month) {
+      set({ loading: false, error: "Please select all required fields." });
+      return;
+    }
 
     try {
       const response = await axios.get(`${API_BASE_URL}/pyqs`, {
         params: { branch, semester, year, month },
       });
-      set({ pyq: response.data.data, loading: false });
-      return response.data.data;
+      set({ pyq: response.data.data[0], loading: false });
+      // console.log("Fetched PYQ Data:", response.data.data[0]); // Debug log
+      return response.data.data[0];
     } catch (err) {
       set({
         error:

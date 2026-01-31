@@ -524,10 +524,19 @@ function Quicklinks() {
     loading;
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    try {
+      e.preventDefault();
+      
+      // Validate that all required fields are selected
+      if (branch === "choose" || semester === "choose" || year === "choose" || month === "choose") {
+          toast.error("Please select all required fields.");
+          return;
+      }
+  
+      try {
+
       const pyqData = await fetchPYQ();
       // console.log("PYQ Data on Submit:", pyqData); // Debug log
+      // console.log("PYQ ID on Submit:", pyqData ? pyqData._id : "No ID"); // Debug log
       if (pyqData && pyqData._id) {
         await downloadPYQ(pyqData._id);
         toast.success("PYQ downloaded successfully!");
