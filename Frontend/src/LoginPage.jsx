@@ -3,6 +3,7 @@ import { useNavigate, NavLink } from "react-router-dom";
 import useAuthStore from "./Store/userAuth.store";
 import Register from "./RegistrationPage";
 import { Helmet } from "react-helmet";
+import { frontendLogger, generateActionId } from "./utils/logger.js";
 
 const Login = () => {
   const { loginUser, loading, error, success, user ,isAuthenticated} = useAuthStore();
@@ -28,15 +29,65 @@ const Login = () => {
   };
 
   useEffect(()=>{
+        const actionId = generateActionId("route_guard");
+
+        frontendLogger.info({
+            screenOrStore: "LoginPage",
+            action: "ROUTE_GUARD",
+            step: "START",
+            status: "STARTED",
+            actionId,
+            message: `[ROUTE_GUARD] START STARTED`,
+        });
+
     if (isAuthenticated) {
+            frontendLogger.info({
+                screenOrStore: "LoginPage",
+                action: "ROUTE_GUARD",
+                step: "NAVIGATE",
+                status: "SUCCESS",
+                actionId,
+                message: `[ROUTE_GUARD] NAVIGATE SUCCESS`,
+                meta: { target: "/" },
+            });
       navigate("/");
     }
   },[isAuthenticated])
 
     const handleSubmit = async (e) => {
+                const actionId = generateActionId("login_submit");
         e.preventDefault(); // Prevent default form submission behavior
+
+                frontendLogger.info({
+                        screenOrStore: "LoginPage",
+                        action: "LOGIN_SUBMIT",
+                        step: "CLICK",
+                        status: "STARTED",
+                        actionId,
+                        message: `[LOGIN_SUBMIT] CLICK STARTED`,
+                });
+
         await loginUser(credentials); // Call login function with user credentials
+
+                frontendLogger.info({
+                        screenOrStore: "LoginPage",
+                        action: "LOGIN_SUBMIT",
+                        step: "END",
+                        status: "SUCCESS",
+                        actionId,
+                        message: `[LOGIN_SUBMIT] END SUCCESS`,
+                });
+
         if (user) {
+                        frontendLogger.info({
+                                screenOrStore: "LoginPage",
+                                action: "LOGIN_SUBMIT",
+                                step: "NAVIGATE",
+                                status: "SUCCESS",
+                                actionId,
+                                message: `[LOGIN_SUBMIT] NAVIGATE SUCCESS`,
+                                meta: { target: "/" },
+                        });
             navigate("/"); // Redirect to home on successful login
         }
     };
