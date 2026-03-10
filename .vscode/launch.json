@@ -1,0 +1,43 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Frontend Run",
+            "type": "node-terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/Frontend",
+            "command": "npm run dev"
+        },
+        {
+            "name": "Frontend Chrome Debug",
+            "type": "chrome",
+            "request": "launch",
+            "url": "http://localhost:5173",
+            "webRoot": "${workspaceFolder}/Frontend",
+            "presentation": {
+                "hidden": true
+            }
+        },
+        {
+            "name": "Backend Run",
+            "type": "node-terminal",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/Backend",
+            "command": "npm run dev"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Run Full Stack + Debug Frontend",
+            "configurations": [
+                "Frontend Run",
+                "Backend Run",
+                // "Frontend Chrome Debug"
+            ],
+            "stopAll": true
+        }
+    ]
+}
