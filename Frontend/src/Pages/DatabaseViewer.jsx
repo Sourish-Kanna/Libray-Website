@@ -7,6 +7,7 @@ import { faArrowLeft, faFilePdf, faArrowUp } from '@fortawesome/free-solid-svg-i
 // Imports from your project structure
 import usePyqsStore from '../Store/pyqs.store.js';
 import useSyllabusStore from '../Store/syllabus.store.js';
+import { frontendLogger, generateActionId } from '../utils/logger.js';
 import '../css/admin.css';
 
 const DatabaseViewer = () => {
@@ -38,8 +39,25 @@ const DatabaseViewer = () => {
     const [sylSort, setSylSort] = React.useState({ field: 'branch', order: 'asc' });
 
     useEffect(() => {
-        fetchAllPYQs();
-        fetchAllSyllabus();
+        const actionId = generateActionId("DATABASE_LOAD");
+        const start = Date.now();
+        frontendLogger.info({ screenOrStore: "DatabaseViewer", action: "DATABASE_LOAD", step: "EFFECT_MOUNT", status: "STARTED", actionId, message: `[DATABASE_LOAD] EFFECT_MOUNT STARTED` });
+        
+        const loadData = async () => {
+            try {
+                await fetchAllPYQs();
+                await fetchAllSyllabus();
+                frontendLogger.info({ screenOrStore: "DatabaseViewer", action: "DATABASE_LOAD", step: "RESPONSE_RECEIVED", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[DATABASE_LOAD] RESPONSE_RECEIVED SUCCESS` });
+            } catch (error) {
+                frontendLogger.error({ screenOrStore: "DatabaseViewer", action: "DATABASE_LOAD", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: error.message, durationMs: Date.now() - start, message: `[DATABASE_LOAD] END FAILURE` });
+            }
+        };
+        
+        loadData();
+        
+        return () => {
+            frontendLogger.info({ screenOrStore: "DatabaseViewer", action: "DATABASE_LOAD", step: "EFFECT_CLEANUP", status: "STARTED", actionId, message: `[DATABASE_LOAD] EFFECT_CLEANUP STARTED` });
+        };
     }, [fetchAllPYQs, fetchAllSyllabus]);
 
     // --- Actions ---
