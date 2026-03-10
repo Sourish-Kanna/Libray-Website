@@ -46,4 +46,6 @@ const pyqSchema = new Schema({
     timestamps: true
 });
 
+pyqSchema.index({ branch: 1, year: -1, semester: 1, month: 1 });
+
 export const PYQ = mongoose.model('PYQ', pyqSchema);

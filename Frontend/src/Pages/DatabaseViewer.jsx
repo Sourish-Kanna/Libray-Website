@@ -28,6 +28,15 @@ const DatabaseViewer = () => {
         error: sylError
     } = useSyllabusStore();
 
+    const [pyqSort, setPyqSort] = React.useState([
+        { field: "branch", order: "asc" },
+        { field: "semester", order: "asc" },
+        { field: "year", order: "desc" },
+        { field: "month", order: "asc" }
+    ]);
+    
+    const [sylSort, setSylSort] = React.useState({ field: 'branch', order: 'asc' });
+
     useEffect(() => {
         fetchAllPYQs();
         fetchAllSyllabus();
@@ -47,9 +56,56 @@ const DatabaseViewer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
+    const getSort = (field) => pyqSort.find(s => s.field === field);
+
+    const toggleSort = (field) => {
+        setPyqSort(prev =>
+            prev.map(sort =>
+                sort.field === field
+                    ? { ...sort, order: sort.order === "asc" ? "desc" : "asc" }
+                    : sort
+            )
+        );
+    };
+
+    const sortData = (data, sortConfig) => {
+        const monthOrder = {
+            january: 1, february: 2, march: 3, april: 4,
+            may: 5, june: 6, july: 7, august: 8,
+            september: 9, october: 10, november: 11, december: 12
+        };
+
+        return [...data].sort((a, b) => {
+            for (let { field, order } of sortConfig) {
+                let valA = a[field];
+                let valB = b[field];
+
+                if (field === "month") {
+                    valA = monthOrder[valA?.toLowerCase()] || 0;
+                    valB = monthOrder[valB?.toLowerCase()] || 0;
+                }
+
+                if (typeof valA === "string") valA = valA.toLowerCase();
+                if (typeof valB === "string") valB = valB.toLowerCase();
+
+                if (valA < valB) return order === "asc" ? -1 : 1;
+                if (valA > valB) return order === "asc" ? 1 : -1;
+            }
+
+            return 0;
+        });
+    };
+
     // Safe Data Handling
-    const pyqList = Array.isArray(pyqs) ? pyqs : [];
-    const sylList = Array.isArray(syllabuses) ? syllabuses : [];
+    const pyqList = sortData(
+        Array.isArray(pyqs) ? pyqs : [],
+        pyqSort
+    );
+
+    const sylList = sortData(
+        Array.isArray(syllabuses) ? syllabuses : [],
+        [{ field: sylSort.field, order: sylSort.order }]
+    );
 
     // Loading / Error States
     if (pyqLoading || sylLoading) {
@@ -114,11 +170,37 @@ const DatabaseViewer = () => {
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="text-white bg-blue-600">
-                                    <th className="p-4 font-semibold border-b">Branch</th>
-                                    <th className="p-4 font-semibold border-b">Sem</th>
-                                    <th className="p-4 font-semibold border-b">Month</th>
-                                    <th className="p-4 font-semibold border-b">Year</th>
-                                    <th className="p-4 font-semibold border-b text-center">Action</th>
+                                    <th
+                                        onClick={() => toggleSort("branch")}
+                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
+                                    >
+                                        Branch {getSort("branch") && (getSort("branch").order === "asc" ? "↑" : "↓")}
+                                    </th>
+
+                                    <th
+                                        onClick={() => toggleSort("semester")}
+                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
+                                    >
+                                        Sem {getSort("semester") && (getSort("semester").order === "asc" ? "↑" : "↓")}
+                                    </th>
+
+                                    <th
+                                        onClick={() => toggleSort("month")}
+                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
+                                    >
+                                        Month {getSort("month") && (getSort("month").order === "asc" ? "↑" : "↓")}
+                                    </th>
+
+                                    <th
+                                        onClick={() => toggleSort("year")}
+                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
+                                    >
+                                        Year {getSort("year") && (getSort("year").order === "asc" ? "↑" : "↓")}
+                                    </th>
+
+                                    <th className="p-4 font-semibold border-b text-center">
+                                        Action
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="text-gray-700">
@@ -174,9 +256,29 @@ const DatabaseViewer = () => {
                         <table className="w-full text-left border-collapse">
                             <thead>
                                 <tr className="text-white bg-blue-600">
-                                    <th className="p-4 font-semibold border-b">Branch</th>
-                                    <th className="p-4 font-semibold border-b">Sem</th>
-                                    <th className="p-4 font-semibold border-b text-center">Action</th>
+                                    <th
+                                        onClick={() => setSylSort({
+                                            field: "branch",
+                                            order: sylSort.order === "asc" ? "desc" : "asc"
+                                        })}
+                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
+                                    >
+                                        Branch {sylSort.field === "branch" && (sylSort.order === "asc" ? "↑" : "↓")}
+                                    </th>
+
+                                    <th
+                                        onClick={() => setSylSort({
+                                            field: "semester",
+                                            order: sylSort.order === "asc" ? "desc" : "asc"
+                                        })}
+                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
+                                    >
+                                        Sem {sylSort.field === "semester" && (sylSort.order === "asc" ? "↑" : "↓")}
+                                    </th>
+
+                                    <th className="p-4 font-semibold border-b text-center">
+                                        Action
+                                    </th>
                                 </tr>
                             </thead>
                             <tbody className="text-gray-700">
