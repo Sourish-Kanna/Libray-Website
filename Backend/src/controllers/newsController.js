@@ -1,10 +1,12 @@
 // controllers/newsController.js
 import { News } from "../models/news.model.js";
+import { getAdminModel } from '../utils/getAdminModel.js';
 // Add a new news item
 const addNews = async (req, res) => {
   try {
+    const AdminNews = getAdminModel(News);
     const { title } = req.body;
-    const newNews =  News({ title });
+    const newNews = new AdminNews({ title });
     await newNews.save();
     res.status(201).json({ message: "News added successfully", news: newNews });
   } catch (error) {
@@ -17,8 +19,9 @@ const addNews = async (req, res) => {
 // Delete a news item
 const deleteNews = async (req, res) => {
   try {
+    const AdminNews = getAdminModel(News);
     const { id } = req.params;
-    const deletedNews = await News.findByIdAndDelete(id);
+    const deletedNews = await AdminNews.findByIdAndDelete(id);
     if (!deletedNews) {
       return res.status(404).json({ message: "News not found" });
     }

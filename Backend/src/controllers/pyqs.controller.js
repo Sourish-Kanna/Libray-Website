@@ -4,9 +4,11 @@ import { ApiResponse } from '../utils/ApiResponse.js';
 import { ApiError } from '../utils/ApiError.js';
 import { uploadOnCloudinary } from '../utils/cloudinary.js';
 import axios from 'axios';
+import { getAdminModel } from '../utils/getAdminModel.js';
 
 // Create a new PYQ
 const createPYQ = asyncHandler(async (req, res) => {
+    const AdminPYQ = getAdminModel(PYQ);
     const { branch, semester, year, month } = req.body;
 
     // Check if all required fields are provided
@@ -15,7 +17,7 @@ const createPYQ = asyncHandler(async (req, res) => {
     }
 
     // Check if the same PYQ already exists
-    const existingPYQ = await PYQ.findOne({
+    const existingPYQ = await AdminPYQ.findOne({
         branch: { $eq: branch },
         semester: { $eq: semester },
         // subject: { $eq: subject.toLowerCase() }, // Ensure subject comparison is case-insensitive
@@ -37,7 +39,7 @@ const createPYQ = asyncHandler(async (req, res) => {
         throw new ApiError(400, "Failed to upload question paper");
     }
 
-    const pyq = await PYQ.create({
+    const pyq = await AdminPYQ.create({
         branch,
         semester,
         // subject: subject.toLowerCase(),
@@ -50,6 +52,7 @@ const createPYQ = asyncHandler(async (req, res) => {
 });
 
 const updatePYQ = asyncHandler(async (req, res) => {
+    const AdminPYQ = getAdminModel(PYQ);
     const { pyqId } = req.params;
     const { branch, semester, year, month } = req.body;
 
@@ -57,7 +60,7 @@ const updatePYQ = asyncHandler(async (req, res) => {
         throw new ApiError(400, "PYQ ID is missing");
     }
 
-    const pyq = await PYQ.findById(pyqId);
+    const pyq = await AdminPYQ.findById(pyqId);
     if (!pyq) {
         throw new ApiError(404, "PYQ not found");
     }
@@ -136,13 +139,14 @@ const downloadPYQ = asyncHandler(async (req, res) => {
 });
 
 const deletePYQ = asyncHandler(async (req, res) => {
+    const AdminPYQ = getAdminModel(PYQ);
     const { pyqId } = req.params;
 
     if (!pyqId) {
         throw new ApiError(400, "PYQ ID is missing");
     }
 
-    const pyq = await PYQ.findByIdAndDelete(pyqId);
+    const pyq = await AdminPYQ.findByIdAndDelete(pyqId);
 
     if (!pyq) {
         throw new ApiError(404, "PYQ not found");

@@ -6,10 +6,12 @@ import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt'
+import { getAdminModel } from '../utils/getAdminModel.js';
 
 const generateAccessAndRefereshTokens = async(userId) =>{
     try {
-        const user = await User.findById(userId)
+        const AdminUser = getAdminModel(User);
+        const user = await AdminUser.findById(userId)
         const accessToken = user.generateAccessToken()
         const refreshToken = user.generateRefreshToken()
 
@@ -59,7 +61,8 @@ const registerUser = asyncHandler(async (req, res) => {
     // const role = isStudent ? "student" : "teacher";
 
     // Create the user
-    const user = await User.create({
+    const AdminUser = getAdminModel(User);
+    const user = await AdminUser.create({
         fullName,
         avatar: avatar.url,
         email, 
@@ -68,7 +71,7 @@ const registerUser = asyncHandler(async (req, res) => {
         // role,
     });
 
-    const createdUser = await User.findById(user._id).select(
+    const createdUser = await AdminUser.findById(user._id).select(
         "-password -refreshToken"
     );
 

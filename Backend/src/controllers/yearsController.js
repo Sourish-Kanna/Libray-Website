@@ -1,7 +1,9 @@
 import { Year } from '../models/Year.model.js';
+import { getAdminModel } from '../utils/getAdminModel.js';
 
 export const years = async (_, res) => {
     try {
+        const AdminYear = getAdminModel(Year);
         // Retrieve all years from database
         const yearsFromDb = await Year.find().sort({ name: -1 });
         
@@ -14,7 +16,7 @@ export const years = async (_, res) => {
                 name: year.toString()
             }));
             
-            await Year.insertMany(yearDocs);
+            await AdminYear.insertMany(yearDocs);
             const createdYears = await Year.find().sort({ name: -1 });
             
             const yearOptions = createdYears.map(year => ({
@@ -38,13 +40,14 @@ export const years = async (_, res) => {
 
 export const addYear = async (req, res) => {
     try {
+        const AdminYear = getAdminModel(Year);
         const { name } = req.body;
         
         if (!name) {
             return res.status(400).json({ error: 'Year name is required' });
         }
         
-        const newYear = new Year({ name });
+        const newYear = new AdminYear({ name });
         await newYear.save();
         
         res.status(201).json(newYear);
@@ -58,13 +61,14 @@ export const addYear = async (req, res) => {
 
 export const deleteYear = async (req, res) => {
     try {
+        const AdminYear = getAdminModel(Year);
         const { id: name } = req.params;
 
         if (!name) {
             return res.status(400).json({ error: 'Year name is required' });
         }
 
-        const deletedYear = await Year.findOneAndDelete({ name });
+        const deletedYear = await AdminYear.findOneAndDelete({ name });
 
         if (!deletedYear) {
             return res.status(404).json({ error: 'Year not found' });

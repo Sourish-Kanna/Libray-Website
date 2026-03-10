@@ -1,4 +1,5 @@
 import { Branch } from '../models/Branch.model.js';
+import { getAdminModel } from '../utils/getAdminModel.js';
 
 // Fetch all branches
 export const getBranches = async (req, res) => {
@@ -16,17 +17,18 @@ export const getBranches = async (req, res) => {
 // Add a new branch
 export const addBranch = async (req, res) => {
     try {
+        const AdminBranch = getAdminModel(Branch);
         const { name, value } = req.body;
         if (!name || !value) {
             return res.status(400).json({ message: 'Branch name and value are required.' });
         }
 
-        const existingBranch = await Branch.findOne({ $or: [{ name }, { value }] });
+        const existingBranch = await AdminBranch.findOne({ $or: [{ name }, { value }] });
         if (existingBranch) {
             return res.status(409).json({ message: 'Branch already exists.' });
         }
 
-        const newBranch = new Branch({ name, value });
+        const newBranch = new AdminBranch({ name, value });
         await newBranch.save();
         res.status(201).json({ message: 'Branch added successfully.', branch: newBranch });
     } catch (error) {
@@ -37,8 +39,9 @@ export const addBranch = async (req, res) => {
 // Delete a branch
 export const deleteBranch = async (req, res) => {
     try {
+        const AdminBranch = getAdminModel(Branch);
         const { id } = req.params;
-        const deletedBranch = await Branch.findByIdAndDelete(id);
+        const deletedBranch = await AdminBranch.findByIdAndDelete(id);
         if (!deletedBranch) {
             return res.status(404).json({ message: 'Branch not found.' });
         }
@@ -51,6 +54,7 @@ export const deleteBranch = async (req, res) => {
 // Update a branch
 export const updateBranch = async (req, res) => {
     try {
+        const AdminBranch = getAdminModel(Branch);
         const { id } = req.params;
         const { name, value } = req.body;
         if (!name && !value) {
@@ -60,7 +64,7 @@ export const updateBranch = async (req, res) => {
         if (name) updateData.name = name;
         if (value) updateData.value = value;
         
-        const updatedBranch = await Branch.findByIdAndUpdate(
+        const updatedBranch = await AdminBranch.findByIdAndUpdate(
             id,
             updateData,
             { new: true }

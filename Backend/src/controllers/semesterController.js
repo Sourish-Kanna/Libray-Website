@@ -1,4 +1,5 @@
 import { Semester } from '../models/Semester.model.js';
+import { getAdminModel } from '../utils/getAdminModel.js';
 
 // Fetch all semesters
 export const getSemesters = async (req, res) => {
@@ -16,17 +17,18 @@ export const getSemesters = async (req, res) => {
 // Add a new semester
 export const addSemester = async (req, res) => {
     try {
+        const AdminSemester = getAdminModel(Semester);
         const { name } = req.body;
         if (!name) {
             return res.status(400).json({ message: 'Semester name is required.' });
         }
 
-        const existingSemester = await Semester.findOne({ name });
+        const existingSemester = await AdminSemester.findOne({ name });
         if (existingSemester) {
             return res.status(400).json({ message: 'Semester already exists.' });
         }
 
-        const newSemester = new Semester({ name });
+        const newSemester = new AdminSemester({ name });
         await newSemester.save();
         res.status(201).json({ message: 'Semester added successfully.', semester: newSemester });
     } catch (error) {
@@ -37,8 +39,9 @@ export const addSemester = async (req, res) => {
 // Delete a semester
 export const deleteSemester = async (req, res) => {
     try {
+        const AdminSemester = getAdminModel(Semester);
         const { id } = req.params;
-        const deletedSemester = await Semester.findByIdAndDelete(id);
+        const deletedSemester = await AdminSemester.findByIdAndDelete(id);
         if (!deletedSemester) {
             return res.status(404).json({ message: 'Semester not found.' });
         }

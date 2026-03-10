@@ -4,8 +4,10 @@ import {ApiResponse} from '../utils/ApiResponse.js'
 import {ApiError} from '../utils/ApiError.js'
 import {uploadOnCloudinary} from '../utils/cloudinary.js'
 import axios from 'axios'
+import { getAdminModel } from '../utils/getAdminModel.js';
 
 const updateSyllabus = asyncHandler(async (req, res) => {
+    const AdminSyllabus = getAdminModel(Syllabus);
     const { branch, semester } = req.body;
     const { syllabusId } = req.params;
 
@@ -22,7 +24,7 @@ const updateSyllabus = asyncHandler(async (req, res) => {
         throw new ApiError(400,"Failed to upload syllabus !!");
     }
 
-    const syllabus = await Syllabus.findById(syllabusId);
+    const syllabus = await AdminSyllabus.findById(syllabusId);
     if (!syllabus) {
         throw new ApiError(400, "Syllabus not found");
     }
@@ -45,6 +47,7 @@ const updateSyllabus = asyncHandler(async (req, res) => {
 });
 
 const createSyllabus = asyncHandler(async (req, res) => {
+    const AdminSyllabus = getAdminModel(Syllabus);
     const { branch, semester } = req.body;
     if (!branch || !semester) {
         throw new ApiError(400, "Please provide branch, semester, and syllabus URL");
@@ -59,7 +62,7 @@ const createSyllabus = asyncHandler(async (req, res) => {
         throw new ApiError(400,"Failed to upload syllabus !!");
     }
     const syllabusUrlForDownload = syllabusUrl.url +'?dl=true';
-    const syllabus = await Syllabus.create({ 
+    const syllabus = await AdminSyllabus.create({ 
         branch, 
         semester, 
         syllabusUrl:syllabusUrlForDownload,
@@ -117,13 +120,14 @@ const downloadSyllabus = asyncHandler(async (req, res) => {
 });
 
 const deleteSyllabus = asyncHandler(async (req, res) => {
+    const AdminSyllabus = getAdminModel(Syllabus);
     const { syllabusId } = req.params;
 
     if (!syllabusId) {
         throw new ApiError(400, "Syllabus ID is missing");
     }
 
-    const syllabus = await Syllabus.findByIdAndDelete(syllabusId);
+    const syllabus = await AdminSyllabus.findByIdAndDelete(syllabusId);
     if (!syllabus) {
         throw new ApiError(404, "Syllabus not found");
     }
