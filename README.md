@@ -90,7 +90,7 @@ Backend environment variables are documented in [`Backend/example.env`](./Backen
 | `MONGODB_URL` | MongoDB connection string for the main database |
 | `MONGODB_URL_ADMIN` | MongoDB connection string for the admin database |
 | `DB_NAME` | Name of the main database |
-| `CORS_ORIGIN` | Allowed CORS origin(s) |
+| `CORS_ORIGIN` | Reserved for future use — CORS origins are currently hard-coded in `Backend/src/app.js` |
 | `ACCESS_TOKEN_SECRET` | Secret key for signing access JWTs |
 | `ACCESS_TOKEN_EXPIRY` | Access token expiry duration (e.g. `1d`) |
 | `REFRESH_TOKEN_SECRET` | Secret key for signing refresh JWTs |

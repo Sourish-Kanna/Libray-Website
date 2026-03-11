@@ -27,7 +27,7 @@ The REST API server for the SIES GST Library Website, built with **Node.js**, **
 | [bcrypt](https://github.com/kelektiv/node.bcrypt.js) | Password hashing |
 | [Cloudinary](https://cloudinary.com) | File / image storage |
 | [Multer](https://github.com/expressjs/multer) | Multipart file uploads |
-| [express-rate-limit](https://github.com/express-rate-limit/express-rate-limit) | API rate limiting |
+| [express-rate-limit](https://github.com/express-rate-limit/express-rate-limit) | Planned API rate limiting (currently not enabled) |
 | [dotenv](https://github.com/motdotla/dotenv) | Environment variable management |
 | [nodemon](https://nodemon.io) | Dev auto-restart |
 
@@ -110,7 +110,7 @@ Copy `example.env` to `.env` and fill in each value:
 | `MONGODB_URL` | Connection string for the main MongoDB database |
 | `MONGODB_URL_ADMIN` | Connection string for the admin MongoDB database |
 | `DB_NAME` | Name of the main database |
-| `CORS_ORIGIN` | Allowed frontend origin(s) for CORS |
+| `CORS_ORIGIN` | Reserved for future use — CORS origins are currently hard-coded in `src/app.js` |
 | `ACCESS_TOKEN_SECRET` | Secret used to sign access JWTs |
 | `ACCESS_TOKEN_EXPIRY` | Access token lifetime (e.g. `1d`) |
 | `REFRESH_TOKEN_SECRET` | Secret used to sign refresh JWTs |
