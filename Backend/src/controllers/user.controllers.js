@@ -337,10 +337,7 @@ const loginUser = asyncHandler(async (req, res) => {
         userId: String(user?._id),
     });
 
-    const token = generateAccessAndRefereshTokens({
-        _id: user._id,
-        email: user.email,
-    });
+    const token = user.generateAccessToken();
 
     backendLogger.info({
         module: "user.controller",
@@ -352,7 +349,7 @@ const loginUser = asyncHandler(async (req, res) => {
         userId: String(user?._id),
     });
 
-    res.cookie("token", token, {
+    res.cookie("accessToken", token, {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",
         sameSite: "strict",
