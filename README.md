@@ -37,7 +37,7 @@ See the [Frontend README](./Frontend/README.md) and [Backend README](./Backend/R
 |-----------|-----------|
 | Frontend  | React 18, Vite, Tailwind CSS, Zustand, React Router v6 |
 | Backend   | Node.js, Express 4, MongoDB (Mongoose), JWT, Cloudinary |
-| Auth      | JSON Web Tokens (access + refresh), bcrypt |
+| Auth      | JSON Web Tokens, bcrypt |
 | Storage   | Cloudinary (file uploads) |
 | Hosting   | Vercel (frontend & backend), Render (backend alternative) |
 
@@ -76,7 +76,7 @@ npm install
 npm run dev
 ```
 
-The frontend dev server is available at `http://localhost:5173` and it proxies API requests to the backend running on port `8000`.
+The frontend dev server is available at `http://localhost:5173`. API requests are sent directly to the base URL configured in `Frontend/src/Store/baseapi.js` (which by default points to the deployed backend). To use a locally running backend instead, update the `API_BASE_URL` variable in that file to `http://localhost:8000/api/v1`.
 
 ---
 

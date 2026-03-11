@@ -75,7 +75,7 @@ Frontend/
 
 - **Node.js** ≥ 20
 - **npm** ≥ 10
-- The [backend server](../Backend/README.md) running on port `8000`
+- The [backend server](../Backend/README.md) (optional for local dev — by default the frontend calls the deployed Render backend)
 
 ### Installation
 
@@ -86,7 +86,7 @@ npm install
 npm run dev
 ```
 
-The dev server starts at **http://localhost:5173**.
+The dev server starts at **http://localhost:5173**. API requests go directly to the base URL set in `src/Store/baseapi.js` (deployed Render backend by default). To point at a locally running backend, change `API_BASE_URL` in that file to `http://localhost:8000/api/v1`.
 
 ---
 

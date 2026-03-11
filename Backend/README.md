@@ -137,7 +137,7 @@ All routes are prefixed with `/api/v1`.
 
 | Prefix | Router file | Description |
 |--------|-------------|-------------|
-| `/api/v1/users` | `user.routes.js` | User registration, login, logout |
+| `/api/v1/users` | `user.routes.js` | User registration and login |
 | `/api/v1/syllabus` | `syllabus.route.js` | Syllabus documents |
 | `/api/v1/pyqs` | `pyqs.route.js` | Previous year question papers |
 | `/api/v1/news` | `newsRoute.js` | Library news & announcements |
@@ -153,8 +153,8 @@ A `GET /` health-check endpoint returns `{ "message": "Library Management System
 
 The API uses a **JWT** stored in an HTTP-only cookie for authentication:
 
-1. `POST /api/v1/users/login` authenticates the user and sets a signed JWT in an HTTP-only cookie named `accessToken`.
-2. For protected routes, the client must send this cookie along with the request (e.g., enable credentials in your HTTP client). The backend middleware (`verifyJWT`) reads `req.cookies.accessToken` to authenticate the user.
-3. There is currently no separate refresh token or refresh endpoint; when the token expires, the user needs to log in again to obtain a new one.
+1. `POST /api/v1/users/login` authenticates the user and sets a signed JWT in an HTTP-only cookie named `token`.
+2. For protected routes, the client must send this cookie along with the request (credentials must be enabled in the HTTP client). The backend middleware (`verifyJWT`) also accepts the token via an `Authorization: Bearer <token>` header.
+3. There is currently no separate refresh token endpoint; when the token expires the user must log in again.
 
 Passwords are hashed with **bcrypt** before storage.
