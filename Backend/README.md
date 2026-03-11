@@ -153,7 +153,7 @@ A `GET /` health-check endpoint returns `{ "message": "Library Management System
 
 The API uses a **JWT** stored in an HTTP-only cookie for authentication:
 
-1. `POST /api/v1/users/login` authenticates the user and sets a signed JWT in an HTTP-only cookie named `token`.
+1. `POST /api/v1/users/login` authenticates the user and sets a signed JWT in an HTTP-only cookie named `accessToken`.
 2. For protected routes, the client must send this cookie along with the request (credentials must be enabled in the HTTP client). The backend middleware (`verifyJWT`) also accepts the token via an `Authorization: Bearer <token>` header.
 3. There is currently no separate refresh token endpoint; when the token expires the user must log in again.
 
