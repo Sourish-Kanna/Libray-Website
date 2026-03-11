@@ -76,7 +76,7 @@ npm install
 npm run dev
 ```
 
-The frontend dev server is available at `http://localhost:5173` and it proxies API requests to the backend running on port `8000`.
+The frontend dev server is available at `http://localhost:5173`. API requests are sent directly to the base URL configured in `Frontend/src/Store/baseapi.js` (which by default points to the deployed backend; update this file if you want to use a locally running backend on port `8000`).
 
 ---
 
