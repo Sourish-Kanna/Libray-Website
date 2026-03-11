@@ -151,10 +151,10 @@ A `GET /` health-check endpoint returns `{ "message": "Library Management System
 
 ## Authentication
 
-The API uses a **JWT access/refresh token** scheme:
+The API uses a **JWT** stored in an HTTP-only cookie for authentication:
 
-1. `POST /api/v1/users/login` returns an **access token** and a **refresh token** (stored in an HTTP-only cookie).
-2. Include the access token in the `Authorization: Bearer <token>` header for protected routes.
-3. Use the refresh token endpoint to obtain a new access token when it expires.
+1. `POST /api/v1/users/login` authenticates the user and sets a signed JWT in an HTTP-only cookie named `accessToken`.
+2. For protected routes, the client must send this cookie along with the request (e.g., enable credentials in your HTTP client). The backend middleware (`verifyJWT`) reads `req.cookies.accessToken` to authenticate the user.
+3. There is currently no separate refresh token or refresh endpoint; when the token expires, the user needs to log in again to obtain a new one.
 
 Passwords are hashed with **bcrypt** before storage.
