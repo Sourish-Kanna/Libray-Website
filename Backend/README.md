@@ -137,7 +137,7 @@ All routes are prefixed with `/api/v1`.
 
 | Prefix | Router file | Description |
 |--------|-------------|-------------|
-| `/api/v1/users` | `user.routes.js` | User registration, login, logout |
+| `/api/v1/users` | `user.routes.js` | User registration and login |
 | `/api/v1/syllabus` | `syllabus.route.js` | Syllabus documents |
 | `/api/v1/pyqs` | `pyqs.route.js` | Previous year question papers |
 | `/api/v1/news` | `newsRoute.js` | Library news & announcements |
