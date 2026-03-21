@@ -35,7 +35,7 @@
             "configurations": [
                 "Frontend Run",
                 "Backend Run",
-                // "Frontend Chrome Debug"
+                "Frontend Chrome Debug"
             ],
             "stopAll": true
         }
