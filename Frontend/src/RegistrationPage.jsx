@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import useAuthStore from "./Store/userAuth.store";
 import { Helmet } from "react-helmet";
-import { frontendLogger, generateActionId } from "./utils/logger.js";
 
 const Register = () => {
     const { registerUser, loading, error, success } = useAuthStore();
@@ -33,82 +32,21 @@ const Register = () => {
     };
 
     const handleFileChange = (e) => {
-        const actionId = generateActionId("register_submit");
-        const selectedFile = e.target.files[0];
-
         setFormData((prev) => ({
             ...prev,
-            avatar: selectedFile,
+            avatar: e.target.files[0],
         }));
-
-        frontendLogger.info({
-            screenOrStore: "RegistrationPage",
-            action: "REGISTER_SUBMIT",
-            step: "BUILD_PAYLOAD",
-            status: "SUCCESS",
-            actionId,
-            message: `[REGISTER_SUBMIT] BUILD_PAYLOAD SUCCESS`,
-            meta: {
-                hasAvatar: Boolean(selectedFile),
-                avatarName: selectedFile?.name,
-                avatarSizeBytes: selectedFile?.size,
-            },
-        });
     };
 
     const handleSubmit = async (e) => {
-        const actionId = generateActionId("register_submit");
         e.preventDefault();
-
-        frontendLogger.info({
-            screenOrStore: "RegistrationPage",
-            action: "REGISTER_SUBMIT",
-            step: "CLICK",
-            status: "STARTED",
-            actionId,
-            message: `[REGISTER_SUBMIT] CLICK STARTED`,
-        });
-
         const form = new FormData();
         Object.keys(formData).forEach((key) => {
             form.append(key, formData[key]);
         });
 
-        frontendLogger.info({
-            screenOrStore: "RegistrationPage",
-            action: "REGISTER_SUBMIT",
-            step: "BUILD_PAYLOAD",
-            status: "SUCCESS",
-            actionId,
-            message: `[REGISTER_SUBMIT] BUILD_PAYLOAD SUCCESS`,
-            meta: {
-                username: formData.username,
-                email: formData.email,
-                hasAvatar: Boolean(formData.avatar),
-            },
-        });
-
         await registerUser(form);
-
-        frontendLogger.info({
-            screenOrStore: "RegistrationPage",
-            action: "REGISTER_SUBMIT",
-            step: "END",
-            status: "SUCCESS",
-            actionId,
-            message: `[REGISTER_SUBMIT] END SUCCESS`,
-        });
-
         if (success) {
-            frontendLogger.info({
-                screenOrStore: "RegistrationPage",
-                action: "REGISTER_SUBMIT",
-                step: "NAVIGATE",
-                status: "SUCCESS",
-                actionId,
-                message: `[REGISTER_SUBMIT] NAVIGATE SUCCESS`,
-                meta: { target: "/login" },
-            });
             navigate("/login");
         }
     };
