@@ -1,68 +1,63 @@
 // stores/useNewsStore.js
 import { create } from "zustand";
-import { apiPost, apiDelete, apiGet } from './baseapi.js';
-import { frontendLogger, generateActionId } from '../utils/logger.js';
+import axios from "axios";
+import { API_BASE_URL } from './baseapi.js';
 
 const useNewsStore = create((set) => ({
     newsItems: [], // Initial state
 
   // Action to add a news item
   addNews: async (title) => {
-    const actionId = generateActionId("ADD_NEWS");
-    const start = Date.now();
-    frontendLogger.info({ screenOrStore: "useNewsStore", action: "ADD_NEWS", step: "START", status: "STARTED", actionId, message: `[ADD_NEWS] START STARTED` });
     try {
-      frontendLogger.info({ screenOrStore: "useNewsStore", action: "ADD_NEWS", step: "BUILD_PAYLOAD", status: "SUCCESS", actionId, message: `[ADD_NEWS] BUILD_PAYLOAD SUCCESS` });
-      const response = await apiPost(
-        `/news`,
-        { title },
-        {},
-        { actionId }
+      const response = await axios.post(
+        `${API_BASE_URL}/news`,
+        {
+          title,
+        }
       );
-      set((state) => ({
-        newsItems: [...state.newsItems, response.data.news],
-      }));
-      frontendLogger.info({ screenOrStore: "useNewsStore", action: "ADD_NEWS", step: "STORE_UPDATED", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[ADD_NEWS] STORE_UPDATED SUCCESS` });
+      if (response.status === 201) {
+        set((state) => ({
+          newsItems: [...state.newsItems, response.data.news],
+        }));
+      } else {
+        console.error("Error adding news:", response.data.message);
+      }
     } catch (error) {
-      frontendLogger.error({ screenOrStore: "useNewsStore", action: "ADD_NEWS", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: error.message, durationMs: Date.now() - start, message: `[ADD_NEWS] END FAILURE` });
+      console.error("Error adding news:", error.message);
     }
   },
 
   // Action to delete a news item
   deleteNews: async (id) => {
-    const actionId = generateActionId("DELETE_NEWS");
-    const start = Date.now();
-    frontendLogger.info({ screenOrStore: "useNewsStore", action: "DELETE_NEWS", step: "START", status: "STARTED", actionId, message: `[DELETE_NEWS] START STARTED` });
     try {
-      await apiDelete(
-        `/news/${id}`,
-        {},
-        { actionId }
+      const response = await axios.delete(
+        `${API_BASE_URL}/news/${id}`
       );
-      set((state) => ({
-        newsItems: state.newsItems.filter((item) => item._id !== id),
-      }));
-      frontendLogger.info({ screenOrStore: "useNewsStore", action: "DELETE_NEWS", step: "STORE_UPDATED", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[DELETE_NEWS] STORE_UPDATED SUCCESS` });
+      if (response.status === 200) {
+        set((state) => ({
+          newsItems: state.newsItems.filter((item) => item._id !== id),
+        }));
+      } else {
+        console.error("Error deleting news:", response.data.message);
+      }
     } catch (error) {
-      frontendLogger.error({ screenOrStore: "useNewsStore", action: "DELETE_NEWS", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: error.message, durationMs: Date.now() - start, message: `[DELETE_NEWS] END FAILURE` });
+      console.error("Error deleting news:", error.message);
     }
   },
 
   // Action to fetch all news items
   fetchNews: async () => {
-    const actionId = generateActionId("FETCH_NEWS");
-    const start = Date.now();
-    frontendLogger.info({ screenOrStore: "useNewsStore", action: "FETCH_NEWS", step: "START", status: "STARTED", actionId, message: `[FETCH_NEWS] START STARTED` });
     try {
-      const response = await apiGet(
-        `/news`,
-        {},
-        { actionId }
+      const response = await axios.get(
+        `${API_BASE_URL}/news`
       );
-      set({ newsItems: response.data });
-      frontendLogger.info({ screenOrStore: "useNewsStore", action: "FETCH_NEWS", step: "STORE_UPDATED", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[FETCH_NEWS] STORE_UPDATED SUCCESS` });
+      if (response.status === 200) {
+        set({ newsItems: response.data });
+      } else {
+        console.error("Error fetching news:", response.data.message);
+      }
     } catch (error) {
-      frontendLogger.error({ screenOrStore: "useNewsStore", action: "FETCH_NEWS", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: error.message, durationMs: Date.now() - start, message: `[FETCH_NEWS] END FAILURE` });
+      console.error("Error fetching news:", error.message);
     }
   },
 }));
