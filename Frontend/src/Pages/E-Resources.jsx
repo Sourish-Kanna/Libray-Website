@@ -7,7 +7,6 @@ import useSyllabusStore from "../Store/syllabus.store.js";
 import useAuthStore from "../Store/userAuth.store.js";
 import useBranchStore from "../Store/branch.store.js";
 import useSemesterStore from "../Store/semester.store.js";
-import { frontendLogger, generateActionId } from "../utils/logger.js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Helmet } from 'react-helmet';
@@ -163,34 +162,22 @@ export default function EResources() {
   }, [fetchBranches, fetchSemesters]);
 
   const handleSubmit = async (e) => {
-    const actionId = generateActionId("FETCH_DOWNLOAD_SYLLABUS");
-    const start = Date.now();
-    frontendLogger.info({ screenOrStore: "E-Resources", action: "FETCH_DOWNLOAD_SYLLABUS", step: "CLICK", status: "STARTED", actionId, message: `[FETCH_DOWNLOAD_SYLLABUS] CLICK STARTED` });
-    
     e.preventDefault();
     try {
       const syllabusData = await fetchSyllabus();
       if (syllabusData && syllabusData._id) {
         await downloadSyllabus(syllabusData._id);
-        frontendLogger.info({ screenOrStore: "E-Resources", action: "FETCH_DOWNLOAD_SYLLABUS", step: "END", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[FETCH_DOWNLOAD_SYLLABUS] END SUCCESS` });
         toast.success("Syllabus downloaded successfully!");
       } else {
-        frontendLogger.warn({ screenOrStore: "E-Resources", action: "FETCH_DOWNLOAD_SYLLABUS", step: "VALIDATE_FORM", status: "FAILURE", actionId, errorCode: "VALIDATION_ERROR", errorMessage: "Syllabus not found", message: `[FETCH_DOWNLOAD_SYLLABUS] VALIDATE_FORM FAILURE` });
         toast.error("Syllabus not found!");
       }
     } catch (err) {
-      frontendLogger.error({ screenOrStore: "E-Resources", action: "FETCH_DOWNLOAD_SYLLABUS", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: err.message, durationMs: Date.now() - start, message: `[FETCH_DOWNLOAD_SYLLABUS] END FAILURE` });
       toast.error("Failed to download syllabus. Please try again.");
     }
   };
 
   const handleAdd = async () => {
-    const actionId = generateActionId("CREATE_SYLLABUS");
-    const start = Date.now();
-    frontendLogger.info({ screenOrStore: "E-Resources", action: "CREATE_SYLLABUS", step: "CLICK", status: "STARTED", actionId, message: `[CREATE_SYLLABUS] CLICK STARTED` });
-    
     if (!file) {
-      frontendLogger.warn({ screenOrStore: "E-Resources", action: "CREATE_SYLLABUS", step: "VALIDATE_FORM", status: "FAILURE", actionId, errorCode: "VALIDATION_ERROR", errorMessage: "No file selected", message: `[CREATE_SYLLABUS] VALIDATE_FORM FAILURE` });
       alert("Please select a file to upload.");
       return;
     }
@@ -199,23 +186,15 @@ export default function EResources() {
     formData.append("semester", semester);
     formData.append("syllabus", file);
     try {
-      frontendLogger.info({ screenOrStore: "E-Resources", action: "CREATE_SYLLABUS", step: "BUILD_PAYLOAD", status: "SUCCESS", actionId, message: `[CREATE_SYLLABUS] BUILD_PAYLOAD SUCCESS` });
       await createSyllabus(formData);
-      frontendLogger.info({ screenOrStore: "E-Resources", action: "CREATE_SYLLABUS", step: "END", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[CREATE_SYLLABUS] END SUCCESS` });
       toast.success("Syllabus added successfully!");
     } catch (err) {
-      frontendLogger.error({ screenOrStore: "E-Resources", action: "CREATE_SYLLABUS", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: err.message, durationMs: Date.now() - start, message: `[CREATE_SYLLABUS] END FAILURE` });
       toast.error("Failed to add syllabus.");
     }
   };
 
   const handleUpdate = async () => {
-    const actionId = generateActionId("UPDATE_SYLLABUS");
-    const start = Date.now();
-    frontendLogger.info({ screenOrStore: "E-Resources", action: "UPDATE_SYLLABUS", step: "CLICK", status: "STARTED", actionId, message: `[UPDATE_SYLLABUS] CLICK STARTED` });
-    
     if (!file || !syllabus?._id) {
-      frontendLogger.warn({ screenOrStore: "E-Resources", action: "UPDATE_SYLLABUS", step: "VALIDATE_FORM", status: "FAILURE", actionId, errorCode: "VALIDATION_ERROR", errorMessage: "Missing file or syllabus ID", message: `[UPDATE_SYLLABUS] VALIDATE_FORM FAILURE` });
       alert("Please select a file and ensure a syllabus is loaded.");
       return;
     }
@@ -224,32 +203,22 @@ export default function EResources() {
     formData.append("semester", semester);
     formData.append("syllabus", file);
     try {
-      frontendLogger.info({ screenOrStore: "E-Resources", action: "UPDATE_SYLLABUS", step: "BUILD_PAYLOAD", status: "SUCCESS", actionId, message: `[UPDATE_SYLLABUS] BUILD_PAYLOAD SUCCESS` });
       await updateSyllabus(syllabus._id, formData);
-      frontendLogger.info({ screenOrStore: "E-Resources", action: "UPDATE_SYLLABUS", step: "END", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[UPDATE_SYLLABUS] END SUCCESS` });
       toast.success("Syllabus updated successfully!");
     } catch (err) {
-      frontendLogger.error({ screenOrStore: "E-Resources", action: "UPDATE_SYLLABUS", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: err.message, durationMs: Date.now() - start, message: `[UPDATE_SYLLABUS] END FAILURE` });
       toast.error("Failed to update syllabus.");
     }
   };
 
   const handleDelete = async () => {
-    const actionId = generateActionId("DELETE_SYLLABUS");
-    const start = Date.now();
-    frontendLogger.info({ screenOrStore: "E-Resources", action: "DELETE_SYLLABUS", step: "CLICK", status: "STARTED", actionId, message: `[DELETE_SYLLABUS] CLICK STARTED` });
-    
     if (!syllabus?._id) {
-      frontendLogger.warn({ screenOrStore: "E-Resources", action: "DELETE_SYLLABUS", step: "VALIDATE_FORM", status: "FAILURE", actionId, errorCode: "VALIDATION_ERROR", errorMessage: "No syllabus to delete", message: `[DELETE_SYLLABUS] VALIDATE_FORM FAILURE` });
       alert("No syllabus available to delete.");
       return;
     }
     try {
       await deleteSyllabus(syllabus._id);
-      frontendLogger.info({ screenOrStore: "E-Resources", action: "DELETE_SYLLABUS", step: "END", status: "SUCCESS", actionId, durationMs: Date.now() - start, message: `[DELETE_SYLLABUS] END SUCCESS` });
       toast.success("Syllabus deleted successfully!");
     } catch (err) {
-      frontendLogger.error({ screenOrStore: "E-Resources", action: "DELETE_SYLLABUS", step: "END", status: "FAILURE", actionId, errorCode: "NETWORK_ERROR", errorMessage: err.message, durationMs: Date.now() - start, message: `[DELETE_SYLLABUS] END FAILURE` });
       toast.error("Failed to delete syllabus.");
     }
   };
