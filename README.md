@@ -1,6 +1,6 @@
 # Library Website – SIES GST
 
-A full-stack web application for the SIES Graduate School of Technology (GST) college library. The site lets students browse e-resources, view syllabi and previous year question papers (PYQs), donate/suggest books, and stay updated with library news. An admin panel allows authorised staff to manage the database directly.
+A full-stack web application for the SIES Graduate School of Technology (GST) college library. The site lets students browse e-resources, view syllabus and previous year question papers (PYQs) and stay updated with library news. An admin panel allows authorised staff to manage the database directly.
 
 ---
 
@@ -121,7 +121,7 @@ From the **root** of each sub-project:
 - 📝 **Syllabus & PYQs** – Access syllabi and previous year question papers filtered by branch, year, and semester
 - 📰 **News** – Latest library announcements
 - 🔗 **Quick Links** – Useful external links for students
-- 📖 **Donate / Suggest Books** – Forms for book donations and suggestions
+
 - 🔐 **Admin Panel** – Protected database viewer for authorised staff
 - ☁️ **Cloudinary Uploads** – File uploads served via Cloudinary CDN
 
@@ -131,8 +131,8 @@ From the **root** of each sub-project:
 
 | Service | Purpose |
 |---------|---------|
-| [Vercel](https://vercel.com) | Frontend & backend deployments |
-| [Render](https://render.com) | Alternative backend deployment (`render.yaml`) |
+| [Vercel](https://vercel.com) | Frontend  deployment |
+| [Render](https://render.com) | Backend deployment (`render.yaml`) |
 
 Live site: **https://siesgstlibrary.vercel.app**
 
