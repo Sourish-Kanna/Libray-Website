@@ -39,7 +39,7 @@ See the [Frontend README](./Frontend/README.md) and [Backend README](./Backend/R
 | Backend   | Node.js, Express 4, MongoDB (Mongoose), JWT, Cloudinary |
 | Auth      | JSON Web Tokens, bcrypt |
 | Storage   | Cloudinary (file uploads) |
-| Hosting   | Vercel (frontend & backend), Render (backend alternative) |
+| Hosting   | Vercel (frontend), Render (backend) |
 
 ---
 
