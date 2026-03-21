@@ -38,30 +38,20 @@ const writeLog = ({
   userId,
   errorCode,
   errorMessage,
-  meta,
+  // meta,
 }) => {
   const payload = {
     timestamp: nowIso(),
     level,
-    service: "backend-api",
-    module,
-    action,
-    step,
-    status,
-    requestId,
     message,
   };
 
-  if (durationMs !== undefined) payload.durationMs = durationMs;
   if (statusCode !== undefined) payload.statusCode = statusCode;
-  if (userId !== undefined) payload.userId = userId;
   if (errorCode !== undefined) payload.errorCode = errorCode;
   if (errorMessage !== undefined) payload.errorMessage = errorMessage;
 
-  const sanitizedMeta = sanitizeMeta(meta);
-  if (Object.keys(sanitizedMeta).length) payload.meta = sanitizedMeta;
-
-  console.log(JSON.stringify(payload));
+  const logMethod = level === LEVELS.ERROR ? console.error : level === LEVELS.WARN ? console.warn : console.log;
+  logMethod(JSON.stringify(payload, null, 2));
 };
 
 const backendLogger = {
