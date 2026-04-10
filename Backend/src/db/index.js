@@ -4,7 +4,15 @@ import { DB_NAME } from "../constants.js";
 
 const connectDB = async () =>{
     try{
-        const connectionInstance = await mongoose.connect(`${process.env.MONGODB_URL}/${DB_NAME}?appName=SIESGST_Library`);
+        const connectionInstance = await mongoose
+            .connect(`${process.env.MONGODB_URL}/${DB_NAME}`, {
+                maxPoolSize: 6,
+                minPoolSize: 2, // Keep at least 2 connections ready
+                socketTimeoutMS: 45000,
+                serverSelectionTimeoutMS: 5000,
+                connectTimeoutMS: 10000,
+                appName: "SIESGST_Library"
+            });
         console.log(`\n MongoDB connected !! DB HOST: ${connectionInstance.connection.host}`)
         console.log(` MongoDB database : ${DB_NAME}`)
     }

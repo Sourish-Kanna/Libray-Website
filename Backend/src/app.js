@@ -9,12 +9,6 @@ app.use(
     origin: [
       "http://localhost:5173",
       "https://siesgstlibrary.vercel.app",
-      // "https://libray-website-client.vercel.app",
-      // "https://libray-website.vercel.app",
-      // "https://libray-website-71gt.vercel.app",
-      // "https://libray-website-tan.vercel.app",
-      // "https://library-sies-gst.vercel.app",
-      // "https://library-siesgst.vercel.app",
     ],
     credentials: true,
   })
@@ -43,6 +37,19 @@ app.use("/api/v1/year", yearRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({ message: "Library Management System Backend is running..." });
+});
+
+app.use((err, req, res, next) => {
+  // Determine the status code
+  const statusCode = err.statusCode || 500;
+
+  // Send a clean, JSON response
+  res.status(statusCode).json({
+    success: false,
+    message: err.message || "Internal Server Error",
+    // Only show stack trace in development mode, never in production
+    stack: process.env.NODE_ENV === 'development' ? err.stack : undefined,
+  });
 });
 
 export { app };

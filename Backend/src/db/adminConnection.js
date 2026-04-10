@@ -11,7 +11,13 @@ export const connectAdminDB = async () => {
     }
     try {
         adminConnection = await mongoose
-            .createConnection(`${adminUrl}/${DB_NAME}?appName=SIESGST_Library`)
+            .createConnection(`${adminUrl}/${DB_NAME}?appName=SIESGST_Library`, {
+                maxPoolSize: 3,
+                minPoolSize: 1, // Keep at least 1 connection ready
+                socketTimeoutMS: 45000,
+                serverSelectionTimeoutMS: 5000,
+                connectTimeoutMS: 10000,
+            })
             .asPromise();
         console.log(` Admin DB connected: ${adminConnection.host}`);
     } catch (error) {

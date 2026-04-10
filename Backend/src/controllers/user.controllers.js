@@ -1,14 +1,14 @@
 import { asyncHandler } from "../utils/asyncHandler.js";
-import {ApiError} from "../utils/ApiError.js"
-import { User} from "../models/user.model.js"
-import {uploadOnCloudinary,deleteOnCloudinary} from "../utils/cloudinary.js"
+import { ApiError } from "../utils/ApiError.js"
+import { User } from "../models/user.model.js"
+import { uploadOnCloudinary, deleteOnCloudinary } from "../utils/cloudinary.js"
 import { ApiResponse } from "../utils/ApiResponse.js";
 import jwt from "jsonwebtoken"
 import mongoose from "mongoose";
 import bcrypt from 'bcrypt'
 import { getAdminModel } from '../utils/getAdminModel.js';
 
-const generateAccessAndRefereshTokens = async(userId) =>{
+const generateAccessAndRefereshTokens = async (userId) => {
     try {
         const AdminUser = getAdminModel(User);
         const user = await AdminUser.findById(userId)
@@ -18,7 +18,7 @@ const generateAccessAndRefereshTokens = async(userId) =>{
         user.refreshToken = refreshToken
         await user.save({ validateBeforeSave: false })
 
-        return {accessToken, refreshToken}
+        return { accessToken, refreshToken }
 
 
     } catch (error) {
@@ -65,7 +65,7 @@ const registerUser = asyncHandler(async (req, res) => {
     const user = await AdminUser.create({
         fullName,
         avatar: avatar.url,
-        email, 
+        email,
         password,
         username: username.toLowerCase(),
         // role,
@@ -93,18 +93,15 @@ const loginUser = asyncHandler(async (req, res) => {
 
     const user = await User.findOne({ email }).select("+password");
     if (!user) {
-        throw new ApiError(404, "Invalid email or password");
+        throw new ApiError(401, "Invalid email or password");
     }
 
     const isPasswordCorrect = await bcrypt.compare(password, user.password);
     if (!isPasswordCorrect) {
-        throw new ApiError(401, "Invalid email or password");
+        throw new ApiError(401, "Invalid password");
     }
 
-    const token = generateAccessAndRefereshTokens({
-        _id: user._id,
-        email: user.email,
-    });
+    const token = await generateAccessAndRefereshTokens(user._id);
 
     res.cookie("token", token, {
         httpOnly: true,
@@ -122,13 +119,14 @@ const loginUser = asyncHandler(async (req, res) => {
         token,
     };
 
+    console.log("Login successful for user:", userWithoutSensitiveData.fullName);
     return res.status(200).json(
         new ApiResponse(200, userWithoutSensitiveData, "Login Successful")
     );
 });
 
 
-export { 
+export {
     registerUser,
     loginUser
-    };
+};
