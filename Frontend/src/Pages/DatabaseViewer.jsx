@@ -1,16 +1,18 @@
-import React, { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faArrowLeft, faFilePdf, faArrowUp } from '@fortawesome/free-solid-svg-icons';
+import {
+    faFilePdf,
+    faArrowUp,
+    faChevronRight,
+    faChevronDown
+} from '@fortawesome/free-solid-svg-icons';
 
-// Imports from your project structure
 import usePyqsStore from '../Store/pyqs.store.js';
 import useSyllabusStore from '../Store/syllabus.store.js';
 import '../css/admin.css';
 
 const DatabaseViewer = () => {
-    const navigate = useNavigate();
 
     const {
         pyq: pyqs,
@@ -28,23 +30,37 @@ const DatabaseViewer = () => {
         error: sylError
     } = useSyllabusStore();
 
-    const [pyqSort, setPyqSort] = React.useState([
-        { field: "branch", order: "asc" },
-        { field: "semester", order: "asc" },
-        { field: "year", order: "desc" },
-        { field: "month", order: "asc" }
-    ]);
-    
-    const [sylSort, setSylSort] = React.useState({ field: 'branch', order: 'asc' });
+    const [collapsed, setCollapsed] = useState({});
 
+    // Fetch
     useEffect(() => {
         fetchAllPYQs();
         fetchAllSyllabus();
     }, [fetchAllPYQs, fetchAllSyllabus]);
 
-    // --- Actions ---
-    const handleBack = () => {
-        navigate(-1);
+    // Initialize all collapsed
+    useEffect(() => {
+        const initialCollapsed = {};
+
+        pyqs?.forEach(p => {
+            initialCollapsed[`b-${p.branch}`] = true;
+            initialCollapsed[`s-${p.branch}-${p.semester}`] = true;
+            initialCollapsed[`y-${p.branch}-${p.semester}-${p.year}`] = true;
+        });
+
+        syllabuses?.forEach(s => {
+            initialCollapsed[`sb-${s.branch}`] = true;
+            initialCollapsed[`ss-${s.branch}-${s.semester}`] = true;
+        });
+
+        setCollapsed(initialCollapsed);
+    }, [pyqs, syllabuses]);
+
+    const toggle = (key) => {
+        setCollapsed(prev => ({
+            ...prev,
+            [key]: !prev[key]
+        }));
     };
 
     const scrollToSyllabus = () => {
@@ -56,62 +72,54 @@ const DatabaseViewer = () => {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     };
 
-    const getSort = (field) => pyqSort.find(s => s.field === field);
+    // Sorting (ascending)
+    const sortedPYQs = [...(pyqs || [])].sort((a, b) => {
 
-    const toggleSort = (field) => {
-        setPyqSort(prev =>
-            prev.map(sort =>
-                sort.field === field
-                    ? { ...sort, order: sort.order === "asc" ? "desc" : "asc" }
-                    : sort
-            )
-        );
-    };
+        if (a.branch !== b.branch)
+            return a.branch.localeCompare(b.branch);
 
-    const sortData = (data, sortConfig) => {
-        const monthOrder = {
-            january: 1, february: 2, march: 3, april: 4,
-            may: 5, june: 6, july: 7, august: 8,
-            september: 9, october: 10, november: 11, december: 12
-        };
+        if (a.semester !== b.semester)
+            return Number(a.semester) - Number(b.semester);
 
-        return [...data].sort((a, b) => {
-            for (let { field, order } of sortConfig) {
-                let valA = a[field];
-                let valB = b[field];
+        if (a.year !== b.year)
+            return Number(a.year) - Number(b.year);
 
-                if (field === "month") {
-                    valA = monthOrder[valA?.toLowerCase()] || 0;
-                    valB = monthOrder[valB?.toLowerCase()] || 0;
-                }
+        return a.month.localeCompare(b.month);
+    });
 
-                if (typeof valA === "string") valA = valA.toLowerCase();
-                if (typeof valB === "string") valB = valB.toLowerCase();
+    // Group PYQs
+    const groupedPYQ = {};
 
-                if (valA < valB) return order === "asc" ? -1 : 1;
-                if (valA > valB) return order === "asc" ? 1 : -1;
-            }
+    sortedPYQs.forEach(p => {
+        if (!groupedPYQ[p.branch]) groupedPYQ[p.branch] = {};
+        if (!groupedPYQ[p.branch][p.semester]) groupedPYQ[p.branch][p.semester] = {};
+        if (!groupedPYQ[p.branch][p.semester][p.year]) groupedPYQ[p.branch][p.semester][p.year] = [];
 
-            return 0;
-        });
-    };
+        groupedPYQ[p.branch][p.semester][p.year].push(p);
+    });
 
-    // Safe Data Handling
-    const pyqList = sortData(
-        Array.isArray(pyqs) ? pyqs : [],
-        pyqSort
-    );
+    // Sort syllabus
+    const sylList = [...(syllabuses || [])].sort((a, b) => {
+        if (a.branch !== b.branch)
+            return a.branch.localeCompare(b.branch);
+        return Number(a.semester) - Number(b.semester);
+    });
 
-    const sylList = sortData(
-        Array.isArray(syllabuses) ? syllabuses : [],
-        [{ field: sylSort.field, order: sylSort.order }]
-    );
+    // Group syllabus
+    const groupedSyllabus = {};
 
-    // Loading / Error States
+    sylList.forEach(s => {
+        if (!groupedSyllabus[s.branch]) groupedSyllabus[s.branch] = {};
+        if (!groupedSyllabus[s.branch][s.semester]) groupedSyllabus[s.branch][s.semester] = [];
+
+        groupedSyllabus[s.branch][s.semester].push(s);
+    });
+
+    // Loading / Error
     if (pyqLoading || sylLoading) {
         return (
             <div className="flex items-center justify-center h-screen text-xl text-blue-700">
-                <div className="mt-10">Loading Database Entries...</div>
+                Loading Database Entries...
             </div>
         );
     }
@@ -119,206 +127,196 @@ const DatabaseViewer = () => {
     if (pyqError || sylError) {
         return (
             <div className="flex items-center justify-center h-screen text-xl text-red-600">
-                <div className="mt-10">Error: {pyqError || sylError}</div>
+                Error: {pyqError || sylError}
             </div>
         );
     }
 
     return (
-        <div className="w-full h-full overflow-x-hidden">
+        <div className="w-full">
+
             <Helmet>
-                <title>Database Viewer | Library | SIESGST</title>
+                <title>Database Viewer | Library</title>
             </Helmet>
 
-            {/* --- Main Content Container --- */}
             <div className="mx-4 sm:mx-16 lg:mx-40 min-h-screen">
 
-                {/* --- EXACT HEADER STYLE FROM PYQ PAGE --- */}
-                <div className="flex items-center justify-center w-full h-auto py-8">
-                    <div className="flex flex-col items-center">
-                        {/* Back Button (Added nicely above title)
-                        <button
-                            onClick={handleBack}
-                            className="self-start mb-4 flex items-center gap-2 px-3 py-1 text-sm font-semibold text-white transition-colors bg-gray-600 rounded-md hover:bg-gray-700"
-                        >
-                            <FontAwesomeIcon icon={faArrowLeft} /> Back
-                        </button> */}
+                {/* Header */}
+                <div className="flex flex-col items-center py-8">
+                    <h1 className="text-4xl font-bold">Database Viewer</h1>
+                    <div className="w-24 border-b-4 border-blue-700 mt-2 mb-6"></div>
 
-                        <div className="flex justify-center text-4xl font-bold lg:text-4xl text-center">
-                            <p>Database Viewer</p>
-                        </div>
-                        <div className="w-24 mx-auto mt-2 mb-6 border-b-4 border-blue-700 lg:w-44" />
-
-                        {/* Jump to Syllabus Button */}
-                        <button
-                            onClick={scrollToSyllabus}
-                            className="px-6 py-2 text-blue-700 transition-colors bg-white border-2 border-blue-700 rounded-full hover:bg-blue-50"
-                        >
-                            ⬇ Jump to Syllabuses
-                        </button>
-                    </div>
-                </div>
-
-
-                {/* --- PYQ TABLE SECTION --- */}
-                <div className="mb-12">
-                    <h2 className="mb-4 text-2xl font-bold text-gray-700 border-l-4 border-blue-500 pl-3">
-                        Question Papers ({pyqList.length})
-                    </h2>
-
-                    <div className="overflow-x-auto bg-white rounded-lg shadow-md">
-                        <table className="w-full text-left border-collapse">
-                            <thead>
-                                <tr className="text-white bg-blue-600">
-                                    <th
-                                        onClick={() => toggleSort("branch")}
-                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
-                                    >
-                                        Branch {getSort("branch") && (getSort("branch").order === "asc" ? "↑" : "↓")}
-                                    </th>
-
-                                    <th
-                                        onClick={() => toggleSort("semester")}
-                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
-                                    >
-                                        Sem {getSort("semester") && (getSort("semester").order === "asc" ? "↑" : "↓")}
-                                    </th>
-
-                                    <th
-                                        onClick={() => toggleSort("month")}
-                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
-                                    >
-                                        Month {getSort("month") && (getSort("month").order === "asc" ? "↑" : "↓")}
-                                    </th>
-
-                                    <th
-                                        onClick={() => toggleSort("year")}
-                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
-                                    >
-                                        Year {getSort("year") && (getSort("year").order === "asc" ? "↑" : "↓")}
-                                    </th>
-
-                                    <th className="p-4 font-semibold border-b text-center">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-gray-700">
-                                {pyqList.map((item, index) => (
-                                    <tr
-                                        key={item._id}
-                                        className={`hover:bg-blue-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
-                                    >
-                                        <td className="p-4 border-b border-gray-100">{item.branch}</td>
-                                        <td className="p-4 border-b border-gray-100">{item.semester}</td>
-                                        <td className="p-4 border-b border-gray-100 capitalize">{item.month}</td>
-                                        <td className="p-4 border-b border-gray-100">{item.year}</td>
-                                        <td className="p-4 text-center border-b border-gray-100">
-                                            <button
-                                                onClick={() => downloadPYQ(item._id, item)}
-                                                className="px-3 py-1 text-sm text-white transition-opacity bg-green-500 rounded hover:opacity-80"
-                                                title="Download PDF"
-                                            >
-                                                <FontAwesomeIcon icon={faFilePdf} /> Download
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                                {pyqList.length === 0 && (
-                                    <tr>
-                                        <td colSpan="5" className="p-8 text-center text-gray-500">
-                                            No Question Papers found in database.
-                                        </td>
-                                    </tr>
-                                )}
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-
-                {/* --- Scroll to Top --- */}
-                <div className="flex justify-center mt-10 mb-10">
                     <button
-                        onClick={scrollToTop}
-                        className="flex items-center gap-2 px-6 py-2 text-gray-600 transition-colors border border-gray-300 rounded-full hover:bg-gray-100"
+                        onClick={scrollToSyllabus}
+                        className="px-6 py-2 border-2 border-blue-700 text-blue-700 rounded-full hover:bg-blue-50"
                     >
-                        <FontAwesomeIcon icon={faArrowUp} /> Back to Top
+                        Jump to Syllabuses
                     </button>
                 </div>
 
-                {/* --- SYLLABUS TABLE SECTION --- */}
-                <div id="syllabus-section" className="mb-12 pt-8">
-                    <h2 className="mb-4 text-2xl font-bold text-gray-700 border-l-4 border-blue-500 pl-3">
-                        Syllabuses ({sylList.length})
+                {/* PYQ Section */}
+                <h2 className="text-2xl font-bold mb-4 border-l-4 border-blue-500 pl-3">
+                    Question Papers
+                </h2>
+
+                <div className="bg-white rounded-lg shadow">
+                    <table className="w-full">
+                        <tbody>
+
+                            {Object.keys(groupedPYQ).map(branch => {
+
+                                const branchKey = `b-${branch}`;
+                                const branchCollapsed = collapsed[branchKey];
+
+                                return (
+                                    <React.Fragment key={branch}>
+
+                                        {/* Branch */}
+                                        <tr onClick={() => toggle(branchKey)} className="cursor-pointer bg-blue-100 font-bold">
+                                            <td className="p-3 flex items-center gap-2">
+                                                <FontAwesomeIcon icon={branchCollapsed ? faChevronRight : faChevronDown} />
+                                                {branch}
+                                            </td>
+                                        </tr>
+
+                                        {!branchCollapsed && Object.keys(groupedPYQ[branch]).map(sem => {
+
+                                            const semKey = `s-${branch}-${sem}`;
+                                            const semCollapsed = collapsed[semKey];
+
+                                            return (
+                                                <React.Fragment key={sem}>
+
+                                                    <tr onClick={() => toggle(semKey)} className="cursor-pointer bg-gray-100">
+                                                        <td className="p-3 pl-6 flex items-center gap-2 font-semibold">
+                                                            <FontAwesomeIcon icon={semCollapsed ? faChevronRight : faChevronDown} />
+                                                            Semester {sem}
+                                                        </td>
+                                                    </tr>
+
+                                                    {!semCollapsed && Object.keys(groupedPYQ[branch][sem]).map(year => {
+
+                                                        const yearKey = `y-${branch}-${sem}-${year}`;
+                                                        const yearCollapsed = collapsed[yearKey];
+
+                                                        return (
+                                                            <React.Fragment key={year}>
+
+                                                                <tr onClick={() => toggle(yearKey)} className="cursor-pointer bg-gray-50">
+                                                                    <td className="p-3 pl-10 flex items-center gap-2">
+                                                                        <FontAwesomeIcon icon={yearCollapsed ? faChevronRight : faChevronDown} />
+                                                                        {year}
+                                                                    </td>
+                                                                </tr>
+
+                                                                {!yearCollapsed && groupedPYQ[branch][sem][year].map(p => (
+                                                                    <tr key={p._id} className="hover:bg-blue-50">
+                                                                        <td className="p-3 pl-16 flex justify-between items-center">
+                                                                            <span className="capitalize">{p.month}</span>
+                                                                            <button
+                                                                                onClick={() => downloadPYQ(p._id, p)}
+                                                                                className="px-3 py-1 bg-green-500 text-white rounded text-sm"
+                                                                            >
+                                                                                <FontAwesomeIcon icon={faFilePdf} /> Download
+                                                                            </button>
+                                                                        </td>
+                                                                    </tr>
+                                                                ))}
+
+                                                            </React.Fragment>
+                                                        );
+                                                    })}
+
+                                                </React.Fragment>
+                                            );
+                                        })}
+
+                                    </React.Fragment>
+                                );
+                            })}
+
+                        </tbody>
+                    </table>
+                </div>
+
+                {/* Scroll to Top */}
+                <div className="flex justify-center my-10">
+                    <button
+                        onClick={scrollToTop}
+                        className="px-6 py-2 border rounded flex items-center gap-2"
+                    >
+                        <FontAwesomeIcon icon={faArrowUp} />
+                        Back to Top
+                    </button>
+                </div>
+
+                {/* Syllabus Section */}
+                <div id="syllabus-section">
+
+                    <h2 className="text-2xl font-bold mb-4 border-l-4 border-blue-500 pl-3">
+                        Syllabuses
                     </h2>
 
-                    <div className="overflow-x-auto bg-white rounded-lg shadow-md">
-                        <table className="w-full text-left border-collapse">
-                            <thead>
-                                <tr className="text-white bg-blue-600">
-                                    <th
-                                        onClick={() => setSylSort({
-                                            field: "branch",
-                                            order: sylSort.order === "asc" ? "desc" : "asc"
-                                        })}
-                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
-                                    >
-                                        Branch {sylSort.field === "branch" && (sylSort.order === "asc" ? "↑" : "↓")}
-                                    </th>
+                    <div className="bg-white rounded-lg shadow">
+                        <table className="w-full">
+                            <tbody>
 
-                                    <th
-                                        onClick={() => setSylSort({
-                                            field: "semester",
-                                            order: sylSort.order === "asc" ? "desc" : "asc"
-                                        })}
-                                        className="p-4 font-semibold border-b cursor-pointer hover:bg-blue-700"
-                                    >
-                                        Sem {sylSort.field === "semester" && (sylSort.order === "asc" ? "↑" : "↓")}
-                                    </th>
+                                {Object.keys(groupedSyllabus).map(branch => {
 
-                                    <th className="p-4 font-semibold border-b text-center">
-                                        Action
-                                    </th>
-                                </tr>
-                            </thead>
-                            <tbody className="text-gray-700">
-                                {sylList.map((item, index) => (
-                                    <tr
-                                        key={item._id}
-                                        className={`hover:bg-blue-50 transition-colors ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}
-                                    >
-                                        <td className="p-4 border-b border-gray-100">{item.branch}</td>
-                                        <td className="p-4 border-b border-gray-100">{item.semester}</td>
-                                        <td className="p-4 text-center border-b border-gray-100">
-                                            <button
-                                                onClick={() => downloadSyllabus(item._id, item)}
-                                                className="px-3 py-1 text-sm text-white transition-opacity bg-green-500 rounded hover:opacity-80"
-                                            >
-                                                <FontAwesomeIcon icon={faFilePdf} /> Download
-                                            </button>
-                                        </td>
-                                    </tr>
-                                ))}
-                                {sylList.length === 0 && (
-                                    <tr>
-                                        <td colSpan="3" className="p-8 text-center text-gray-500">
-                                            No Syllabuses found in database.
-                                        </td>
-                                    </tr>
-                                )}
+                                    const branchKey = `sb-${branch}`;
+                                    const branchCollapsed = collapsed[branchKey];
+
+                                    return (
+                                        <React.Fragment key={branch}>
+
+                                            <tr onClick={() => toggle(branchKey)} className="cursor-pointer bg-blue-100 font-bold">
+                                                <td className="p-3 flex items-center gap-2">
+                                                    <FontAwesomeIcon icon={branchCollapsed ? faChevronRight : faChevronDown} />
+                                                    {branch}
+                                                </td>
+                                            </tr>
+
+                                            {!branchCollapsed && Object.keys(groupedSyllabus[branch]).map(sem => {
+
+                                                const semKey = `ss-${branch}-${sem}`;
+                                                const semCollapsed = collapsed[semKey];
+
+                                                return (
+                                                    <React.Fragment key={sem}>
+
+                                                        <tr onClick={() => toggle(semKey)} className="cursor-pointer bg-gray-100">
+                                                            <td className="p-3 pl-6 flex items-center gap-2 font-semibold">
+                                                                <FontAwesomeIcon icon={semCollapsed ? faChevronRight : faChevronDown} />
+                                                                Semester {sem}
+                                                            </td>
+                                                        </tr>
+
+                                                        {!semCollapsed && groupedSyllabus[branch][sem].map(s => (
+                                                            <tr key={s._id} className="hover:bg-blue-50">
+                                                                <td className="p-3 pl-12 flex justify-between items-center">
+                                                                    <span>Syllabus File</span>
+                                                                    <button
+                                                                        onClick={() => downloadSyllabus(s._id, s)}
+                                                                        className="px-3 py-1 bg-green-500 text-white rounded text-sm"
+                                                                    >
+                                                                        <FontAwesomeIcon icon={faFilePdf} /> Download
+                                                                    </button>
+                                                                </td>
+                                                            </tr>
+                                                        ))}
+
+                                                    </React.Fragment>
+                                                );
+                                            })}
+
+                                        </React.Fragment>
+                                    );
+                                })}
+
                             </tbody>
                         </table>
                     </div>
-                </div>
 
-                {/* --- Scroll to Top --- */}
-                <div className="flex justify-center mt-10 mb-10">
-                    <button
-                        onClick={scrollToTop}
-                        className="flex items-center gap-2 px-6 py-2 text-gray-600 transition-colors border border-gray-300 rounded-full hover:bg-gray-100"
-                    >
-                        <FontAwesomeIcon icon={faArrowUp} /> Back to Top
-                    </button>
                 </div>
 
             </div>
@@ -326,4 +324,4 @@ const DatabaseViewer = () => {
     );
 };
 
-export default DatabaseViewer;
+export default DatabaseViewer;  
