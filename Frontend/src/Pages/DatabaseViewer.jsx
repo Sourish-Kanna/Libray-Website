@@ -213,12 +213,29 @@ const DatabaseViewer = () => {
                                                                     <tr key={p._id} className="hover:bg-blue-50">
                                                                         <td className="p-3 pl-16 flex justify-between items-center">
                                                                             <span className="capitalize">{p.month}</span>
-                                                                            <button
+                                                                            {/* <button
                                                                                 onClick={() => downloadPYQ(p._id, p)}
                                                                                 className="px-3 py-1 bg-green-500 text-white rounded text-sm"
                                                                             >
                                                                                 <FontAwesomeIcon icon={faFilePdf} /> Download
-                                                                            </button>
+                                                                            </button> */}
+                                                                            <div className="flex gap-2">
+                                                                                {/* Preview */}
+                                                                                <button
+                                                                                    onClick={() => window.open(p.questionPaperUrl, "_blank", "noopener,noreferrer")}
+                                                                                    className="px-3 py-1 bg-blue-500 text-white rounded text-sm"
+                                                                                >
+                                                                                    Preview
+                                                                                </button>
+
+                                                                                {/* Download */}
+                                                                                <button
+                                                                                    onClick={() => downloadPYQ(p._id, p)}
+                                                                                    className="px-3 py-1 bg-green-500 text-white rounded text-sm"
+                                                                                >
+                                                                                    <FontAwesomeIcon icon={faFilePdf} /> Download
+                                                                                </button>
+                                                                            </div>
                                                                         </td>
                                                                     </tr>
                                                                 ))}
@@ -295,12 +312,23 @@ const DatabaseViewer = () => {
                                                             <tr key={s._id} className="hover:bg-blue-50">
                                                                 <td className="p-3 pl-12 flex justify-between items-center">
                                                                     <span>Syllabus File</span>
-                                                                    <button
-                                                                        onClick={() => downloadSyllabus(s._id, s)}
-                                                                        className="px-3 py-1 bg-green-500 text-white rounded text-sm"
-                                                                    >
-                                                                        <FontAwesomeIcon icon={faFilePdf} /> Download
-                                                                    </button>
+                                                                    <div className="flex gap-2">
+                                                                        {/* Preview */}
+                                                                        <button
+                                                                            onClick={() => window.open(s.syllabusUrl, "_blank", "noopener,noreferrer")}
+                                                                            className="px-3 py-1 bg-blue-500 text-white rounded text-sm"
+                                                                        >
+                                                                            Preview
+                                                                        </button>
+
+                                                                        {/* Download */}
+                                                                        <button
+                                                                            onClick={() => downloadSyllabus(s._id, s)}
+                                                                            className="px-3 py-1 bg-green-500 text-white rounded text-sm"
+                                                                        >
+                                                                            <FontAwesomeIcon icon={faFilePdf} /> Download
+                                                                        </button>
+                                                                    </div>
                                                                 </td>
                                                             </tr>
                                                         ))}
