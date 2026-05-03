@@ -133,7 +133,7 @@ const DatabaseViewer = () => {
     }
 
     return (
-        <div className="w-full">
+        <div className="w-full pb-16">
 
             <Helmet>
                 <title>Database Viewer | Library</title>
@@ -148,9 +148,9 @@ const DatabaseViewer = () => {
 
                     <button
                         onClick={scrollToSyllabus}
-                        className="px-6 py-2 border-2 border-blue-700 text-blue-700 rounded-full hover:bg-blue-50"
+                        className="mt-4 flex items-center gap-2 px-6 py-2 text-white bg-blue-600 rounded-full shadow hover:bg-blue-700 transition"
                     >
-                        Jump to Syllabuses
+                        ↓ Jump to Syllabuses
                     </button>
                 </div>
 
@@ -159,7 +159,7 @@ const DatabaseViewer = () => {
                     Question Papers
                 </h2>
 
-                <div className="bg-white rounded-lg shadow">
+                <div className="bg-white rounded-lg shadow ">
                     <table className="w-full">
                         <tbody>
 
@@ -213,12 +213,6 @@ const DatabaseViewer = () => {
                                                                     <tr key={p._id} className="hover:bg-blue-50">
                                                                         <td className="p-3 pl-16 flex justify-between items-center">
                                                                             <span className="capitalize">{p.month}</span>
-                                                                            {/* <button
-                                                                                onClick={() => downloadPYQ(p._id, p)}
-                                                                                className="px-3 py-1 bg-green-500 text-white rounded text-sm"
-                                                                            >
-                                                                                <FontAwesomeIcon icon={faFilePdf} /> Download
-                                                                            </button> */}
                                                                             <div className="flex gap-2">
                                                                                 {/* Preview */}
                                                                                 <button
@@ -256,19 +250,8 @@ const DatabaseViewer = () => {
                     </table>
                 </div>
 
-                {/* Scroll to Top */}
-                <div className="flex justify-center my-10">
-                    <button
-                        onClick={scrollToTop}
-                        className="px-6 py-2 border rounded flex items-center gap-2"
-                    >
-                        <FontAwesomeIcon icon={faArrowUp} />
-                        Back to Top
-                    </button>
-                </div>
-
                 {/* Syllabus Section */}
-                <div id="syllabus-section">
+                <div id="syllabus-section" className='pt-8'>
 
                     <h2 className="text-2xl font-bold mb-4 border-l-4 border-blue-500 pl-3">
                         Syllabuses
@@ -348,6 +331,12 @@ const DatabaseViewer = () => {
                 </div>
 
             </div>
+            <button
+                onClick={scrollToTop}
+                className="fixed bottom-6 right-6 z-50 flex items-center gap-2 px-4 py-3 text-white bg-blue-600 rounded-full shadow-lg hover:bg-blue-700 transition"
+            >
+                <FontAwesomeIcon icon={faArrowUp} />
+            </button>
         </div>
     );
 };
